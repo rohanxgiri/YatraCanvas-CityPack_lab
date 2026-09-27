@@ -232,3 +232,40 @@ City Lab is engineered to run smoothly on production packs exceeding 10,000 plac
 | Single POI Detail Fetch | $< 20\text{ ms}$ | **$7\text{ ms}$** |
 | Dynamic Quality Recalculation | $< 100\text{ ms}$ | **$18\text{ ms}$** |
 | Full 36-Test Suite Run | $< 15\text{ s}$ | **$3.8\text{ s}$** |
+
+---
+
+## 8. Multi-Repository Bridge & Production Sync (`export_certified_pack.py`)
+
+The YatraCanvas travel platform spans three sibling repositories on the contributor's workstation:
+
+```
+C:\Users\<user>\Documents\
+├── YatraCanvas-DataFactory/     (Automated extraction, normalization, candidate clustering)
+├── YatraCanvas-CityPack-Lab/    (Human curation studio, QA gates, certified pack exporter)
+└── YatraCanvas/                 (Consumer mobile application consuming offline SQLite packs)
+```
+
+### The Synchronization Bridge
+
+Instead of requiring contributors to manually move binary files, [`tools/export_certified_pack.py`](file:///c:/Users/girir/Documents/YatraCanvas-CityPack-Lab/tools/export_certified_pack.py) (invoked via `.\citylab.ps1 export -City <name>`) automates the release cycle:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Contributor
+    participant Lab as CityPack-Lab (Studio)
+    participant DF as YatraCanvas-DataFactory
+    participant App as YatraCanvas (Mobile App)
+
+    Contributor->>Lab: Runs .\citylab.ps1 export -City jaipur
+    Note over Lab: 1. Reads raw yatracanvas.db<br/>2. Applies overrides & additions<br/>3. Deletes exclusions<br/>4. Generates certified SQLite DB
+    Lab->>DF: Syncs curation/ JSON to data/curated/jaipur/
+    Note over DF: Permanent storage: Future pipeline runs<br/>apply these human fixes as editorial overrides
+    Lab->>App: Copies certified yatracanvas.db to assets/city_packs/jaipur/
+    Note over App: Ready for offline mobile itinerary planning!
+```
+
+1. **Certified SQLite Assembly**: It takes the baseline read-only `yatracanvas.db`, applies all field overrides (opening hours, primary images, coordinates, category taxonomy), inserts newly added sights, and deletes excluded places.
+2. **DataFactory Permanent Memory**: It copies all JSON files in `curation/` directly to `../YatraCanvas-DataFactory/data/curated/<city>/`. When DataFactory runs automated regeneration with newer OSM or Overture dumps, it reads this directory as an **Editorial Override Layer**, ensuring human fixes are never lost.
+3. **Mobile App Local Database**: It copies the certified `yatracanvas.db`, `manifest.json`, and `images/` directly into `../YatraCanvas/assets/city_packs/<city>/`, immediately equipping the mobile application with an offline database for tourist exploration.

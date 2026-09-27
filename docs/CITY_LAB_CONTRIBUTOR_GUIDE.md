@@ -133,14 +133,21 @@ Ensure all automated quality gates and regression tests pass:
 .\citylab.ps1 test
 ```
 
-### Step 4: Commit & Push
+### Step 4: Export to Mobile App & DataFactory (Optional Local Testing)
+To immediately test your fixes in the local YatraCanvas mobile app and sync with DataFactory:
+```powershell
+.\citylab.ps1 export -City jaipur
+```
+This automatically bakes your fixes into `yatracanvas.db`, copies it into `YatraCanvas/assets/city_packs/jaipur/`, and saves your JSON curation into `YatraCanvas-DataFactory/data/curated/jaipur/`.
+
+### Step 5: Commit & Push
 ```bash
 git add assets/city_packs/jaipur/curation/
 git commit -m "Curate Jaipur: Add 14 opening hours, 8 photo updates, 1 missing stepwell"
 git push origin curate/jaipur-updates
 ```
 
-### Step 5: Open a Pull Request
+### Step 6: Open a Pull Request
 1. Open a Pull Request on GitHub against `main`.
 2. Paste the output from `.\citylab.ps1 summary -City jaipur` into the PR description.
 3. An admin will review your changes and certify the pack for YatraCanvas production release!

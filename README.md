@@ -37,55 +37,51 @@ Automated pipeline heuristics check schema compliance, geometries, and basic fie
 
 ## The 5 Operational Pillars
 
-The application is structured into 5 cohesive inspection screens:
+The application is structured into 5 simple, actionable screens designed for contributors and release managers:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           YATRACANVAS CITY LAB                              │
+│                  YATRACANVAS CITY PACK CURATION STUDIO                      │
 ├───────────────┬─────────────────┬──────────────┬──────────────┬─────────────┤
-│ 1. Overview   │ 2. Data Coverage│ 3. Review    │ 4. Release   │ 5. Pipeline │
-│ & Executive   │    & Gaps       │    Queue     │    Gate      │ Diagnostics │
+│ 1. Home       │ 2. Fix Center   │ 3. Review    │ 4. Places    │ 5. Release  │
+│ (10s Scan)    │ (Task Runner)   │ (Manual QA)  │ (Edit & CMS) │ (Gate & Cert│
 └───────────────┴─────────────────┴──────────────┴──────────────┴─────────────┘
 ```
 
-### 1. Overview & Executive Summary (`OverviewScreen`)
-- **10-Second Executive Scan**: Large release status badge (`READY`, `REVIEW_REQUIRED`, `BLOCKED`) with immediate reason summary.
-- **4 Primary KPI Cards**: Data Quality Score, Travel Readiness Score, Manual QA Status (`NOT STARTED`, `PENDING X/50`, or `PASSED`), and Critical Blockers count.
-- **Dataset Profile Row**: Total places, Core destinations count, Local images count, DB file size.
-- **Critical Blockers Box**: Prominent alert highlighting every blocker preventing release, with direct action buttons to jump to the offending records.
+### 1. Home & Executive Health (`HomeScreen`)
+- **10-Second Executive Scan**: Large circular City Health score gauge (0–100) with instant health status.
+- **4 Actionable Task Cards**: Instant counts for missing photos, missing opening hours, coordinate errors, and category issues with 1-click jump into the Fix Center.
+- **Manual Verification Status**: Real-time progress bar tracking the 50-place manual QA sample requirement (`NOT STARTED`, `IN PROGRESS X/50`, or `PASSED`).
+- **Primary Hero Action**: Direct button to "Start Fixing" or "Continue Reviewing" without browsing complicated technical menus.
 
-### 2. Data Coverage & Gap Analyzer (`DataCoverageScreen`)
-- **Category Coverage Matrix**: Per-category breakdown (Food, Sights, Heritage, Nature, Religious, Shopping, etc.) with Total count, Core count, Recommended count, Photo coverage %, and Opening hours coverage %.
-- **Actionable Data Gaps**: Pinpoints missing Core images, places lacking operating hours, and coordinates located outside official city bounding boxes.
-- **Interactive Drill-Down**: Tapping any gap opens a bottom sheet listing the exact affected places with direct navigation to inspect them.
+### 2. Fix Center (`FixCenterScreen`)
+- **Task-Driven Work Runner**: Turns abstract coverage metrics into clear, step-by-step fix queues.
+- **Actionable Work Categories**:
+  - Missing Opening Hours (Quick presets, weekday sync, official sources)
+  - Missing & Broken Images (Photo inspector, media assignment, attribution)
+  - Coordinate & Boundary Problems (Lat/Lon corrections, boundary checking)
+  - Category Corrections (YatraCanvas 14-category taxonomy)
+  - Collaborative Issues (Open, assigned, and verified tickets)
+- **Automatic Score Recalculation**: Saving any fix instantly recalculates the City Health and Travel Readiness scores in-memory.
 
-### 3. Review Queue & Stratified Sampling (`ReviewScreen`)
-- **Stratified Sampling Quota**: Automatically constructs a 50-place verification sample distributed across 5 critical buckets:
-  - Top Core Attractions (15 places)
-  - Recommended Highlights (15 places)
-  - Food & Cafes (8 places)
-  - High-Relevance Discovery (7 places)
-  - Hidden Gems / Long-Tail (5 places)
-- **Place Card QA Inspector**: Displays place identity, tier badge, local photo, tags, coordinates, and explainable quality assessment badges (`Clean`, `In City Bounds`, `Multi-Source`, `Hero Photo`).
-- **Defect Logging**: One-click actions to Approve (`LOOKS GOOD`) or Flag with standard defects (`WRONG_CATEGORY`, `WRONG_LOCATION`, `BAD_IMAGE`, `WRONG_NAME`, `DUPLICATE`, `NOT_TRAVEL_RELEVANT`, `SHOULD_NOT_BE_CORE`, `STALE_CLOSED`).
+### 3. Review Queue (`CurationReviewScreen`)
+- **Streamlined Verification**: A clean, focused single-card QA queue without overwhelming data dumps.
+- **Smart Sampling**: Automatically queues 50 representative places across Core destinations, discovery sights, and edge cases.
+- **Zero-Loop Guarantee**: Places already reviewed are automatically excluded from future review queues.
+- **1-Click Actions**: Approve (`Yes, Looks Good`) or Flag with defects (`Wrong Photo`, `Wrong Category`, `Closed`, `Wrong Location`).
 
-### 4. Release Gate Certification (`ReleaseGateScreen`)
-- **Deterministic Rules Evaluation**: Tests the pack against 7 rigorous gates:
-  - Core coordinate integrity (100% inside city bounds)
-  - Minimum Core image coverage (>= 60%)
-  - Minimum Core places count (>= 5)
-  - Minimum Data Quality score (>= 70.0)
-  - Minimum Travel Readiness score (>= 60.0)
-  - Mandatory Manual QA sample (>= 50 places reviewed)
-  - Maximum defect rate (<= 10%)
-- **Certified Artifact Export**: Generates production certification bundle:
-  - `release.json`: Machine-readable pass/fail release manifest.
-  - `quality_report.json`: Full 8-dimension data quality + 5-dimension travel readiness breakdown.
-  - `release_report.md`: Human-readable markdown audit summary.
+### 4. Places CMS & Place Detail (`PlacesCmsScreen` & `CuratedPlaceDetailScreen`)
+- **Lightweight Inventory CMS**: Search places instantly (<25ms across 10k rows), filter by category, tier, or issue flags.
+- **+ Add Place Wizard**: 5-step wizard to add missing landmarks, temples, or stepwells with verified coordinates and hours.
+- **Safe Place Exclusions**: Soft-delete permanently closed or inappropriate places with mandatory reason logging (never destroys raw source data).
+- **Field-Level Provenance & Audit History**: View exact sources for every field (e.g. OSM vs. Verified Human Override) and view change logs.
 
-### 5. Pipeline Diagnostics (`DiagnosticsScreen`)
-- **DataFactory Candidate Funnel**: Inspects upstream pipeline extraction, deduplication, and anomaly filtering.
-- **Strict Decoupling**: Visualizes raw candidate rejections and filter loss without contaminating the active city quality score.
+### 5. Release Gate Certification (`ReleaseGateScreen`)
+- **7 Non-Negotiable Hard Gates**: Tests schema integrity, boundary containment, manual QA completion, flagship photo depth, cultural sights count, and composite thresholds.
+- **Blocker Overrides**: High average scores can never bypass a critical blocker (e.g. Core places out of bounds strictly blocks release).
+- **Certified Artifact Export**: 1-click generation of `release.json`, `quality_report.json`, and `release_report.md`.
+
+*(Note: Advanced DataFactory diagnostics, raw candidate funnels, and category coverage matrices are safely accessible under the **Advanced** tab in Admin Mode).*
 
 ---
 
@@ -160,73 +156,71 @@ flutter analyze
 ```
 lib/
 ├── app/
-│   ├── app_state.dart              # Global reactive state & Quality Engine evaluator
+│   ├── app_state.dart              # Global reactive state & dynamic quality recalculation
 │   └── routes.dart                 # Application navigation routes
+├── curation/
+│   ├── curation_repository.dart    # Entity-level JSON store (overrides, additions, exclusions)
+│   └── curation_service.dart       # Overlay resolution & live dynamic stats recomputation
 ├── data/
 │   ├── city_pack_database.dart     # SQLite reader, aggregates & coverage matrices
 │   ├── city_pack_loader.dart       # Copies & loads bundled SQLite packs
 │   └── local_place_repository.dart # Place repository contract & implementation
 ├── domain/
 │   ├── city.dart                   # City entity & bounding box
-│   └── lab_place.dart              # Place model with convenience getters
+│   ├── lab_place.dart              # Place model with convenience getters
+│   └── curation/                   # Curated place models with field-level provenance
+│       ├── curated_place.dart      # CuratedPlace = (Raw + Additions - Exclusions) ⊕ Overrides
+│       ├── curation_issue.dart     # Issue lifecycle (open, assigned, fixed, verified)
+│       ├── place_addition.dart     # Scout addition model [MANUAL ADDITION]
+│       ├── place_exclusion.dart    # Safe tombstone model with mandatory reasons
+│       ├── place_override.dart     # Field override model with audit history
+│       └── place_review.dart       # Manual QA review model
 ├── quality/
-│   ├── config/
-│   │   ├── quality_weights.dart    # 8-dimension weights (Core 0.25, Geo 0.20...)
-│   │   ├── travel_readiness_weights.dart # 5-dimension weights (Depth 0.30...)
-│   │   └── release_gate_config.dart# Gate thresholds (Sample=50, DQ=70, TR=60)
-│   ├── models/
-│   │   ├── data_gap_item.dart      # Missing photo, hours, or boundary gap
-│   │   ├── data_quality_score.dart # Overall DQ score & dimension breakdown
-│   │   ├── manual_qa_summary.dart  # 4-state Manual QA lifecycle model
-│   │   ├── place_quality_assessment.dart # Explainable per-place QA flags
-│   │   ├── quality_dimension.dart  # Generic quality dimension container
-│   │   ├── release_gate_result.dart# Release gate outcome (READY, REVIEW, BLOCKED)
-│   │   └── travel_readiness_score.dart # Travel viability score model
-│   └── services/
-│       ├── city_quality_service.dart   # Evaluates 8 data quality dimensions
-│       ├── data_gap_service.dart       # Analyzes coverage gaps & outliers
-│       ├── qa_sampling_service.dart    # Generates stratified 50-place sample
-│       ├── release_gate_service.dart   # Enforces hard blockers & release status
-│       └── travel_readiness_service.dart# Evaluates 5 travel readiness dimensions
-├── qa/
-│   ├── qa_export_service.dart      # Generates release.json & quality_report.json
-│   └── qa_repository.dart          # Reads/writes isolated QA reviews in AppDocuments
+│   ├── config/                     # Weights & release gate thresholds
+│   ├── models/                     # Quality scores, dimensions & QA models
+│   └── services/                   # 8 DQ dimensions, 5 TR dimensions, 7 hard gates
 ├── screens/
-│   ├── city_lab_home_screen.dart   # Top navigation shell across the 5 pillars
-│   ├── city_pack_screen.dart       # Pack selector & metadata viewer
-│   ├── data_coverage_screen.dart   # Category coverage matrix & Data Gap Analyzer
-│   ├── diagnostics_screen.dart     # Isolated candidate funnel & pipeline metrics
-│   ├── overview_screen.dart        # 10-second executive scan & KPI cards
-│   ├── release_gate_screen.dart    # Gate checklist & certified artifact export
-│   └── review_screen.dart          # Stratified QA sampling queue & defect logger
+│   ├── city_lab_home_screen.dart   # Top navigation shell with Contributor/Admin mode toggle
+│   ├── home_screen.dart            # Pillar 1: 10-second executive scan & Health Score
+│   ├── fix_center_screen.dart      # Pillar 2: Task-oriented fix runners
+│   ├── curation_review_screen.dart # Pillar 3: Streamlined QA verification queue
+│   ├── places_cms_screen.dart      # Pillar 4: Curated place inventory CMS & + Add Place
+│   ├── curated_place_detail_screen.dart # Field provenance & audit history
+│   └── release_gate_screen.dart    # Pillar 5: 7-Gate checklist & certified export
 └── widgets/
-    ├── place_card.dart             # Cross-platform place card with image fallback
-    └── score_ring.dart             # Circular score indicator with tier colors
+    ├── score_ring.dart             # CustomPainter circular score gauge
+    └── curation/                   # Dialog editors (hours, images, coords, categories, etc.)
 ```
 
 ---
 
----
+## The 3-Repository Ecosystem & Bridge
 
-## YatraCanvas City Data Workflow
+The YatraCanvas travel platform is split across 3 sibling repositories in `C:\Users\girir\Documents\`:
 
-| Stage | Tool | Documentation |
+| Repository | Role | Technology |
 |---|---|---|
-| **1. Generate** | `YatraCanvas-DataFactory` | [DataFactory Pipeline Docs](../YatraCanvas-DataFactory/README.md) |
-| **2. Review & Curate** | `YatraCanvas-CityPack-Lab` | [City Lab Contributor Guide](docs/CITY_LAB_CONTRIBUTOR_GUIDE.md) |
-| **3. Architecture** | Curation & Release Engine | [Curation Studio Architecture](docs/CITY_LAB_CURATION_ARCHITECTURE.md) |
+| **`YatraCanvas-DataFactory`** | Automated harvesting, normalization & candidate clustering | Python |
+| **`YatraCanvas-CityPack-Lab`** | Human curation, verification, release gate certification | Flutter |
+| **`YatraCanvas`** | Consumer travel mobile application | Flutter Mobile |
 
-### Quick Start for Contributors
+### The Bridge Commands
 
 ```powershell
 # 1. Setup environment and dependencies
 .\citylab.ps1 setup
 
-# 2. Launch Curation Studio
+# 2. Pull latest raw pack from DataFactory into City Lab:
+python tools/sync_city_packs.py --cities Jaipur
+
+# 3. Launch Curation Studio:
 .\citylab.ps1 start
 
-# 3. View Curation Summary before opening PR
+# 4. View curation summary before opening PR:
 .\citylab.ps1 summary -City jaipur
+
+# 5. Bake fixes and automatically sync to BOTH DataFactory & YatraCanvas Mobile App:
+.\citylab.ps1 export -City jaipur
 ```
 
 ---
