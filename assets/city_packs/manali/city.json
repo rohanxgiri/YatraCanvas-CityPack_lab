@@ -1,0 +1,31 @@
+{
+  "id": "manali",
+  "name": "Manali",
+  "state": "Himachal Pradesh",
+  "country": "India",
+  "iso_country": "IN",
+  "center": [
+    32.245461,
+    77.187293
+  ],
+  "bbox": [
+    77.107293,
+    32.165461,
+    77.267293,
+    32.325461
+  ],
+  "alternate_names": [
+    "Kullu",
+    "Himachal Pradesh",
+    "175131",
+    "India"
+  ],
+  "timezone": "Asia/Kolkata",
+  "osm_place_id": 214429264,
+  "geonames_id": null,
+  "wikidata_id": null,
+  "dataset_version": "3.0.0",
+  "generated_at": "2026-09-19T19:31:37.999041+00:00",
+  "resolution_source": "nominatim_osm",
+  "resolution_confidence": 0.9
+}

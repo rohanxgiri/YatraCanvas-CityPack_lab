@@ -1,0 +1,102 @@
+{
+  "schema_version": "3.0",
+  "city_pack_version": "v3",
+  "city_id": "panaji",
+  "city_name": "Panjim",
+  "state": "Goa",
+  "country": "India",
+  "generated_at": "2026-09-19T19:46:13.559053+00:00",
+  "pipeline_health": "PASS",
+  "data_quality": "WARN",
+  "source_coverage": "PASS",
+  "source_versions": {
+    "wikivoyage": "51",
+    "wikidata": "69",
+    "openstreetmap": "1674",
+    "overture": "10342"
+  },
+  "counts": {
+    "total_raw_candidates": 12136,
+    "accepted": 3753,
+    "rejected": 3434,
+    "quarantined": 3783,
+    "duplicate_merges": 1165,
+    "with_images": 53,
+    "with_opening_hours": 99,
+    "with_wikidata": 83,
+    "category_conflicts": 20915,
+    "entity_conflicts": 0,
+    "alias_conflicts": 0,
+    "image_conflicts": 0,
+    "coordinate_conflicts": 298,
+    "by_tier": {
+      "discovery": 989,
+      "core_destination": 60,
+      "support": 1752,
+      "recommended": 952
+    },
+    "by_tier_stats": {
+      "core_destination": {
+        "count": 60,
+        "with_wikidata": 54,
+        "with_wikipedia": 46,
+        "with_image": 50,
+        "with_hours": 2,
+        "with_website": 23,
+        "multi_source": 21
+      },
+      "recommended": {
+        "count": 952,
+        "with_wikidata": 0,
+        "with_wikipedia": 1,
+        "with_image": 0,
+        "with_hours": 89,
+        "with_website": 626,
+        "multi_source": 503
+      },
+      "discovery": {
+        "count": 989,
+        "with_wikidata": 1,
+        "with_wikipedia": 1,
+        "with_image": 1,
+        "with_hours": 3,
+        "with_website": 983,
+        "multi_source": 4
+      },
+      "support": {
+        "count": 1752,
+        "with_wikidata": 28,
+        "with_wikipedia": 2,
+        "with_image": 2,
+        "with_hours": 5,
+        "with_website": 1686,
+        "multi_source": 315
+      }
+    },
+    "by_category": {
+      "experience": 969,
+      "heritage": 65,
+      "museum": 10,
+      "religious": 48,
+      "hotel": 1751,
+      "food": 716,
+      "shopping": 54,
+      "cafe": 114,
+      "viewpoint": 2,
+      "park": 11,
+      "arts_culture": 11,
+      "entertainment": 1,
+      "transport": 1
+    }
+  },
+  "checksums": {
+    "city.json": "2ed39f0d6a6be74be04059c4ffa682c30e6bfc00bffdfb297906783e3329121f",
+    "places.json": "4c28f79867fa7a435ef4639de39044efec4244d4cc505df3f7ff7c32220f0fe0",
+    "places.jsonl": "de3b7bc69f990451f6edfb92fe62b025de8497e1bcbd42e0b4c604f8b5fe4736",
+    "places.parquet": "7f511e6278adf817a561c72e35f0e5dc4ae8ca2731838c25c4968e5b01d98b46",
+    "image_manifest.json": "4efbb656aa168fa854dcce36d205b2ce1d18b2fa361034fc8614ca442d56a7b5",
+    "source_manifest.json": "9398eb7f4a6b12a9ced3f9561121460d12d96066f4622dc0e23f1587924775d8",
+    "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+    "yatracanvas.db": "3806be0f2c1de77c00802338cef969cc7015e5fd6bf61069813596cb4c028cf1"
+  }
+}

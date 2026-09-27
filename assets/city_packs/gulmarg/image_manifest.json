@@ -1,0 +1,395 @@
+{
+  "yc_in_ja_gulmarg_cable_car_to_kongdori": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Gulmarg-Gondala.JPG",
+      "original_file": "Gulmarg-Gondala.JPG",
+      "author": "Vikas Yadav (Thevikasin)",
+      "license": "Public domain",
+      "license_url": "",
+      "attribution": null,
+      "width": 2560,
+      "height": 1920,
+      "match_method": "wikivoyage_listing_image",
+      "match_confidence": 0.95,
+      "downloaded_at": "2026-09-19T19:55:37.985267+00:00",
+      "local_path": "images/yc_in_ja_gulmarg_cable_car_to_kongdori/primary.webp",
+      "thumbnail_path": "images/yc_in_ja_gulmarg_cable_car_to_kongdori/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_ja_gulmarg_gulmarg": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Gulmarg_-_Jannat_on_Earth.jpg",
+      "original_file": "Gulmarg - Jannat on Earth.jpg",
+      "author": "Vikas Panwar",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 3072,
+      "height": 2304,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:55:40.403761+00:00",
+      "local_path": "images/yc_in_ja_gulmarg_gulmarg/primary.webp",
+      "thumbnail_path": "images/yc_in_ja_gulmarg_gulmarg/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:(1)_Gulmarg_Himalayas_India_March_2013.jpg",
+        "original_file": "(1) Gulmarg Himalayas India March 2013.jpg",
+        "author": "Peter",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "attribution": null,
+        "width": 1204,
+        "height": 724,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:55:43.696228+00:00",
+        "local_path": "images/yc_in_ja_gulmarg_gulmarg_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_ja_gulmarg_gulmarg_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:A_Picturesque_view_from_mountains.jpg",
+        "original_file": "A Picturesque view from mountains.jpg",
+        "author": "Aka Sai Krishna",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 3264,
+        "height": 2448,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:55:46.295173+00:00",
+        "local_path": "images/yc_in_ja_gulmarg_gulmarg_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_ja_gulmarg_gulmarg_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_ja_gulmarg_tangmarg": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Srinagar_to_Gulmarg_-_vrvvkbjk2k23pxl_(184).jpg",
+      "original_file": "Srinagar to Gulmarg - vrvvkbjk2k23pxl (184).jpg",
+      "author": "Vinayaraj",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 4032,
+      "height": 2268,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:55:48.879549+00:00",
+      "local_path": "images/yc_in_ja_gulmarg_tangmarg/primary.webp",
+      "thumbnail_path": "images/yc_in_ja_gulmarg_tangmarg/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Srinagar_to_Gulmarg_-_vrvvkbjk2k23iph_(1).jpg",
+        "original_file": "Srinagar to Gulmarg - vrvvkbjk2k23iph (1).jpg",
+        "author": "Vinayaraj",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 4032,
+        "height": 3024,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:55:52.249672+00:00",
+        "local_path": "images/yc_in_ja_gulmarg_tangmarg_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_ja_gulmarg_tangmarg_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Srinagar_to_Gulmarg_-_vrvvkbjk2k23iph_(2).jpg",
+        "original_file": "Srinagar to Gulmarg - vrvvkbjk2k23iph (2).jpg",
+        "author": "Vinayaraj",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 4032,
+        "height": 3024,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:55:55.542438+00:00",
+        "local_path": "images/yc_in_ja_gulmarg_tangmarg_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_ja_gulmarg_tangmarg_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_ja_gulmarg_afarwat_peak": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Apharwat_Peak.JPG",
+      "original_file": "Apharwat Peak.JPG",
+      "author": "CorrectKnowledge",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 2144,
+      "height": 1424,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:55:57.841994+00:00",
+      "local_path": "images/yc_in_ja_gulmarg_afarwat_peak/primary.webp",
+      "thumbnail_path": "images/yc_in_ja_gulmarg_afarwat_peak/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_ja_gulmarg_national_highway_701a": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Srinagar_to_Gulmarg_-_vrvvkbjk2k23iph_(494).jpg",
+      "original_file": "Srinagar to Gulmarg - vrvvkbjk2k23iph (494).jpg",
+      "author": "Vinayaraj",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 4032,
+      "height": 3024,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:56:00.881764+00:00",
+      "local_path": "images/yc_in_ja_gulmarg_national_highway_701a/primary.webp",
+      "thumbnail_path": "images/yc_in_ja_gulmarg_national_highway_701a/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Srinagar_to_Gulmarg_-_vrvvkbjk2k23iph_(100).jpg",
+        "original_file": "Srinagar to Gulmarg - vrvvkbjk2k23iph (100).jpg",
+        "author": "Vinayaraj",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 4032,
+        "height": 3024,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:56:05.617300+00:00",
+        "local_path": "images/yc_in_ja_gulmarg_national_highway_701a_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_ja_gulmarg_national_highway_701a_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Srinagar_to_Gulmarg_-_vrvvkbjk2k23iph_(101).jpg",
+        "original_file": "Srinagar to Gulmarg - vrvvkbjk2k23iph (101).jpg",
+        "author": "Vinayaraj",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 4032,
+        "height": 3024,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:56:08.783321+00:00",
+        "local_path": "images/yc_in_ja_gulmarg_national_highway_701a_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_ja_gulmarg_national_highway_701a_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_ja_gulmarg_gulmarg_wildlife_sanctuary": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Gulmarg_Wildlife_Sanctuary.jpg",
+      "original_file": "Gulmarg Wildlife Sanctuary.jpg",
+      "author": "Shibnath Samanta",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 3264,
+      "height": 2448,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:56:11.624416+00:00",
+      "local_path": "images/yc_in_ja_gulmarg_gulmarg_wildlife_sanctuary/primary.webp",
+      "thumbnail_path": "images/yc_in_ja_gulmarg_gulmarg_wildlife_sanctuary/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Flora_of_Gulmarg_Wildlife_Sanctuary.jpg",
+        "original_file": "Flora of Gulmarg Wildlife Sanctuary.jpg",
+        "author": "Tanujdogra",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 4096,
+        "height": 3072,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:56:14.906988+00:00",
+        "local_path": "images/yc_in_ja_gulmarg_gulmarg_wildlife_sanctuary_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_ja_gulmarg_gulmarg_wildlife_sanctuary_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Gulmarg-Valley.jpg",
+        "original_file": "Gulmarg-Valley.jpg",
+        "author": "Billyakhtar",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 6000,
+        "height": 4000,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:56:19.082461+00:00",
+        "local_path": "images/yc_in_ja_gulmarg_gulmarg_wildlife_sanctuary_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_ja_gulmarg_gulmarg_wildlife_sanctuary_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_ja_gulmarg_maharani_temple": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Ancient_Temple,_Gulmarg.jpg",
+      "original_file": "Ancient Temple, Gulmarg.jpg",
+      "author": "Anurag Kumar",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 2000,
+      "height": 1333,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:56:21.260774+00:00",
+      "local_path": "images/yc_in_ja_gulmarg_maharani_temple/primary.webp",
+      "thumbnail_path": "images/yc_in_ja_gulmarg_maharani_temple/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Ancient_Shiva_Temple.JPG",
+        "original_file": "Ancient Shiva Temple.JPG",
+        "author": "Chahek",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "attribution": null,
+        "width": 2592,
+        "height": 1944,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:56:24.272752+00:00",
+        "local_path": "images/yc_in_ja_gulmarg_maharani_temple_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_ja_gulmarg_maharani_temple_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Ancient_Temple_Gulmarg.jpg",
+        "original_file": "Ancient Temple Gulmarg.jpg",
+        "author": "Kanchu22",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "attribution": null,
+        "width": 1887,
+        "height": 991,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:56:25.945441+00:00",
+        "local_path": "images/yc_in_ja_gulmarg_maharani_temple_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_ja_gulmarg_maharani_temple_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_ja_gulmarg_alpather_lake": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Alpather_lake,Gulmarg.jpg",
+      "original_file": "Alpather lake,Gulmarg.jpg",
+      "author": "Sahid Vaidya",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 5184,
+      "height": 3456,
+      "match_method": "commons_exact_name_search",
+      "match_confidence": 0.75,
+      "downloaded_at": "2026-09-19T19:56:33.977482+00:00",
+      "local_path": "images/yc_in_ja_gulmarg_alpather_lake/primary.webp",
+      "thumbnail_path": "images/yc_in_ja_gulmarg_alpather_lake/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_ja_gulmarg_st_marys_church": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:St_Mary's_Church_in_the_valley_of_Shepherds_in_Gulmarg_01.jpg",
+      "original_file": "St Mary's Church in the valley of Shepherds in Gulmarg 01.jpg",
+      "author": "Harvinder Chandigarh",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "attribution": null,
+      "width": 4032,
+      "height": 3024,
+      "match_method": "commons_exact_name_search",
+      "match_confidence": 0.75,
+      "downloaded_at": "2026-09-19T19:56:40.022217+00:00",
+      "local_path": "images/yc_in_ja_gulmarg_st_marys_church/primary.webp",
+      "thumbnail_path": "images/yc_in_ja_gulmarg_st_marys_church/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_ja_gulmarg_tangmarg_bus_and_taxi_station": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Srinagar_to_Gulmarg_-_vrvvkbjk2k23pxl_(184).jpg",
+      "original_file": "Srinagar to Gulmarg - vrvvkbjk2k23pxl (184).jpg",
+      "author": "Vinayaraj",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 4032,
+      "height": 2268,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:56:41.874653+00:00",
+      "local_path": "images/yc_in_ja_gulmarg_tangmarg_bus_and_taxi_station/primary.webp",
+      "thumbnail_path": "images/yc_in_ja_gulmarg_tangmarg_bus_and_taxi_station/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_ja_gulmarg_maharaja_palace": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Maharaja_Hari_Singh_Palace,_Gulmarg_02.jpg",
+      "original_file": "Maharaja Hari Singh Palace, Gulmarg 02.jpg",
+      "author": "Deepank Ranka",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 4240,
+      "height": 2832,
+      "match_method": "commons_exact_name_search",
+      "match_confidence": 0.75,
+      "downloaded_at": "2026-09-19T19:56:45.230949+00:00",
+      "local_path": "images/yc_in_ja_gulmarg_maharaja_palace/primary.webp",
+      "thumbnail_path": "images/yc_in_ja_gulmarg_maharaja_palace/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_ja_gulmarg_gulmarg_gondola_g_1_station": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Gulmarg_-_Jannat_on_Earth.jpg",
+      "original_file": "Gulmarg - Jannat on Earth.jpg",
+      "author": "Vikas Panwar",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 3072,
+      "height": 2304,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:56:48.310930+00:00",
+      "local_path": "images/yc_in_ja_gulmarg_gulmarg_gondola_g_1_station/primary.webp",
+      "thumbnail_path": "images/yc_in_ja_gulmarg_gulmarg_gondola_g_1_station/thumbnail.webp"
+    },
+    "gallery": []
+  }
+}

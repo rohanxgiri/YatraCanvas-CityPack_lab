@@ -1,0 +1,35 @@
+{
+  "id": "jaipur",
+  "name": "Jaipur",
+  "state": "Rajasthan",
+  "country": "India",
+  "iso_country": "IN",
+  "center": [
+    26.91962,
+    75.78781
+  ],
+  "bbox": [
+    75.61781,
+    26.74962,
+    75.95781,
+    27.08962
+  ],
+  "alternate_names": [
+    "Caypur",
+    "Dzaipur",
+    "Dzaipuras",
+    "Dzajpur",
+    "Dzajpura",
+    "Dzhajpur",
+    "Dzsaipur",
+    "Dźajpur",
+    "Džaipur",
+    "Džaipuras"
+  ],
+  "timezone": "Asia/Kolkata",
+  "osm_place_id": null,
+  "geonames_id": 1269515,
+  "wikidata_id": null,
+  "dataset_version": "2.0.0",
+  "generated_at": "2026-09-19T16:05:12.873736+00:00"
+}

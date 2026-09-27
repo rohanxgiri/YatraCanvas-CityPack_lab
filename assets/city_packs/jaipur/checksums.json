@@ -1,0 +1,10 @@
+{
+  "city.json": "76a01b320e63e5f29fd4b83e96a20e7fcd8e22939dc3592e25594a279b879ebe",
+  "places.json": "62e349ef39ff2f0a7e6d848117e4704539d7047286ce928f2da5cb38e3cd149a",
+  "places.jsonl": "d958fc185753a11e0f0142685a2edac31464e0581e90be18de27edb73c5aebee",
+  "places.parquet": "ca742fcc836f4f5f4e6eb1616ccc046386b5de01b24ac3600c682a7b99584e59",
+  "image_manifest.json": "1684fad545466de60d2868379cc84e471fd3cf876bf8c18da16c561685c44d2e",
+  "source_manifest.json": "f650e06a8f1333ab9066ba877f9aa784957fd3c82844e0c05607c08e661e8eb4",
+  "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+  "yatracanvas.db": "0905a477390a14805c0813ea99fe4fce36bea3a2e26390bbbddae90430186bef"
+}

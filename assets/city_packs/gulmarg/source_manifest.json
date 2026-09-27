@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-09-19T19:56:48.368110+00:00",
+  "city": "Gulmarg",
+  "state": "Jammu And Kashmir",
+  "country": "India",
+  "sources": {
+    "geonames": {
+      "source": "GeoNames",
+      "dataset_name": "cities15000",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "GeoNames (geonames.org)",
+      "role": "Canonical administrative hierarchy, boundary and coordinates"
+    },
+    "wikivoyage": {
+      "source": "Wikivoyage",
+      "dataset_name": "Wikivoyage Travel Guides",
+      "license": "CC-BY-SA-4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Wikivoyage contributors",
+      "role": "Curated tourist sights, structured opening hours, and travel listing metadata"
+    },
+    "wikidata": {
+      "source": "Wikidata",
+      "dataset_name": "Wikidata Knowledge Base",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "attribution": "Wikidata contributors",
+      "role": "Spatial travel destination discovery and verified entity claims"
+    },
+    "openstreetmap": {
+      "source": "OpenStreetMap",
+      "dataset_name": "Geofabrik Regional PBF",
+      "license": "ODbL-1.0",
+      "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "attribution": "© OpenStreetMap contributors",
+      "role": "Local travel tags, opening hours, contact details, and coordinates"
+    },
+    "overture": {
+      "source": "Overture Maps",
+      "dataset_name": "Overture Places",
+      "license": "CDLA-Permissive-2.0",
+      "license_url": "https://cdla.dev/permissive-2-0/",
+      "attribution": "Overture Maps Foundation",
+      "role": "Broad commercial venues, discovery venues, and validation"
+    },
+    "wikimedia_commons": {
+      "source": "Wikimedia Commons",
+      "dataset_name": "Wikimedia Commons Media",
+      "license": "Per-file open licenses (CC-BY, CC-BY-SA, CC0, Public Domain)",
+      "license_url": "https://commons.wikimedia.org/",
+      "attribution": "Individual photographers as recorded in image_manifest.json",
+      "role": "Verified landmark WebP photography (primary.webp, thumbnail.webp)"
+    }
+  },
+  "license_isolation_policy": "Factual non-copyrightable data merged into canonical permissive dataset. Wikivoyage prose and Commons imagery maintain exact author attribution and license provenance."
+}

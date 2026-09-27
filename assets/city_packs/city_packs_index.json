@@ -1,0 +1,92 @@
+{
+  "gulmarg": {
+    "city_id": "gulmarg",
+    "city_name": "Gulmarg",
+    "state": "Jammu And Kashmir",
+    "version": "v3",
+    "source_path": "C:\\Users\\girir\\Documents\\YatraCanvas-DataFactory\\releases\\india\\jammu_and_kashmir\\gulmarg\\v3",
+    "file_checksums": {
+      "yatracanvas.db": "3cda9f8778ff90f03331e08847197255cba901f7b121ed1fb63a822a1121d696",
+      "manifest.json": "6214fadcff0fc15d6ac48d2fda8e47202f0589b41b6bc62ef1e39f878a03b1c6",
+      "city.json": "f35a59a4a716159edbe3e9c5f7826a7a131563120469832a9da113c6d95ba707",
+      "checksums.json": "0ffb1ab28272e414ae25214a9a8bf88aea562d4d0ea64ace1aa780dda4aaf01b",
+      "image_manifest.json": "4363c23684186e3cd0657ad24c8233221b6a008afc5504b2066a470e573ed541",
+      "images_manifest.json": "4363c23684186e3cd0657ad24c8233221b6a008afc5504b2066a470e573ed541",
+      "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+      "source_manifest.json": "c42f1000b41c1bbaadf8b5443db133282f83e487abb3ace80f962259796b206e"
+    },
+    "image_count": 20
+  },
+  "jaipur": {
+    "city_id": "jaipur",
+    "city_name": "Jaipur",
+    "state": "Rajasthan",
+    "version": "v3",
+    "source_path": "C:\\Users\\girir\\Documents\\YatraCanvas-DataFactory\\releases\\india\\rajasthan\\jaipur\\v3",
+    "file_checksums": {
+      "yatracanvas.db": "0905a477390a14805c0813ea99fe4fce36bea3a2e26390bbbddae90430186bef",
+      "manifest.json": "1b5e7ea618f7f3144f7796facb37214c7a7eb65fd6790871c31ffae99d72393f",
+      "city.json": "76a01b320e63e5f29fd4b83e96a20e7fcd8e22939dc3592e25594a279b879ebe",
+      "checksums.json": "57492f6eed0c9a72cca85b7238973f0674e5a7e1c39d7dc7d36f53e6ae02d114",
+      "image_manifest.json": "1684fad545466de60d2868379cc84e471fd3cf876bf8c18da16c561685c44d2e",
+      "images_manifest.json": "1684fad545466de60d2868379cc84e471fd3cf876bf8c18da16c561685c44d2e",
+      "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+      "source_manifest.json": "f650e06a8f1333ab9066ba877f9aa784957fd3c82844e0c05607c08e661e8eb4"
+    },
+    "image_count": 106
+  },
+  "manali": {
+    "city_id": "manali",
+    "city_name": "Manali",
+    "state": "Himachal Pradesh",
+    "version": "v3",
+    "source_path": "C:\\Users\\girir\\Documents\\YatraCanvas-DataFactory\\releases\\india\\himachal_pradesh\\manali\\v3",
+    "file_checksums": {
+      "yatracanvas.db": "26d4e59c475f293e0b76e73130fa33a9f91f090e61431eee4dee3dcd9f876417",
+      "manifest.json": "e3954335e60c596c2b7f006167d588167b1f7f89d0dfaa0b7aaefa4018e58ee7",
+      "city.json": "e28aa5e44e7070e521be8f43a0c780fb5fcf4f19b9be26eff36507be056736c6",
+      "checksums.json": "c79296802b46bba1431d2232e4289bb67b8e38796f99096eee0948ebdabd035f",
+      "image_manifest.json": "eb1de238f764108c1c1058441922f6a54b29f3b407b379cf30ee4a113638556c",
+      "images_manifest.json": "eb1de238f764108c1c1058441922f6a54b29f3b407b379cf30ee4a113638556c",
+      "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+      "source_manifest.json": "36169845661fc83b8834bef844b16fdf914ac67932e9dc50ba622855b9e084c1"
+    },
+    "image_count": 24
+  },
+  "panaji": {
+    "city_id": "panaji",
+    "city_name": "Panjim",
+    "state": "Goa",
+    "version": "v3",
+    "source_path": "C:\\Users\\girir\\Documents\\YatraCanvas-DataFactory\\releases\\india\\goa\\panjim\\v3",
+    "file_checksums": {
+      "yatracanvas.db": "3806be0f2c1de77c00802338cef969cc7015e5fd6bf61069813596cb4c028cf1",
+      "manifest.json": "e881242f32cd188d31f91bdd9bc815803217df7ee2f5dd2b4c0d617625f2ba76",
+      "city.json": "2ed39f0d6a6be74be04059c4ffa682c30e6bfc00bffdfb297906783e3329121f",
+      "checksums.json": "e88329cdbaaceb1fe1e8997f15dd2ab37fa9ed0c59c7ed5ab0afde8955a7cbae",
+      "image_manifest.json": "4efbb656aa168fa854dcce36d205b2ce1d18b2fa361034fc8614ca442d56a7b5",
+      "images_manifest.json": "4efbb656aa168fa854dcce36d205b2ce1d18b2fa361034fc8614ca442d56a7b5",
+      "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+      "source_manifest.json": "9398eb7f4a6b12a9ced3f9561121460d12d96066f4622dc0e23f1587924775d8"
+    },
+    "image_count": 106
+  },
+  "rishikesh": {
+    "city_id": "rishikesh",
+    "city_name": "Rish\u012bkesh",
+    "state": "Uttarakhand",
+    "version": "v3",
+    "source_path": "C:\\Users\\girir\\Documents\\YatraCanvas-DataFactory\\releases\\india\\uttarakhand\\rishikesh\\v3",
+    "file_checksums": {
+      "yatracanvas.db": "c5c58007f2822e04217a0ec985d9c4b668335bca75e4b3609fcadf4f23b2cc84",
+      "manifest.json": "b16eda96f1e91ebf53ac46a3348f09eeb3d66aefd1c80f8a99522157ed1e0219",
+      "city.json": "15ef0d52861a0fb2a4fcbbc3a4fb9603cce50a16eb882d5c25be33b6cdc077fd",
+      "checksums.json": "77b04c635eaf19fadcdee8ce4dac3c927171af71a694ebde44d6f899b073a623",
+      "image_manifest.json": "4acec4bf2fabecfecc52f1721740fa15078c3093457a338595e7151e90cf1d44",
+      "images_manifest.json": "4acec4bf2fabecfecc52f1721740fa15078c3093457a338595e7151e90cf1d44",
+      "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+      "source_manifest.json": "870e1ab417e991dd9384c4f560bc0e08b14d0b7bce15a58400ee5af16fc2a60f"
+    },
+    "image_count": 30
+  }
+}

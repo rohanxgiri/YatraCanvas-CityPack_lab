@@ -1,0 +1,644 @@
+{
+  "yc_in_uk_rishikesh_rishikesh": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Sunset_-_Lakshman_Jhula.jpg",
+      "original_file": "Sunset - Lakshman Jhula.jpg",
+      "author": "Tylersundance",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "attribution": null,
+      "width": 1280,
+      "height": 960,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:42:28.193855+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_rishikesh/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_rishikesh/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:A_saint_in_a_deep_meditative_mode_near_Ganga_in_Rishikesh_01.jpg",
+        "original_file": "A saint in a deep meditative mode near Ganga in Rishikesh 01.jpg",
+        "author": "Goutam1962",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 1280,
+        "height": 960,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:28.949038+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_rishikesh_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_rishikesh_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:A_saint_in_a_deep_meditative_mode_near_Ganga_in_Rishikesh_02.jpg",
+        "original_file": "A saint in a deep meditative mode near Ganga in Rishikesh 02.jpg",
+        "author": "Goutam1962",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 1280,
+        "height": 960,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:28.949747+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_rishikesh_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_rishikesh_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_uk_rishikesh_parmarth_niketan": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Parmarth.jpg",
+      "original_file": "Parmarth.jpg",
+      "author": "Parmarth Niketan Ashram",
+      "license": "Public domain",
+      "license_url": "",
+      "attribution": null,
+      "width": 300,
+      "height": 225,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:42:28.950374+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_parmarth_niketan/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_parmarth_niketan/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:(An)_aarti_ritual_near_ganga_rhishikesh-India_2008.jpg",
+        "original_file": "(An) aarti ritual near ganga rhishikesh-India 2008.jpg",
+        "author": "Travayegeur (Sahil)",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "attribution": null,
+        "width": 800,
+        "height": 532,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:29.596739+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_parmarth_niketan_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_parmarth_niketan_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:A_havan_ceremony_on_the_banks_of_Ganges,_Muni_ki_Reti,_Rishikesh.jpg",
+        "original_file": "A havan ceremony on the banks of Ganges, Muni ki Reti, Rishikesh.jpg",
+        "author": "Ajay Tallam from Milpitas, USA",
+        "license": "CC BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "attribution": null,
+        "width": 768,
+        "height": 1024,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:29.597731+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_parmarth_niketan_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_parmarth_niketan_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_uk_rishikesh_all_india_institute_of_medical_sciences_rishikesh": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:AIIMS_Rishikesh.jpg",
+      "original_file": "AIIMS Rishikesh.jpg",
+      "author": "Pranjal Garg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 1280,
+      "height": 960,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:42:29.598420+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_all_india_institute_of_medical_sciences_rishikesh/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_all_india_institute_of_medical_sciences_rishikesh/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:20160523_150517_Pano.jpg",
+        "original_file": "20160523 150517 Pano.jpg",
+        "author": "S V L N Prasad",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 1280,
+        "height": 484,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:30.350996+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_all_india_institute_of_medical_sciences_rishikesh_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_all_india_institute_of_medical_sciences_rishikesh_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:20160523_150853_Pano.jpg",
+        "original_file": "20160523 150853 Pano.jpg",
+        "author": "S V L N Prasad",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 1280,
+        "height": 508,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:30.351739+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_all_india_institute_of_medical_sciences_rishikesh_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_all_india_institute_of_medical_sciences_rishikesh_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_uk_rishikesh_narendra_nagar": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Himalayan_view_from_Ananda_spa,_Narendra_Nagar.jpg",
+      "original_file": "Himalayan view from Ananda spa, Narendra Nagar.jpg",
+      "author": "https://www.flickr.com/photos/peem/",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "attribution": null,
+      "width": 1280,
+      "height": 960,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:42:30.352795+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_narendra_nagar/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_narendra_nagar/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Infront_of_the_Royal_Palace_of_Narendra_Nagar_WTK20150913-IMG_2659.jpg",
+        "original_file": "Infront of the Royal Palace of Narendra Nagar WTK20150913-IMG 2659.jpg",
+        "author": "Asish Das75",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 1280,
+        "height": 719,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:31.029792+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_narendra_nagar_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_narendra_nagar_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Palace_Estate,_Narendra_Nagar_Tehri_-_Garhwal-WTK20150913-IMG_0446.jpg",
+        "original_file": "Palace Estate, Narendra Nagar Tehri - Garhwal-WTK20150913-IMG 0446.jpg",
+        "author": "DipankarSen68",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 1280,
+        "height": 1706,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:31.030878+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_narendra_nagar_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_narendra_nagar_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_uk_rishikesh_lakshman_jhula": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Rishikesh,_Lakshman_Jhula.jpg",
+      "original_file": "Rishikesh, Lakshman Jhula.jpg",
+      "author": "McKay Savage from London, UK",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "attribution": null,
+      "width": 1280,
+      "height": 960,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:42:31.031961+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_lakshman_jhula/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_lakshman_jhula/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:\"LAKSHMAN_JOLA\".jpg",
+        "original_file": "\"LAKSHMAN JOLA\".jpg",
+        "author": "Mainaksinghabarma",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 1280,
+        "height": 960,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:31.832930+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_lakshman_jhula_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_lakshman_jhula_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:A_monkey_crossing_the_Laxman_Jhula_bridge,_Uttarakhand.jpg",
+        "original_file": "A monkey crossing the Laxman Jhula bridge, Uttarakhand.jpg",
+        "author": "christian0702",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "attribution": null,
+        "width": 1280,
+        "height": 960,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:31.834642+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_lakshman_jhula_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_lakshman_jhula_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_uk_rishikesh_ram_jhula_bridge": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Ramjhula_-_bridge_over_the_Ganga.jpg",
+      "original_file": "Ramjhula - bridge over the Ganga.jpg",
+      "author": "Asis K. Chatterjee",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "attribution": null,
+      "width": 800,
+      "height": 600,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:42:31.836080+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_ram_jhula_bridge/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_ram_jhula_bridge/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:-_Beautiful_Rishikesh._2.jpg",
+        "original_file": "- Beautiful Rishikesh. 2.jpg",
+        "author": "Kamal Aggrawal",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 1080,
+        "height": 1333,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:32.629428+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_ram_jhula_bridge_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_ram_jhula_bridge_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Close_up_of_Pilgrims_on_Ram_Jhula_bridge,_Rishikesh.jpg",
+        "original_file": "Close up of Pilgrims on Ram Jhula bridge, Rishikesh.jpg",
+        "author": "Man",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "attribution": null,
+        "width": 1280,
+        "height": 718,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:32.630166+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_ram_jhula_bridge_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_ram_jhula_bridge_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_uk_rishikesh_song_river": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Song_River,_Raipur.jpg",
+      "original_file": "Song River, Raipur.jpg",
+      "author": "NN10",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 1280,
+      "height": 720,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:42:32.630789+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_song_river/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_song_river/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_uk_rishikesh_neelkanth_mahadev_temple": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:NeelKanth_Mahadev_Temple.JPG",
+      "original_file": "NeelKanth Mahadev Temple.JPG",
+      "author": "Rahuldewangan",
+      "license": "Public domain",
+      "license_url": "",
+      "attribution": null,
+      "width": 384,
+      "height": 429,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:42:32.631610+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_neelkanth_mahadev_temple/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_neelkanth_mahadev_temple/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Neelkanth_mahadev_mandir.jpg",
+        "original_file": "Neelkanth mahadev mandir.jpg",
+        "author": "Anurodhraghuwanshi",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "attribution": null,
+        "width": 1280,
+        "height": 960,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:33.436393+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_neelkanth_mahadev_temple_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_neelkanth_mahadev_temple_g1/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_uk_rishikesh_raiwala_railway_station": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Raiwala_Junction_Train_Station.jpg",
+      "original_file": "Raiwala Junction Train Station.jpg",
+      "author": "Paul Hamilton",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "attribution": null,
+      "width": 1280,
+      "height": 885,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:42:33.437317+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_raiwala_railway_station/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_raiwala_railway_station/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_uk_rishikesh_beatles_ashram": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Beatles_ashram.jpg",
+      "original_file": "Beatles ashram.jpg",
+      "author": "Utham mandanna",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 1280,
+      "height": 1706,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:42:33.438096+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_beatles_ashram/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_beatles_ashram/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:A_cave_at_Beatles_Ashram_at_Rishikesh.jpg",
+        "original_file": "A cave at Beatles Ashram at Rishikesh.jpg",
+        "author": "SnehaShrivastava",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 1280,
+        "height": 853,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:34.183643+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_beatles_ashram_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_beatles_ashram_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Art_work_at_Beatles.jpg",
+        "original_file": "Art work at Beatles.jpg",
+        "author": "SnehaShrivastava",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 1280,
+        "height": 853,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:34.184252+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_beatles_ashram_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_beatles_ashram_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_uk_rishikesh_yog_nagari_rishikesh_railway_station": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Yog_Nagari_Rishikesh_railway_station_1.jpg",
+      "original_file": "Yog Nagari Rishikesh railway station 1.jpg",
+      "author": "Ravi Dwivedi",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 1280,
+      "height": 962,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:42:34.184875+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_yog_nagari_rishikesh_railway_station/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_yog_nagari_rishikesh_railway_station/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_uk_rishikesh_single_use_plastic_deathbed": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:DeathBed-Climate-Art-Installation-Aakash-Ranison-Climate-Change-Activist-United-Nations-Sustainable-Development-Goal-13-Climate-Action-Advocate-Sustainably-Single-Use-Plastic-Ganga-Pollution-Rishikesh-1.jpg",
+      "original_file": "DeathBed-Climate-Art-Installation-Aakash-Ranison-Climate-Change-Activist-United-Nations-Sustainable-Development-Goal-13-Climate-Action-Advocate-Sustainably-Single-Use-Plastic-Ganga-Pollution-Rishikesh-1.jpg",
+      "author": "aakashranison",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 1280,
+      "height": 800,
+      "match_method": "commons_category",
+      "match_confidence": 0.85,
+      "downloaded_at": "2026-09-19T19:42:34.790198+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_single_use_plastic_deathbed/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_single_use_plastic_deathbed/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:DeathBed-Climate-Art-Installation-Aakash-Ranison-Climate-Change-Activist-United-Nations-Sustainable-Development-Goal-13-Climate-Action-Advocate-Sustainably-Single-Use-Plastic-Ganga-Pollution-Rishikesh-2.png",
+        "original_file": "DeathBed-Climate-Art-Installation-Aakash-Ranison-Climate-Change-Activist-United-Nations-Sustainable-Development-Goal-13-Climate-Action-Advocate-Sustainably-Single-Use-Plastic-Ganga-Pollution-Rishikesh-2.png",
+        "author": "aakashranison",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 1280,
+        "height": 720,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:35.402900+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_single_use_plastic_deathbed_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_single_use_plastic_deathbed_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:DeathBed-Climate-Art-Installation-Aakash-Ranison-Climate-Change-Activist-United-Nations-Sustainable-Development-Goal-13-Climate-Action-Advocate-Sustainably-Single-Use-Plastic-Ganga-Pollution-Rishikesh-4.jpg",
+        "original_file": "DeathBed-Climate-Art-Installation-Aakash-Ranison-Climate-Change-Activist-United-Nations-Sustainable-Development-Goal-13-Climate-Action-Advocate-Sustainably-Single-Use-Plastic-Ganga-Pollution-Rishikesh-4.jpg",
+        "author": "aakashranison",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 1280,
+        "height": 800,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:42:35.403762+00:00",
+        "local_path": "images/yc_in_uk_rishikesh_single_use_plastic_deathbed_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_uk_rishikesh_single_use_plastic_deathbed_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_uk_rishikesh_virbhadra_temple": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Woman_in_Veerbhadhra_Temple.jpg",
+      "original_file": "Woman in Veerbhadhra Temple.jpg",
+      "author": "Avaloki789",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 1280,
+      "height": 960,
+      "match_method": "commons_category",
+      "match_confidence": 0.85,
+      "downloaded_at": "2026-09-19T19:42:36.059000+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_virbhadra_temple/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_virbhadra_temple/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_uk_rishikesh_bharat_mandir": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Bharat_Mandir,_Rishikesh.jpg",
+      "original_file": "Bharat Mandir, Rishikesh.jpg",
+      "author": "Opliappan",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 1520,
+      "height": 1184,
+      "match_method": "commons_exact_name_search",
+      "match_confidence": 0.75,
+      "downloaded_at": "2026-09-19T19:42:41.391573+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_bharat_mandir/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_bharat_mandir/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_uk_rishikesh_triveni_ghat": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Ganga_Arti_At_Triveni_Ghat_In_Rishikesh.jpg",
+      "original_file": "Ganga Arti At Triveni Ghat In Rishikesh.jpg",
+      "author": "Bhuvi Uniyal",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 4608,
+      "height": 2128,
+      "match_method": "commons_exact_name_search",
+      "match_confidence": 0.75,
+      "downloaded_at": "2026-09-19T19:42:49.501635+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_triveni_ghat/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_triveni_ghat/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_uk_rishikesh_patna_waterfalls": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Patna_Waterfalls,_Rishikesh,_India.jpg",
+      "original_file": "Patna Waterfalls, Rishikesh, India.jpg",
+      "author": "Ravi Dwivedi",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 4000,
+      "height": 2250,
+      "match_method": "commons_exact_name_search",
+      "match_confidence": 0.75,
+      "downloaded_at": "2026-09-19T19:42:54.151701+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_patna_waterfalls/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_patna_waterfalls/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_uk_rishikesh_veerbhadra_temple": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Woman_in_Veerbhadhra_Temple.jpg",
+      "original_file": "Woman in Veerbhadhra Temple.jpg",
+      "author": "Avaloki789",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 1280,
+      "height": 960,
+      "match_method": "commons_category",
+      "match_confidence": 0.85,
+      "downloaded_at": "2026-09-19T19:42:55.033444+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_veerbhadra_temple/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_veerbhadra_temple/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_uk_rishikesh_ram_jhula_cafe": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Ramjhula_-_bridge_over_the_Ganga.jpg",
+      "original_file": "Ramjhula - bridge over the Ganga.jpg",
+      "author": "Asis K. Chatterjee",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "attribution": null,
+      "width": 800,
+      "height": 600,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:42:55.034166+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_ram_jhula_cafe/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_ram_jhula_cafe/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_uk_rishikesh_laxman_jhoola": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Rishikesh,_Lakshman_Jhula.jpg",
+      "original_file": "Rishikesh, Lakshman Jhula.jpg",
+      "author": "McKay Savage from London, UK",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "attribution": null,
+      "width": 1280,
+      "height": 960,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:42:55.036002+00:00",
+      "local_path": "images/yc_in_uk_rishikesh_laxman_jhoola/primary.webp",
+      "thumbnail_path": "images/yc_in_uk_rishikesh_laxman_jhoola/thumbnail.webp"
+    },
+    "gallery": []
+  }
+}

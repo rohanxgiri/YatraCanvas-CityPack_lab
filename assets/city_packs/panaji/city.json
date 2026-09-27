@@ -1,0 +1,37 @@
+{
+  "id": "panaji",
+  "name": "Panjim",
+  "state": "Goa",
+  "country": "India",
+  "iso_country": "IN",
+  "center": [
+    15.49574,
+    73.82624
+  ],
+  "bbox": [
+    73.74624,
+    15.41574,
+    73.90624,
+    15.57574
+  ],
+  "alternate_names": [
+    "Nova Goa",
+    "Panadzhi",
+    "Panadzi",
+    "Panadzis",
+    "Panadzsi",
+    "Panadžis",
+    "Panadží",
+    "Pangim",
+    "Panjim",
+    "pa na ji"
+  ],
+  "timezone": "Asia/Kolkata",
+  "osm_place_id": null,
+  "geonames_id": 1260607,
+  "wikidata_id": null,
+  "dataset_version": "2.0.0",
+  "generated_at": "2026-09-19T19:43:47.568344+00:00",
+  "resolution_source": "geonames_cities15000",
+  "resolution_confidence": 0.95
+}

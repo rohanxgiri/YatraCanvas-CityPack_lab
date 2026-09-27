@@ -1,0 +1,12 @@
+{
+  "city_pack_version": "v3",
+  "canonical_data_license": "Permissive / Attribution Required",
+  "attributions": [
+    "OpenStreetMap: © OpenStreetMap contributors under ODbL 1.0",
+    "Wikivoyage: © Wikivoyage contributors under CC-BY-SA 4.0",
+    "GeoNames: Data provided by GeoNames under CC-BY 4.0",
+    "Wikidata: Data provided by Wikidata under CC0 1.0 Universal",
+    "Overture Maps: Data provided by Overture Maps Foundation under CDLA Permissive 2.0",
+    "Wikimedia Commons: Individual media licenses tracked per file in image_manifest.json"
+  ]
+}

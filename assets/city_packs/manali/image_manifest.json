@@ -1,0 +1,566 @@
+{
+  "yc_in_hp_manali_manali": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Hadimba_Devi_Mandir.jpg",
+      "original_file": "Hadimba Devi Mandir.jpg",
+      "author": "Rishabh gaur",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 1620,
+      "height": 1080,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:39:56.811908+00:00",
+      "local_path": "images/yc_in_hp_manali_manali/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_manali/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:A_beautiful_house_in_Manali.jpg",
+        "original_file": "A beautiful house in Manali.jpg",
+        "author": "Tanvi.sharmaaa",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 4032,
+        "height": 3024,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:40:00.996075+00:00",
+        "local_path": "images/yc_in_hp_manali_manali_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_hp_manali_manali_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:A_Moment_from_the_Apple_Orchard.jpg",
+        "original_file": "A Moment from the Apple Orchard.jpg",
+        "author": "Rajani Gairshail",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "attribution": null,
+        "width": 1201,
+        "height": 1600,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:40:03.318029+00:00",
+        "local_path": "images/yc_in_hp_manali_manali_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_hp_manali_manali_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_hp_manali_lehmanali_highway": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Highway_To_Thrill_(233024297).jpeg",
+      "original_file": "Highway To Thrill (233024297).jpeg",
+      "author": "Mann Mishra",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0",
+      "attribution": null,
+      "width": 2048,
+      "height": 951,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:40:06.061523+00:00",
+      "local_path": "images/yc_in_hp_manali_lehmanali_highway/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_lehmanali_highway/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:A_road_to_nowhere2.jpg",
+        "original_file": "A road to nowhere2.jpg",
+        "author": "Ashoosaini2002",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "attribution": null,
+        "width": 3264,
+        "height": 2448,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:40:09.643277+00:00",
+        "local_path": "images/yc_in_hp_manali_lehmanali_highway_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_hp_manali_lehmanali_highway_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:A_road_to_the_clouds.jpg",
+        "original_file": "A road to the clouds.jpg",
+        "author": "Ashoosaini2002",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "attribution": null,
+        "width": 3264,
+        "height": 2183,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:40:12.563993+00:00",
+        "local_path": "images/yc_in_hp_manali_lehmanali_highway_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_hp_manali_lehmanali_highway_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_hp_manali_bhrigu_lake": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Bhrigu_Lake_by_Ahmad_Faiz_Mustafa_(4).jpg",
+      "original_file": "Bhrigu Lake by Ahmad Faiz Mustafa (4).jpg",
+      "author": "In Transit",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "attribution": null,
+      "width": 4032,
+      "height": 2268,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:40:15.186817+00:00",
+      "local_path": "images/yc_in_hp_manali_bhrigu_lake/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_bhrigu_lake/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_hidimba_devi_temple_dhungri_manali": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Hidimba_Temple_Manali.jpg",
+      "original_file": "Hidimba Temple Manali.jpg",
+      "author": "Kondephy",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "attribution": null,
+      "width": 3056,
+      "height": 4592,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:40:18.191444+00:00",
+      "local_path": "images/yc_in_hp_manali_hidimba_devi_temple_dhungri_manali/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_hidimba_devi_temple_dhungri_manali/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Another_View_Hidimba_temple.JPG",
+        "original_file": "Another View Hidimba temple.JPG",
+        "author": "Viraat Kothare",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "attribution": null,
+        "width": 1944,
+        "height": 2592,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:40:21.865239+00:00",
+        "local_path": "images/yc_in_hp_manali_hidimba_devi_temple_dhungri_manali_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_hp_manali_hidimba_devi_temple_dhungri_manali_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:ASI_Signage_-_Hidimba_Devi_Temple_Conplex_-_Manali_2014-05-11_2639.JPG",
+        "original_file": "ASI Signage - Hidimba Devi Temple Conplex - Manali 2014-05-11 2639.JPG",
+        "author": "Biswarup Ganguly",
+        "license": "CC BY 3.0",
+        "license_url": "https://creativecommons.org/licenses/by/3.0",
+        "attribution": "Biswarup Ganguly",
+        "width": 4000,
+        "height": 6016,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:40:25.937656+00:00",
+        "local_path": "images/yc_in_hp_manali_hidimba_devi_temple_dhungri_manali_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_hp_manali_hidimba_devi_temple_dhungri_manali_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_hp_manali_solang_valley": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Solang_Valley,_Paragliding,_India.jpg",
+      "original_file": "Solang Valley, Paragliding, India.jpg",
+      "author": "Vyacheslav Argenberg",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "attribution": "© <a href=\"//commons.wikimedia.org/wiki/User:Argenberg\" title=\"User:Argenberg\">Vyacheslav Argenberg</a>",
+      "width": 1280,
+      "height": 853,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:41:40.523938+00:00",
+      "local_path": "images/yc_in_hp_manali_solang_valley/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_solang_valley/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_national_highway_3": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Best_place_to_drive,Rohtang_pass.jpg",
+      "original_file": "Best place to drive,Rohtang pass.jpg",
+      "author": "Vishalbhatia93",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 4608,
+      "height": 3456,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:40:31.777442+00:00",
+      "local_path": "images/yc_in_hp_manali_national_highway_3/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_national_highway_3/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Darcha_Bridge.jpg",
+        "original_file": "Darcha Bridge.jpg",
+        "author": "Shubhamoy",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "attribution": null,
+        "width": 1643,
+        "height": 1088,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:40:35.372952+00:00",
+        "local_path": "images/yc_in_hp_manali_national_highway_3_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_hp_manali_national_highway_3_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:FlyOver_(Bridge)_at_Ramshila,_Kullu.jpg",
+        "original_file": "FlyOver (Bridge) at Ramshila, Kullu.jpg",
+        "author": "Shailesh.Thakur",
+        "license": "CC BY 3.0",
+        "license_url": "https://creativecommons.org/licenses/by/3.0",
+        "attribution": null,
+        "width": 1632,
+        "height": 1147,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:40:37.463716+00:00",
+        "local_path": "images/yc_in_hp_manali_national_highway_3_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_hp_manali_national_highway_3_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_hp_manali_miniature_siva_temple_jagatsukh": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Miniature_Shiv_Temple.jpg",
+      "original_file": "Miniature Shiv Temple.jpg",
+      "author": "Pdhang",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "attribution": null,
+      "width": 1200,
+      "height": 1800,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:40:40.237532+00:00",
+      "local_path": "images/yc_in_hp_manali_miniature_siva_temple_jagatsukh/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_miniature_siva_temple_jagatsukh/thumbnail.webp"
+    },
+    "gallery": [
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:0042423_Gauri_Shankar_temple,_Jagatsukh_Himachal_Pradesh_008.jpg",
+        "original_file": "0042423 Gauri Shankar temple, Jagatsukh Himachal Pradesh 008.jpg",
+        "author": "Ms Sarah Welch",
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "attribution": null,
+        "width": 3192,
+        "height": 4256,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:40:45.082264+00:00",
+        "local_path": "images/yc_in_hp_manali_miniature_siva_temple_jagatsukh_g1/primary.webp",
+        "thumbnail_path": "images/yc_in_hp_manali_miniature_siva_temple_jagatsukh_g1/thumbnail.webp"
+      },
+      {
+        "source": "Wikimedia Commons",
+        "source_page": "https://commons.wikimedia.org/wiki/File:0042423_Gauri_Shankar_temple,_Jagatsukh_Himachal_Pradesh_016.jpg",
+        "original_file": "0042423 Gauri Shankar temple, Jagatsukh Himachal Pradesh 016.jpg",
+        "author": "Ms Sarah Welch",
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "attribution": null,
+        "width": 3214,
+        "height": 4286,
+        "match_method": "commons_category_gallery",
+        "match_confidence": 0.8,
+        "downloaded_at": "2026-09-19T19:40:48.556727+00:00",
+        "local_path": "images/yc_in_hp_manali_miniature_siva_temple_jagatsukh_g2/primary.webp",
+        "thumbnail_path": "images/yc_in_hp_manali_miniature_siva_temple_jagatsukh_g2/thumbnail.webp"
+      }
+    ]
+  },
+  "yc_in_hp_manali_tourist_locations_in_manali": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Grass_Deodar_Monsoon_Mist_Manali_Sep20_R16_04026.jpg",
+      "original_file": "Grass Deodar Monsoon Mist Manali Sep20 R16 04026.jpg",
+      "author": "Timothy Gonsalves",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 4864,
+      "height": 3648,
+      "match_method": "commons_alt_name_search",
+      "match_confidence": 0.7,
+      "downloaded_at": "2026-09-19T19:40:54.232742+00:00",
+      "local_path": "images/yc_in_hp_manali_tourist_locations_in_manali/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_tourist_locations_in_manali/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_rohtang_pass": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Traffic_jam_on_the_Rohtang_Pass_between_Manali_and_Spiti.jpg",
+      "original_file": "Traffic jam on the Rohtang Pass between Manali and Spiti.jpg",
+      "author": "John Hill",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 2304,
+      "height": 1728,
+      "match_method": "commons_exact_name_search",
+      "match_confidence": 0.75,
+      "downloaded_at": "2026-09-19T19:41:00.015709+00:00",
+      "local_path": "images/yc_in_hp_manali_rohtang_pass/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_rohtang_pass/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_gauri_shankar_temple": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Statues_near_gauri_shankar_temple.JPG",
+      "original_file": "Statues near gauri shankar temple.JPG",
+      "author": "Viraat Kothare",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "attribution": null,
+      "width": 2592,
+      "height": 1944,
+      "match_method": "commons_exact_name_search",
+      "match_confidence": 0.75,
+      "downloaded_at": "2026-09-19T19:41:06.239267+00:00",
+      "local_path": "images/yc_in_hp_manali_gauri_shankar_temple/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_gauri_shankar_temple/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_museum_of_himachal_culture_folk_art": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Museum_Of_Himachal_Culture_&_Folk_Art,_Manali,_Kullu,_HP_India.jpg",
+      "original_file": "Museum Of Himachal Culture & Folk Art, Manali, Kullu, HP India.jpg",
+      "author": "Unknown",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 3872,
+      "height": 2592,
+      "match_method": "commons_exact_name_search",
+      "match_confidence": 0.75,
+      "downloaded_at": "2026-09-19T19:41:09.810444+00:00",
+      "local_path": "images/yc_in_hp_manali_museum_of_himachal_culture_folk_art/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_museum_of_himachal_culture_folk_art/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_old_manali": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Old_Manali_2.jpg",
+      "original_file": "Old Manali 2.jpg",
+      "author": "Aslam Kuttayi",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 720,
+      "height": 881,
+      "match_method": "commons_exact_name_search",
+      "match_confidence": 0.75,
+      "downloaded_at": "2026-09-19T19:41:13.031262+00:00",
+      "local_path": "images/yc_in_hp_manali_old_manali/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_old_manali/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_rozy_falls": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Rozy_Falls,_Manali.jpg",
+      "original_file": "Rozy Falls, Manali.jpg",
+      "author": "Raahichauhan",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 3216,
+      "height": 4288,
+      "match_method": "commons_exact_name_search",
+      "match_confidence": 0.75,
+      "downloaded_at": "2026-09-19T19:41:16.467800+00:00",
+      "local_path": "images/yc_in_hp_manali_rozy_falls/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_rozy_falls/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_vashist_hot_water_springs_and_temple": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Ghotkach_Temple_Manali.jpg",
+      "original_file": "Ghotkach Temple Manali.jpg",
+      "author": "Swamipremkamal",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 1040,
+      "height": 780,
+      "match_method": "commons_alt_name_search",
+      "match_confidence": 0.7,
+      "downloaded_at": "2026-09-19T19:41:21.970087+00:00",
+      "local_path": "images/yc_in_hp_manali_vashist_hot_water_springs_and_temple/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_vashist_hot_water_springs_and_temple/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_nehru_kund": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Beas_River_at_Nehru_Kund,_Manali_(1).jpg",
+      "original_file": "Beas River at Nehru Kund, Manali (1).jpg",
+      "author": "In Transit",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "attribution": null,
+      "width": 4032,
+      "height": 2268,
+      "match_method": "commons_exact_name_search",
+      "match_confidence": 0.75,
+      "downloaded_at": "2026-09-19T19:41:25.632499+00:00",
+      "local_path": "images/yc_in_hp_manali_nehru_kund/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_nehru_kund/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_kartik_temple": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Ghotkach_Temple_Manali.jpg",
+      "original_file": "Ghotkach Temple Manali.jpg",
+      "author": "Swamipremkamal",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 1040,
+      "height": 780,
+      "match_method": "commons_alt_name_search",
+      "match_confidence": 0.7,
+      "downloaded_at": "2026-09-19T19:41:27.768613+00:00",
+      "local_path": "images/yc_in_hp_manali_kartik_temple/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_kartik_temple/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_solang_valley_paragliding_ground": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Solang_Valley,_Paragliding,_India.jpg",
+      "original_file": "Solang Valley, Paragliding, India.jpg",
+      "author": "Vyacheslav Argenberg",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "attribution": "© <a href=\"//commons.wikimedia.org/wiki/User:Argenberg\" title=\"User:Argenberg\">Vyacheslav Argenberg</a>",
+      "width": 3072,
+      "height": 2048,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:41:30.649046+00:00",
+      "local_path": "images/yc_in_hp_manali_solang_valley_paragliding_ground/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_solang_valley_paragliding_ground/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_museum_of_himachal_culture_folk_arts": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Chhattahar_,_a_traditional_Kullu_necklace_Museum_of_Himachal_Culture_and_Folk_Arts,_Manali,_Himachal_Pradesh.jpg",
+      "original_file": "Chhattahar , a traditional Kullu necklace Museum of Himachal Culture and Folk Arts, Manali, Himachal Pradesh.jpg",
+      "author": "SpeakingArch",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 960,
+      "height": 1280,
+      "match_method": "commons_alt_name_search",
+      "match_confidence": 0.7,
+      "downloaded_at": "2026-09-19T19:41:34.895961+00:00",
+      "local_path": "images/yc_in_hp_manali_museum_of_himachal_culture_folk_arts/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_museum_of_himachal_culture_folk_arts/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_solang_valley_ropeway_cum_ski_centre": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Solang_Valley,_Paragliding,_India.jpg",
+      "original_file": "Solang Valley, Paragliding, India.jpg",
+      "author": "Vyacheslav Argenberg",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "attribution": "© <a href=\"//commons.wikimedia.org/wiki/User:Argenberg\" title=\"User:Argenberg\">Vyacheslav Argenberg</a>",
+      "width": 3072,
+      "height": 2048,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:41:40.521645+00:00",
+      "local_path": "images/yc_in_hp_manali_solang_valley_ropeway_cum_ski_centre/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_solang_valley_ropeway_cum_ski_centre/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_solan_valley_manali": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Solang_Valley,_Paragliding,_India.jpg",
+      "original_file": "Solang Valley, Paragliding, India.jpg",
+      "author": "Vyacheslav Argenberg",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "attribution": "© <a href=\"//commons.wikimedia.org/wiki/User:Argenberg\" title=\"User:Argenberg\">Vyacheslav Argenberg</a>",
+      "width": 3072,
+      "height": 2048,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:41:42.228555+00:00",
+      "local_path": "images/yc_in_hp_manali_solan_valley_manali/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_solan_valley_manali/thumbnail.webp"
+    },
+    "gallery": []
+  },
+  "yc_in_hp_manali_manali_bus_stand": {
+    "primary": {
+      "source": "Wikimedia Commons",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Hadimba_Devi_Mandir.jpg",
+      "original_file": "Hadimba Devi Mandir.jpg",
+      "author": "Rishabh gaur",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "attribution": null,
+      "width": 1620,
+      "height": 1080,
+      "match_method": "wikidata_p18",
+      "match_confidence": 1.0,
+      "downloaded_at": "2026-09-19T19:41:43.654937+00:00",
+      "local_path": "images/yc_in_hp_manali_manali_bus_stand/primary.webp",
+      "thumbnail_path": "images/yc_in_hp_manali_manali_bus_stand/thumbnail.webp"
+    },
+    "gallery": []
+  }
+}

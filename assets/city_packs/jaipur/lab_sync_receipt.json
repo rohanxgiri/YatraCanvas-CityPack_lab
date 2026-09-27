@@ -1,0 +1,18 @@
+{
+  "city_id": "jaipur",
+  "city_name": "Jaipur",
+  "state": "Rajasthan",
+  "version": "v3",
+  "source_path": "C:\\Users\\girir\\Documents\\YatraCanvas-DataFactory\\releases\\india\\rajasthan\\jaipur\\v3",
+  "file_checksums": {
+    "yatracanvas.db": "0905a477390a14805c0813ea99fe4fce36bea3a2e26390bbbddae90430186bef",
+    "manifest.json": "1b5e7ea618f7f3144f7796facb37214c7a7eb65fd6790871c31ffae99d72393f",
+    "city.json": "76a01b320e63e5f29fd4b83e96a20e7fcd8e22939dc3592e25594a279b879ebe",
+    "checksums.json": "57492f6eed0c9a72cca85b7238973f0674e5a7e1c39d7dc7d36f53e6ae02d114",
+    "image_manifest.json": "1684fad545466de60d2868379cc84e471fd3cf876bf8c18da16c561685c44d2e",
+    "images_manifest.json": "1684fad545466de60d2868379cc84e471fd3cf876bf8c18da16c561685c44d2e",
+    "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+    "source_manifest.json": "f650e06a8f1333ab9066ba877f9aa784957fd3c82844e0c05607c08e661e8eb4"
+  },
+  "image_count": 106
+}

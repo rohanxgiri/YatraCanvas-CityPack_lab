@@ -1,0 +1,100 @@
+{
+  "schema_version": "3.0",
+  "city_pack_version": "v3",
+  "city_id": "manali",
+  "city_name": "Manali",
+  "state": "Himachal Pradesh",
+  "country": "India",
+  "generated_at": "2026-09-19T19:41:43.812813+00:00",
+  "pipeline_health": "PASS",
+  "data_quality": "WARN",
+  "source_coverage": "PASS",
+  "source_versions": {
+    "wikivoyage": "74",
+    "wikidata": "20",
+    "openstreetmap": "504",
+    "overture": "3499"
+  },
+  "counts": {
+    "total_raw_candidates": 4097,
+    "accepted": 1702,
+    "rejected": 650,
+    "quarantined": 1372,
+    "duplicate_merges": 373,
+    "with_images": 12,
+    "with_opening_hours": 14,
+    "with_wikidata": 18,
+    "category_conflicts": 18590,
+    "entity_conflicts": 0,
+    "alias_conflicts": 0,
+    "image_conflicts": 0,
+    "coordinate_conflicts": 57,
+    "by_tier": {
+      "core_destination": 13,
+      "support": 1278,
+      "recommended": 147,
+      "discovery": 264
+    },
+    "by_tier_stats": {
+      "core_destination": {
+        "count": 13,
+        "with_wikidata": 7,
+        "with_wikipedia": 5,
+        "with_image": 11,
+        "with_hours": 1,
+        "with_website": 6,
+        "multi_source": 8
+      },
+      "recommended": {
+        "count": 147,
+        "with_wikidata": 0,
+        "with_wikipedia": 0,
+        "with_image": 0,
+        "with_hours": 7,
+        "with_website": 106,
+        "multi_source": 67
+      },
+      "discovery": {
+        "count": 264,
+        "with_wikidata": 0,
+        "with_wikipedia": 0,
+        "with_image": 0,
+        "with_hours": 1,
+        "with_website": 263,
+        "multi_source": 1
+      },
+      "support": {
+        "count": 1278,
+        "with_wikidata": 11,
+        "with_wikipedia": 1,
+        "with_image": 1,
+        "with_hours": 5,
+        "with_website": 1237,
+        "multi_source": 161
+      }
+    },
+    "by_category": {
+      "heritage": 11,
+      "nature": 6,
+      "religious": 10,
+      "hotel": 1278,
+      "food": 53,
+      "experience": 269,
+      "museum": 3,
+      "cafe": 65,
+      "viewpoint": 1,
+      "park": 5,
+      "shopping": 1
+    }
+  },
+  "checksums": {
+    "city.json": "e28aa5e44e7070e521be8f43a0c780fb5fcf4f19b9be26eff36507be056736c6",
+    "places.json": "91369af22138075420c1a3d559b6b2d9e18eb3a08721b53648a8e85faf3bac3f",
+    "places.jsonl": "57b80507c27ab3d85f3cd43e2da318ce95a49455aee6b861c8e691aeebf0dba8",
+    "places.parquet": "2b9742b16777b3a9d28a3b736b30b8b7a34db6a9cd6f7a92be04b509aeee5ddb",
+    "image_manifest.json": "eb1de238f764108c1c1058441922f6a54b29f3b407b379cf30ee4a113638556c",
+    "source_manifest.json": "36169845661fc83b8834bef844b16fdf914ac67932e9dc50ba622855b9e084c1",
+    "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+    "yatracanvas.db": "26d4e59c475f293e0b76e73130fa33a9f91f090e61431eee4dee3dcd9f876417"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "schema_version": "3.0",
+  "city_pack_version": "v3",
+  "city_id": "rishikesh",
+  "city_name": "Rishīkesh",
+  "state": "Uttarakhand",
+  "country": "India",
+  "generated_at": "2026-09-19T19:42:55.185015+00:00",
+  "pipeline_health": "PASS",
+  "data_quality": "WARN",
+  "source_coverage": "PASS",
+  "source_versions": {
+    "wikivoyage": "62",
+    "wikidata": "26",
+    "openstreetmap": "0",
+    "overture": "4690"
+  },
+  "counts": {
+    "total_raw_candidates": 4778,
+    "accepted": 1409,
+    "rejected": 1704,
+    "quarantined": 1541,
+    "duplicate_merges": 124,
+    "with_images": 15,
+    "with_opening_hours": 5,
+    "with_wikidata": 25,
+    "category_conflicts": 15454,
+    "entity_conflicts": 0,
+    "alias_conflicts": 0,
+    "image_conflicts": 0,
+    "coordinate_conflicts": 83,
+    "by_tier": {
+      "core_destination": 15,
+      "support": 504,
+      "discovery": 710,
+      "recommended": 180
+    },
+    "by_tier_stats": {
+      "core_destination": {
+        "count": 15,
+        "with_wikidata": 12,
+        "with_wikipedia": 11,
+        "with_image": 12,
+        "with_hours": 0,
+        "with_website": 7,
+        "multi_source": 3
+      },
+      "recommended": {
+        "count": 180,
+        "with_wikidata": 0,
+        "with_wikipedia": 0,
+        "with_image": 0,
+        "with_hours": 1,
+        "with_website": 179,
+        "multi_source": 38
+      },
+      "discovery": {
+        "count": 710,
+        "with_wikidata": 0,
+        "with_wikipedia": 0,
+        "with_image": 1,
+        "with_hours": 4,
+        "with_website": 707,
+        "multi_source": 1
+      },
+      "support": {
+        "count": 504,
+        "with_wikidata": 13,
+        "with_wikipedia": 2,
+        "with_image": 2,
+        "with_hours": 0,
+        "with_website": 492,
+        "multi_source": 37
+      }
+    },
+    "by_category": {
+      "heritage": 29,
+      "religious": 28,
+      "transport": 4,
+      "hotel": 500,
+      "experience": 705,
+      "food": 78,
+      "shopping": 25,
+      "cafe": 31,
+      "park": 5,
+      "arts_culture": 2,
+      "nature": 2
+    }
+  },
+  "checksums": {
+    "city.json": "15ef0d52861a0fb2a4fcbbc3a4fb9603cce50a16eb882d5c25be33b6cdc077fd",
+    "places.json": "439f9ea1072d3207188ccb67046d95a1042e9eac83e502e51ad4ffb32ba87196",
+    "places.jsonl": "12d9b78fe166424dd30314dd2d73b2553e2cc2116cf0e65885c6dc64089357df",
+    "places.parquet": "98b9c5893160cb73b2ff5a82799fecd3515f0edaa4bdc2242af220f0fc07c1f5",
+    "image_manifest.json": "4acec4bf2fabecfecc52f1721740fa15078c3093457a338595e7151e90cf1d44",
+    "source_manifest.json": "870e1ab417e991dd9384c4f560bc0e08b14d0b7bce15a58400ee5af16fc2a60f",
+    "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+    "yatracanvas.db": "c5c58007f2822e04217a0ec985d9c4b668335bca75e4b3609fcadf4f23b2cc84"
+  }
+}

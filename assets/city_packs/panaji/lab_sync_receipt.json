@@ -1,0 +1,18 @@
+{
+  "city_id": "panaji",
+  "city_name": "Panjim",
+  "state": "Goa",
+  "version": "v3",
+  "source_path": "C:\\Users\\girir\\Documents\\YatraCanvas-DataFactory\\releases\\india\\goa\\panjim\\v3",
+  "file_checksums": {
+    "yatracanvas.db": "3806be0f2c1de77c00802338cef969cc7015e5fd6bf61069813596cb4c028cf1",
+    "manifest.json": "e881242f32cd188d31f91bdd9bc815803217df7ee2f5dd2b4c0d617625f2ba76",
+    "city.json": "2ed39f0d6a6be74be04059c4ffa682c30e6bfc00bffdfb297906783e3329121f",
+    "checksums.json": "e88329cdbaaceb1fe1e8997f15dd2ab37fa9ed0c59c7ed5ab0afde8955a7cbae",
+    "image_manifest.json": "4efbb656aa168fa854dcce36d205b2ce1d18b2fa361034fc8614ca442d56a7b5",
+    "images_manifest.json": "4efbb656aa168fa854dcce36d205b2ce1d18b2fa361034fc8614ca442d56a7b5",
+    "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+    "source_manifest.json": "9398eb7f4a6b12a9ced3f9561121460d12d96066f4622dc0e23f1587924775d8"
+  },
+  "image_count": 106
+}

@@ -1,0 +1,97 @@
+{
+  "schema_version": "3.0",
+  "city_pack_version": "v3",
+  "city_id": "gulmarg",
+  "city_name": "Gulmarg",
+  "state": "Jammu And Kashmir",
+  "country": "India",
+  "generated_at": "2026-09-19T19:56:48.368110+00:00",
+  "pipeline_health": "PASS",
+  "data_quality": "WARN",
+  "source_coverage": "PASS",
+  "source_versions": {
+    "wikivoyage": "10",
+    "wikidata": "7",
+    "openstreetmap": "49",
+    "overture": "368"
+  },
+  "counts": {
+    "total_raw_candidates": 434,
+    "accepted": 84,
+    "rejected": 149,
+    "quarantined": 155,
+    "duplicate_merges": 45,
+    "with_images": 10,
+    "with_opening_hours": 0,
+    "with_wikidata": 6,
+    "category_conflicts": 221,
+    "entity_conflicts": 1,
+    "alias_conflicts": 0,
+    "image_conflicts": 0,
+    "coordinate_conflicts": 3,
+    "by_tier": {
+      "core_destination": 10,
+      "support": 43,
+      "discovery": 20,
+      "recommended": 11
+    },
+    "by_tier_stats": {
+      "core_destination": {
+        "count": 10,
+        "with_wikidata": 6,
+        "with_wikipedia": 7,
+        "with_image": 9,
+        "with_hours": 0,
+        "with_website": 1,
+        "multi_source": 3
+      },
+      "recommended": {
+        "count": 11,
+        "with_wikidata": 0,
+        "with_wikipedia": 0,
+        "with_image": 0,
+        "with_hours": 0,
+        "with_website": 8,
+        "multi_source": 4
+      },
+      "discovery": {
+        "count": 20,
+        "with_wikidata": 0,
+        "with_wikipedia": 0,
+        "with_image": 1,
+        "with_hours": 0,
+        "with_website": 19,
+        "multi_source": 0
+      },
+      "support": {
+        "count": 43,
+        "with_wikidata": 0,
+        "with_wikipedia": 0,
+        "with_image": 0,
+        "with_hours": 0,
+        "with_website": 41,
+        "multi_source": 10
+      }
+    },
+    "by_category": {
+      "heritage": 11,
+      "religious": 1,
+      "transport": 1,
+      "food": 8,
+      "hotel": 42,
+      "experience": 16,
+      "shopping": 3,
+      "cafe": 2
+    }
+  },
+  "checksums": {
+    "city.json": "f35a59a4a716159edbe3e9c5f7826a7a131563120469832a9da113c6d95ba707",
+    "places.json": "1546e1c1b9670ab1c91fa42dc55b4047903e649edb196849e005796bbb9c2cbc",
+    "places.jsonl": "96386a0e0ebcdb6c56854a6fb002edfdda528897cfcd7e8add0e00f81fd5b768",
+    "places.parquet": "343c8e5bc8499f425e906d994adaeb8a948fe834e9652e98420d8411214a4d6b",
+    "image_manifest.json": "4363c23684186e3cd0657ad24c8233221b6a008afc5504b2066a470e573ed541",
+    "source_manifest.json": "c42f1000b41c1bbaadf8b5443db133282f83e487abb3ace80f962259796b206e",
+    "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+    "yatracanvas.db": "3cda9f8778ff90f03331e08847197255cba901f7b121ed1fb63a822a1121d696"
+  }
+}

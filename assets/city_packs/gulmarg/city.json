@@ -1,0 +1,32 @@
+{
+  "id": "gulmarg",
+  "name": "Gulmarg",
+  "state": "Jammu And Kashmir",
+  "country": "India",
+  "iso_country": "IN",
+  "center": [
+    34.04897,
+    74.39212
+  ],
+  "bbox": [
+    74.31212,
+    33.96897,
+    74.47212,
+    34.12897
+  ],
+  "alternate_names": [
+    "Tangmarg",
+    "Baramulla",
+    "Jammu and Kashmir",
+    "193403",
+    "India"
+  ],
+  "timezone": "Asia/Kolkata",
+  "osm_place_id": 212779567,
+  "geonames_id": null,
+  "wikidata_id": null,
+  "dataset_version": "3.0.0",
+  "generated_at": "2026-09-19T19:52:40.168969+00:00",
+  "resolution_source": "nominatim_osm",
+  "resolution_confidence": 0.9
+}
