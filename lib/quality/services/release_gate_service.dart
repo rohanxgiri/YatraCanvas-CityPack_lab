@@ -73,12 +73,16 @@ class ReleaseGateService {
 
     // 5. Itinerary Sights Minimum Gate
     final categoryCounts = (dbStats['category_counts'] as Map<String, dynamic>?) ?? {};
-    final culturalSightCount = (categoryCounts['attraction'] as int? ?? 0) +
-        (categoryCounts['monument'] as int? ?? 0) +
-        (categoryCounts['temple'] as int? ?? 0) +
+    final culturalSightCount = (categoryCounts['heritage'] as int? ?? 0) +
+        (categoryCounts['religious'] as int? ?? 0) +
         (categoryCounts['museum'] as int? ?? 0) +
         (categoryCounts['viewpoint'] as int? ?? 0) +
-        (categoryCounts['park'] as int? ?? 0);
+        (categoryCounts['park'] as int? ?? 0) +
+        (categoryCounts['nature'] as int? ?? 0) +
+        (categoryCounts['arts_culture'] as int? ?? 0) +
+        (categoryCounts['attraction'] as int? ?? 0) +
+        (categoryCounts['monument'] as int? ?? 0) +
+        (categoryCounts['temple'] as int? ?? 0);
     final bool attractionsPassed = culturalSightCount >= config.minAttractionsCount;
     checks['sufficient_attractions'] = attractionsPassed;
     if (!attractionsPassed) {

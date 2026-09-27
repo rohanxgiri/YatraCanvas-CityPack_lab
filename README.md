@@ -206,12 +206,37 @@ lib/
 
 ---
 
+---
+
+## YatraCanvas City Data Workflow
+
+| Stage | Tool | Documentation |
+|---|---|---|
+| **1. Generate** | `YatraCanvas-DataFactory` | [DataFactory Pipeline Docs](../YatraCanvas-DataFactory/README.md) |
+| **2. Review & Curate** | `YatraCanvas-CityPack-Lab` | [City Lab Contributor Guide](docs/CITY_LAB_CONTRIBUTOR_GUIDE.md) |
+| **3. Architecture** | Curation & Release Engine | [Curation Studio Architecture](docs/CITY_LAB_CURATION_ARCHITECTURE.md) |
+
+### Quick Start for Contributors
+
+```powershell
+# 1. Setup environment and dependencies
+.\citylab.ps1 setup
+
+# 2. Launch Curation Studio
+.\citylab.ps1 start
+
+# 3. View Curation Summary before opening PR
+.\citylab.ps1 summary -City jaipur
+```
+
+---
+
 ## Documentation Links
 
+- [City Lab Curation Studio Architecture](docs/CITY_LAB_CURATION_ARCHITECTURE.md)
+- [City Lab Contributor Guide](docs/CITY_LAB_CONTRIBUTOR_GUIDE.md)
+- [Curation Rebuild Audit](docs/CITY_LAB_CURATION_REBUILD_AUDIT.md)
+- [Bug Audit & Resolutions](docs/CITY_LAB_BUG_AUDIT.md)
 - [Quality & Release Gate Architecture](docs/CITY_LAB_QUALITY_ARCHITECTURE.md)
-- [System Architecture](docs/LAB_ARCHITECTURE.md)
 - [Dataset QA Protocol & Tester Guide](docs/DATASET_QA_GUIDE.md)
-- [Quality Gate Audit & Rationale](docs/CITY_LAB_QUALITY_GATE_AUDIT.md)
 - [City Pack Schema Audit](docs/CITY_PACK_SCHEMA_AUDIT.md)
-- [City Pack Size & Capacity Report](docs/CITY_PACK_SIZE_REPORT.md)
-- [Lab Environment Report](docs/LAB_ENVIRONMENT.md)

@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:io' show File;
 import '../domain/lab_place.dart';
 import 'city_pack_database.dart';
 import 'local_image_resolver.dart';

@@ -100,6 +100,51 @@ class ManualQaSummary {
     );
   }
 
+  factory ManualQaSummary.fromCuration({
+    required List<dynamic> reviews,
+    required List<dynamic> issues,
+    int minimumRequired = 50,
+  }) {
+    final reviewed = reviews.length;
+    final issueCount = issues.length;
+    int approved = 0;
+    int uncertain = 0;
+
+    for (final r in reviews) {
+      final res = (r.verdict as String? ?? (r.result as String? ?? '')).toLowerCase();
+      if (res == 'looks_good' || res == 'approved' || res == 'pass') {
+        approved++;
+      } else if (res == 'uncertain' || res == 'unsure') {
+        uncertain++;
+      }
+    }
+
+    ManualQaState state;
+    double? score;
+
+    if (reviewed == 0 && issueCount == 0) {
+      state = ManualQaState.notStarted;
+      score = null;
+    } else if (reviewed < minimumRequired) {
+      state = ManualQaState.insufficientSample;
+      score = null;
+    } else {
+      state = ManualQaState.sufficientSample;
+      final defectRate = (issueCount / reviewed).clamp(0.0, 1.0);
+      score = (1.0 - defectRate).clamp(0.0, 1.0);
+    }
+
+    return ManualQaSummary(
+      state: state,
+      reviewedCount: reviewed,
+      minimumRequired: minimumRequired,
+      approvedCount: approved,
+      issueCount: issueCount,
+      uncertainCount: uncertain,
+      score: score,
+    );
+  }
+
   Map<String, dynamic> toJson() => {
         'state': state.name,
         'reviewed_count': reviewedCount,

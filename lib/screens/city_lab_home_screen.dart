@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../app/app_state.dart';
-import 'overview_screen.dart';
-import 'data_coverage_screen.dart';
-import 'review_screen.dart';
-import 'release_gate_screen.dart';
+import 'curation_review_screen.dart';
 import 'diagnostics_screen.dart';
-import 'discover_screen.dart';
-import 'map_screen.dart';
-import 'search_screen.dart';
+import 'fix_center_screen.dart';
+import 'home_screen.dart';
+import 'places_cms_screen.dart';
+import 'release_gate_screen.dart';
 
 class CityLabHomeScreen extends StatefulWidget {
   final AppState state;
@@ -36,28 +35,171 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
     setState(() => _currentIndex = index);
   }
 
+  void _showPrSummaryDialog() {
+    final packName = widget.state.activePack?.name ?? 'City';
+    final summaryMd = widget.state.curationService.generatePrSummary(packName);
+    final summary = widget.state.curationService.getSummary();
+
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Row(
+          children: [
+            const Icon(Icons.commit, color: Colors.indigo),
+            const SizedBox(width: 8),
+            Text('$packName Curation Summary (For PR)', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          ],
+        ),
+        content: SizedBox(
+          width: 500,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  'Human curation changes saved to assets/city_packs/<city>/curation/:',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    Expanded(
+                      child: _statPill('Overrides', '${summary.totalOverrides} places', Colors.green),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: _statPill('Additions', '${summary.totalAdditions} places', Colors.purple),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: _statPill('Exclusions', '${summary.totalExclusions} places', Colors.red),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade100,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Colors.grey.shade300),
+                  ),
+                  child: SelectableText(
+                    summaryMd,
+                    style: const TextStyle(fontFamily: 'monospace', fontSize: 11),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text('Close'),
+          ),
+          ElevatedButton.icon(
+            icon: const Icon(Icons.copy, size: 16),
+            label: const Text('Copy PR Markdown'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.indigo,
+              foregroundColor: Colors.white,
+            ),
+            onPressed: () {
+              Clipboard.setData(ClipboardData(text: summaryMd));
+              Navigator.of(ctx).pop();
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Copied PR curation summary to clipboard!')),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showContributorProfileDialog() {
+    final controller = TextEditingController(text: widget.state.contributorName);
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Contributor Settings'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Enter your name or GitHub handle to sign curation records:'),
+            const SizedBox(height: 10),
+            TextField(
+              controller: controller,
+              decoration: const InputDecoration(
+                labelText: 'Contributor Name',
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.of(ctx).pop(), child: const Text('Cancel')),
+          ElevatedButton(
+            onPressed: () {
+              widget.state.setContributorName(controller.text);
+              Navigator.of(ctx).pop();
+            },
+            child: const Text('Save'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _statPill(String title, String value, Color color) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+      decoration: BoxDecoration(
+        color: color.withAlpha(20),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: color.withAlpha(60)),
+      ),
+      child: Column(
+        children: [
+          Text(title, style: TextStyle(fontSize: 10, color: color, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 2),
+          Text(value, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: color)),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final pack = widget.state.activePack;
     if (pack == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('City Lab')),
+        appBar: AppBar(title: const Text('YatraCanvas City Lab')),
         body: const Center(child: Text('No city pack active.')),
       );
     }
 
     final pages = [
-      OverviewScreen(
+      HomeScreen(
         state: widget.state,
-        onNavigateToCoverage: () => _navigateToTab(1),
+        onNavigateToFix: () => _navigateToTab(1),
         onNavigateToReview: () => _navigateToTab(2),
-        onNavigateToRelease: () => _navigateToTab(3),
+        onNavigateToPlaces: () => _navigateToTab(3),
+        onNavigateToRelease: () => _navigateToTab(4),
       ),
-      DataCoverageScreen(state: widget.state),
-      ReviewScreen(state: widget.state),
+      FixCenterScreen(state: widget.state),
+      CurationReviewScreen(state: widget.state),
+      PlacesCmsScreen(state: widget.state),
       ReleaseGateScreen(state: widget.state),
-      DiagnosticsScreen(state: widget.state),
+      if (widget.state.isAdminMode) DiagnosticsScreen(state: widget.state),
     ];
+
+    if (_currentIndex >= pages.length) {
+      _currentIndex = 0;
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -89,38 +231,54 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
               ],
             ),
             const Text(
-              'YatraCanvas QA & Release Gate System',
-              style: TextStyle(fontSize: 11, color: Colors.black54),
+              'YatraCanvas City Pack Curation Studio',
+              style: TextStyle(fontSize: 11, color: Colors.white70),
             ),
           ],
         ),
         actions: [
+          // Mode switch pill (Contributor vs Admin)
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+              color: widget.state.isAdminMode ? Colors.purple.shade900 : Colors.indigo.shade800,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Colors.white24),
+            ),
+            child: InkWell(
+              onTap: () {
+                widget.state.toggleAdminMode();
+                setState(() {});
+              },
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    widget.state.isAdminMode ? Icons.admin_panel_settings : Icons.person_outline,
+                    size: 16,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(width: 6),
+                  Text(
+                    widget.state.isAdminMode ? 'Admin Mode' : 'Contributor Mode',
+                    style: const TextStyle(fontSize: 11, color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(width: 8),
+
           IconButton(
-            icon: const Icon(Icons.search),
-            tooltip: 'Search Simulation',
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => SearchScreen(state: widget.state)),
-              );
-            },
+            icon: const Icon(Icons.commit),
+            tooltip: 'View PR Curation Summary',
+            onPressed: _showPrSummaryDialog,
           ),
           IconButton(
-            icon: const Icon(Icons.explore_outlined),
-            tooltip: 'Discover Feed Preview',
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => DiscoverScreen(state: widget.state)),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.map_outlined),
-            tooltip: 'Geographic Map View',
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => MapScreen(state: widget.state)),
-              );
-            },
+            icon: const Icon(Icons.badge_outlined),
+            tooltip: 'Contributor Profile (${widget.state.contributorName})',
+            onPressed: _showContributorProfileDialog,
           ),
         ],
       ),
@@ -131,7 +289,7 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
                 children: [
                   CircularProgressIndicator(),
                   SizedBox(height: 16),
-                  Text('Calculating Data Quality & Release Gate...'),
+                  Text('Evaluating Curation & Release Readiness...'),
                 ],
               ),
             )
@@ -140,32 +298,38 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
         selectedIndex: _currentIndex,
         onDestinationSelected: _navigateToTab,
         indicatorColor: Colors.indigo.shade100,
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.dashboard_outlined),
-            selectedIcon: Icon(Icons.dashboard, color: Colors.indigo),
-            label: 'Overview',
+        destinations: [
+          const NavigationDestination(
+            icon: Icon(Icons.home_outlined),
+            selectedIcon: Icon(Icons.home, color: Colors.indigo),
+            label: 'Home',
           ),
-          NavigationDestination(
-            icon: Icon(Icons.grid_view_outlined),
-            selectedIcon: Icon(Icons.grid_view, color: Colors.indigo),
-            label: 'Coverage',
+          const NavigationDestination(
+            icon: Icon(Icons.build_outlined),
+            selectedIcon: Icon(Icons.build, color: Colors.indigo),
+            label: 'Fix',
           ),
-          NavigationDestination(
+          const NavigationDestination(
             icon: Icon(Icons.rate_review_outlined),
             selectedIcon: Icon(Icons.rate_review, color: Colors.indigo),
             label: 'Review',
           ),
-          NavigationDestination(
+          const NavigationDestination(
+            icon: Icon(Icons.place_outlined),
+            selectedIcon: Icon(Icons.place, color: Colors.indigo),
+            label: 'Places',
+          ),
+          const NavigationDestination(
             icon: Icon(Icons.verified_outlined),
             selectedIcon: Icon(Icons.verified, color: Colors.indigo),
-            label: 'Release Gate',
+            label: 'Release',
           ),
-          NavigationDestination(
-            icon: Icon(Icons.analytics_outlined),
-            selectedIcon: Icon(Icons.analytics, color: Colors.indigo),
-            label: 'Diagnostics',
-          ),
+          if (widget.state.isAdminMode)
+            const NavigationDestination(
+              icon: Icon(Icons.analytics_outlined),
+              selectedIcon: Icon(Icons.analytics, color: Colors.purple),
+              label: 'Advanced',
+            ),
         ],
       ),
     );
