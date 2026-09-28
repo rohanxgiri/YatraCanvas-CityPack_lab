@@ -2,7 +2,7 @@
 .SYNOPSIS
   Unified CLI helper for YatraCanvas City Pack Curation Studio.
 .DESCRIPTION
-  Provides simple one-word commands for contributors: setup, start, test, summary.
+  Provides commands for setup, running, testing, curation summaries, and explicit certification.
 .EXAMPLE
   .\citylab.ps1 setup
   .\citylab.ps1 start
@@ -16,7 +16,11 @@ param(
     [string]$Command = "start",
 
     [string]$Target = "windows",
-    [string]$City = "jaipur"
+    [string]$City = "jaipur",
+    [string]$ReleaseEvidence,
+    [string]$OutputDir,
+    [switch]$ForceDevExport,
+    [switch]$Publish
 )
 
 $ErrorActionPreference = "Stop"
@@ -37,15 +41,40 @@ switch ($Command) {
         python "$PSScriptRoot\tools\summarize_curation.py" --city $City
     }
     "export" {
-        Write-Host "Exporting Certified City Pack for $City to DataFactory & YatraCanvas..." -ForegroundColor Cyan
-        python "$PSScriptRoot\tools\export_certified_pack.py" --city $City
+        if ($ForceDevExport -and $Publish) {
+            throw "-ForceDevExport cannot be combined with -Publish."
+        }
+        if (-not $ForceDevExport -and [string]::IsNullOrWhiteSpace($ReleaseEvidence)) {
+            throw "Production certification requires -ReleaseEvidence. Use -ForceDevExport only for local non-certified output."
+        }
+
+        $exportArgs = @("$PSScriptRoot\tools\export_certified_pack.py", "--city", $City)
+        if (-not [string]::IsNullOrWhiteSpace($ReleaseEvidence)) {
+            $exportArgs += @("--release-evidence", $ReleaseEvidence)
+        }
+        if (-not [string]::IsNullOrWhiteSpace($OutputDir)) {
+            $exportArgs += @("--output-dir", $OutputDir)
+        }
+        if ($ForceDevExport) {
+            $exportArgs += "--force-dev-export"
+        }
+        if ($Publish) {
+            $exportArgs += "--publish"
+        }
+
+        Write-Host "Running fail-closed certification for $City..." -ForegroundColor Cyan
+        & python @exportArgs
+        if ($LASTEXITCODE -ne 0) {
+            throw "City Pack certification failed with exit code $LASTEXITCODE."
+        }
     }
     "help" {
         Write-Host "YatraCanvas City Lab Commands:" -ForegroundColor Cyan
         Write-Host "  .\citylab.ps1 setup                 Run initial dependency & asset setup"
         Write-Host "  .\citylab.ps1 start [-Target win|web] Launch Curation Studio (default: windows)"
         Write-Host "  .\citylab.ps1 summary -City <name>  Print / generate PR curation summary"
-        Write-Host "  .\citylab.ps1 export -City <name>   Sync certified DB to YatraCanvas app & DataFactory"
+        Write-Host "  .\citylab.ps1 export -City <name> -ReleaseEvidence <path> [-OutputDir <path>] [-Publish]"
+        Write-Host "  .\citylab.ps1 export -City <name> -ForceDevExport [-OutputDir <path>]"
         Write-Host "  .\citylab.ps1 test                  Run full automated test suite"
     }
 }

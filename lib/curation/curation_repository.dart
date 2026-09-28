@@ -1,17 +1,20 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+
 import '../domain/curation/curation_issue.dart';
 import '../domain/curation/place_addition.dart';
 import '../domain/curation/place_exclusion.dart';
 import '../domain/curation/place_override.dart';
 import '../domain/curation/place_review.dart';
+import '../city_admin/contracts/curation_repository_contract.dart';
 
 /// Reads and writes deterministic entity-level curation JSON files.
 /// Stored in `assets/city_packs/<cityId>/curation/` for Git tracking.
-class CurationRepository {
+class CurationRepository implements CurationRepositoryContract {
   static Directory? _overrideBaseDir;
 
   // In-memory web fallback stores
@@ -34,7 +37,9 @@ class CurationRepository {
     }
 
     // Try relative project assets path (standard local desktop / CLI environment)
-    final localAssetDir = Directory(p.join('assets', 'city_packs', cityId, 'curation'));
+    final localAssetDir = Directory(
+      p.join('assets', 'city_packs', cityId, 'curation'),
+    );
     if (localAssetDir.existsSync()) {
       return localAssetDir;
     }
@@ -51,7 +56,9 @@ class CurationRepository {
     try {
       base = await getApplicationSupportDirectory();
     } catch (_) {
-      base = Directory(p.join(Directory.systemTemp.path, 'yatracanvas_curation'));
+      base = Directory(
+        p.join(Directory.systemTemp.path, 'yatracanvas_curation'),
+      );
     }
 
     final dir = Directory(p.join(base.path, 'city_packs', cityId, 'curation'));
@@ -70,13 +77,16 @@ class CurationRepository {
   // Overrides
   // ==========================================
 
+  @override
   Future<List<PlaceOverride>> loadOverrides(String cityId) async {
     if (kIsWeb) {
       return (_webOverrides[cityId] ?? {}).values.toList();
     }
 
     final dir = await _getSubdir(cityId, 'overrides');
-    final files = dir.listSync().whereType<File>().where((f) => f.path.endsWith('.json'));
+    final files = dir.listSync().whereType<File>().where(
+      (f) => f.path.endsWith('.json'),
+    );
     final List<PlaceOverride> list = [];
 
     for (final f in files) {
@@ -91,9 +101,11 @@ class CurationRepository {
     return list;
   }
 
+  @override
   Future<void> saveOverride(PlaceOverride override) async {
     if (kIsWeb) {
-      _webOverrides.putIfAbsent(override.cityId, () => {})[override.placeId] = override;
+      _webOverrides.putIfAbsent(override.cityId, () => {})[override.placeId] =
+          override;
       return;
     }
 
@@ -103,6 +115,7 @@ class CurationRepository {
     await file.writeAsString(override.toFormattedJson(), flush: true);
   }
 
+  @override
   Future<void> deleteOverride(String cityId, String placeId) async {
     if (kIsWeb) {
       _webOverrides[cityId]?.remove(placeId);
@@ -121,13 +134,16 @@ class CurationRepository {
   // Additions
   // ==========================================
 
+  @override
   Future<List<PlaceAddition>> loadAdditions(String cityId) async {
     if (kIsWeb) {
       return (_webAdditions[cityId] ?? {}).values.toList();
     }
 
     final dir = await _getSubdir(cityId, 'additions');
-    final files = dir.listSync().whereType<File>().where((f) => f.path.endsWith('.json'));
+    final files = dir.listSync().whereType<File>().where(
+      (f) => f.path.endsWith('.json'),
+    );
     final List<PlaceAddition> list = [];
 
     for (final f in files) {
@@ -142,9 +158,11 @@ class CurationRepository {
     return list;
   }
 
+  @override
   Future<void> saveAddition(PlaceAddition addition) async {
     if (kIsWeb) {
-      _webAdditions.putIfAbsent(addition.cityId, () => {})[addition.id] = addition;
+      _webAdditions.putIfAbsent(addition.cityId, () => {})[addition.id] =
+          addition;
       return;
     }
 
@@ -154,6 +172,7 @@ class CurationRepository {
     await file.writeAsString(addition.toFormattedJson(), flush: true);
   }
 
+  @override
   Future<void> deleteAddition(String cityId, String additionId) async {
     if (kIsWeb) {
       _webAdditions[cityId]?.remove(additionId);
@@ -172,13 +191,16 @@ class CurationRepository {
   // Exclusions
   // ==========================================
 
+  @override
   Future<List<PlaceExclusion>> loadExclusions(String cityId) async {
     if (kIsWeb) {
       return (_webExclusions[cityId] ?? {}).values.toList();
     }
 
     final dir = await _getSubdir(cityId, 'exclusions');
-    final files = dir.listSync().whereType<File>().where((f) => f.path.endsWith('.json'));
+    final files = dir.listSync().whereType<File>().where(
+      (f) => f.path.endsWith('.json'),
+    );
     final List<PlaceExclusion> list = [];
 
     for (final f in files) {
@@ -193,9 +215,13 @@ class CurationRepository {
     return list;
   }
 
+  @override
   Future<void> saveExclusion(PlaceExclusion exclusion) async {
     if (kIsWeb) {
-      _webExclusions.putIfAbsent(exclusion.cityId, () => {})[exclusion.placeId] = exclusion;
+      _webExclusions.putIfAbsent(
+        exclusion.cityId,
+        () => {},
+      )[exclusion.placeId] = exclusion;
       return;
     }
 
@@ -205,6 +231,7 @@ class CurationRepository {
     await file.writeAsString(exclusion.toFormattedJson(), flush: true);
   }
 
+  @override
   Future<void> deleteExclusion(String cityId, String placeId) async {
     if (kIsWeb) {
       _webExclusions[cityId]?.remove(placeId);
@@ -223,13 +250,16 @@ class CurationRepository {
   // Reviews (Manual QA Sample)
   // ==========================================
 
+  @override
   Future<List<PlaceReview>> loadReviews(String cityId) async {
     if (kIsWeb) {
       return (_webReviews[cityId] ?? {}).values.toList();
     }
 
     final dir = await _getSubdir(cityId, 'reviews');
-    final files = dir.listSync().whereType<File>().where((f) => f.path.endsWith('.json'));
+    final files = dir.listSync().whereType<File>().where(
+      (f) => f.path.endsWith('.json'),
+    );
     final List<PlaceReview> list = [];
 
     for (final f in files) {
@@ -244,6 +274,7 @@ class CurationRepository {
     return list;
   }
 
+  @override
   Future<void> saveReview(PlaceReview review) async {
     if (kIsWeb) {
       _webReviews.putIfAbsent(review.cityId, () => {})[review.placeId] = review;
@@ -260,13 +291,16 @@ class CurationRepository {
   // Issues Lifecycle
   // ==========================================
 
+  @override
   Future<List<CurationIssue>> loadIssues(String cityId) async {
     if (kIsWeb) {
       return (_webIssues[cityId] ?? {}).values.toList();
     }
 
     final dir = await _getSubdir(cityId, 'issues');
-    final files = dir.listSync().whereType<File>().where((f) => f.path.endsWith('.json'));
+    final files = dir.listSync().whereType<File>().where(
+      (f) => f.path.endsWith('.json'),
+    );
     final List<CurationIssue> list = [];
 
     for (final f in files) {
@@ -281,6 +315,7 @@ class CurationRepository {
     return list;
   }
 
+  @override
   Future<void> saveIssue(CurationIssue issue) async {
     if (kIsWeb) {
       _webIssues.putIfAbsent(issue.cityId, () => {})[issue.id] = issue;
@@ -293,6 +328,7 @@ class CurationRepository {
     await file.writeAsString(issue.toFormattedJson(), flush: true);
   }
 
+  @override
   Future<void> deleteIssue(String cityId, String issueId) async {
     if (kIsWeb) {
       _webIssues[cityId]?.remove(issueId);

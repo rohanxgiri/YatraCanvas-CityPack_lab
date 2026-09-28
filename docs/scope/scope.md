@@ -14,7 +14,7 @@ YatraCanvas CityPack Lab is the offline curation and release workbench for contr
 | 1 | Curated media ingestion | Journey 1 | in-progress |
 | 2 | Contributor workbench | Journey 1 | in-progress |
 | 3 | Review coverage and batch operations | Journey 2 | planned |
-| 4 | Certified release evidence | Journey 3 | planned |
+| 4 | Certified release evidence | Journey 3 | in-progress |
 
 ## Existing foundation
 
@@ -59,10 +59,19 @@ Make the stratified sample easy to finish across sessions, with reviewer ownersh
 
 ## Journey 3: Certify and hand off
 
-### 4. Certified release evidence · needs a decision
+### 4. Certified release evidence · in-progress
 Join the gate result, curation diff, media attribution, and export receipts into one reviewable certification bundle for DataFactory and the consumer app.
 **Done when:** a release manager can inspect every blocker and export a reproducible bundle only when all hard gates pass.
-- [ ] Design it (spec): `/architect certified release evidence`
+- [x] Design it (spec): `/architect certified release evidence`
+- [ ] Build it: `/develop certified release evidence`
+  - [x] Repository contracts and architecture audit, AC-9, AC-11, AC-12
+  - [x] Deterministic certification and reconciliation core, AC-1 through AC-8
+  - [x] DataFactory curation reapplication, AC-4, AC-5, AC-10
+  - [ ] City Lab evidence integration and migration documentation, AC-1, AC-2, AC-11, AC-12
+- [ ] Verify it: `/check verify certified release evidence`
+- [ ] Test it: `/test certified release evidence`
+
+Spec [0003](../specs/0003-certified-release-evidence.md)
 
 ## Deferred
 

@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+
 import '../domain/city_pack.dart';
 import '../domain/qa_session.dart';
 
@@ -46,7 +48,9 @@ class QaExportService {
           final docs = await getApplicationDocumentsDirectory();
           exportDir = Directory(p.join(docs.path, 'qa_exports'));
         } catch (_) {
-          exportDir = Directory(p.join(Directory.systemTemp.path, 'qa_exports'));
+          exportDir = Directory(
+            p.join(Directory.systemTemp.path, 'qa_exports'),
+          );
         }
       }
 
@@ -80,16 +84,21 @@ class QaExportService {
       'issues': session.issues.map((e) => e.toJson()).toList(),
       'random_reviews': session.randomReviews.map((e) => e.toJson()).toList(),
       'search_reviews': session.searchReviews.map((e) => e.toJson()).toList(),
-      'expected_place_checks':
-          session.expectedPlaceChecks.map((e) => e.toJson()).toList(),
-      'scenario_results': session.scenarioResults.map((e) => e.toJson()).toList(),
+      'expected_place_checks': session.expectedPlaceChecks
+          .map((e) => e.toJson())
+          .toList(),
+      'scenario_results': session.scenarioResults
+          .map((e) => e.toJson())
+          .toList(),
       'trip_selections_count': session.tripSelections.length,
     };
 
     final jsonStr = const JsonEncoder.withIndent('  ').convert(reportJson);
     String jsonPath = 'in_browser_memory';
     if (!kIsWeb && exportDir != null) {
-      final jsonFile = File(p.join(exportDir.path, 'qa_${pack.id}_$dateStr.json'));
+      final jsonFile = File(
+        p.join(exportDir.path, 'qa_${pack.id}_$dateStr.json'),
+      );
       await jsonFile.writeAsString(jsonStr, flush: true);
       jsonPath = jsonFile.path;
     }
@@ -101,7 +110,9 @@ class QaExportService {
     mdBuf.writeln('- **City**: ${pack.name} (${pack.state}, ${pack.country})');
     mdBuf.writeln('- **Pack ID**: `${pack.id}`');
     mdBuf.writeln('- **Pack Version**: `${pack.version}`');
-    mdBuf.writeln('- **Integrity**: `${pack.integrityStatus.name.toUpperCase()}`');
+    mdBuf.writeln(
+      '- **Integrity**: `${pack.integrityStatus.name.toUpperCase()}`',
+    );
     mdBuf.writeln('- **Export Date**: ${now.toIso8601String()}');
     mdBuf.writeln('- **Lab Version**: `$labVersion`');
     mdBuf.writeln();
@@ -114,9 +125,15 @@ class QaExportService {
     mdBuf.writeln('| Total Pack Images | ${pack.imageCount} |');
     mdBuf.writeln('| Database Size | ${pack.dbSizeMb} MB |');
     mdBuf.writeln('| Total QA Issues Logged | ${session.issues.length} |');
-    mdBuf.writeln('| Random Reviews Completed | ${session.randomReviews.length} |');
-    mdBuf.writeln('| Search Queries Reviewed | ${session.searchReviews.length} |');
-    mdBuf.writeln('| Expected Places Checked | ${session.expectedPlaceChecks.length} |');
+    mdBuf.writeln(
+      '| Random Reviews Completed | ${session.randomReviews.length} |',
+    );
+    mdBuf.writeln(
+      '| Search Queries Reviewed | ${session.searchReviews.length} |',
+    );
+    mdBuf.writeln(
+      '| Expected Places Checked | ${session.expectedPlaceChecks.length} |',
+    );
     mdBuf.writeln('| Test Trip Places | ${session.tripSelections.length} |');
     mdBuf.writeln();
 
@@ -129,7 +146,8 @@ class QaExportService {
       mdBuf.writeln('|---|---|---|---|---|---|');
       for (final i in session.issues) {
         mdBuf.writeln(
-            '| `${i.placeId}` | ${i.placeName} | ${i.tier} | **${i.issueType.label}** | ${i.note.replaceAll('\n', ' ')} | `${i.latitude.toStringAsFixed(4)}, ${i.longitude.toStringAsFixed(4)}` |');
+          '| `${i.placeId}` | ${i.placeName} | ${i.tier} | **${i.issueType.label}** | ${i.note.replaceAll('\n', ' ')} | `${i.latitude.toStringAsFixed(4)}, ${i.longitude.toStringAsFixed(4)}` |',
+        );
       }
     }
     mdBuf.writeln();
@@ -150,13 +168,19 @@ class QaExportService {
       mdBuf.writeln('| Place | Tier | Result | Note |');
       mdBuf.writeln('|---|---|---|---|');
       for (final r in session.randomReviews) {
-        final resLabel = r.result == 'looks_good' ? '✅ Looks Good' : '⚠️ ${r.result}';
-        mdBuf.writeln('| ${r.placeName} | ${r.tier} | $resLabel | ${r.note ?? '-'} |');
+        final resLabel = r.result == 'looks_good'
+            ? '✅ Looks Good'
+            : '⚠️ ${r.result}';
+        mdBuf.writeln(
+          '| ${r.placeName} | ${r.tier} | $resLabel | ${r.note ?? '-'} |',
+        );
       }
     }
     mdBuf.writeln();
 
-    mdBuf.writeln('## 4. Expected Place Checks (${session.expectedPlaceChecks.length})');
+    mdBuf.writeln(
+      '## 4. Expected Place Checks (${session.expectedPlaceChecks.length})',
+    );
     mdBuf.writeln();
     if (session.expectedPlaceChecks.isEmpty) {
       mdBuf.writeln('*No expected place checks recorded.*');
@@ -165,7 +189,8 @@ class QaExportService {
       mdBuf.writeln('|---|---|---|---|');
       for (final e in session.expectedPlaceChecks) {
         mdBuf.writeln(
-            '| ${e.query} | ${e.placeName ?? 'None'} | **${e.status.toUpperCase()}** | ${e.note ?? '-'} |');
+          '| ${e.query} | ${e.placeName ?? 'None'} | **${e.status.toUpperCase()}** | ${e.note ?? '-'} |',
+        );
       }
     }
     mdBuf.writeln();
@@ -221,7 +246,9 @@ class QaExportService {
           final docs = await getApplicationDocumentsDirectory();
           exportDir = Directory(p.join(docs.path, 'qa_exports'));
         } catch (_) {
-          exportDir = Directory(p.join(Directory.systemTemp.path, 'qa_exports'));
+          exportDir = Directory(
+            p.join(Directory.systemTemp.path, 'qa_exports'),
+          );
         }
       }
 
@@ -231,7 +258,21 @@ class QaExportService {
     }
 
     // 1. release.json
+    final isCertified = releaseGate.isReady && manualQa.isSufficient;
     final releaseJsonMap = {
+      'schema_version': 1,
+      'city_id': pack.id,
+      'pack_version': pack.version,
+      'status': isCertified ? 'certified' : 'not_certified',
+      'release_source': 'citypack_lab',
+      'generated_at': now.toUtc().toIso8601String(),
+      'certified_at': isCertified ? now.toUtc().toIso8601String() : null,
+      'data_quality_score': dataQuality.overallScore,
+      'travel_readiness_score': travelReadiness.overallScore,
+      'manual_qa_passed': manualQa.isSufficient,
+      'manual_qa_reviewed_count': manualQa.reviewedCount,
+      'manual_qa_minimum_required': manualQa.minimumRequired,
+      'release_gate_status': releaseGate.displayStatus,
       'city': pack.id,
       'pack_name': pack.name,
       'version': pack.version,
@@ -241,9 +282,10 @@ class QaExportService {
       'releaseStatus': releaseGate.displayStatus,
       'criticalIssues': releaseGate.criticalBlockers.length,
       'warnings': releaseGate.warnings.length,
-      'certifiedAt': now.toIso8601String(),
+      'certifiedAt': isCertified ? now.toUtc().toIso8601String() : null,
     };
-    final releaseJsonStr = const JsonEncoder.withIndent('  ').convert(releaseJsonMap);
+    final releaseJsonStr = const JsonEncoder.withIndent('  ')
+        .convert(releaseJsonMap);
 
     // 2. quality_report.json
     final qualityReportMap = {
@@ -257,7 +299,8 @@ class QaExportService {
       'release_gate': releaseGate.toJson(),
       'dataset_stats': dbStats ?? {},
     };
-    final qualityReportStr = const JsonEncoder.withIndent('  ').convert(qualityReportMap);
+    final qualityReportStr = const JsonEncoder.withIndent('  ')
+        .convert(qualityReportMap);
 
     // 3. release_report.md
     final mdBuf = StringBuffer();
@@ -273,15 +316,23 @@ class QaExportService {
     mdBuf.writeln();
     mdBuf.writeln('| Dimension | Score | Status |');
     mdBuf.writeln('|---|---|---|');
-    mdBuf.writeln('| **Data Quality** | **${dataQuality.overallScore} / 100** | ${dataQuality.overallScore >= 70 ? 'PASS' : 'FAIL'} |');
-    mdBuf.writeln('| **Travel Readiness** | **${travelReadiness.overallScore} / 100** | ${travelReadiness.overallScore >= 60 ? 'PASS' : 'WARN'} |');
-    mdBuf.writeln('| **Manual QA** | ${manualQa.displayStatus} | ${manualQa.isSufficient ? 'PASS' : 'INCOMPLETE'} |');
+    mdBuf.writeln(
+      '| **Data Quality** | **${dataQuality.overallScore} / 100** | ${dataQuality.overallScore >= 70 ? 'PASS' : 'FAIL'} |',
+    );
+    mdBuf.writeln(
+      '| **Travel Readiness** | **${travelReadiness.overallScore} / 100** | ${travelReadiness.overallScore >= 60 ? 'PASS' : 'WARN'} |',
+    );
+    mdBuf.writeln(
+      '| **Manual QA** | ${manualQa.displayStatus} | ${manualQa.isSufficient ? 'PASS' : 'INCOMPLETE'} |',
+    );
     mdBuf.writeln();
     mdBuf.writeln('### Release Gate Decision: ${releaseGate.displayStatus}');
     mdBuf.writeln();
 
     if (releaseGate.criticalBlockers.isNotEmpty) {
-      mdBuf.writeln('### Critical Blockers (${releaseGate.criticalBlockers.length})');
+      mdBuf.writeln(
+        '### Critical Blockers (${releaseGate.criticalBlockers.length})',
+      );
       for (final b in releaseGate.criticalBlockers) {
         mdBuf.writeln('- ❌ **$b**');
       }
@@ -302,9 +353,12 @@ class QaExportService {
     final mdStr = mdBuf.toString();
 
     if (!kIsWeb && exportDir != null) {
-      await File(p.join(exportDir.path, 'release_${pack.id}.json')).writeAsString(releaseJsonStr, flush: true);
-      await File(p.join(exportDir.path, 'quality_report_${pack.id}.json')).writeAsString(qualityReportStr, flush: true);
-      await File(p.join(exportDir.path, 'release_report_${pack.id}.md')).writeAsString(mdStr, flush: true);
+      await File(p.join(exportDir.path, 'release_${pack.id}.json'))
+          .writeAsString(releaseJsonStr, flush: true);
+      await File(p.join(exportDir.path, 'quality_report_${pack.id}.json'))
+          .writeAsString(qualityReportStr, flush: true);
+      await File(p.join(exportDir.path, 'release_report_${pack.id}.md'))
+          .writeAsString(mdStr, flush: true);
     }
 
     return {

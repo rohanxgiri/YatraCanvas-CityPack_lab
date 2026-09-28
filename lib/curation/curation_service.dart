@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import '../domain/curation/curated_place.dart';
 import '../domain/curation/curation_issue.dart';
 import '../domain/curation/place_addition.dart';
@@ -6,6 +7,7 @@ import '../domain/curation/place_exclusion.dart';
 import '../domain/curation/place_override.dart';
 import '../domain/curation/place_review.dart';
 import '../domain/lab_place.dart';
+import '../city_admin/contracts/curation_repository_contract.dart';
 import 'curation_repository.dart';
 
 class CurationSummary {
@@ -35,7 +37,7 @@ class CurationSummary {
 }
 
 class CurationService {
-  final CurationRepository repository;
+  final CurationRepositoryContract repository;
   String currentContributor;
 
   // Active City Caches
@@ -49,7 +51,7 @@ class CurationService {
   String? get activeCityId => _activeCityId;
 
   CurationService({
-    CurationRepository? repository,
+    CurationRepositoryContract? repository,
     this.currentContributor = 'Contributor',
   }) : repository = repository ?? CurationRepository();
 
@@ -251,7 +253,9 @@ class CurationService {
       cityId: cityId,
       placeName: placeName,
       issueType: issueType,
-      status: assignedTo != null ? CurationIssueStatus.assigned : CurationIssueStatus.open,
+      status: assignedTo != null
+          ? CurationIssueStatus.assigned
+          : CurationIssueStatus.open,
       assignedTo: assignedTo,
       note: note,
       author: currentContributor,
@@ -263,14 +267,20 @@ class CurationService {
     await repository.saveIssue(issue);
   }
 
-  Future<void> updateIssueStatus(String issueId, CurationIssueStatus newStatus, {String? resolutionNote}) async {
+  Future<void> updateIssueStatus(
+    String issueId,
+    CurationIssueStatus newStatus, {
+    String? resolutionNote,
+  }) async {
     final issue = _issues[issueId];
     if (issue == null) return;
 
     final updated = issue.copyWith(
       status: newStatus,
       updatedAt: DateTime.now().toIso8601String(),
-      resolvedAt: (newStatus == CurationIssueStatus.fixed || newStatus == CurationIssueStatus.verified)
+      resolvedAt:
+          (newStatus == CurationIssueStatus.fixed ||
+              newStatus == CurationIssueStatus.verified)
           ? DateTime.now().toIso8601String()
           : issue.resolvedAt,
       resolutionNote: resolutionNote ?? issue.resolutionNote,
@@ -280,18 +290,35 @@ class CurationService {
     await repository.saveIssue(updated);
   }
 
-  Future<void> _autoResolveIssueForField(String placeId, String fieldName) async {
+  Future<void> _autoResolveIssueForField(
+    String placeId,
+    String fieldName,
+  ) async {
     for (final entry in _issues.entries) {
       final issue = entry.value;
       if (issue.placeId == placeId && issue.isOpen) {
         bool matches = false;
-        if (fieldName == 'opening_hours' && issue.issueType.contains('hours')) matches = true;
-        if ((fieldName == 'primary_image_path' || fieldName == 'image') && issue.issueType.contains('image')) matches = true;
-        if ((fieldName == 'latitude' || fieldName == 'coordinates') && issue.issueType.contains('location')) matches = true;
-        if (fieldName == 'category' && issue.issueType.contains('category')) matches = true;
+        if (fieldName == 'opening_hours' && issue.issueType.contains('hours')) {
+          matches = true;
+        }
+        if ((fieldName == 'primary_image_path' || fieldName == 'image') &&
+            issue.issueType.contains('image')) {
+          matches = true;
+        }
+        if ((fieldName == 'latitude' || fieldName == 'coordinates') &&
+            issue.issueType.contains('location')) {
+          matches = true;
+        }
+        if (fieldName == 'category' && issue.issueType.contains('category')) {
+          matches = true;
+        }
 
         if (matches) {
-          await updateIssueStatus(issue.id, CurationIssueStatus.fixed, resolutionNote: 'Resolved via manual $fieldName override.');
+          await updateIssueStatus(
+            issue.id,
+            CurationIssueStatus.fixed,
+            resolutionNote: 'Resolved via manual $fieldName override.',
+          );
         }
       }
     }
@@ -313,8 +340,12 @@ class CurationService {
     int coreOutsideBounds = (stats['core_outside_bounds'] as int?) ?? 0;
     int placesOutsideBounds = (stats['places_outside_bounds'] as int?) ?? 0;
 
-    final categoryCounts = Map<String, int>.from(stats['category_counts'] as Map<String, dynamic>? ?? {});
-    final tierCounts = Map<String, int>.from(stats['tier_counts'] as Map<String, dynamic>? ?? {});
+    final categoryCounts = Map<String, int>.from(
+      stats['category_counts'] as Map<String, dynamic>? ?? {},
+    );
+    final tierCounts = Map<String, int>.from(
+      stats['tier_counts'] as Map<String, dynamic>? ?? {},
+    );
 
     // 1. Account for Exclusions
     totalPlaces = max(0, totalPlaces - _exclusions.length);
@@ -325,11 +356,19 @@ class CurationService {
       totalPlaces += 1;
       if (add.tier == 'core_destination') {
         coreTotal += 1;
-        if (add.primaryImagePath != null && add.primaryImagePath!.isNotEmpty) coreWithImages += 1;
-        if (add.openingHours != null && add.openingHours!.isNotEmpty) coreWithHours += 1;
+        if (add.primaryImagePath != null && add.primaryImagePath!.isNotEmpty) {
+          coreWithImages += 1;
+        }
+        if (add.openingHours != null && add.openingHours!.isNotEmpty) {
+          coreWithHours += 1;
+        }
       }
-      if (add.primaryImagePath != null && add.primaryImagePath!.isNotEmpty) withImages += 1;
-      if (add.openingHours != null && add.openingHours!.isNotEmpty) withHours += 1;
+      if (add.primaryImagePath != null && add.primaryImagePath!.isNotEmpty) {
+        withImages += 1;
+      }
+      if (add.openingHours != null && add.openingHours!.isNotEmpty) {
+        withHours += 1;
+      }
 
       categoryCounts[add.category] = (categoryCounts[add.category] ?? 0) + 1;
       tierCounts[add.tier] = (tierCounts[add.tier] ?? 0) + 1;
@@ -340,7 +379,8 @@ class CurationService {
       if (_exclusions.containsKey(ov.placeId)) continue;
 
       if (ov.primaryImagePath != null && ov.primaryImagePath!.isNotEmpty) {
-        final hadImg = ov.previousValues['primary_image_path'] != null &&
+        final hadImg =
+            ov.previousValues['primary_image_path'] != null &&
             (ov.previousValues['primary_image_path'] as String).isNotEmpty;
         if (!hadImg) {
           withImages += 1;
@@ -351,7 +391,8 @@ class CurationService {
       }
 
       if (ov.openingHours != null && ov.openingHours!.isNotEmpty) {
-        final hadHours = ov.previousValues['opening_hours'] != null &&
+        final hadHours =
+            ov.previousValues['opening_hours'] != null &&
             (ov.previousValues['opening_hours'] as String).isNotEmpty;
         if (!hadHours) {
           withHours += 1;
@@ -363,9 +404,11 @@ class CurationService {
 
       // Geo fixes
       if (ov.latitude != null && ov.longitude != null) {
-        final bool hadGeoIssue = (ov.previousValues['had_geo_issue'] == true) ||
+        final bool hadGeoIssue =
+            (ov.previousValues['had_geo_issue'] == true) ||
             (ov.previousValues['coordinates'] == true) ||
-            (ov.previousValues['coordinates'] != null && placesOutsideBounds > 0);
+            (ov.previousValues['coordinates'] != null &&
+                placesOutsideBounds > 0);
         if (hadGeoIssue) {
           placesOutsideBounds = max(0, placesOutsideBounds - 1);
           if (ov.isCore == true || ov.tier == 'core_destination') {
@@ -429,7 +472,8 @@ class CurationService {
 
   String generatePrSummary(String cityName) {
     final s = getSummary();
-    final totalChanges = s.totalOverrides + s.totalAdditions + s.totalExclusions;
+    final totalChanges =
+        s.totalOverrides + s.totalAdditions + s.totalExclusions;
 
     final buf = StringBuffer();
     buf.writeln('### ${cityName.toUpperCase()} CURATION SUMMARY');
@@ -447,7 +491,9 @@ class CurationService {
     buf.writeln('| ✅ Manual QA Places Verified | ${s.totalReviews} |');
     buf.writeln('| ⚠️ Open Issues Remaining | ${s.openIssues} |');
     buf.writeln();
-    buf.writeln('_Generated automatically by YatraCanvas City Pack Curation Studio._');
+    buf.writeln(
+      '_Generated automatically by YatraCanvas City Pack Curation Studio._',
+    );
 
     return buf.toString();
   }
