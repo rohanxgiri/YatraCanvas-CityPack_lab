@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../app/app_state.dart';
 import '../domain/curation/curated_place.dart';
 import '../widgets/curation/category_editor_dialog.dart';
@@ -51,41 +52,61 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
 
     switch (_activeCategory) {
       case 'missing_hours':
-        final rawCore = await repo.getPlacesForGap('core_missing_hours', limit: 50);
+        final rawCore = await repo.getPlacesForGap(
+          'core_missing_hours',
+          limit: 50,
+        );
         final rawAll = await repo.getPlacesForGap('missing_hours', limit: 50);
         final seen = <String>{};
-        final combined = [...rawCore, ...rawAll].where((p) => seen.add(p.id)).toList();
+        final combined = [
+          ...rawCore,
+          ...rawAll,
+        ].where((p) => seen.add(p.id)).toList();
         list = combined
             .map((p) => widget.state.curationService.resolve(p))
             .where((p) => !p.hasOpeningHours && !p.isExcluded)
             .toList();
         break;
       case 'missing_photos':
-        final rawCore = await repo.getPlacesForGap('core_missing_images', limit: 50);
+        final rawCore = await repo.getPlacesForGap(
+          'core_missing_images',
+          limit: 50,
+        );
         final rawAll = await repo.getPlacesForGap('missing_images', limit: 50);
         final seen = <String>{};
-        final combined = [...rawCore, ...rawAll].where((p) => seen.add(p.id)).toList();
+        final combined = [
+          ...rawCore,
+          ...rawAll,
+        ].where((p) => seen.add(p.id)).toList();
         list = combined
             .map((p) => widget.state.curationService.resolve(p))
             .where((p) => !p.hasImage && !p.isExcluded)
             .toList();
         break;
       case 'location_issues':
-        final rawOutliers = await repo.getPlacesForGap('geo_outliers', limit: 50);
+        final rawOutliers = await repo.getPlacesForGap(
+          'geo_outliers',
+          limit: 50,
+        );
         list = rawOutliers
             .map((p) => widget.state.curationService.resolve(p))
             .where((p) => !p.isExcluded)
             .toList();
         break;
       case 'duplicate_coords':
-        final rawDups = await repo.getPlacesForGap('duplicate_coords', limit: 50);
+        final rawDups = await repo.getPlacesForGap(
+          'duplicate_coords',
+          limit: 50,
+        );
         list = rawDups
             .map((p) => widget.state.curationService.resolve(p))
             .where((p) => !p.isExcluded)
             .toList();
         break;
       case 'open_issues':
-        final issues = widget.state.curationService.issues.values.where((i) => i.isOpen).toList();
+        final issues = widget.state.curationService.issues.values
+            .where((i) => i.isOpen)
+            .toList();
         for (final isItem in issues) {
           final p = await widget.state.getCuratedPlaceById(isItem.placeId);
           if (p != null) list.add(p);
@@ -143,7 +164,15 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
                     padding: const EdgeInsets.only(right: 8),
                     child: FilterChip(
                       selected: selected,
-                      label: Text(e.value, style: TextStyle(fontSize: 12, fontWeight: selected ? FontWeight.bold : FontWeight.normal)),
+                      label: Text(
+                        e.value,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: selected
+                              ? FontWeight.bold
+                              : FontWeight.normal,
+                        ),
+                      ),
                       selectedColor: Colors.indigo.shade100,
                       onSelected: (_) {
                         setState(() => _activeCategory = e.key);
@@ -161,8 +190,8 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : _places.isEmpty
-                    ? _buildEmptyState()
-                    : _buildTaskRunner(packName),
+                ? _buildEmptyState()
+                : _buildTaskRunner(packName),
           ),
         ],
       ),
@@ -183,7 +212,11 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
             children: [
               Text(
                 'Fixing $packName — Issue ${_currentIndex + 1} of ${_places.length}',
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.indigo),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: Colors.indigo,
+                ),
               ),
               Text(
                 '${_places.length - _currentIndex} remaining in queue',
@@ -205,7 +238,9 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
           Expanded(
             child: Card(
               elevation: 2,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(24),
                 child: Column(
@@ -215,9 +250,14 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
                     Row(
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 3,
+                          ),
                           decoration: BoxDecoration(
-                            color: place.isCore ? Colors.amber.shade100 : Colors.indigo.shade50,
+                            color: place.isCore
+                                ? Colors.amber.shade100
+                                : Colors.indigo.shade50,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Text(
@@ -225,20 +265,41 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
                             style: TextStyle(
                               fontSize: 11,
                               fontWeight: FontWeight.bold,
-                              color: place.isCore ? Colors.amber.shade900 : Colors.indigo.shade900,
+                              color: place.isCore
+                                  ? Colors.amber.shade900
+                                  : Colors.indigo.shade900,
                             ),
                           ),
                         ),
                         const SizedBox(width: 8),
-                        Text(place.category.toUpperCase(), style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.black54)),
+                        Text(
+                          place.category.toUpperCase(),
+                          style: const TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54,
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 12),
 
-                    Text(place.name, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                    Text(
+                      place.name,
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     if (place.address != null) ...[
                       const SizedBox(height: 4),
-                      Text(place.address!, style: TextStyle(fontSize: 12, color: Colors.grey.shade600)),
+                      Text(
+                        place.address!,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey.shade600,
+                        ),
+                      ),
                     ],
                     const SizedBox(height: 16),
 
@@ -257,7 +318,10 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
                               backgroundColor: Colors.indigo,
                               foregroundColor: Colors.white,
                               padding: const EdgeInsets.symmetric(vertical: 14),
-                              textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                              textStyle: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
                             ),
                             onPressed: () => _openFixDialog(place),
                           ),
@@ -270,7 +334,8 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
                             ReportProblemDialog.show(
                               context,
                               place: place.toLabPlace(),
-                              packVersion: widget.state.activePack?.version ?? 'v3',
+                              packVersion:
+                                  widget.state.activePack?.version ?? 'v3',
                               onSubmit: (issue) async {
                                 await widget.state.logCurationIssue(
                                   placeId: place.id,
@@ -278,7 +343,9 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
                                   issueType: issue.issueType.code,
                                   note: issue.note,
                                 );
-                                _showFeedback('Issue flagged for "${place.name}"');
+                                _showFeedback(
+                                  'Issue flagged for "${place.name}"',
+                                );
                                 _next();
                               },
                             );
@@ -324,7 +391,8 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
         icon = Icons.pin_drop;
         color = Colors.deepOrange;
         title = 'Coordinates outside expected region';
-        description = 'Current coordinates (${place.latitude.toStringAsFixed(4)}, ${place.longitude.toStringAsFixed(4)}) appear misplaced.';
+        description =
+            'Current coordinates (${place.latitude.toStringAsFixed(4)}, ${place.longitude.toStringAsFixed(4)}) appear misplaced.';
         break;
       case 'duplicate_coords':
         icon = Icons.copy;
@@ -336,7 +404,8 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
         icon = Icons.warning_amber_rounded;
         color = Colors.red;
         title = 'Action required';
-        description = 'Review place details and resolve open community defect flags.';
+        description =
+            'Review place details and resolve open community defect flags.';
         break;
     }
 
@@ -356,9 +425,19 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: color.withAlpha(255))),
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: color.withAlpha(255),
+                  ),
+                ),
                 const SizedBox(height: 4),
-                Text(description, style: TextStyle(fontSize: 12, color: Colors.grey.shade700)),
+                Text(
+                  description,
+                  style: TextStyle(fontSize: 12, color: Colors.grey.shade700),
+                ),
               ],
             ),
           ),
@@ -404,6 +483,19 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
         ImageCuratorDialog.show(
           context,
           place: place,
+          onImport: (selection) async {
+            await widget.state.importPlaceImage(
+              place: place.toLabPlace(),
+              sourceBytes: selection.bytes,
+              originalFilename: selection.filename,
+              source: selection.source,
+              sourcePage: selection.sourcePage,
+              license: selection.license,
+              licenseUrl: selection.licenseUrl,
+            );
+            _showFeedback('Photo imported for "${place.name}"');
+            _next();
+          },
           onSave: ({required primaryImagePath, required evidenceSource}) async {
             await widget.state.saveFieldOverride(
               place: place.toLabPlace(),
@@ -432,35 +524,45 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
           context,
           place: place,
           bbox: widget.state.qualityStats?['bbox'] as Map<String, dynamic>?,
-          onSave: ({required latitude, required longitude, required evidenceSource}) async {
-            await widget.state.saveFieldOverride(
-              place: place.toLabPlace(),
-              latitude: latitude,
-              longitude: longitude,
-              fieldName: 'coordinates',
-              evidenceSource: evidenceSource,
-              previousValue: '${place.latitude}, ${place.longitude}',
-            );
-            _showFeedback('Coordinates updated for "${place.name}"');
-            _next();
-          },
+          onSave:
+              ({
+                required latitude,
+                required longitude,
+                required evidenceSource,
+              }) async {
+                await widget.state.saveFieldOverride(
+                  place: place.toLabPlace(),
+                  latitude: latitude,
+                  longitude: longitude,
+                  fieldName: 'coordinates',
+                  evidenceSource: evidenceSource,
+                  previousValue: '${place.latitude}, ${place.longitude}',
+                );
+                _showFeedback('Coordinates updated for "${place.name}"');
+                _next();
+              },
         );
         break;
       default:
         CategoryEditorDialog.show(
           context,
           place: place,
-          onSave: ({required category, subcategory, required evidenceSource}) async {
-            await widget.state.saveFieldOverride(
-              place: place.toLabPlace(),
-              category: category,
-              subcategory: subcategory,
-              fieldName: 'category',
-              evidenceSource: evidenceSource,
-            );
-            _showFeedback('Category updated for "${place.name}"');
-            _next();
-          },
+          onSave:
+              ({
+                required category,
+                subcategory,
+                required evidenceSource,
+              }) async {
+                await widget.state.saveFieldOverride(
+                  place: place.toLabPlace(),
+                  category: category,
+                  subcategory: subcategory,
+                  fieldName: 'category',
+                  evidenceSource: evidenceSource,
+                );
+                _showFeedback('Category updated for "${place.name}"');
+                _next();
+              },
         );
         break;
     }
@@ -473,11 +575,20 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
         children: [
           const Icon(Icons.check_circle_outline, size: 64, color: Colors.green),
           const SizedBox(height: 16),
-          Text('No ${_categories[_activeCategory]} Issues!', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text(
+            'No ${_categories[_activeCategory]} Issues!',
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
           const SizedBox(height: 6),
-          const Text('All places in this category currently satisfy quality standards.', style: TextStyle(color: Colors.black54)),
+          const Text(
+            'All places in this category currently satisfy quality standards.',
+            style: TextStyle(color: Colors.black54),
+          ),
           const SizedBox(height: 16),
-          OutlinedButton(onPressed: _loadPlaces, child: const Text('Refresh Category')),
+          OutlinedButton(
+            onPressed: _loadPlaces,
+            child: const Text('Refresh Category'),
+          ),
         ],
       ),
     );

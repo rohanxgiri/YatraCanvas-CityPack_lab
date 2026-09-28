@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import '../app/app_state.dart';
+import '../app/lab_theme.dart';
 import '../domain/city_pack.dart';
-import '../widgets/offline_badge.dart';
 import 'city_lab_home_screen.dart';
 import 'diagnostics_screen.dart';
 
@@ -11,141 +12,89 @@ class CityPackScreen extends StatelessWidget {
 
   const CityPackScreen({super.key, required this.state});
 
-  void _openPack(BuildContext context, CityPack pack) async {
+  Future<void> _openPack(BuildContext context, CityPack pack) async {
     if (!pack.isValid) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Cannot open invalid pack: ${pack.invalidReason}'),
-          backgroundColor: Colors.red.shade800,
-        ),
+        SnackBar(content: Text('This pack cannot open: ${pack.invalidReason}')),
       );
       return;
     }
-
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => const _OpeningPackDialog(),
+    );
     try {
-      showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (_) => const Center(
-          child: Card(
-            child: Padding(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CircularProgressIndicator(),
-                  SizedBox(height: 16),
-                  Text('Loading City Pack SQLite Database...'),
-                ],
-              ),
-            ),
-          ),
+      await state.openPack(pack);
+      if (!context.mounted) return;
+      Navigator.of(context).pop();
+      await Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (_) => CityLabHomeScreen(state: state),
         ),
       );
-
-      await state.openPack(pack);
-      if (context.mounted) {
-        Navigator.of(context).pop(); // Dismiss loading dialog
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => CityLabHomeScreen(state: state),
-          ),
-        );
-      }
-    } catch (e) {
-      if (context.mounted) {
-        Navigator.of(context).pop(); // Dismiss loading
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error loading pack: $e'),
-            backgroundColor: Colors.red.shade800,
-          ),
-        );
-      }
+    } catch (error) {
+      if (!context.mounted) return;
+      Navigator.of(context).pop();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('The pack could not be opened: $error')),
+      );
     }
   }
 
   void _showPackMetadata(BuildContext context, CityPack pack) {
-    showModalBottomSheet(
+    showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
+      showDragHandle: true,
       builder: (_) => DraggableScrollableSheet(
-        initialChildSize: 0.6,
-        maxChildSize: 0.9,
-        minChildSize: 0.4,
+        initialChildSize: 0.66,
+        minChildSize: 0.42,
+        maxChildSize: 0.92,
         expand: false,
-        builder: (_, scrollController) => Padding(
-          padding: const EdgeInsets.all(16),
-          child: ListView(
-            controller: scrollController,
-            children: [
-              Row(
-                children: [
-                  const Icon(Icons.info_outline, color: Colors.indigo),
-                  const SizedBox(width: 8),
-                  Text(
-                    '${pack.name} Pack Metadata',
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-              const Divider(height: 24),
-              _metaTile('City ID', pack.id),
-              _metaTile('State / Country', '${pack.state}, ${pack.country}'),
-              _metaTile('Pack Version', pack.version),
-              _metaTile('Integrity Status', pack.integrityStatus.name.toUpperCase()),
-              _metaTile('Place Count', '${pack.placeCount} places'),
-              _metaTile('Images with Local Files', '${pack.imageCount} images'),
-              _metaTile('Database Size', '${pack.dbSizeMb} MB'),
-              _metaTile('Center Coordinates',
-                  '${pack.centerLat.toStringAsFixed(5)}, ${pack.centerLon.toStringAsFixed(5)}'),
-              _metaTile('Bounding Box (W, S, E, N)',
-                  '[${pack.minLon.toStringAsFixed(3)}, ${pack.minLat.toStringAsFixed(3)}, ${pack.maxLon.toStringAsFixed(3)}, ${pack.maxLat.toStringAsFixed(3)}]'),
-              const SizedBox(height: 16),
-              if (pack.receipt.isNotEmpty) ...[
-                const Text('Lab Sync Receipt:',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-                const SizedBox(height: 6),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade100,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(
-                    pack.receipt.toString(),
-                    style: const TextStyle(fontFamily: 'monospace', fontSize: 11),
-                  ),
-                ),
-              ],
-            ],
+        builder: (context, controller) => ListView(
+          controller: controller,
+          padding: const EdgeInsets.fromLTRB(
+            LabSpacing.lg,
+            0,
+            LabSpacing.lg,
+            LabSpacing.xl,
           ),
+          children: [
+            Text(
+              '${pack.name} pack details',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            const SizedBox(height: LabSpacing.sm),
+            const Text(
+              'Technical pack metadata is kept here so the main contributor journey stays focused.',
+            ),
+            const SizedBox(height: LabSpacing.lg),
+            _MetadataRow(label: 'City ID', value: pack.id),
+            _MetadataRow(
+              label: 'State and country',
+              value: '${pack.state}, ${pack.country}',
+            ),
+            _MetadataRow(label: 'Pack version', value: pack.version),
+            _MetadataRow(
+              label: 'Integrity',
+              value: pack.integrityStatus.name.toUpperCase(),
+            ),
+            _MetadataRow(label: 'Places', value: '${pack.placeCount}'),
+            _MetadataRow(label: 'Local images', value: '${pack.imageCount}'),
+            _MetadataRow(label: 'Database size', value: '${pack.dbSizeMb} MB'),
+            _MetadataRow(
+              label: 'Centre',
+              value:
+                  '${pack.centerLat.toStringAsFixed(5)}, ${pack.centerLon.toStringAsFixed(5)}',
+            ),
+            _MetadataRow(
+              label: 'Bounding box',
+              value:
+                  '${pack.minLon.toStringAsFixed(3)}, ${pack.minLat.toStringAsFixed(3)}, ${pack.maxLon.toStringAsFixed(3)}, ${pack.maxLat.toStringAsFixed(3)}',
+            ),
+          ],
         ),
-      ),
-    );
-  }
-
-  Widget _metaTile(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            width: 140,
-            child: Text(label,
-                style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey.shade700,
-                    fontWeight: FontWeight.w500)),
-          ),
-          Expanded(
-            child: Text(value,
-                style: const TextStyle(
-                    fontSize: 13, fontWeight: FontWeight.bold)),
-          ),
-        ],
       ),
     );
   }
@@ -154,189 +103,188 @@ class CityPackScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        title: const Row(
           children: [
-            Text('CITY PACK LAB',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Text('Manual Real-Flow QA Suite',
-                style: TextStyle(fontSize: 11, color: Colors.white70)),
+            Icon(Icons.route_outlined),
+            SizedBox(width: LabSpacing.sm),
+            Text('YatraCanvas CityPack Lab'),
           ],
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            child: OfflineBadge(
-              isStrictOffline: state.strictOfflineMode,
-              onTap: () => state.toggleStrictOffline(!state.strictOfflineMode),
+          IconButton(
+            icon: const Icon(Icons.analytics_outlined),
+            tooltip: 'Open diagnostics',
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => DiagnosticsScreen(state: state),
+              ),
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.analytics_outlined),
-            tooltip: 'Network Transparency & Diagnostics',
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => DiagnosticsScreen(state: state),
-                ),
-              );
-            },
-          ),
-          IconButton(
             icon: const Icon(Icons.refresh),
-            tooltip: 'Reload Packs',
-            onPressed: () => state.loadPacks(),
+            tooltip: 'Reload packs',
+            onPressed: state.loadPacks,
           ),
+          const SizedBox(width: LabSpacing.xs),
         ],
       ),
       body: ListenableBuilder(
         listenable: state,
         builder: (context, _) {
-          if (state.isLoadingPacks) {
-            return const Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircularProgressIndicator(),
-                  SizedBox(height: 16),
-                  Text('Discovering City Packs...'),
-                ],
-              ),
-            );
-          }
-
+          if (state.isLoadingPacks) return const _PackLoadingState();
           if (state.packLoadError != null) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(24),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.error_outline,
-                        size: 48, color: Colors.red.shade700),
-                    const SizedBox(height: 16),
-                    Text(
-                      state.packLoadError!,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 15),
-                    ),
-                    const SizedBox(height: 16),
-                    ElevatedButton(
-                      onPressed: () => state.loadPacks(),
-                      child: const Text('Retry'),
-                    ),
-                  ],
-                ),
-              ),
+            return _PackErrorState(
+              message: state.packLoadError!,
+              onRetry: state.loadPacks,
             );
           }
-
           if (state.availablePacks.isEmpty) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(24),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.inventory_2_outlined,
-                        size: 56, color: Colors.grey.shade400),
-                    const SizedBox(height: 16),
-                    const Text(
-                      'No City Packs Synchronized',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Run tools/sync_city_packs.py to import valid production packs from YatraCanvas-DataFactory.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.grey.shade600),
-                    ),
-                    const SizedBox(height: 16),
-                    ElevatedButton.icon(
-                      icon: const Icon(Icons.refresh),
-                      label: const Text('Check Assets Again'),
-                      onPressed: () => state.loadPacks(),
-                    ),
-                  ],
-                ),
-              ),
-            );
+            return _EmptyPackState(onRetry: state.loadPacks);
           }
 
-          return ListView(
-            padding: const EdgeInsets.all(12),
-            children: [
-              if (kIsWeb)
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  margin: const EdgeInsets.only(bottom: 12),
-                  decoration: BoxDecoration(
-                    color: Colors.blue.shade50,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.blue.shade300),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.language, color: Colors.blue.shade800),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          'Web Browser Mode (WASM SQLite): City Packs queryable directly inside Chrome via WebAssembly SQLite.',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.blue.shade900,
-                            fontWeight: FontWeight.w600,
-                          ),
+          return CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: ColoredBox(
+                  color: LabPalette.inkStrong,
+                  child: Center(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 1180),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: LabSpacing.lg,
+                          vertical: LabSpacing.xxl,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: LabSpacing.sm,
+                                vertical: LabSpacing.xs,
+                              ),
+                              decoration: BoxDecoration(
+                                color: LabPalette.teal,
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: Text(
+                                kIsWeb
+                                    ? 'BROWSER REVIEW MODE'
+                                    : 'DESKTOP CURATION MODE',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w800,
+                                  letterSpacing: 1.2,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: LabSpacing.md),
+                            Text(
+                              'Choose a city.\nMake it ready to travel.',
+                              style: Theme.of(context).textTheme.displaySmall
+                                  ?.copyWith(color: Colors.white),
+                            ),
+                            const SizedBox(height: LabSpacing.sm),
+                            Text(
+                              'Inspect the DataFactory pack, fix editorial gaps outside the source database, complete the 50 place review, and certify the release.',
+                              style: Theme.of(context).textTheme.bodyLarge
+                                  ?.copyWith(color: Colors.white70),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
+                    ),
                   ),
                 ),
-              Container(
-                padding: const EdgeInsets.all(12),
-                margin: const EdgeInsets.only(bottom: 12),
-                decoration: BoxDecoration(
-                  color: Colors.indigo.shade50,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.indigo.shade100),
-                ),
-                child: Row(
-                  children: [
-                    Icon(Icons.verified_user_outlined,
-                        color: Colors.indigo.shade700),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        'Testing DataFactory City Packs in Read-Only Mode. Choose a city to begin realistic manual testing.',
-                        style: TextStyle(
-                            fontSize: 12, color: Colors.indigo.shade900),
+              ),
+              SliverToBoxAdapter(
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 1180),
+                    child: Padding(
+                      padding: const EdgeInsets.all(LabSpacing.lg),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          _OperatingModeNotice(isWeb: kIsWeb),
+                          const SizedBox(height: LabSpacing.lg),
+                          Text(
+                            'Available city packs',
+                            style: Theme.of(context).textTheme.headlineMedium,
+                          ),
+                          const SizedBox(height: LabSpacing.xs),
+                          Text(
+                            '${state.availablePacks.length} local packs are ready for inspection.',
+                          ),
+                          const SizedBox(height: LabSpacing.md),
+                          LayoutBuilder(
+                            builder: (context, constraints) {
+                              final columns = constraints.maxWidth >= 900
+                                  ? 3
+                                  : constraints.maxWidth >= 580
+                                  ? 2
+                                  : 1;
+                              const gap = LabSpacing.md;
+                              final width =
+                                  (constraints.maxWidth - (columns - 1) * gap) /
+                                  columns;
+                              return Wrap(
+                                spacing: gap,
+                                runSpacing: gap,
+                                children: state.availablePacks
+                                    .map(
+                                      (pack) => SizedBox(
+                                        width: width,
+                                        child: _PackCard(
+                                          pack: pack,
+                                          onOpen: () =>
+                                              _openPack(context, pack),
+                                          onDetails: () =>
+                                              _showPackMetadata(context, pack),
+                                        ),
+                                      ),
+                                    )
+                                    .toList(),
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     ),
-                  ],
+                  ),
                 ),
               ),
-              ...state.availablePacks.map((pack) => _buildPackCard(context, pack)),
             ],
           );
         },
       ),
     );
   }
+}
 
-  Widget _buildPackCard(BuildContext context, CityPack pack) {
-    final bool isPass = pack.integrityStatus == IntegrityStatus.pass;
+class _PackCard extends StatelessWidget {
+  final CityPack pack;
+  final VoidCallback onOpen;
+  final VoidCallback onDetails;
 
+  const _PackCard({
+    required this.pack,
+    required this.onOpen,
+    required this.onDetails,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final valid = pack.isValid;
     return Card(
-      margin: const EdgeInsets.only(bottom: 12),
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(LabSpacing.md),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   child: Column(
@@ -344,95 +292,56 @@ class CityPackScreen extends StatelessWidget {
                     children: [
                       Text(
                         pack.name,
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
-                      const SizedBox(height: 2),
-                      Text(
-                        '${pack.state}, ${pack.country}',
-                        style: TextStyle(
-                            fontSize: 13, color: Colors.grey.shade700),
-                      ),
+                      const SizedBox(height: LabSpacing.xxs),
+                      Text('${pack.state}, ${pack.country}'),
                     ],
                   ),
                 ),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: isPass ? Colors.green.shade50 : Colors.red.shade50,
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(
-                      color:
-                          isPass ? Colors.green.shade600 : Colors.red.shade600,
-                    ),
+                _IntegrityBadge(valid: valid),
+              ],
+            ),
+            const SizedBox(height: LabSpacing.lg),
+            Row(
+              children: [
+                Expanded(
+                  child: _PackStat(
+                    icon: Icons.place_outlined,
+                    value: '${pack.placeCount}',
+                    label: 'places',
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        isPass ? Icons.check_circle : Icons.warning_amber,
-                        size: 14,
-                        color: isPass
-                            ? Colors.green.shade700
-                            : Colors.red.shade700,
-                      ),
-                      const SizedBox(width: 4),
-                      Text(
-                        'Integrity: ${pack.integrityStatus.name.toUpperCase()}',
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.bold,
-                          color: isPass
-                              ? Colors.green.shade800
-                              : Colors.red.shade800,
-                        ),
-                      ),
-                    ],
+                ),
+                Expanded(
+                  child: _PackStat(
+                    icon: Icons.photo_outlined,
+                    value: '${pack.imageCount}',
+                    label: 'images',
+                  ),
+                ),
+                Expanded(
+                  child: _PackStat(
+                    icon: Icons.tag,
+                    value: pack.version,
+                    label: 'version',
                   ),
                 ),
               ],
             ),
-            const Divider(height: 24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _statItem(
-                    'Places',
-                    '${pack.placeCount}',
-                    Icons.place_outlined),
-                _statItem(
-                    'Images',
-                    '${pack.imageCount}',
-                    Icons.image_outlined),
-                _statItem(
-                    'DB Size',
-                    '${pack.dbSizeMb} MB',
-                    Icons.storage_outlined),
-                _statItem(
-                    'Version',
-                    pack.version,
-                    Icons.tag),
-              ],
-            ),
-            const SizedBox(height: 16),
+            const SizedBox(height: LabSpacing.lg),
             Row(
               children: [
-                OutlinedButton.icon(
-                  onPressed: () => _showPackMetadata(context, pack),
-                  icon: const Icon(Icons.info_outline, size: 16),
-                  label: const Text('Metadata'),
+                IconButton(
+                  onPressed: onDetails,
+                  tooltip: 'View pack details',
+                  icon: const Icon(Icons.info_outline),
                 ),
-                const Spacer(),
-                ElevatedButton.icon(
-                  onPressed: () => _openPack(context, pack),
-                  icon: const Icon(Icons.travel_explore),
-                  label: const Text('Open Pack'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.indigo,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 12),
+                const SizedBox(width: LabSpacing.xs),
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: valid ? onOpen : null,
+                    icon: const Icon(Icons.arrow_forward),
+                    label: const Text('Open workbench'),
                   ),
                 ),
               ],
@@ -442,17 +351,260 @@ class CityPackScreen extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _statItem(String label, String value, IconData icon) {
+class _PackStat extends StatelessWidget {
+  final IconData icon;
+  final String value;
+  final String label;
+
+  const _PackStat({
+    required this.icon,
+    required this.value,
+    required this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
-        Icon(icon, size: 18, color: Colors.grey.shade600),
-        const SizedBox(height: 4),
-        Text(value,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-        Text(label,
-            style: TextStyle(fontSize: 11, color: Colors.grey.shade600)),
+        Icon(icon, color: LabPalette.teal),
+        const SizedBox(height: LabSpacing.xxs),
+        Text(value, style: const TextStyle(fontWeight: FontWeight.w800)),
+        Text(label, style: Theme.of(context).textTheme.bodySmall),
       ],
+    );
+  }
+}
+
+class _IntegrityBadge extends StatelessWidget {
+  final bool valid;
+
+  const _IntegrityBadge({required this.valid});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: LabSpacing.xs,
+        vertical: LabSpacing.xxs,
+      ),
+      decoration: BoxDecoration(
+        color: valid ? LabPalette.successSoft : LabPalette.dangerSoft,
+        borderRadius: BorderRadius.circular(100),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            valid ? Icons.check_circle_outline : Icons.error_outline,
+            size: 16,
+            color: valid ? LabPalette.success : LabPalette.danger,
+          ),
+          const SizedBox(width: LabSpacing.xxs),
+          Text(
+            valid ? 'PASS' : 'INVALID',
+            style: TextStyle(
+              color: valid ? LabPalette.success : LabPalette.danger,
+              fontSize: 11,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _OperatingModeNotice extends StatelessWidget {
+  final bool isWeb;
+
+  const _OperatingModeNotice({required this.isWeb});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(LabSpacing.md),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CircleAvatar(
+              backgroundColor: isWeb
+                  ? LabPalette.saffronSoft
+                  : LabPalette.tealSoft,
+              foregroundColor: LabPalette.ink,
+              child: Icon(
+                isWeb ? Icons.visibility_outlined : Icons.edit_note_outlined,
+              ),
+            ),
+            const SizedBox(width: LabSpacing.sm),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    isWeb ? 'Review in the browser' : 'Curate on this desktop',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  const SizedBox(height: LabSpacing.xxs),
+                  Text(
+                    isWeb
+                        ? 'SQLite inspection and QA work here. Importing photos and writing Git tracked curation files requires the desktop app.'
+                        : 'The original SQLite pack stays immutable. Your fixes are written as reviewable curation files beside it.',
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _MetadataRow extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const _MetadataRow({required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: LabSpacing.xs),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(width: 148, child: Text(label)),
+          Expanded(
+            child: Text(
+              value,
+              style: const TextStyle(fontWeight: FontWeight.w700),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _OpeningPackDialog extends StatelessWidget {
+  const _OpeningPackDialog();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Card(
+        child: Padding(
+          padding: EdgeInsets.all(LabSpacing.lg),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircularProgressIndicator(),
+              SizedBox(height: LabSpacing.md),
+              Text('Opening the read only city pack…'),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _PackLoadingState extends StatelessWidget {
+  const _PackLoadingState();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CircularProgressIndicator(),
+          SizedBox(height: LabSpacing.md),
+          Text('Finding local city packs…'),
+        ],
+      ),
+    );
+  }
+}
+
+class _PackErrorState extends StatelessWidget {
+  final String message;
+  final VoidCallback onRetry;
+
+  const _PackErrorState({required this.message, required this.onRetry});
+
+  @override
+  Widget build(BuildContext context) {
+    return _StateMessage(
+      icon: Icons.error_outline,
+      title: 'City packs could not load',
+      message: message,
+      actionLabel: 'Try again',
+      onAction: onRetry,
+    );
+  }
+}
+
+class _EmptyPackState extends StatelessWidget {
+  final VoidCallback onRetry;
+
+  const _EmptyPackState({required this.onRetry});
+
+  @override
+  Widget build(BuildContext context) {
+    return _StateMessage(
+      icon: Icons.inventory_2_outlined,
+      title: 'No city packs found',
+      message: 'Sync a production pack from YatraCanvas DataFactory, then check again.',
+      actionLabel: 'Check again',
+      onAction: onRetry,
+    );
+  }
+}
+
+class _StateMessage extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String message;
+  final String actionLabel;
+  final VoidCallback onAction;
+
+  const _StateMessage({
+    required this.icon,
+    required this.title,
+    required this.message,
+    required this.actionLabel,
+    required this.onAction,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 440),
+        child: Padding(
+          padding: const EdgeInsets.all(LabSpacing.lg),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, size: 52, color: LabPalette.teal),
+              const SizedBox(height: LabSpacing.md),
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              const SizedBox(height: LabSpacing.xs),
+              Text(message, textAlign: TextAlign.center),
+              const SizedBox(height: LabSpacing.lg),
+              ElevatedButton(onPressed: onAction, child: Text(actionLabel)),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

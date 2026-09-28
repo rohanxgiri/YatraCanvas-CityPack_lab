@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import '../app/app_state.dart';
+import '../app/lab_theme.dart';
 import 'curation_review_screen.dart';
 import 'diagnostics_screen.dart';
 import 'fix_center_screen.dart';
@@ -47,7 +49,10 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
           children: [
             const Icon(Icons.commit, color: Colors.indigo),
             const SizedBox(width: 8),
-            Text('$packName Curation Summary (For PR)', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(
+              '$packName Curation Summary (For PR)',
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
           ],
         ),
         content: SizedBox(
@@ -65,15 +70,27 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
                 Row(
                   children: [
                     Expanded(
-                      child: _statPill('Overrides', '${summary.totalOverrides} places', Colors.green),
+                      child: _statPill(
+                        'Overrides',
+                        '${summary.totalOverrides} places',
+                        Colors.green,
+                      ),
                     ),
                     const SizedBox(width: 8),
                     Expanded(
-                      child: _statPill('Additions', '${summary.totalAdditions} places', Colors.purple),
+                      child: _statPill(
+                        'Additions',
+                        '${summary.totalAdditions} places',
+                        Colors.purple,
+                      ),
                     ),
                     const SizedBox(width: 8),
                     Expanded(
-                      child: _statPill('Exclusions', '${summary.totalExclusions} places', Colors.red),
+                      child: _statPill(
+                        'Exclusions',
+                        '${summary.totalExclusions} places',
+                        Colors.red,
+                      ),
                     ),
                   ],
                 ),
@@ -87,7 +104,10 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
                   ),
                   child: SelectableText(
                     summaryMd,
-                    style: const TextStyle(fontFamily: 'monospace', fontSize: 11),
+                    style: const TextStyle(
+                      fontFamily: 'monospace',
+                      fontSize: 11,
+                    ),
                   ),
                 ),
               ],
@@ -110,7 +130,9 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
               Clipboard.setData(ClipboardData(text: summaryMd));
               Navigator.of(ctx).pop();
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Copied PR curation summary to clipboard!')),
+                const SnackBar(
+                  content: Text('Copied PR curation summary to clipboard!'),
+                ),
               );
             },
           ),
@@ -120,7 +142,9 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
   }
 
   void _showContributorProfileDialog() {
-    final controller = TextEditingController(text: widget.state.contributorName);
+    final controller = TextEditingController(
+      text: widget.state.contributorName,
+    );
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -129,7 +153,9 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Enter your name or GitHub handle to sign curation records:'),
+            const Text(
+              'Enter your name or GitHub handle to sign curation records:',
+            ),
             const SizedBox(height: 10),
             TextField(
               controller: controller,
@@ -141,7 +167,10 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
           ],
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.of(ctx).pop(), child: const Text('Cancel')),
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text('Cancel'),
+          ),
           ElevatedButton(
             onPressed: () {
               widget.state.setContributorName(controller.text);
@@ -164,9 +193,23 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
       ),
       child: Column(
         children: [
-          Text(title, style: TextStyle(fontSize: 10, color: color, fontWeight: FontWeight.bold)),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 10,
+              color: color,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           const SizedBox(height: 2),
-          Text(value, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: color)),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              color: color,
+            ),
+          ),
         ],
       ),
     );
@@ -201,6 +244,41 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
       _currentIndex = 0;
     }
 
+    final destinations = <NavigationDestination>[
+      const NavigationDestination(
+        icon: Icon(Icons.home_outlined),
+        selectedIcon: Icon(Icons.home),
+        label: 'Home',
+      ),
+      const NavigationDestination(
+        icon: Icon(Icons.build_outlined),
+        selectedIcon: Icon(Icons.build),
+        label: 'Fix',
+      ),
+      const NavigationDestination(
+        icon: Icon(Icons.rate_review_outlined),
+        selectedIcon: Icon(Icons.rate_review),
+        label: 'Review',
+      ),
+      const NavigationDestination(
+        icon: Icon(Icons.place_outlined),
+        selectedIcon: Icon(Icons.place),
+        label: 'Places',
+      ),
+      const NavigationDestination(
+        icon: Icon(Icons.verified_outlined),
+        selectedIcon: Icon(Icons.verified),
+        label: 'Release',
+      ),
+      if (widget.state.isAdminMode)
+        const NavigationDestination(
+          icon: Icon(Icons.analytics_outlined),
+          selectedIcon: Icon(Icons.analytics),
+          label: 'Advanced',
+        ),
+    ];
+    final useRail = MediaQuery.sizeOf(context).width >= 900;
+
     return Scaffold(
       appBar: AppBar(
         title: Column(
@@ -210,19 +288,25 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
               children: [
                 Text(
                   pack.name,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
                 const SizedBox(width: 8),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 2,
+                  ),
                   decoration: BoxDecoration(
-                    color: Colors.indigo.shade100,
+                    color: LabPalette.saffronSoft,
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
                     'v${pack.version}',
                     style: TextStyle(
-                      color: Colors.indigo.shade900,
+                      color: LabPalette.inkStrong,
                       fontSize: 10,
                       fontWeight: FontWeight.bold,
                     ),
@@ -242,7 +326,9 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
             margin: const EdgeInsets.symmetric(vertical: 10),
             padding: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-              color: widget.state.isAdminMode ? Colors.purple.shade900 : Colors.indigo.shade800,
+              color: widget.state.isAdminMode
+                  ? LabPalette.saffron
+                  : LabPalette.teal,
               borderRadius: BorderRadius.circular(20),
               border: Border.all(color: Colors.white24),
             ),
@@ -255,14 +341,22 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(
-                    widget.state.isAdminMode ? Icons.admin_panel_settings : Icons.person_outline,
+                    widget.state.isAdminMode
+                        ? Icons.admin_panel_settings
+                        : Icons.person_outline,
                     size: 16,
                     color: Colors.white,
                   ),
                   const SizedBox(width: 6),
                   Text(
-                    widget.state.isAdminMode ? 'Admin Mode' : 'Contributor Mode',
-                    style: const TextStyle(fontSize: 11, color: Colors.white, fontWeight: FontWeight.bold),
+                    widget.state.isAdminMode
+                        ? 'Admin Mode'
+                        : 'Contributor Mode',
+                    style: const TextStyle(
+                      fontSize: 11,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
@@ -283,53 +377,69 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
         ],
       ),
       body: widget.state.isEvaluatingQuality
-          ? const Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CircularProgressIndicator(),
-                  SizedBox(height: 16),
-                  Text('Evaluating Curation & Release Readiness...'),
-                ],
-              ),
+          ? const _EvaluationState()
+          : useRail
+          ? Row(
+              children: [
+                NavigationRail(
+                  selectedIndex: _currentIndex,
+                  extended: true,
+                  minExtendedWidth: 214,
+                  groupAlignment: -0.78,
+                  onDestinationSelected: _navigateToTab,
+                  leading: const Padding(
+                    padding: EdgeInsets.only(
+                      top: LabSpacing.md,
+                      bottom: LabSpacing.lg,
+                    ),
+                    child: Text(
+                      'WORKBENCH',
+                      style: TextStyle(
+                        color: LabPalette.muted,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 1.4,
+                      ),
+                    ),
+                  ),
+                  destinations: destinations
+                      .map(
+                        (destination) => NavigationRailDestination(
+                          icon: destination.icon,
+                          selectedIcon: destination.selectedIcon,
+                          label: Text(destination.label),
+                        ),
+                      )
+                      .toList(),
+                ),
+                const VerticalDivider(width: 1),
+                Expanded(child: pages[_currentIndex]),
+              ],
             )
           : pages[_currentIndex],
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _currentIndex,
-        onDestinationSelected: _navigateToTab,
-        indicatorColor: Colors.indigo.shade100,
-        destinations: [
-          const NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home, color: Colors.indigo),
-            label: 'Home',
-          ),
-          const NavigationDestination(
-            icon: Icon(Icons.build_outlined),
-            selectedIcon: Icon(Icons.build, color: Colors.indigo),
-            label: 'Fix',
-          ),
-          const NavigationDestination(
-            icon: Icon(Icons.rate_review_outlined),
-            selectedIcon: Icon(Icons.rate_review, color: Colors.indigo),
-            label: 'Review',
-          ),
-          const NavigationDestination(
-            icon: Icon(Icons.place_outlined),
-            selectedIcon: Icon(Icons.place, color: Colors.indigo),
-            label: 'Places',
-          ),
-          const NavigationDestination(
-            icon: Icon(Icons.verified_outlined),
-            selectedIcon: Icon(Icons.verified, color: Colors.indigo),
-            label: 'Release',
-          ),
-          if (widget.state.isAdminMode)
-            const NavigationDestination(
-              icon: Icon(Icons.analytics_outlined),
-              selectedIcon: Icon(Icons.analytics, color: Colors.purple),
-              label: 'Advanced',
+      bottomNavigationBar: useRail
+          ? null
+          : NavigationBar(
+              selectedIndex: _currentIndex,
+              onDestinationSelected: _navigateToTab,
+              destinations: destinations,
             ),
+    );
+  }
+}
+
+class _EvaluationState extends StatelessWidget {
+  const _EvaluationState();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CircularProgressIndicator(),
+          SizedBox(height: LabSpacing.md),
+          Text('Recalculating quality and release gates…'),
         ],
       ),
     );

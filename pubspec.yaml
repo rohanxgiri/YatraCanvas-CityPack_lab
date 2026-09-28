@@ -43,6 +43,8 @@ dependencies:
   latlong2: ^0.10.1
   flutter_map: ^8.3.2
   sqflite_common_ffi_web: ^1.2.0
+  file_picker: ^13.1.0
+  image: ^4.10.1
 
 dev_dependencies:
   flutter_test:

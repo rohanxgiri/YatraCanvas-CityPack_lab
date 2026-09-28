@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+
 import '../domain/city_pack.dart';
 import '../domain/lab_place.dart';
 import '../domain/qa_issue.dart';
@@ -25,6 +26,7 @@ import '../domain/curation/curation_issue.dart';
 import '../domain/curation/place_addition.dart';
 import '../curation/curation_repository.dart';
 import '../curation/curation_service.dart';
+import '../curation/curated_image_import_service.dart';
 
 class AppState extends ChangeNotifier {
   final CityPackRegistry registry = CityPackRegistry();
@@ -34,14 +36,19 @@ class AppState extends ChangeNotifier {
 
   // Curation System (Human overrides, additions, exclusions)
   final CurationRepository curationRepository = CurationRepository();
-  late final CurationService curationService = CurationService(repository: curationRepository);
+  late final CurationService curationService = CurationService(
+    repository: curationRepository,
+  );
+  final CuratedImageImportService imageImportService =
+      CuratedImageImportService();
 
   bool isAdminMode = false;
   String contributorName = 'Contributor';
 
   // Quality & Release Gate Services
   final CityQualityService cityQualityService = const CityQualityService();
-  final TravelReadinessService travelReadinessService = const TravelReadinessService();
+  final TravelReadinessService travelReadinessService =
+      const TravelReadinessService();
   final ReleaseGateService releaseGateService = const ReleaseGateService();
   final DataGapService dataGapService = const DataGapService();
   final QaSamplingService qaSamplingService = const QaSamplingService();
@@ -220,30 +227,65 @@ class AppState extends ChangeNotifier {
 
     switch (filter) {
       case 'needs_attention':
-        final p1 = await repository!.getPlacesForGap('core_missing_images', limit: limit);
-        final p2 = await repository!.getPlacesForGap('core_missing_hours', limit: limit);
-        final p3 = await repository!.getPlacesForGap('core_geo_issue', limit: limit);
+        final p1 = await repository!.getPlacesForGap(
+          'core_missing_images',
+          limit: limit,
+        );
+        final p2 = await repository!.getPlacesForGap(
+          'core_missing_hours',
+          limit: limit,
+        );
+        final p3 = await repository!.getPlacesForGap(
+          'core_geo_issue',
+          limit: limit,
+        );
         final seen = <String>{};
-        basePlaces = [...p1, ...p2, ...p3].where((p) => seen.add(p.id)).toList();
+        basePlaces = [
+          ...p1,
+          ...p2,
+          ...p3,
+        ].where((p) => seen.add(p.id)).toList();
         break;
       case 'core':
-        basePlaces = await repository!.getByTier(tier: 'core_destination', limit: limit, offset: offset);
+        basePlaces = await repository!.getByTier(
+          tier: 'core_destination',
+          limit: limit,
+          offset: offset,
+        );
         break;
       case 'manually_edited':
         final editedIds = curationService.overrides.keys.toList();
         basePlaces = await repository!.getPlacesByIds(editedIds);
         break;
       case 'missing_image':
-        basePlaces = await repository!.getPlacesForGap('missing_images', limit: limit, offset: offset, category: category);
+        basePlaces = await repository!.getPlacesForGap(
+          'missing_images',
+          limit: limit,
+          offset: offset,
+          category: category,
+        );
         break;
       case 'missing_hours':
-        basePlaces = await repository!.getPlacesForGap('missing_hours', limit: limit, offset: offset, category: category);
+        basePlaces = await repository!.getPlacesForGap(
+          'missing_hours',
+          limit: limit,
+          offset: offset,
+          category: category,
+        );
         break;
       case 'location_issue':
-        basePlaces = await repository!.getPlacesForGap('geo_outliers', limit: limit, offset: offset);
+        basePlaces = await repository!.getPlacesForGap(
+          'geo_outliers',
+          limit: limit,
+          offset: offset,
+        );
         break;
       case 'duplicate':
-        basePlaces = await repository!.getPlacesForGap('duplicate_coords', limit: limit, offset: offset);
+        basePlaces = await repository!.getPlacesForGap(
+          'duplicate_coords',
+          limit: limit,
+          offset: offset,
+        );
         break;
       case 'excluded':
         final excludedIds = curationService.exclusions.keys.toList();
@@ -254,30 +296,60 @@ class AppState extends ChangeNotifier {
         if (query.trim().isNotEmpty) {
           basePlaces = await repository!.search(
             query: query.trim(),
-            category: (category != null && category.toLowerCase() != 'all') ? category : null,
+            category: (category != null && category.toLowerCase() != 'all')
+                ? category
+                : null,
             limit: limit,
             offset: offset,
           );
         } else if (category != null && category.toLowerCase() != 'all') {
-          basePlaces = await repository!.getByCategory(category: category, limit: limit, offset: offset);
+          basePlaces = await repository!.getByCategory(
+            category: category,
+            limit: limit,
+            offset: offset,
+          );
         } else {
-          basePlaces = await repository!.getByTier(tier: 'core_destination', limit: 30);
-          final rec = await repository!.search(query: '', limit: limit - basePlaces.length, offset: offset);
+          basePlaces = await repository!.getByTier(
+            tier: 'core_destination',
+            limit: 30,
+          );
+          final rec = await repository!.search(
+            query: '',
+            limit: limit - basePlaces.length,
+            offset: offset,
+          );
           final seen = <String>{};
-          basePlaces = [...basePlaces, ...rec].where((p) => seen.add(p.id)).toList();
+          basePlaces = [
+            ...basePlaces,
+            ...rec,
+          ].where((p) => seen.add(p.id)).toList();
         }
         break;
     }
 
     // Map base places to CuratedPlace
-    final List<CuratedPlace> curatedList = basePlaces.map((p) => curationService.resolve(p)).toList();
+    final List<CuratedPlace> curatedList = basePlaces
+        .map((p) => curationService.resolve(p))
+        .toList();
 
     // Ingest manual additions
     for (final add in curationService.additions.values) {
-      if (filter == 'excluded' && !curationService.exclusions.containsKey(add.id)) continue;
-      if (filter == 'core' && add.tier != 'core_destination') continue;
-      if (category != null && category.toLowerCase() != 'all' && add.category != category) continue;
-      if (query.trim().isNotEmpty && !add.name.toLowerCase().contains(query.toLowerCase())) continue;
+      if (filter == 'excluded' &&
+          !curationService.exclusions.containsKey(add.id)) {
+        continue;
+      }
+      if (filter == 'core' && add.tier != 'core_destination') {
+        continue;
+      }
+      if (category != null &&
+          category.toLowerCase() != 'all' &&
+          add.category != category) {
+        continue;
+      }
+      if (query.trim().isNotEmpty &&
+          !add.name.toLowerCase().contains(query.toLowerCase())) {
+        continue;
+      }
 
       final curatedAdd = curationService.resolveAddition(add.id);
       if (curatedAdd != null) {
@@ -292,6 +364,44 @@ class AppState extends ChangeNotifier {
   }
 
   // --- Curation Actions ---
+  Future<ImportedPlaceImage> importPlaceImage({
+    required LabPlace place,
+    required Uint8List sourceBytes,
+    required String originalFilename,
+    required String source,
+    required String sourcePage,
+    required String license,
+    required String licenseUrl,
+  }) async {
+    final pack = activePack;
+    if (pack == null) {
+      throw const ImageImportException(
+        'Open a city pack before importing a photo.',
+      );
+    }
+
+    final imported = await imageImportService.importImage(
+      cityId: pack.id,
+      placeId: place.id,
+      sourceBytes: sourceBytes,
+      originalFilename: originalFilename,
+      source: source,
+      sourcePage: sourcePage,
+      license: license,
+      licenseUrl: licenseUrl,
+      contributor: contributorName,
+    );
+
+    await saveFieldOverride(
+      place: place,
+      primaryImagePath: imported.primaryImagePath,
+      fieldName: 'primary_image_path',
+      evidenceSource: '$source [License: $license]',
+      previousValue: place.primaryImagePath,
+    );
+    return imported;
+  }
+
   Future<void> saveFieldOverride({
     required LabPlace place,
     String? name,
@@ -397,7 +507,10 @@ class AppState extends ChangeNotifier {
       timestamp: DateTime.now().toIso8601String(),
     );
     await qaRepository.addRandomReview(activePack!.id, rec);
-    currentSession = await qaRepository.loadSession(activePack!.id, activePack!.version);
+    currentSession = await qaRepository.loadSession(
+      activePack!.id,
+      activePack!.version,
+    );
 
     await evaluateCityQuality();
   }
@@ -421,8 +534,16 @@ class AppState extends ChangeNotifier {
     await evaluateCityQuality();
   }
 
-  Future<void> updateCurationIssueStatus(String issueId, CurationIssueStatus status, {String? resolutionNote}) async {
-    await curationService.updateIssueStatus(issueId, status, resolutionNote: resolutionNote);
+  Future<void> updateCurationIssueStatus(
+    String issueId,
+    CurationIssueStatus status, {
+    String? resolutionNote,
+  }) async {
+    await curationService.updateIssueStatus(
+      issueId,
+      status,
+      resolutionNote: resolutionNote,
+    );
     await evaluateCityQuality();
   }
 
@@ -479,42 +600,60 @@ class AppState extends ChangeNotifier {
   Future<void> reportIssue(QaIssue issue) async {
     if (currentSession == null) return;
     await qaRepository.addIssue(issue);
-    currentSession = await qaRepository.loadSession(issue.cityId, issue.packVersion);
+    currentSession = await qaRepository.loadSession(
+      issue.cityId,
+      issue.packVersion,
+    );
     await evaluateCityQuality();
   }
 
   Future<void> deleteIssue(String issueId) async {
     if (activePack == null || currentSession == null) return;
     await qaRepository.deleteIssue(activePack!.id, issueId);
-    currentSession = await qaRepository.loadSession(activePack!.id, activePack!.version);
+    currentSession = await qaRepository.loadSession(
+      activePack!.id,
+      activePack!.version,
+    );
     await evaluateCityQuality();
   }
 
   Future<void> addRandomReview(RandomReviewRecord record) async {
     if (activePack == null || currentSession == null) return;
     await qaRepository.addRandomReview(activePack!.id, record);
-    currentSession = await qaRepository.loadSession(activePack!.id, activePack!.version);
+    currentSession = await qaRepository.loadSession(
+      activePack!.id,
+      activePack!.version,
+    );
     await evaluateCityQuality();
   }
 
   Future<void> addSearchResultReview(SearchResultReviewRecord record) async {
     if (activePack == null || currentSession == null) return;
     await qaRepository.addSearchResultReview(activePack!.id, record);
-    currentSession = await qaRepository.loadSession(activePack!.id, activePack!.version);
+    currentSession = await qaRepository.loadSession(
+      activePack!.id,
+      activePack!.version,
+    );
     notifyListeners();
   }
 
   Future<void> addExpectedPlaceCheck(ExpectedPlaceCheckRecord record) async {
     if (activePack == null || currentSession == null) return;
     await qaRepository.addExpectedPlaceCheck(activePack!.id, record);
-    currentSession = await qaRepository.loadSession(activePack!.id, activePack!.version);
+    currentSession = await qaRepository.loadSession(
+      activePack!.id,
+      activePack!.version,
+    );
     notifyListeners();
   }
 
   Future<void> addScenarioResult(ScenarioResultRecord record) async {
     if (activePack == null || currentSession == null) return;
     await qaRepository.addScenarioResult(activePack!.id, record);
-    currentSession = await qaRepository.loadSession(activePack!.id, activePack!.version);
+    currentSession = await qaRepository.loadSession(
+      activePack!.id,
+      activePack!.version,
+    );
     notifyListeners();
   }
 
@@ -522,35 +661,50 @@ class AppState extends ChangeNotifier {
   Future<void> setTripDays(int days) async {
     if (tripSelection == null || activePack == null) return;
     tripSelection!.setDays(days);
-    await qaRepository.saveTripSelection(activePack!.id, tripSelection!.placeDays);
+    await qaRepository.saveTripSelection(
+      activePack!.id,
+      tripSelection!.placeDays,
+    );
     notifyListeners();
   }
 
   Future<void> addPlaceToTrip(String placeId, {int day = 1}) async {
     if (tripSelection == null || activePack == null) return;
     tripSelection!.addPlace(placeId, day: day);
-    await qaRepository.saveTripSelection(activePack!.id, tripSelection!.placeDays);
+    await qaRepository.saveTripSelection(
+      activePack!.id,
+      tripSelection!.placeDays,
+    );
     notifyListeners();
   }
 
   Future<void> removePlaceFromTrip(String placeId) async {
     if (tripSelection == null || activePack == null) return;
     tripSelection!.removePlace(placeId);
-    await qaRepository.saveTripSelection(activePack!.id, tripSelection!.placeDays);
+    await qaRepository.saveTripSelection(
+      activePack!.id,
+      tripSelection!.placeDays,
+    );
     notifyListeners();
   }
 
   Future<void> assignTripDay(String placeId, int day) async {
     if (tripSelection == null || activePack == null) return;
     tripSelection!.assignDay(placeId, day);
-    await qaRepository.saveTripSelection(activePack!.id, tripSelection!.placeDays);
+    await qaRepository.saveTripSelection(
+      activePack!.id,
+      tripSelection!.placeDays,
+    );
     notifyListeners();
   }
 
   Future<void> groupTripGeographically(List<LabPlace> places) async {
     if (tripSelection == null || activePack == null) return;
     tripSelection!.groupGeographically(places);
-    await qaRepository.saveTripSelection(activePack!.id, tripSelection!.placeDays);
+    await qaRepository.saveTripSelection(
+      activePack!.id,
+      tripSelection!.placeDays,
+    );
     notifyListeners();
   }
 
