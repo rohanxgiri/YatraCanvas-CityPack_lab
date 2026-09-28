@@ -4,6 +4,7 @@ import '../app/app_state.dart';
 import '../domain/curation/curated_place.dart';
 import '../widgets/curation/category_editor_dialog.dart';
 import '../widgets/curation/coordinate_editor_dialog.dart';
+import '../widgets/curation/copyable_place_name.dart';
 import '../widgets/curation/image_curator_dialog.dart';
 import '../widgets/curation/opening_hours_editor_dialog.dart';
 import '../widgets/report_problem_dialog.dart';
@@ -284,23 +285,7 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
                     ),
                     const SizedBox(height: 12),
 
-                    Text(
-                      place.name,
-                      style: const TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    if (place.address != null) ...[
-                      const SizedBox(height: 4),
-                      Text(
-                        place.address!,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey.shade600,
-                        ),
-                      ),
-                    ],
+                    CopyablePlaceName(name: place.name, address: place.address),
                     const SizedBox(height: 16),
 
                     // Issue Specific Highlight Box

@@ -64,6 +64,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_vidyadhar_garden/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_nahargarh_wildlife_sanctuary/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_jhalanaamagarh_leopard_conservation_reserve/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_chulgiri_digamber_jain_temple/
     - assets/city_packs/
     - assets/city_packs/city_packs_index.json
     - assets/city_packs/gulmarg/
