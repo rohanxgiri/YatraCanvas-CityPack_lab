@@ -1,0 +1,14 @@
+{
+  "place_id": "yc_in_rj_jaipur_amer_palace",
+  "city_id": "jaipur",
+  "pack_version": "2026-09-19T16:09:59.354338+00:00",
+  "author": "Contributor",
+  "updated_at": "2026-09-28T23:51:50.234356",
+  "verified": true,
+  "primary_image_path": "images/yc_in_rj_jaipur_amer_palace/primary.webp",
+  "tier": "core_destination",
+  "is_core": true,
+  "field_sources": {
+    "primary_image_path": "https://www.makemytrip.com/tripideas/attractions/amer-fort [License: CC BY-SA 4.0]"
+  }
+}

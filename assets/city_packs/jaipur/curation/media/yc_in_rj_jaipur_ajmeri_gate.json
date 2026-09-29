@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "cityId": "jaipur",
+  "placeId": "yc_in_rj_jaipur_ajmeri_gate",
+  "primaryImagePath": "images/yc_in_rj_jaipur_ajmeri_gate/primary.webp",
+  "thumbnailImagePath": "images/yc_in_rj_jaipur_ajmeri_gate/thumbnail.webp",
+  "originalFilename": "2025-11-27-08-08-48-1344x1012.jpg",
+  "originalSha256": "75ae4300a198105f596aaa478727e30825a268499df094c95b3a5166207fd364",
+  "source": "google",
+  "sourcePage": "",
+  "author": "",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "originalWidth": 1344,
+  "originalHeight": 1012,
+  "primaryWidth": 1344,
+  "primaryHeight": 1012,
+  "contributor": "Contributor",
+  "importedAt": "2026-09-28T18:16:38.809689Z"
+}

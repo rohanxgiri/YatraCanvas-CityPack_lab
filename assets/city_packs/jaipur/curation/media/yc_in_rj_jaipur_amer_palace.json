@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "cityId": "jaipur",
+  "placeId": "yc_in_rj_jaipur_amer_palace",
+  "primaryImagePath": "images/yc_in_rj_jaipur_amer_palace/primary.webp",
+  "thumbnailImagePath": "images/yc_in_rj_jaipur_amer_palace/thumbnail.webp",
+  "originalFilename": "m_activities_amber_fort_2_l_436_573.jpg",
+  "originalSha256": "94b7d4265177d633191c2d8db859a0d879379410ba47c650b18e4100507c3dc1",
+  "source": "https://www.makemytrip.com/tripideas/attractions/amer-fort",
+  "sourcePage": "",
+  "author": "",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "originalWidth": 749,
+  "originalHeight": 570,
+  "primaryWidth": 749,
+  "primaryHeight": 570,
+  "contributor": "Contributor",
+  "importedAt": "2026-09-28T18:21:50.213788Z"
+}

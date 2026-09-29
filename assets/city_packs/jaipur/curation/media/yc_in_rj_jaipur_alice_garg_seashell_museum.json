@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "cityId": "jaipur",
+  "placeId": "yc_in_rj_jaipur_alice_garg_seashell_museum",
+  "primaryImagePath": "images/yc_in_rj_jaipur_alice_garg_seashell_museum/primary.webp",
+  "thumbnailImagePath": "images/yc_in_rj_jaipur_alice_garg_seashell_museum/thumbnail.webp",
+  "originalFilename": "01_6.jpg",
+  "originalSha256": "78d514608ceed248ff8c9a3fb80a1cca9c6c696d2141e3f5ffd224ea682127de",
+  "source": "https://shop.museumsofindia.org/node/387",
+  "sourcePage": "https://shop.museumsofindia.org/node/387",
+  "author": "",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "originalWidth": 900,
+  "originalHeight": 600,
+  "primaryWidth": 900,
+  "primaryHeight": 600,
+  "contributor": "Contributor",
+  "importedAt": "2026-09-28T18:19:06.069958Z"
+}
