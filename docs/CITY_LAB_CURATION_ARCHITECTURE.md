@@ -237,7 +237,7 @@ City Lab is engineered to run smoothly on production packs exceeding 10,000 plac
 
 ## 8. Multi-Repository Bridge & Production Sync (`export_certified_pack.py`)
 
-The YatraCanvas travel platform spans three sibling repositories on the contributor's workstation:
+Normal contributors need only CityPack Lab and finish at a Pull Request. The three-repository layout is required only on a release manager's workstation for explicit production publication:
 
 ```
 C:\Users\<user>\Documents\
@@ -248,17 +248,18 @@ C:\Users\<user>\Documents\
 
 ### The Synchronization Bridge
 
-Instead of requiring contributors to manually move binary files, [`tools/export_certified_pack.py`](file:///c:/Users/girir/Documents/YatraCanvas-CityPack-Lab/tools/export_certified_pack.py) (invoked via `.\citylab.ps1 export -City <name>`) automates the release cycle:
+After Release Gate status is `READY` and Manual QA is sufficient, [`tools/export_certified_pack.py`](../tools/export_certified_pack.py) builds and validates a local artifact using explicit release evidence. Publication happens only when the release manager also supplies `-Publish`:
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Contributor
+    actor Manager as Release Manager
     participant Lab as CityPack-Lab (Studio)
     participant DF as YatraCanvas-DataFactory
     participant App as YatraCanvas (Mobile App)
 
-    Contributor->>Lab: Runs .\citylab.ps1 export -City jaipur
+    Manager->>Lab: Exports READY release_jaipur.json evidence
+    Manager->>Lab: Runs citylab export with evidence and -Publish
     Note over Lab: 1. Reads raw yatracanvas.db<br/>2. Applies overrides & additions<br/>3. Deletes exclusions<br/>4. Generates certified SQLite DB
     Lab->>DF: Syncs curation/ JSON to data/curated/jaipur/
     Note over DF: Permanent storage: Future pipeline runs<br/>apply these human fixes as editorial overrides
@@ -266,6 +267,20 @@ sequenceDiagram
     Note over App: Ready for offline mobile itinerary planning!
 ```
 
-1. **Certified SQLite Assembly**: It takes the baseline read-only `yatracanvas.db`, applies all field overrides (opening hours, primary images, coordinates, category taxonomy), inserts newly added sights, and deletes excluded places.
-2. **DataFactory Permanent Memory**: It copies all JSON files in `curation/` directly to `../YatraCanvas-DataFactory/data/curated/<city>/`. When DataFactory runs automated regeneration with newer OSM or Overture dumps, it reads this directory as an **Editorial Override Layer**, ensuring human fixes are never lost.
-3. **Mobile App Local Database**: It copies the certified `yatracanvas.db`, `manifest.json`, and `images/` directly into `../YatraCanvas/assets/city_packs/<city>/`, immediately equipping the mobile application with an offline database for tourist exploration.
+The production command shape is:
+
+```powershell
+.\citylab.ps1 export `
+  -City jaipur `
+  -ReleaseEvidence "C:\path\to\qa_exports\release_jaipur.json" `
+  -OutputDir "releases\jaipur\<new-output-directory>" `
+  -Publish
+```
+
+1. **Certified SQLite assembly:** the exporter copies the baseline `yatracanvas.db` to staging, applies verified overrides and additions, removes exclusions from the staged copy, and validates the result.
+2. **Release evidence and integrity:** production output requires matching `READY` evidence and sufficient Manual QA. The exporter validates media, attribution, manifests, database integrity, and checksums.
+3. **DataFactory durable curation:** publication copies the curation tree and referenced curated images to `YatraCanvas-DataFactory/data/curated/<city>/`.
+4. **Traveller-app pack:** publication copies the complete certified artifact to `YatraCanvas/assets/city_packs/<city>/`.
+5. **Failure behavior:** target updates use staged directory swaps and rollback. A failed validation is non-zero and does not publish.
+
+See the [Release Manager Guide](RELEASE_MANAGER_GUIDE.md) for the complete operational procedure.
