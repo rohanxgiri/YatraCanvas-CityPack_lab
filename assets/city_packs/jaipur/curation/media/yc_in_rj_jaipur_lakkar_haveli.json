@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "cityId": "jaipur",
+  "placeId": "yc_in_rj_jaipur_lakkar_haveli",
+  "primaryImagePath": "images/yc_in_rj_jaipur_lakkar_haveli/primary.webp",
+  "thumbnailImagePath": "images/yc_in_rj_jaipur_lakkar_haveli/thumbnail.webp",
+  "originalFilename": "inside-look.jpg",
+  "originalSha256": "2461cb4f7d0a52540c0bb6437a8677df854fc60c21bccec18254acea8e2a47b8",
+  "source": "tripadvisor",
+  "sourcePage": "",
+  "author": "",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "originalWidth": 640,
+  "originalHeight": 480,
+  "primaryWidth": 640,
+  "primaryHeight": 480,
+  "contributor": "Contributor",
+  "importedAt": "2026-09-30T09:14:05.469664Z"
+}

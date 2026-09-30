@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "cityId": "jaipur",
+  "placeId": "yc_in_rj_jaipur_sawai_mansingh_townhall",
+  "primaryImagePath": "images/yc_in_rj_jaipur_sawai_mansingh_townhall/primary.webp",
+  "thumbnailImagePath": "images/yc_in_rj_jaipur_sawai_mansingh_townhall/thumbnail.webp",
+  "originalFilename": "man-singh-town-hall-vidhan-sabha-jaipur-sireh-deori.jpg",
+  "originalSha256": "abc6ad374fc61eb1ba5dbd749c497bfc609d4c057efbe172a175814ff952f3fc",
+  "source": "jaipur",
+  "sourcePage": "",
+  "author": "",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "originalWidth": 640,
+  "originalHeight": 487,
+  "primaryWidth": 640,
+  "primaryHeight": 487,
+  "contributor": "Contributor",
+  "importedAt": "2026-09-30T09:09:21.492877Z"
+}

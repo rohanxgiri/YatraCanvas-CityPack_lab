@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "cityId": "jaipur",
+  "placeId": "yc_in_rj_jaipur_elejungle_jaipur_elephant_ride",
+  "primaryImagePath": "images/yc_in_rj_jaipur_elejungle_jaipur_elephant_ride/primary.webp",
+  "thumbnailImagePath": "images/yc_in_rj_jaipur_elejungle_jaipur_elephant_ride/thumbnail.webp",
+  "originalFilename": "elephant-ride-amer-palace-jaipur-1024x645.jpg",
+  "originalSha256": "07119f83d97a1ac3126071c3f44b83b62c256768153a0fae67c9bf535b072425",
+  "source": "afaf",
+  "sourcePage": "",
+  "author": "",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "originalWidth": 1024,
+  "originalHeight": 645,
+  "primaryWidth": 1024,
+  "primaryHeight": 645,
+  "contributor": "Contributor",
+  "importedAt": "2026-09-30T09:01:36.502375Z"
+}

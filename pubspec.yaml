@@ -64,6 +64,17 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_lohaghar_fort/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_lakkar_haveli/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_jaipur_palace/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_handicraft_haveli/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_suraj_pol_gate/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_sawai_mansingh_townhall/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_nakati_mata_temple/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_iswari_minar_swarga_sali_isarlat/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_ganesh_pol/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_elejungle_jaipur_elephant_ride/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_diwan_i_khas/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_amer_palace/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_alice_garg_seashell_museum/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_ajmeri_gate/

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "cityId": "jaipur",
+  "placeId": "yc_in_rj_jaipur_suraj_pol_gate",
+  "primaryImagePath": "images/yc_in_rj_jaipur_suraj_pol_gate/primary.webp",
+  "thumbnailImagePath": "images/yc_in_rj_jaipur_suraj_pol_gate/thumbnail.webp",
+  "originalFilename": "Surajpole-gate-Jaipur-1536x1210.jpg",
+  "originalSha256": "002a6442752c2a1ddc0140a0be9d4dfcbaf353c7b318c84cb4452e4e8b5d58d2",
+  "source": "jaipurunveiled",
+  "sourcePage": "",
+  "author": "",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "originalWidth": 1536,
+  "originalHeight": 1210,
+  "primaryWidth": 1536,
+  "primaryHeight": 1210,
+  "contributor": "Contributor",
+  "importedAt": "2026-09-30T09:10:33.364766Z"
+}

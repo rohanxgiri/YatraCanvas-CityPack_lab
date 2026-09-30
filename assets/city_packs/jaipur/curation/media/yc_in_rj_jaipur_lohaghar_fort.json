@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "cityId": "jaipur",
+  "placeId": "yc_in_rj_jaipur_lohaghar_fort",
+  "primaryImagePath": "images/yc_in_rj_jaipur_lohaghar_fort/primary.webp",
+  "thumbnailImagePath": "images/yc_in_rj_jaipur_lohaghar_fort/thumbnail.webp",
+  "originalFilename": "lgf.jpg",
+  "originalSha256": "c62635030ae779ac581ce9079ca6ae3bfbba55c3031c738905e96b12fa6bc6c6",
+  "source": "tripadvisor",
+  "sourcePage": "",
+  "author": "",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "originalWidth": 1400,
+  "originalHeight": 788,
+  "primaryWidth": 1400,
+  "primaryHeight": 788,
+  "contributor": "Contributor",
+  "importedAt": "2026-09-30T09:14:45.784116Z"
+}

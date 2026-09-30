@@ -1,0 +1,14 @@
+{
+  "place_id": "yc_in_rj_jaipur_nakati_mata_temple",
+  "city_id": "jaipur",
+  "pack_version": "2026-09-19T16:09:59.354338+00:00",
+  "author": "Contributor",
+  "updated_at": "2026-09-30T14:37:58.709010",
+  "verified": true,
+  "primary_image_path": "images/yc_in_rj_jaipur_nakati_mata_temple/primary.webp",
+  "tier": "core_destination",
+  "is_core": true,
+  "field_sources": {
+    "primary_image_path": "aa [License: CC BY-SA 4.0]"
+  }
+}

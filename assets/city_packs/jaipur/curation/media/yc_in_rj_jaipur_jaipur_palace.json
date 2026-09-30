@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "cityId": "jaipur",
+  "placeId": "yc_in_rj_jaipur_jaipur_palace",
+  "primaryImagePath": "images/yc_in_rj_jaipur_jaipur_palace/primary.webp",
+  "thumbnailImagePath": "images/yc_in_rj_jaipur_jaipur_palace/thumbnail.webp",
+  "originalFilename": "Chandra_Mahal,_City_Palace,_Jaipur,_20191218_0951_9043.jpg",
+  "originalSha256": "a713bed3a717d45860f7d548e687866fe0fa02199571fe1f22eda29fb613896d",
+  "source": "wikipedia",
+  "sourcePage": "",
+  "author": "",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "originalWidth": 1280,
+  "originalHeight": 1142,
+  "primaryWidth": 1280,
+  "primaryHeight": 1142,
+  "contributor": "Contributor",
+  "importedAt": "2026-09-30T09:13:28.943279Z"
+}

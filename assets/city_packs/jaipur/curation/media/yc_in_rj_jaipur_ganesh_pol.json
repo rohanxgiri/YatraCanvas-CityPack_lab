@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "cityId": "jaipur",
+  "placeId": "yc_in_rj_jaipur_ganesh_pol",
+  "primaryImagePath": "images/yc_in_rj_jaipur_ganesh_pol/primary.webp",
+  "thumbnailImagePath": "images/yc_in_rj_jaipur_ganesh_pol/thumbnail.webp",
+  "originalFilename": "Amer_Fort_-_Ganesh_Pol_(2022)_-_img_01.jpg",
+  "originalSha256": "4f0fa35796d7b67ea633370b77d9f527410b124df128f928a02e8c4272b2a36b",
+  "source": "Wikimedia Commons",
+  "sourcePage": "",
+  "author": "",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "originalWidth": 4032,
+  "originalHeight": 3024,
+  "primaryWidth": 1600,
+  "primaryHeight": 1200,
+  "contributor": "Contributor",
+  "importedAt": "2026-09-30T09:03:08.235248Z"
+}
