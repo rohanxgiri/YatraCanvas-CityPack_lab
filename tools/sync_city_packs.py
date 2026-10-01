@@ -45,6 +45,12 @@ DEPLOYMENT_FILES = [
     "source_manifest.json",
 ]
 
+# Review artifacts live in reports/<city>/ relative to DataFactory root.
+# City Lab reads these to populate the Review Inbox.
+REVIEW_ARTIFACTS = [
+    "review_candidates.json",
+]
+
 def find_datafactory_root() -> Path:
     """Dynamically locates YatraCanvas-DataFactory relative to script or cwd."""
     candidates = [
@@ -66,6 +72,29 @@ def sha256_file(filepath: Path) -> str:
         while chunk := f.read(1024 * 1024):
             h.update(chunk)
     return h.hexdigest()
+
+def find_review_manifest(datafactory_root: Path, city_id: str) -> Path | None:
+    """Locates the review_candidates.json for a city.
+
+    Tries several known DataFactory output paths:
+    1. reports/<city>/review_candidates.json
+    2. data/staging/**/<city>/review_candidates.json
+    """
+    # Primary location (DataFactory Quality Pass 2 output)
+    primary = datafactory_root / "reports" / city_id / "review_candidates.json"
+    if primary.is_file():
+        return primary
+
+    # Fallback: walk data/staging looking for a matching city directory
+    staging_root = datafactory_root / "data" / "staging"
+    if staging_root.is_dir():
+        for root, dirs, files in os.walk(staging_root):
+            root_path = Path(root)
+            if root_path.name == city_id and "review_candidates.json" in files:
+                return root_path / "review_candidates.json"
+
+    return None
+
 
 def discover_releases(datafactory_root: Path) -> dict:
     """Discovers all valid production releases, ignoring quarantine."""
@@ -145,6 +174,13 @@ def sync_packs(selected_city_ids: list, datafactory_root: Path, target_base: Pat
 
     target_base.mkdir(parents=True, exist_ok=True)
     summary_manifest = {}
+    index_file = target_base / "city_packs_index.json"
+    if index_file.is_file():
+        try:
+            with open(index_file, "r", encoding="utf-8") as f:
+                summary_manifest = json.load(f)
+        except Exception:
+            summary_manifest = {}
 
     print(f"\n[SYNC] Synchronizing {len(resolved_ids)} city pack(s) to {target_base}...")
 
@@ -184,6 +220,23 @@ def sync_packs(selected_city_ids: list, datafactory_root: Path, target_base: Pat
         else:
             print("  [INFO] No images/ folder present.")
 
+        # Copy review artifacts (review_candidates.json from reports/)
+        review_candidate_count = 0
+        review_manifest_src = find_review_manifest(datafactory_root, cid)
+        if review_manifest_src and review_manifest_src.is_file():
+            dest_review = dest_dir / "review_candidates.json"
+            shutil.copy2(review_manifest_src, dest_review)
+            try:
+                with open(dest_review, "r", encoding="utf-8") as rf:
+                    review_data = json.load(rf)
+                    review_candidate_count = len(review_data) if isinstance(review_data, list) else 0
+                print(f"  [OK] Copied review_candidates.json ({review_candidate_count} candidates)")
+            except Exception as e:
+                print(f"  [WARN] Copied review_candidates.json but could not count candidates: {e}")
+        else:
+            print(f"  [INFO] No review_candidates.json found for {cid}. "
+                  f"Review Inbox will show 'no manifest' until DataFactory runs Quality Pass 2.")
+
         # Save pack local sync receipt
         receipt = {
             "city_id": cid,
@@ -193,6 +246,7 @@ def sync_packs(selected_city_ids: list, datafactory_root: Path, target_base: Pat
             "source_path": str(src_dir),
             "file_checksums": copied_hashes,
             "image_count": img_count,
+            "review_candidate_count": review_candidate_count,
         }
         with open(dest_dir / "lab_sync_receipt.json", "w", encoding="utf-8") as f:
             json.dump(receipt, f, indent=2)

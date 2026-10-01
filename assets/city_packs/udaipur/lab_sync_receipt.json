@@ -1,0 +1,19 @@
+{
+  "city_id": "udaipur",
+  "city_name": "Udaipur",
+  "state": "Rajasthan",
+  "version": "v3",
+  "source_path": "C:\\Users\\girir\\Documents\\YatraCanvas-DataFactory\\releases\\india\\rajasthan\\udaipur\\v3",
+  "file_checksums": {
+    "yatracanvas.db": "cf908e4ffe3508b7f4c8689d5ba880d7e96e7dd47bdd436fff3e8114c83c2764",
+    "manifest.json": "c63ccb98703411c0b5fbffb62d86c85ae1d5b1743607e339d7fd15c14b7e9761",
+    "city.json": "4a48efbd65ee52c17e863e72b317f2ec2caee10e8d0f21c694741c5dda85141d",
+    "checksums.json": "63d4334ae264cc8daf1fa206d965473e2b43108aa07c2980b8de871f9eb39258",
+    "image_manifest.json": "d7e5a2d4fc34b2d304f1e2f1807b2f89139ce8713845c6e0183c615bce15e18a",
+    "images_manifest.json": "d7e5a2d4fc34b2d304f1e2f1807b2f89139ce8713845c6e0183c615bce15e18a",
+    "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+    "source_manifest.json": "ef6b1cfabe169712d7d345983619a0f83fff2d9b566ade4363d6de87cc878c16"
+  },
+  "image_count": 94,
+  "review_candidate_count": 322
+}

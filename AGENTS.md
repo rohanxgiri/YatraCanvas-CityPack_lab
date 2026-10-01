@@ -79,16 +79,30 @@ lib/
 ├── qa/
 │   ├── qa_export_service.dart         # Generates release.json, quality_report.json, release_report.md
 │   └── qa_repository.dart             # Reads/writes isolated QA reviews to AppDocuments
+├── review/
+│   ├── models/
+│   │   ├── inbox_decision.dart        # Human verdicts, notes, and changed-since-review snapshots
+│   │   └── review_candidate.dart      # DataFactory review_candidates.json domain model
+│   ├── repository/
+│   │   └── inbox_decision_repository.dart # Git-trackable per-entity JSON storage (curation/inbox_decisions/)
+│   └── services/
+│       ├── review_manifest_loader.dart    # Loads and sorts candidate manifest
+│       └── review_reason_translator.dart  # Translates machine codes to human explainable reasons
 ├── screens/
-│   ├── city_lab_home_screen.dart      # Top navigation container for the 5 pillars
+│   ├── city_lab_home_screen.dart      # Top navigation container for the studio tabs
 │   ├── city_pack_screen.dart          # City pack selection and metadata view
+│   ├── home_screen.dart               # Executive overview & priority task runway
 │   ├── overview_screen.dart           # Pillar 1: 10-second executive scan & KPI cards
 │   ├── data_coverage_screen.dart      # Pillar 2: Category coverage matrix & Data Gap Analyzer
+│   ├── review_inbox_screen.dart       # Human review inbox for DataFactory review_candidates.json
 │   ├── review_screen.dart             # Pillar 3: Stratified 50-item QA queue & defect logger
 │   ├── release_gate_screen.dart       # Pillar 4: 7-gate checklist & certified artifact export
 │   └── diagnostics_screen.dart        # Pillar 5: Isolated candidate funnel & pipeline metrics
 └── widgets/
     ├── place_card.dart                # Cross-platform place card with image fallbacks
+    ├── review/
+    │   ├── review_candidate_card.dart # Compact card with priority, verdict, and quick actions
+    │   └── review_detail_panel.dart   # Deep-inspection side panel (signals, OSM, completeness)
     └── score_ring.dart                # Visual circular score gauge
 ```
 
@@ -109,6 +123,9 @@ flutter run
 ```bash
 # Run entire test suite (all tests must pass 100%)
 flutter test
+
+# Run review inbox suite (parsing, filtering, translation, change detection)
+flutter test test/review_inbox_test.dart
 
 # Run quality engine rules suite (Synthetic Cases A–F)
 flutter test test/quality_engine_test.dart

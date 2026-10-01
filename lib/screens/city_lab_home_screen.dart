@@ -9,6 +9,7 @@ import 'fix_center_screen.dart';
 import 'home_screen.dart';
 import 'places_cms_screen.dart';
 import 'release_gate_screen.dart';
+import 'review_inbox_screen.dart';
 
 class CityLabHomeScreen extends StatefulWidget {
   final AppState state;
@@ -229,11 +230,13 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
       HomeScreen(
         state: widget.state,
         onNavigateToFix: () => _navigateToTab(1),
-        onNavigateToReview: () => _navigateToTab(2),
-        onNavigateToPlaces: () => _navigateToTab(3),
-        onNavigateToRelease: () => _navigateToTab(4),
+        onNavigateToInbox: () => _navigateToTab(2),
+        onNavigateToReview: () => _navigateToTab(3),
+        onNavigateToPlaces: () => _navigateToTab(4),
+        onNavigateToRelease: () => _navigateToTab(5),
       ),
       FixCenterScreen(state: widget.state),
+      ReviewInboxScreen(state: widget.state),
       CurationReviewScreen(state: widget.state),
       PlacesCmsScreen(state: widget.state),
       ReleaseGateScreen(state: widget.state),
@@ -243,6 +246,8 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
     if (_currentIndex >= pages.length) {
       _currentIndex = 0;
     }
+
+    final inboxCount = widget.state.unresolvedReviewCount;
 
     final destinations = <NavigationDestination>[
       const NavigationDestination(
@@ -255,10 +260,19 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
         selectedIcon: Icon(Icons.build),
         label: 'Fix',
       ),
+      NavigationDestination(
+        icon: Badge(
+          isLabelVisible: inboxCount > 0,
+          label: Text('$inboxCount'),
+          child: const Icon(Icons.mark_email_unread_outlined),
+        ),
+        selectedIcon: const Icon(Icons.mark_email_read),
+        label: 'Inbox',
+      ),
       const NavigationDestination(
         icon: Icon(Icons.rate_review_outlined),
         selectedIcon: Icon(Icons.rate_review),
-        label: 'Review',
+        label: 'QA',
       ),
       const NavigationDestination(
         icon: Icon(Icons.place_outlined),

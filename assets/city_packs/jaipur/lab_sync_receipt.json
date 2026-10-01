@@ -5,14 +5,15 @@
   "version": "v3",
   "source_path": "C:\\Users\\girir\\Documents\\YatraCanvas-DataFactory\\releases\\india\\rajasthan\\jaipur\\v3",
   "file_checksums": {
-    "yatracanvas.db": "0905a477390a14805c0813ea99fe4fce36bea3a2e26390bbbddae90430186bef",
-    "manifest.json": "1b5e7ea618f7f3144f7796facb37214c7a7eb65fd6790871c31ffae99d72393f",
-    "city.json": "76a01b320e63e5f29fd4b83e96a20e7fcd8e22939dc3592e25594a279b879ebe",
-    "checksums.json": "57492f6eed0c9a72cca85b7238973f0674e5a7e1c39d7dc7d36f53e6ae02d114",
-    "image_manifest.json": "1684fad545466de60d2868379cc84e471fd3cf876bf8c18da16c561685c44d2e",
-    "images_manifest.json": "1684fad545466de60d2868379cc84e471fd3cf876bf8c18da16c561685c44d2e",
+    "yatracanvas.db": "b96499de299a85d4aedff2ec462e9f0df0a7970ed41921fe9990c4e9d29ccbb7",
+    "manifest.json": "ac88a0d9a1165e2ec5c4bc6d1d05d6e91579bec684c280dae68d9f7299fdc32c",
+    "city.json": "c16e1b0d92b9c54b920c68d97d90b3ea26ca54e3025b5fbe9b12c1772f397e24",
+    "checksums.json": "7c5dea17103000546247b57569426197b5c7f203937fa2d8c9bed317d60259c7",
+    "image_manifest.json": "63433037717af57ff6a237d963d61d99f9ea39da98d76de01a8cd69d871c9806",
+    "images_manifest.json": "63433037717af57ff6a237d963d61d99f9ea39da98d76de01a8cd69d871c9806",
     "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
-    "source_manifest.json": "f650e06a8f1333ab9066ba877f9aa784957fd3c82844e0c05607c08e661e8eb4"
+    "source_manifest.json": "01574d17d00c2b687b796fb040a575b54a767cc3a612cd6552447f44b9186e05"
   },
-  "image_count": 106
+  "image_count": 110,
+  "review_candidate_count": 893
 }

@@ -24,16 +24,17 @@
     "version": "v3",
     "source_path": "C:\\Users\\girir\\Documents\\YatraCanvas-DataFactory\\releases\\india\\rajasthan\\jaipur\\v3",
     "file_checksums": {
-      "yatracanvas.db": "0905a477390a14805c0813ea99fe4fce36bea3a2e26390bbbddae90430186bef",
-      "manifest.json": "1b5e7ea618f7f3144f7796facb37214c7a7eb65fd6790871c31ffae99d72393f",
-      "city.json": "76a01b320e63e5f29fd4b83e96a20e7fcd8e22939dc3592e25594a279b879ebe",
-      "checksums.json": "57492f6eed0c9a72cca85b7238973f0674e5a7e1c39d7dc7d36f53e6ae02d114",
-      "image_manifest.json": "1684fad545466de60d2868379cc84e471fd3cf876bf8c18da16c561685c44d2e",
-      "images_manifest.json": "1684fad545466de60d2868379cc84e471fd3cf876bf8c18da16c561685c44d2e",
+      "yatracanvas.db": "b96499de299a85d4aedff2ec462e9f0df0a7970ed41921fe9990c4e9d29ccbb7",
+      "manifest.json": "ac88a0d9a1165e2ec5c4bc6d1d05d6e91579bec684c280dae68d9f7299fdc32c",
+      "city.json": "c16e1b0d92b9c54b920c68d97d90b3ea26ca54e3025b5fbe9b12c1772f397e24",
+      "checksums.json": "7c5dea17103000546247b57569426197b5c7f203937fa2d8c9bed317d60259c7",
+      "image_manifest.json": "63433037717af57ff6a237d963d61d99f9ea39da98d76de01a8cd69d871c9806",
+      "images_manifest.json": "63433037717af57ff6a237d963d61d99f9ea39da98d76de01a8cd69d871c9806",
       "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
-      "source_manifest.json": "f650e06a8f1333ab9066ba877f9aa784957fd3c82844e0c05607c08e661e8eb4"
+      "source_manifest.json": "01574d17d00c2b687b796fb040a575b54a767cc3a612cd6552447f44b9186e05"
     },
-    "image_count": 106
+    "image_count": 110,
+    "review_candidate_count": 893
   },
   "manali": {
     "city_id": "manali",
@@ -88,5 +89,43 @@
       "source_manifest.json": "870e1ab417e991dd9384c4f560bc0e08b14d0b7bce15a58400ee5af16fc2a60f"
     },
     "image_count": 30
+  },
+  "udaipur": {
+    "city_id": "udaipur",
+    "city_name": "Udaipur",
+    "state": "Rajasthan",
+    "version": "v3",
+    "source_path": "C:\\Users\\girir\\Documents\\YatraCanvas-DataFactory\\releases\\india\\rajasthan\\udaipur\\v3",
+    "file_checksums": {
+      "yatracanvas.db": "cf908e4ffe3508b7f4c8689d5ba880d7e96e7dd47bdd436fff3e8114c83c2764",
+      "manifest.json": "c63ccb98703411c0b5fbffb62d86c85ae1d5b1743607e339d7fd15c14b7e9761",
+      "city.json": "4a48efbd65ee52c17e863e72b317f2ec2caee10e8d0f21c694741c5dda85141d",
+      "checksums.json": "63d4334ae264cc8daf1fa206d965473e2b43108aa07c2980b8de871f9eb39258",
+      "image_manifest.json": "d7e5a2d4fc34b2d304f1e2f1807b2f89139ce8713845c6e0183c615bce15e18a",
+      "images_manifest.json": "d7e5a2d4fc34b2d304f1e2f1807b2f89139ce8713845c6e0183c615bce15e18a",
+      "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+      "source_manifest.json": "ef6b1cfabe169712d7d345983619a0f83fff2d9b566ade4363d6de87cc878c16"
+    },
+    "image_count": 94,
+    "review_candidate_count": 322
+  },
+  "varanasi": {
+    "city_id": "varanasi",
+    "city_name": "Varanasi",
+    "state": "Uttar Pradesh",
+    "version": "v3",
+    "source_path": "C:\\Users\\girir\\Documents\\YatraCanvas-DataFactory\\releases\\india\\uttar_pradesh\\varanasi\\v3",
+    "file_checksums": {
+      "yatracanvas.db": "ae61f697645e63c012f6cff0b43613d1a8a338f479f448b0608bf554f5ef0b74",
+      "manifest.json": "f4f3375ce3d559fd5155b5cb34708718a394597a63069199bc1675f43e97ed1c",
+      "city.json": "cc20e41abfe267f68275c777febdb23b905264c4bd7d897281d39f9e56b41d0d",
+      "checksums.json": "1d002f797075b2016a749d35e2dc0d723590e720c7dc76305332d2216d464743",
+      "image_manifest.json": "7588149d3f491ab0e94ed44116ba48b2bd979f6d32dfae5d9cccb53c601f739b",
+      "images_manifest.json": "7588149d3f491ab0e94ed44116ba48b2bd979f6d32dfae5d9cccb53c601f739b",
+      "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+      "source_manifest.json": "54a959c04d1a0c4d613f21a2916366353772290cbc5d66e6f14acf7a86296087"
+    },
+    "image_count": 200,
+    "review_candidate_count": 372
   }
 }

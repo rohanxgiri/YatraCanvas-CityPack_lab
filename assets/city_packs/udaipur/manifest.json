@@ -1,0 +1,101 @@
+{
+  "schema_version": "3.0",
+  "city_pack_version": "v3",
+  "city_id": "udaipur",
+  "city_name": "Udaipur",
+  "state": "Rajasthan",
+  "country": "India",
+  "generated_at": "2026-10-01T09:37:05.025938+00:00",
+  "pipeline_health": "PASS",
+  "data_quality": "WARN",
+  "source_coverage": "PASS",
+  "source_versions": {
+    "wikivoyage": "114",
+    "wikidata": "88",
+    "openstreetmap": "516",
+    "overture": "14114"
+  },
+  "counts": {
+    "total_raw_candidates": 14832,
+    "accepted": 324,
+    "rejected": 7839,
+    "quarantined": 415,
+    "duplicate_merges": 490,
+    "with_images": 39,
+    "with_opening_hours": 30,
+    "with_wikidata": 74,
+    "with_descriptions": 74,
+    "category_conflicts": 6335,
+    "entity_conflicts": 0,
+    "alias_conflicts": 0,
+    "image_conflicts": 0,
+    "coordinate_conflicts": 116,
+    "by_tier": {
+      "core_destination": 55,
+      "support": 143,
+      "discovery": 56,
+      "recommended": 70
+    },
+    "by_tier_stats": {
+      "core_destination": {
+        "count": 55,
+        "with_wikidata": 45,
+        "with_wikipedia": 39,
+        "with_image": 37,
+        "with_hours": 6,
+        "with_website": 24,
+        "multi_source": 39
+      },
+      "recommended": {
+        "count": 70,
+        "with_wikidata": 0,
+        "with_wikipedia": 0,
+        "with_image": 0,
+        "with_hours": 19,
+        "with_website": 50,
+        "multi_source": 43
+      },
+      "discovery": {
+        "count": 56,
+        "with_wikidata": 1,
+        "with_wikipedia": 0,
+        "with_image": 0,
+        "with_hours": 0,
+        "with_website": 54,
+        "multi_source": 1
+      },
+      "support": {
+        "count": 143,
+        "with_wikidata": 28,
+        "with_wikipedia": 2,
+        "with_image": 2,
+        "with_hours": 5,
+        "with_website": 109,
+        "multi_source": 130
+      }
+    },
+    "by_category": {
+      "heritage": 62,
+      "religious": 12,
+      "hotel": 141,
+      "park": 20,
+      "transport": 2,
+      "nature": 16,
+      "museum": 17,
+      "cafe": 10,
+      "food": 22,
+      "shopping": 3,
+      "arts_culture": 19
+    }
+  },
+  "checksums": {
+    "city.json": "4a48efbd65ee52c17e863e72b317f2ec2caee10e8d0f21c694741c5dda85141d",
+    "places.json": "cb1be819732a10503c0257b1ed3a2f43fcbaa9c0aad9dda99167cccdca711199",
+    "places.jsonl": "3e6593605bfcee87e616a37da740baba8094d7b3990e8efb20d19ad632a8b04a",
+    "places.parquet": "7be5f35c57337e3428470ab72ef91eb04a145c293cd0039692cbf897768f9050",
+    "image_manifest.json": "d7e5a2d4fc34b2d304f1e2f1807b2f89139ce8713845c6e0183c615bce15e18a",
+    "source_manifest.json": "ef6b1cfabe169712d7d345983619a0f83fff2d9b566ade4363d6de87cc878c16",
+    "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+    "yatracanvas.db": "cf908e4ffe3508b7f4c8689d5ba880d7e96e7dd47bdd436fff3e8114c83c2764"
+  }
+}

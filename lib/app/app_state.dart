@@ -27,6 +27,10 @@ import '../domain/curation/place_addition.dart';
 import '../curation/curation_repository.dart';
 import '../curation/curation_service.dart';
 import '../curation/curated_image_import_service.dart';
+import '../review/models/review_candidate.dart';
+import '../review/models/inbox_decision.dart';
+import '../review/services/review_manifest_loader.dart';
+import '../review/repository/inbox_decision_repository.dart';
 
 class AppState extends ChangeNotifier {
   final CityPackRegistry registry = CityPackRegistry();
@@ -72,6 +76,32 @@ class AppState extends ChangeNotifier {
   Map<String, dynamic>? qualityStats;
   List<Map<String, dynamic>> categoryCoverageMatrix = [];
   bool isEvaluatingQuality = false;
+
+  // ── Review Inbox ──────────────────────────────────────────────────────
+  final ReviewManifestLoader _manifestLoader = ReviewManifestLoader();
+  final InboxDecisionRepository inboxDecisionRepo = InboxDecisionRepository();
+
+  /// DataFactory review candidates for the active pack, sorted for inbox.
+  List<ReviewCandidate> reviewCandidates = [];
+
+  /// Human decisions keyed by canonical_id.
+  Map<String, InboxDecision> inboxDecisions = {};
+
+  /// Error or warning from the last manifest load attempt.
+  String? reviewManifestWarning;
+
+  /// Whether review_candidates.json was absent when the pack was opened.
+  bool reviewManifestMissing = false;
+
+  int get unresolvedHighPriorityCount => reviewCandidates
+      .where((c) =>
+          c.reviewPriority == ReviewPriority.high &&
+          !(inboxDecisions[c.canonicalId]?.isResolved ?? false))
+      .length;
+
+  int get unresolvedReviewCount => reviewCandidates
+      .where((c) => !(inboxDecisions[c.canonicalId]?.isResolved ?? false))
+      .length;
 
   // Diagnostics & Transparency
   bool strictOfflineMode = false;
@@ -125,6 +155,9 @@ class AppState extends ChangeNotifier {
       curationService.currentContributor = contributorName;
       await curationService.loadCityCuration(pack.id);
 
+      // Load Review Inbox (DataFactory review_candidates.json + human decisions)
+      await loadReviewManifest(pack.id);
+
       sw.stop();
       lastQueryLatencyMs = sw.elapsedMilliseconds;
       notifyListeners();
@@ -135,6 +168,79 @@ class AppState extends ChangeNotifier {
       debugPrint('[ERROR] Failed to open pack ${pack.id}: $e');
       rethrow;
     }
+  }
+
+  // ── Review Inbox Actions ──────────────────────────────────────────────
+
+  /// Loads review_candidates.json and previously saved inbox decisions.
+  /// Detects "changed since review" for any candidate that changed in a
+  /// DataFactory regeneration.
+  Future<void> loadReviewManifest(String cityId) async {
+    final result = await _manifestLoader.load(cityId);
+    reviewManifestMissing = result.isMissing;
+    reviewManifestWarning = result.warnings.isNotEmpty
+        ? result.warnings.join(' ')
+        : result.error;
+
+    final sorted = ReviewManifestLoader.sortForInbox(result.candidates);
+
+    // Load previously saved decisions
+    final saved = await inboxDecisionRepo.loadDecisions(cityId);
+
+    // Run changed-since-review detection
+    final updated = <String, InboxDecision>{};
+    for (final candidate in sorted) {
+      final existing = saved[candidate.canonicalId];
+      if (existing != null) {
+        final changed = inboxDecisionRepo.detectChanges(
+          existing: existing,
+          fresh: candidate,
+        );
+        if (changed != null) {
+          // Persist the updated (changed) decision automatically
+          await inboxDecisionRepo.saveDecision(changed);
+          updated[candidate.canonicalId] = changed;
+        } else {
+          updated[candidate.canonicalId] = existing;
+        }
+      }
+    }
+
+    reviewCandidates = sorted;
+    inboxDecisions = updated;
+    notifyListeners();
+  }
+
+  /// Records a human decision for a DataFactory review candidate.
+  Future<void> saveInboxDecision(InboxDecision decision) async {
+    await inboxDecisionRepo.saveDecision(decision);
+    inboxDecisions = Map.from(inboxDecisions)
+      ..[decision.canonicalId] = decision;
+    await evaluateCityQuality();
+    notifyListeners();
+  }
+
+  /// Removes a human decision, restoring DataFactory source behaviour.
+  Future<void> removeInboxDecision(String canonicalId) async {
+    if (activePack == null) return;
+    await inboxDecisionRepo.removeDecision(activePack!.id, canonicalId);
+    final updated = Map<String, InboxDecision>.from(inboxDecisions);
+    updated.remove(canonicalId);
+    inboxDecisions = updated;
+    await evaluateCityQuality();
+    notifyListeners();
+  }
+
+  /// Quick helper to build a snapshot from a candidate for persisting with a
+  /// decision.
+  InboxDecisionSnapshot snapshotOf(ReviewCandidate c) {
+    return InboxDecisionSnapshot(
+      travelRelevanceReason: c.travelRelevanceReason,
+      travelRelevanceScore: c.travelRelevanceScore,
+      confidence: c.confidence,
+      suggestedAction: c.suggestedAction,
+      missingFields: List.from(c.missingFields),
+    );
   }
 
   Future<void> evaluateCityQuality() async {
@@ -179,6 +285,8 @@ class AppState extends ChangeNotifier {
         dataQuality: dataQualityScore!,
         travelReadiness: travelReadinessScore!,
         manualQa: manualQaSummary!,
+        reviewCandidates: reviewCandidates,
+        inboxDecisions: inboxDecisions,
       );
 
       dataGaps = dataGapService.analyzeGaps(
@@ -578,6 +686,11 @@ class AppState extends ChangeNotifier {
     dataGaps.clear();
     qualityStats = null;
     categoryCoverageMatrix.clear();
+    // Clear review inbox
+    reviewCandidates = [];
+    inboxDecisions = {};
+    reviewManifestWarning = null;
+    reviewManifestMissing = false;
     notifyListeners();
   }
 

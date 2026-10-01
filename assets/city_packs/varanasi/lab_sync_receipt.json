@@ -1,0 +1,19 @@
+{
+  "city_id": "varanasi",
+  "city_name": "Varanasi",
+  "state": "Uttar Pradesh",
+  "version": "v3",
+  "source_path": "C:\\Users\\girir\\Documents\\YatraCanvas-DataFactory\\releases\\india\\uttar_pradesh\\varanasi\\v3",
+  "file_checksums": {
+    "yatracanvas.db": "ae61f697645e63c012f6cff0b43613d1a8a338f479f448b0608bf554f5ef0b74",
+    "manifest.json": "f4f3375ce3d559fd5155b5cb34708718a394597a63069199bc1675f43e97ed1c",
+    "city.json": "cc20e41abfe267f68275c777febdb23b905264c4bd7d897281d39f9e56b41d0d",
+    "checksums.json": "1d002f797075b2016a749d35e2dc0d723590e720c7dc76305332d2216d464743",
+    "image_manifest.json": "7588149d3f491ab0e94ed44116ba48b2bd979f6d32dfae5d9cccb53c601f739b",
+    "images_manifest.json": "7588149d3f491ab0e94ed44116ba48b2bd979f6d32dfae5d9cccb53c601f739b",
+    "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
+    "source_manifest.json": "54a959c04d1a0c4d613f21a2916366353772290cbc5d66e6f14acf7a86296087"
+  },
+  "image_count": 200,
+  "review_candidate_count": 372
+}

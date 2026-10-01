@@ -4,6 +4,8 @@ import '../models/manual_qa_summary.dart';
 import '../models/release_gate_result.dart';
 import '../models/travel_readiness_score.dart';
 import '../../domain/city_pack.dart';
+import '../../review/models/inbox_decision.dart';
+import '../../review/models/review_candidate.dart';
 
 class ReleaseGateService {
   final ReleaseGateConfig config;
@@ -16,6 +18,8 @@ class ReleaseGateService {
     required DataQualityScore dataQuality,
     required TravelReadinessScore travelReadiness,
     required ManualQaSummary manualQa,
+    List<ReviewCandidate>? reviewCandidates,
+    Map<String, InboxDecision>? inboxDecisions,
   }) {
     final List<String> criticalBlockers = [];
     final List<String> warnings = [];
@@ -116,6 +120,27 @@ class ReleaseGateService {
     for (final trWarning in travelReadiness.warnings) {
       if (!warnings.contains(trWarning) && !criticalBlockers.contains(trWarning)) {
         warnings.add(trWarning);
+      }
+    }
+    // 8. Review Inbox Flagship Conflicts Gate
+    if (reviewCandidates != null && reviewCandidates.isNotEmpty) {
+      int unresolvedCriticalCore = 0;
+      for (final candidate in reviewCandidates) {
+        if (candidate.tier == 'core_destination' &&
+            candidate.travelRelevanceReason == 'CONTRADICTORY_BUILDING_AMENITY') {
+          final decision = inboxDecisions?[candidate.canonicalId];
+          if (decision == null || !decision.isResolved) {
+            unresolvedCriticalCore++;
+          }
+        }
+      }
+      if (unresolvedCriticalCore > 0) {
+        criticalBlockers.add(
+          '$unresolvedCriticalCore flagship destination(s) flagged with contradictory amenity in Review Inbox require human resolution.',
+        );
+        checks['review_inbox_flagship_resolved'] = false;
+      } else {
+        checks['review_inbox_flagship_resolved'] = true;
       }
     }
 

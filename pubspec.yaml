@@ -64,24 +64,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_lohaghar_fort/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_lakkar_haveli/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_jaipur_palace/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_handicraft_haveli/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_suraj_pol_gate/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_sawai_mansingh_townhall/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_nakati_mata_temple/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_iswari_minar_swarga_sali_isarlat/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_ganesh_pol/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_elejungle_jaipur_elephant_ride/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_diwan_i_khas/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_amer_palace/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_alice_garg_seashell_museum/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_ajmeri_gate/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_vidyadhar_garden/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_nahargarh_wildlife_sanctuary/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_jhalanaamagarh_leopard_conservation_reserve/
-    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_chulgiri_digamber_jain_temple/
     - assets/city_packs/
     - assets/city_packs/city_packs_index.json
     - assets/city_packs/gulmarg/
@@ -96,6 +78,10 @@ flutter:
     - assets/city_packs/gulmarg/images/yc_in_ja_gulmarg_st_marys_church/
     - assets/city_packs/gulmarg/images/yc_in_ja_gulmarg_tangmarg/
     - assets/city_packs/jaipur/
+    - assets/city_packs/jaipur/curation/exclusions/
+    - assets/city_packs/jaipur/curation/issues/
+    - assets/city_packs/jaipur/curation/media/
+    - assets/city_packs/jaipur/curation/overrides/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_akabar_ke_kos_chinha/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_akshardham_temple/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_albert_hall_museum/
@@ -126,12 +112,14 @@ flutter:
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_lake_palace/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_maharaniyon/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_man_gate/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_mansarovar_metro_station/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_moon_gate/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_moti_doongri_fort/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_moti_dungri_mandir/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_mundota_fort_and_palace/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_nahargarh_fort/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_nevta_dam/
+    - assets/city_packs/jaipur/images/yc_in_rj_jaipur_new_aatish_market_metro_station/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_paanch_batti/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_patrika_gate/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_ram_niwas_garden/
@@ -232,6 +220,155 @@ flutter:
     - assets/city_packs/rishikesh/images/yc_in_uk_rishikesh_triveni_ghat/
     - assets/city_packs/rishikesh/images/yc_in_uk_rishikesh_virbhadra_temple/
     - assets/city_packs/rishikesh/images/yc_in_uk_rishikesh_yog_nagari_rishikesh_railway_station/
+    - assets/city_packs/udaipur/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_agasthyavanam_biological_park/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_ahar_cenotaphs/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_ahar_museum/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_ambrai_ghat/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_bagore_ki_haveli/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_bharatiya_lok_kala_mandal/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_cenotaph_of_raja_rama_shahs_sons_ahar/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_chandpole/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_chunda_palace/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_city_palace_udaipur/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_college_of_technology_engineering_udaipur/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_fateh_sagar_lake/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_fms_udaipur/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_gangaur_ghat/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_gangodbhav_kund/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_gulab_bagh_and_zoo/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_hathi_pol_elephant_gate/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_jag_mandir/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_jagdish_temple_udaipur/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_jagmandir_palace/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_karni_mata_udaipur/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_kingdom_of_mewar/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_lake_palace/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_lake_pichola/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_maharana_pratap_university_of_agriculture_and_technology/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_meera_temple_ahar/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_monsoon_palace/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_moti_magari_ke_prasad/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_neemach_mata_temple/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_pala_ganesh_temple/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_pratap_gaurav_kendra_rashtriya_tirth/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_pratap_park/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_rajiv_gandhi_garden/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_rana_pratap_nagar_railway_station/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_roman_catholic_diocese_of_udaipur/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_saheliyon_ki_bari/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_sajjangarh/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_sajjangarh_biological_park/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_shilpgram/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_shiv_niwas_palace/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_sukhadia_circle/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_sunset_point/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_taj_fateh_prakash_palace/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_udaipur/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_udaipur_city_railway_station/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_udaipur_solar_observatory/
+    - assets/city_packs/udaipur/images/yc_in_rj_udaipur_vintage_and_classic_car_museum/
+    - assets/city_packs/varanasi/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_aircraft/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_alamgir_mosque/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_annapurna_devi_mandir/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_ashokan_pillar/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_ashram/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_assi_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_assi_river/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_baba_keenaram_sthal/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_badrinarayan_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_banaras_hindu_university/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_banaras_railway_station/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_benares_state/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_besant_theosophical_school/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_bharat_kala_bhavan/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_bharat_mata_mandir/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_bhulanpur_railway_station/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_brahma_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_brijrama_palace_varanasi/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_central_hindu_boys_school/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_central_hindu_school/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_chaukhandi_stupa/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_chauki_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_chousatti_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_dalmandi/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_dalmia_bhawan/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_dashashwamedh_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_dhamek_stupa/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_dr_rajendra_prasad_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_durga_mandir/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_durga_mandir_varanasi/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_ganga_aarti/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_ganga_mahal_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_gularia_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_gyanvapi_mosque/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_harishchandra_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_hindu_temples_in_varanasi/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_indian_institute_of_technology_bhu_varanasi/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_jagadamba_nepali_dharmashala/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_kaal_bhairav_mandir_varanasi/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_kashi_vishwanath_temple/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_lal_bahadur_shastri_airport/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_lal_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_lal_khan_tomb/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_lali_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_lalita_gauri_mandir/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_lalita_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_lion_capital_of_asoka/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_lolark_kund/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_mahila_maha_vidyalaya/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_malviya_bridge/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_man_singh_observatory/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_manikarnika_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_manmandir_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_meer_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_mosque/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_moti_jhil/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_mrityunjay_mahadev_mandir/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_munshi_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_namo_ghat_var/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_narad_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_nepali_mandir/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_new_vishwanath_temple/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_nishadraj_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_parshvanath_jain_temples_varanasi/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_prabhu_narayan_government_inter_college/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_prahlad_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_pt_deen_dayal_upadhyaya_junction_railway_station/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_raj_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_ram_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_ramnagar_fort/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_ranamahal_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_rani_laxmibai_janmasthali/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_ratneshwar_mahadev_temple/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_roman_catholic_diocese_of_varanasi/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_sakka_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_sampurnanand_sanskrit_university/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_sankat_mochan_hanuman_temple/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_sankata_devi_mandir/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_sant_atulanand_convent_school/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_sant_ravidas_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_sarnath_deer_park/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_sarnath_museum/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_scindia_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_shitala_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_shivala_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_shri_guru_ravidass_janam_asthan/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_shri_tilbhandeshwar_mahadev_mandir/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_st_johns_school_varanasi/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_st_marys_cathedral/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_stay_banaras/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_swastika/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_telianala_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_trilochan_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_tulsi_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_tulsi_manas_mandir/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_vaccharaja_ghat/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_varanasi/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_varanasi_junction/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_varuna_river/
+    - assets/city_packs/varanasi/images/yc_in_up_varanasi_vishalakshi_temple/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

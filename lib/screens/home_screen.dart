@@ -6,6 +6,7 @@ import '../app/lab_theme.dart';
 class HomeScreen extends StatelessWidget {
   final AppState state;
   final VoidCallback onNavigateToFix;
+  final VoidCallback? onNavigateToInbox;
   final VoidCallback onNavigateToReview;
   final VoidCallback onNavigateToPlaces;
   final VoidCallback onNavigateToRelease;
@@ -14,6 +15,7 @@ class HomeScreen extends StatelessWidget {
     super.key,
     required this.state,
     required this.onNavigateToFix,
+    this.onNavigateToInbox,
     required this.onNavigateToReview,
     required this.onNavigateToPlaces,
     required this.onNavigateToRelease,
@@ -113,8 +115,13 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: LabSpacing.sm),
                     LayoutBuilder(
                       builder: (context, constraints) {
-                        final columns = constraints.maxWidth >= 960
-                            ? 4
+                        final hasInboxCandidates = state.reviewCandidates.isNotEmpty;
+                        final unresolvedInbox = state.unresolvedReviewCount;
+                        final unresolvedHigh = state.unresolvedHighPriorityCount;
+                        final columns = constraints.maxWidth >= 1180
+                            ? (hasInboxCandidates ? 5 : 4)
+                            : constraints.maxWidth >= 880
+                            ? (hasInboxCandidates ? 3 : 2)
                             : constraints.maxWidth >= 580
                             ? 2
                             : 1;
@@ -163,6 +170,18 @@ class HomeScreen extends StatelessWidget {
                               accent: LabPalette.plum,
                               onTap: onNavigateToPlaces,
                             ),
+                            if (hasInboxCandidates)
+                              _TaskCard(
+                                width: width,
+                                icon: Icons.mark_email_unread_outlined,
+                                count: unresolvedInbox,
+                                title: 'Review Inbox',
+                                message: unresolvedHigh > 0
+                                    ? '$unresolvedHigh high priority candidate${unresolvedHigh == 1 ? '' : 's'}'
+                                    : 'DataFactory review candidates',
+                                accent: LabPalette.ink,
+                                onTap: onNavigateToInbox ?? onNavigateToReview,
+                              ),
                           ],
                         );
                       },

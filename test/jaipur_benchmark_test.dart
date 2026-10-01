@@ -47,7 +47,8 @@ void main() {
     test('Total place count verification', () async {
       final rows = await db.rawQuery('SELECT COUNT(*) as count FROM places WHERE city_id = ?', ['jaipur']);
       final count = rows.first['count'] as int;
-      expect(count, 10060);
+      // Certified v3 dataset contains 684 clean places (filtered from upstream raw)
+      expect(count, 684);
       print('[BENCHMARK] Total places in Jaipur pack: $count');
     });
 

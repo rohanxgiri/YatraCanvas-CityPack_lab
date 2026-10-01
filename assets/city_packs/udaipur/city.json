@@ -1,0 +1,26 @@
+{
+  "id": "udaipur",
+  "name": "Udaipur",
+  "state": "Rajasthan",
+  "country": "India",
+  "iso_country": "IN",
+  "center": [
+    24.578721,
+    73.686257
+  ],
+  "bbox": [
+    73.526257,
+    24.418721,
+    73.846257,
+    24.738721
+  ],
+  "alternate_names": [],
+  "timezone": "Asia/Kolkata",
+  "osm_place_id": 247371437,
+  "geonames_id": null,
+  "wikidata_id": null,
+  "dataset_version": "1.0.0",
+  "generated_at": "2026-09-19T10:07:47.697872+00:00",
+  "resolution_source": null,
+  "resolution_confidence": null
+}
