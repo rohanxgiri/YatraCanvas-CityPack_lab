@@ -10,6 +10,7 @@ import 'home_screen.dart';
 import 'places_cms_screen.dart';
 import 'release_gate_screen.dart';
 import 'review_inbox_screen.dart';
+import 'sync_city_packs_dialog.dart';
 
 class CityLabHomeScreen extends StatefulWidget {
   final AppState state;
@@ -239,7 +240,10 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
       ReviewInboxScreen(state: widget.state),
       CurationReviewScreen(state: widget.state),
       PlacesCmsScreen(state: widget.state),
-      ReleaseGateScreen(state: widget.state),
+      ReleaseGateScreen(
+        state: widget.state,
+        onOpenInbox: () => _navigateToTab(2),
+      ),
       if (widget.state.isAdminMode) DiagnosticsScreen(state: widget.state),
     ];
 
@@ -336,6 +340,14 @@ class _CityLabHomeScreenState extends State<CityLabHomeScreen> {
         ),
         actions: [
           // Mode switch pill (Contributor vs Admin)
+          IconButton(
+            icon: const Icon(Icons.sync),
+            tooltip: 'Sync Latest City Packs',
+            onPressed: () => showDialog(
+              context: context,
+              builder: (_) => SyncCityPacksDialog(state: widget.state),
+            ),
+          ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10),
             padding: const EdgeInsets.symmetric(horizontal: 10),

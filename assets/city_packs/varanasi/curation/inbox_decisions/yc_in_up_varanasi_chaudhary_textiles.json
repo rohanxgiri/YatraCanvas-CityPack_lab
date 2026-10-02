@@ -1,0 +1,38 @@
+{
+  "canonical_id": "yc_in_up_varanasi_chaudhary_textiles",
+  "city_id": "varanasi",
+  "pack_version": "v3",
+  "verdict": "NEEDS_RESEARCH",
+  "author": "Contributor",
+  "decided_at": "2026-10-01T23:18:14.398761",
+  "snapshot": {
+    "semantic_fields": {
+      "name": "Chaudhary Textiles",
+      "category": "shopping",
+      "subcategory": "craft_and_handicraft",
+      "tier": "recommended",
+      "latitude": 25.312766,
+      "longitude": 83.004577,
+      "wikidata_id": null,
+      "commons_image": null,
+      "wikidata_p18": null,
+      "external_ids": {
+        "overture_ids": [
+          "1bf789f4-17b3-4f0c-a0d3-83740e023e2a"
+        ]
+      },
+      "osm_tags": {}
+    },
+    "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+    "travel_relevance_score": 0.45,
+    "confidence": 0.499206006526947,
+    "suggested_action": "APPROVE_AS_SECONDARY_DESTINATION",
+    "missing_fields": [
+      "primary_image",
+      "description",
+      "opening_hours",
+      "website"
+    ]
+  },
+  "changed_since_review": false
+}

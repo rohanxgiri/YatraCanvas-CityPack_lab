@@ -1,10 +1,12 @@
 import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
+
 import 'city_pack_database.dart';
 
 class LoadedCityPackContext {
@@ -73,14 +75,18 @@ class CityPackLoader {
 
     Directory targetDir;
     if (_overrideSupportDir != null) {
-      targetDir = Directory(p.join(_overrideSupportDir!.path, 'city_packs', cityId));
+      targetDir = Directory(
+        p.join(_overrideSupportDir!.path, 'city_packs', cityId),
+      );
     } else {
       try {
         final appSupport = await getApplicationSupportDirectory();
         targetDir = Directory(p.join(appSupport.path, 'city_packs', cityId));
       } catch (_) {
         // Fallback for tests or environments where path_provider is not mocked
-        targetDir = Directory(p.join(Directory.systemTemp.path, 'yatracanvas_lab', cityId));
+        targetDir = Directory(
+          p.join(Directory.systemTemp.path, 'yatracanvas_lab', cityId),
+        );
       }
     }
 
@@ -93,13 +99,14 @@ class CityPackLoader {
     // Check if we have bundled file on local filesystem (desktop / tests)
     final localAssetDb = File('assets/city_packs/$cityId/yatracanvas.db');
     if (localAssetDb.existsSync()) {
-      // Copy to target runtime path if missing or updated
-      if (!targetDbFile.existsSync() || targetDbFile.lengthSync() != localAssetDb.lengthSync()) {
-        await localAssetDb.copy(targetDbFile.path);
-      }
+      // SQLite files can change without changing size. Always refresh the
+      // disposable runtime copy when reopening a synchronized pack.
+      await localAssetDb.copy(targetDbFile.path);
     } else {
       // Load from Flutter asset bundle (mobile)
-      final byteData = await rootBundle.load('assets/city_packs/$cityId/yatracanvas.db');
+      final byteData = await rootBundle.load(
+        'assets/city_packs/$cityId/yatracanvas.db',
+      );
       final buffer = byteData.buffer;
       await targetDbFile.writeAsBytes(
         buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes),

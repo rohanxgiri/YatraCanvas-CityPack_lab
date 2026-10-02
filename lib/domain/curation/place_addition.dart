@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import '../lab_place.dart';
 
 /// Represents a completely missing place added by a human curator.
@@ -61,6 +62,7 @@ class PlaceAddition {
       cityId: cityId,
       name: name,
       nameHi: nameHi,
+      description: description,
       latitude: latitude,
       longitude: longitude,
       address: address,
@@ -112,7 +114,9 @@ class PlaceAddition {
     if (phone != null) map['phone'] = phone;
     if (description != null) map['description'] = description;
     if (primaryImagePath != null) map['primary_image_path'] = primaryImagePath;
-    if (recommendedVisitMinutes != null) map['recommended_visit_minutes'] = recommendedVisitMinutes;
+    if (recommendedVisitMinutes != null) {
+      map['recommended_visit_minutes'] = recommendedVisitMinutes;
+    }
     if (familyFriendly != null) map['family_friendly'] = familyFriendly;
     if (bestTime != null) map['best_time'] = bestTime;
     if (notes != null) map['notes'] = notes;
@@ -141,11 +145,13 @@ class PlaceAddition {
       familyFriendly: json['family_friendly'] as int?,
       bestTime: json['best_time'] as String?,
       author: json['author'] as String? ?? 'contributor',
-      createdAt: json['created_at'] as String? ?? DateTime.now().toIso8601String(),
+      createdAt:
+          json['created_at'] as String? ?? DateTime.now().toIso8601String(),
       evidenceSource: json['evidence_source'] as String? ?? 'manual_input',
       notes: json['notes'] as String?,
     );
   }
 
-  String toFormattedJson() => const JsonEncoder.withIndent('  ').convert(toJson());
+  String toFormattedJson() =>
+      const JsonEncoder.withIndent('  ').convert(toJson());
 }

@@ -23,6 +23,38 @@ import '../models/inbox_decision.dart';
 import '../models/review_candidate.dart';
 
 class InboxDecisionRepository {
+  final List<String> loadWarnings = [];
+  /// Only evidence used to judge the place, never fetch timestamps or ordering.
+  static Map<String, dynamic> semanticFieldsOf(ReviewCandidate c) => {
+    'name': c.name,
+    'category': c.category,
+    'subcategory': c.subcategory,
+    'tier': c.tier,
+    'latitude': c.latitude,
+    'longitude': c.longitude,
+    'wikidata_id': c.wikidataId,
+    'commons_image': c.commonsImage,
+    'wikidata_p18': c.wikidataP18,
+    'external_ids': {
+      for (final key in c.externalIds.keys.toList()..sort())
+        key: c.externalIds[key]!.toSet().toList()..sort(),
+    },
+    'osm_tags': {
+      for (final key in [
+        'amenity',
+        'building',
+        'tourism',
+        'historic',
+        'religion',
+        'denomination',
+        'shop',
+        'leisure',
+        'name',
+        'wikidata',
+      ])
+        if (c.osmTags.containsKey(key)) key: c.osmTags[key],
+    },
+  };
   static Directory? _overrideBaseDir;
 
   // Web in-memory fallback
@@ -35,7 +67,8 @@ class InboxDecisionRepository {
   Future<Directory> _getDecisionDir(String cityId) async {
     if (_overrideBaseDir != null) {
       final dir = Directory(
-          p.join(_overrideBaseDir!.path, cityId, 'curation', 'inbox_decisions'));
+        p.join(_overrideBaseDir!.path, cityId, 'curation', 'inbox_decisions'),
+      );
       if (!dir.existsSync()) dir.createSync(recursive: true);
       return dir;
     }
@@ -45,8 +78,7 @@ class InboxDecisionRepository {
     );
     if (localDir.existsSync()) return localDir;
 
-    final cityPackDir =
-        Directory(p.join('assets', 'city_packs', cityId));
+    final cityPackDir = Directory(p.join('assets', 'city_packs', cityId));
     if (cityPackDir.existsSync()) {
       localDir.createSync(recursive: true);
       return localDir;
@@ -58,16 +90,19 @@ class InboxDecisionRepository {
       base = await getApplicationSupportDirectory();
     } catch (_) {
       base = Directory(
-          p.join(Directory.systemTemp.path, 'yatracanvas_curation'));
+        p.join(Directory.systemTemp.path, 'yatracanvas_curation'),
+      );
     }
     final dir = Directory(
-        p.join(base.path, 'city_packs', cityId, 'curation', 'inbox_decisions'));
+      p.join(base.path, 'city_packs', cityId, 'curation', 'inbox_decisions'),
+    );
     if (!dir.existsSync()) dir.createSync(recursive: true);
     return dir;
   }
 
   /// Loads all persisted decisions for a city.
   Future<Map<String, InboxDecision>> loadDecisions(String cityId) async {
+    loadWarnings.clear();
     if (kIsWeb) {
       return Map.from(_webStore[cityId] ?? {});
     }
@@ -83,6 +118,7 @@ class InboxDecisionRepository {
         final decision = InboxDecision.fromJson(map);
         result[decision.canonicalId] = decision;
       } catch (e) {
+        loadWarnings.add('Saved decision ${p.basename(file.path)} is corrupt. Restore it from Git or re-review the candidate.');
         debugPrint('[InboxDecisionRepo] Error reading ${file.path}: $e');
       }
     }
@@ -94,9 +130,8 @@ class InboxDecisionRepository {
   /// canonical ID.
   Future<void> saveDecision(InboxDecision decision) async {
     if (kIsWeb) {
-      _webStore
-          .putIfAbsent(decision.cityId, () => {})
-          [decision.canonicalId] = decision;
+      _webStore.putIfAbsent(decision.cityId, () => {})[decision.canonicalId] =
+          decision;
       return;
     }
 
@@ -131,17 +166,51 @@ class InboxDecisionRepository {
     final snap = existing.snapshot;
     final changed = <String>[];
 
+    final previous = snap.semanticFields;
+    if (previous != null) {
+      final current = semanticFieldsOf(fresh);
+      for (final key in current.keys) {
+        final before = previous[key];
+        final after = current[key];
+        if (key == 'latitude' || key == 'longitude') {
+          // Approximately 50 metres, noise below this does not require review.
+          if (before is num &&
+              after is num &&
+              (before - after).abs() <= 0.0005) {
+            continue;
+          }
+        }
+        if (!mapEquals(
+              previous['osm_tags'] as Map?,
+              current['osm_tags'] as Map?,
+            ) &&
+            key == 'osm_tags') {
+          changed.add('OSM place meaning changed');
+        } else if (key != 'osm_tags' &&
+            jsonEncode(before) != jsonEncode(after)) {
+          changed.add('$key changed');
+        }
+      }
+    }
+    if ((snap.confidence - fresh.confidence).abs() > 0.05) {
+      changed.add('confidence changed');
+    }
+
     if (snap.travelRelevanceReason != fresh.travelRelevanceReason) {
-      changed.add('reason: ${snap.travelRelevanceReason} → ${fresh.travelRelevanceReason}');
+      changed.add(
+        'reason: ${snap.travelRelevanceReason} → ${fresh.travelRelevanceReason}',
+      );
     }
     if ((snap.travelRelevanceScore - fresh.travelRelevanceScore).abs() > 0.05) {
       changed.add(
-          'score: ${snap.travelRelevanceScore.toStringAsFixed(2)} → '
-          '${fresh.travelRelevanceScore.toStringAsFixed(2)}');
+        'score: ${snap.travelRelevanceScore.toStringAsFixed(2)} → '
+        '${fresh.travelRelevanceScore.toStringAsFixed(2)}',
+      );
     }
     if (snap.suggestedAction != fresh.suggestedAction) {
       changed.add(
-          'suggested action: ${snap.suggestedAction} → ${fresh.suggestedAction}');
+        'suggested action: ${snap.suggestedAction} → ${fresh.suggestedAction}',
+      );
     }
 
     // Check if previously missing fields are now present
@@ -150,6 +219,12 @@ class InboxDecisionRepository {
         .toList();
     if (newlyPresent.isNotEmpty) {
       changed.add('now has: ${newlyPresent.join(', ')}');
+    }
+    final newlyMissing = fresh.missingFields
+        .where((f) => !snap.missingFields.contains(f))
+        .toList();
+    if (newlyMissing.isNotEmpty) {
+      changed.add('now missing: ${newlyMissing.join(', ')}');
     }
 
     if (changed.isEmpty) return null;

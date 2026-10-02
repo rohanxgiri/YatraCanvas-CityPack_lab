@@ -1,5 +1,7 @@
 import 'dart:math';
+
 import 'package:sqflite/sqflite.dart';
+
 import '../domain/lab_place.dart';
 
 class CityPackDatabase {
@@ -8,7 +10,9 @@ class CityPackDatabase {
 
   CityPackDatabase(this.db, this.cityId);
 
-  Future<Map<String, int>> getCategoriesWithCounts({bool onlyTravelRelevant = false}) async {
+  Future<Map<String, int>> getCategoriesWithCounts({
+    bool onlyTravelRelevant = false,
+  }) async {
     String query = '''
       SELECT category, COUNT(*) as count 
       FROM places 
@@ -55,58 +59,76 @@ class CityPackDatabase {
     final Map<String, List<LabPlace>> sections = {};
 
     // 1. Top / Core destinations
-    final coreRows = await db.rawQuery('''
+    final coreRows = await db.rawQuery(
+      '''
       SELECT * FROM places 
       WHERE city_id = ? AND tier = 'core_destination'
       ORDER BY tourism_priority DESC, travel_relevance_score DESC
       LIMIT ?
-    ''', [cityId, limitPerSection]);
-    sections['Top Destinations (Core)'] =
-        coreRows.map((r) => LabPlace.fromMap(r)).toList();
+    ''',
+      [cityId, limitPerSection],
+    );
+    sections['Top Destinations (Core)'] = coreRows
+        .map((r) => LabPlace.fromMap(r))
+        .toList();
 
     // 2. Recommended
-    final recRows = await db.rawQuery('''
+    final recRows = await db.rawQuery(
+      '''
       SELECT * FROM places 
       WHERE city_id = ? AND tier = 'recommended'
       ORDER BY travel_relevance_score DESC, tourism_priority DESC
       LIMIT ?
-    ''', [cityId, limitPerSection]);
-    sections['Recommended'] =
-        recRows.map((r) => LabPlace.fromMap(r)).toList();
+    ''',
+      [cityId, limitPerSection],
+    );
+    sections['Recommended'] = recRows.map((r) => LabPlace.fromMap(r)).toList();
 
     // 3. Based on selected interests
     if (interests.isNotEmpty) {
       final placeholders = List.filled(interests.length, '?').join(',');
-      final interestRows = await db.rawQuery('''
+      final interestRows = await db.rawQuery(
+        '''
         SELECT * FROM places 
         WHERE city_id = ? AND category IN ($placeholders)
         ORDER BY tourism_priority DESC, travel_relevance_score DESC
         LIMIT ?
-      ''', [cityId, ...interests, limitPerSection]);
-      sections['Based on Interests (${interests.join(', ')})'] =
-          interestRows.map((r) => LabPlace.fromMap(r)).toList();
+      ''',
+        [cityId, ...interests, limitPerSection],
+      );
+      sections['Based on Interests (${interests.join(', ')})'] = interestRows
+          .map((r) => LabPlace.fromMap(r))
+          .toList();
     }
 
     // 4. Discover / Lesser-known
-    final discRows = await db.rawQuery('''
+    final discRows = await db.rawQuery(
+      '''
       SELECT * FROM places 
       WHERE city_id = ? AND tier = 'discovery'
       ORDER BY travel_relevance_score DESC, tourism_priority DESC
       LIMIT ?
-    ''', [cityId, limitPerSection]);
-    sections['Discover / Lesser-Known'] =
-        discRows.map((r) => LabPlace.fromMap(r)).toList();
+    ''',
+      [cityId, limitPerSection],
+    );
+    sections['Discover / Lesser-Known'] = discRows
+        .map((r) => LabPlace.fromMap(r))
+        .toList();
 
     // 5. Food & Cafes
-    final foodRows = await db.rawQuery('''
+    final foodRows = await db.rawQuery(
+      '''
       SELECT * FROM places 
       WHERE city_id = ? AND (category IN ('food', 'cafe') OR subcategory IN ('cafe', 'restaurant', 'food'))
       ORDER BY travel_relevance_score DESC, tourism_priority DESC
       LIMIT ?
-    ''', [cityId, limitPerSection]);
+    ''',
+      [cityId, limitPerSection],
+    );
     if (foodRows.isNotEmpty) {
-      sections['Food & Cafes'] =
-          foodRows.map((r) => LabPlace.fromMap(r)).toList();
+      sections['Food & Cafes'] = foodRows
+          .map((r) => LabPlace.fromMap(r))
+          .toList();
     }
 
     return sections;
@@ -136,10 +158,20 @@ class CityPackDatabase {
          OR address LIKE ?
          OR id IN (SELECT place_id FROM place_tags WHERE tag LIKE ?))
       ''');
-      args.addAll([pattern, pattern, pattern, pattern, pattern, pattern, pattern]);
+      args.addAll([
+        pattern,
+        pattern,
+        pattern,
+        pattern,
+        pattern,
+        pattern,
+        pattern,
+      ]);
     }
 
-    if (category != null && category.isNotEmpty && category.toLowerCase() != 'all') {
+    if (category != null &&
+        category.isNotEmpty &&
+        category.toLowerCase() != 'all') {
       conditions.add('category = ?');
       args.add(category);
     }
@@ -154,7 +186,8 @@ class CityPackDatabase {
     }
 
     final whereClause = conditions.join(' AND ');
-    final sql = '''
+    final sql =
+        '''
       SELECT * FROM places 
       WHERE $whereClause
       ORDER BY tourism_priority DESC, travel_relevance_score DESC, name ASC
@@ -211,7 +244,8 @@ class CityPackDatabase {
     }
 
     final whereClause = conditions.join(' AND ');
-    final sql = '''
+    final sql =
+        '''
       SELECT * FROM places 
       WHERE $whereClause
       ORDER BY $orderBy
@@ -255,7 +289,9 @@ class CityPackDatabase {
       'longitude BETWEEN ? AND ?',
     ];
 
-    if (category != null && category.isNotEmpty && category.toLowerCase() != 'all') {
+    if (category != null &&
+        category.isNotEmpty &&
+        category.toLowerCase() != 'all') {
       conditions.add('category = ?');
       args.add(category);
     }
@@ -265,7 +301,8 @@ class CityPackDatabase {
     }
 
     final whereClause = conditions.join(' AND ');
-    final sql = '''
+    final sql =
+        '''
       SELECT * FROM places 
       WHERE $whereClause
       ORDER BY tourism_priority DESC
@@ -285,7 +322,9 @@ class CityPackDatabase {
     final List<dynamic> args = [cityId];
     final List<String> conditions = ['city_id = ?'];
 
-    if (category != null && category.isNotEmpty && category.toLowerCase() != 'all') {
+    if (category != null &&
+        category.isNotEmpty &&
+        category.toLowerCase() != 'all') {
       conditions.add('category = ?');
       args.add(category);
     }
@@ -295,7 +334,8 @@ class CityPackDatabase {
     }
 
     final whereClause = conditions.join(' AND ');
-    final sql = '''
+    final sql =
+        '''
       SELECT * FROM places 
       WHERE $whereClause
       ORDER BY tourism_priority DESC
@@ -308,29 +348,41 @@ class CityPackDatabase {
   }
 
   Future<LabPlace?> getPlaceById(String id) async {
-    final rows = await db.rawQuery('''
+    final rows = await db.rawQuery(
+      '''
       SELECT * FROM places WHERE id = ? LIMIT 1
-    ''', [id]);
+    ''',
+      [id],
+    );
 
     if (rows.isEmpty) return null;
     final basePlace = LabPlace.fromMap(rows.first);
 
     // Fetch tags
-    final tagRows = await db.rawQuery('''
+    final tagRows = await db.rawQuery(
+      '''
       SELECT tag FROM place_tags WHERE place_id = ?
-    ''', [id]);
+    ''',
+      [id],
+    );
     final tags = tagRows.map((r) => r['tag'] as String).toList();
 
     // Fetch images
-    final imgRows = await db.rawQuery('''
+    final imgRows = await db.rawQuery(
+      '''
       SELECT * FROM place_images WHERE place_id = ?
-    ''', [id]);
+    ''',
+      [id],
+    );
     final images = imgRows.map((r) => PlaceImageItem.fromMap(r)).toList();
 
     // Fetch sources
-    final srcRows = await db.rawQuery('''
+    final srcRows = await db.rawQuery(
+      '''
       SELECT * FROM place_sources WHERE place_id = ?
-    ''', [id]);
+    ''',
+      [id],
+    );
     final sources = srcRows.map((r) => PlaceSourceItem.fromMap(r)).toList();
 
     return basePlace.copyWith(tags: tags, images: images, sources: sources);
@@ -358,7 +410,9 @@ class CityPackDatabase {
       conditions.add('tier = ?');
       args.add(tier);
     }
-    if (category != null && category.isNotEmpty && category.toLowerCase() != 'all') {
+    if (category != null &&
+        category.isNotEmpty &&
+        category.toLowerCase() != 'all') {
       conditions.add('category = ?');
       args.add(category);
     }
@@ -389,40 +443,58 @@ class CityPackDatabase {
     );
     final totalPlaces = (totalRows.first['count'] as int?) ?? 0;
 
-    final imgRows = await db.rawQuery('''
+    final imgRows = await db.rawQuery(
+      '''
       SELECT COUNT(*) as count FROM places 
       WHERE city_id = ? AND primary_image_path IS NOT NULL AND primary_image_path != ''
-    ''', [cityId]);
+    ''',
+      [cityId],
+    );
     final withImages = (imgRows.first['count'] as int?) ?? 0;
 
-    final wikiRows = await db.rawQuery('''
+    final wikiRows = await db.rawQuery(
+      '''
       SELECT COUNT(*) as count FROM places 
       WHERE city_id = ? AND wikidata_id IS NOT NULL AND wikidata_id != ''
-    ''', [cityId]);
+    ''',
+      [cityId],
+    );
     final withWikidata = (wikiRows.first['count'] as int?) ?? 0;
 
-    final osmRows = await db.rawQuery('''
+    final osmRows = await db.rawQuery(
+      '''
       SELECT COUNT(*) as count FROM places 
       WHERE city_id = ? AND osm_id IS NOT NULL AND osm_id != ''
-    ''', [cityId]);
+    ''',
+      [cityId],
+    );
     final withOsm = (osmRows.first['count'] as int?) ?? 0;
 
-    final hoursRows = await db.rawQuery('''
+    final hoursRows = await db.rawQuery(
+      '''
       SELECT COUNT(*) as count FROM places 
       WHERE city_id = ? AND opening_hours IS NOT NULL AND opening_hours != ''
-    ''', [cityId]);
+    ''',
+      [cityId],
+    );
     final withHours = (hoursRows.first['count'] as int?) ?? 0;
 
-    final webRows = await db.rawQuery('''
+    final webRows = await db.rawQuery(
+      '''
       SELECT COUNT(*) as count FROM places 
       WHERE city_id = ? AND website IS NOT NULL AND website != ''
-    ''', [cityId]);
+    ''',
+      [cityId],
+    );
     final withWebsite = (webRows.first['count'] as int?) ?? 0;
 
-    final phoneRows = await db.rawQuery('''
+    final phoneRows = await db.rawQuery(
+      '''
       SELECT COUNT(*) as count FROM places 
       WHERE city_id = ? AND phone IS NOT NULL AND phone != ''
-    ''', [cityId]);
+    ''',
+      [cityId],
+    );
     final withPhone = (phoneRows.first['count'] as int?) ?? 0;
 
     // Boundary checks from cities table
@@ -478,7 +550,12 @@ class CityPackDatabase {
         coreWithWiki++;
       }
 
-      if (minLat != null && maxLat != null && minLon != null && maxLon != null && lat != null && lon != null) {
+      if (minLat != null &&
+          maxLat != null &&
+          minLon != null &&
+          maxLon != null &&
+          lat != null &&
+          lon != null) {
         if (lat < minLat || lat > maxLat || lon < minLon || lon > maxLon) {
           coreOutsideBounds++;
           coreOutsideBoundsIds.add(id);
@@ -490,10 +567,13 @@ class CityPackDatabase {
     int placesOutsideBounds = 0;
     List<String> outsideBoundsIds = [];
     if (minLat != null && maxLat != null && minLon != null && maxLon != null) {
-      final outsideRows = await db.rawQuery('''
+      final outsideRows = await db.rawQuery(
+        '''
         SELECT id FROM places 
         WHERE city_id = ? AND (latitude < ? OR latitude > ? OR longitude < ? OR longitude > ?)
-      ''', [cityId, minLat, maxLat, minLon, maxLon]);
+      ''',
+        [cityId, minLat, maxLat, minLon, maxLon],
+      );
       placesOutsideBounds = outsideRows.length;
       outsideBoundsIds = outsideRows.map((r) => r['id'] as String).toList();
     }
@@ -502,14 +582,17 @@ class CityPackDatabase {
     int sharedCoordsCount = 0;
     List<String> sharedCoordsIds = [];
     try {
-      final dupRows = await db.rawQuery('''
+      final dupRows = await db.rawQuery(
+        '''
         SELECT id FROM places 
         WHERE city_id = ? AND (latitude, longitude) IN (
           SELECT latitude, longitude FROM places 
           WHERE city_id = ? AND latitude IS NOT NULL AND longitude IS NOT NULL
           GROUP BY latitude, longitude HAVING COUNT(*) > 1
         )
-      ''', [cityId, cityId]);
+      ''',
+        [cityId, cityId],
+      );
       sharedCoordsCount = dupRows.length;
       sharedCoordsIds = dupRows.map((r) => r['id'] as String).toList();
     } catch (_) {}
@@ -525,15 +608,24 @@ class CityPackDatabase {
       ''');
       multiSourceCount = (multiSrcRows.first['count'] as int?) ?? 0;
     } catch (_) {
-      final fallbackRows = await db.rawQuery('''
+      final fallbackRows = await db.rawQuery(
+        '''
         SELECT COUNT(*) as count FROM places 
         WHERE city_id = ? AND wikidata_id IS NOT NULL AND wikidata_id != '' AND osm_id IS NOT NULL AND osm_id != ''
-      ''', [cityId]);
+      ''',
+        [cityId],
+      );
       multiSourceCount = (fallbackRows.first['count'] as int?) ?? 0;
     }
 
     final tierCounts = await getTiersWithCounts();
     final categoryCounts = await getCategoriesWithCounts();
+    final mediaLicenses = await db.rawQuery(
+      "SELECT COUNT(*) AS n FROM place_images WHERE license IS NULL OR trim(license) = '' OR lower(license) IN ('unknown', 'unverified')",
+    );
+    final categoryValidity = await db.rawQuery(
+      "SELECT COUNT(*) AS n FROM places WHERE category IS NOT NULL AND trim(category) != '' AND lower(category) NOT IN ('unknown', 'uncategorized')",
+    );
 
     return {
       'total_places': totalPlaces,
@@ -559,7 +651,8 @@ class CityPackDatabase {
       'shared_coords_places_count': sharedCoordsCount,
       'shared_coords_ids': sharedCoordsIds,
       'multi_source_count': multiSourceCount,
-      'places_with_valid_category': totalPlaces,
+      'places_with_valid_category': categoryValidity.first['n'] as int,
+      'media_missing_license_count': mediaLicenses.first['n'] as int,
       'bbox': {
         'min_lat': minLat,
         'max_lat': maxLat,
@@ -607,7 +700,10 @@ class CityPackDatabase {
         // Retrieve bbox
         double? minLat, maxLat, minLon, maxLon;
         try {
-          final cityRows = await db.rawQuery('SELECT min_lat, max_lat, min_lon, max_lon FROM cities WHERE id = ? LIMIT 1', [cityId]);
+          final cityRows = await db.rawQuery(
+            'SELECT min_lat, max_lat, min_lon, max_lon FROM cities WHERE id = ? LIMIT 1',
+            [cityId],
+          );
           if (cityRows.isNotEmpty) {
             minLat = (cityRows.first['min_lat'] as num?)?.toDouble();
             maxLat = (cityRows.first['max_lat'] as num?)?.toDouble();
@@ -615,7 +711,10 @@ class CityPackDatabase {
             maxLon = (cityRows.first['max_lon'] as num?)?.toDouble();
           }
         } catch (_) {}
-        if (minLat != null && maxLat != null && minLon != null && maxLon != null) {
+        if (minLat != null &&
+            maxLat != null &&
+            minLon != null &&
+            maxLon != null) {
           condition = "tier = 'core_destination' AND (latitude < ? OR latitude > ? OR longitude < ? OR longitude > ?)";
           args.addAll([minLat, maxLat, minLon, maxLon]);
         } else {
@@ -625,7 +724,10 @@ class CityPackDatabase {
       case 'geo_outliers':
         double? minLat, maxLat, minLon, maxLon;
         try {
-          final cityRows = await db.rawQuery('SELECT min_lat, max_lat, min_lon, max_lon FROM cities WHERE id = ? LIMIT 1', [cityId]);
+          final cityRows = await db.rawQuery(
+            'SELECT min_lat, max_lat, min_lon, max_lon FROM cities WHERE id = ? LIMIT 1',
+            [cityId],
+          );
           if (cityRows.isNotEmpty) {
             minLat = (cityRows.first['min_lat'] as num?)?.toDouble();
             maxLat = (cityRows.first['max_lat'] as num?)?.toDouble();
@@ -633,7 +735,10 @@ class CityPackDatabase {
             maxLon = (cityRows.first['max_lon'] as num?)?.toDouble();
           }
         } catch (_) {}
-        if (minLat != null && maxLat != null && minLon != null && maxLon != null) {
+        if (minLat != null &&
+            maxLat != null &&
+            minLon != null &&
+            maxLon != null) {
           condition = "(latitude < ? OR latitude > ? OR longitude < ? OR longitude > ?)";
           args.addAll([minLat, maxLat, minLon, maxLon]);
         } else {
@@ -669,12 +774,15 @@ class CityPackDatabase {
         break;
     }
 
-    if (category != null && category.isNotEmpty && category.toLowerCase() != 'all') {
+    if (category != null &&
+        category.isNotEmpty &&
+        category.toLowerCase() != 'all') {
       condition += " AND category = ?";
       args.add(category);
     }
 
-    final sql = '''
+    final sql =
+        '''
       SELECT * FROM places 
       WHERE city_id = ? AND $condition
       ORDER BY tourism_priority DESC, name ASC

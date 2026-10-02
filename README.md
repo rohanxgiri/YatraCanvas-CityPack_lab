@@ -38,7 +38,7 @@ Release managers create Release Gate evidence, build a certified artifact, and e
 
 **For normal CityPack Lab curation: no.**
 
-You do not need `YatraCanvas-DataFactory` or the main `YatraCanvas` repository merely to review and correct the City Packs already committed here. This repository currently includes pack assets for Gulmarg, Jaipur, Manali, Panaji, and Rishikesh.
+You do not need `YatraCanvas-DataFactory` or the main `YatraCanvas` repository merely to review and correct the City Packs already committed here. This repository currently includes pack assets for Gulmarg, Jaipur, Manali, Panaji, Rishikesh, Udaipur, and Varanasi.
 
 DataFactory is needed when a release manager imports a newly generated baseline, regenerates source data, or publishes durable curation back into the production data workflow. The main YatraCanvas repository is needed only when publishing or testing a certified pack in the traveller application.
 
@@ -119,8 +119,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the complete collaboration workflow a
 - Do not fabricate opening hours, coordinates, photos, categories, or source information. Leave uncertain data blank or flag an issue.
 - Preserve verifiable image source and licence metadata. Do not use an image if its rights or source cannot be confirmed.
 - Do not push directly to `main`; use a focused branch and Pull Request.
-- Do not casually run `tools/sync_city_packs.py` over active work. It replaces baseline deployment files and the entire city `images/` directory, then rewrites the Flutter asset list.
-- Do not run certification or `--publish` as a normal contributor.
+- Use **Sync Latest City Packs** to refresh selected baselines. It preserves curation sidecars and imported media, reports changed evidence and safely removes unavailable optional gallery entries.
+- Use **Release → View Blockers** before **Build Certified Pack**. Local certified builds require passing gates. Publication is a separate release manager action.
 - Inspect `git status`, `git diff`, and `git diff --staged` before committing.
 - Do not commit unrelated build output or another contributor's unfinished work.
 
@@ -132,7 +132,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the complete collaboration workflow a
 | Human curation | CityPack Lab | overrides, additions, exclusions, reviews, issues, curated media and attribution |
 | Production publication | Release manager | certified database, release descriptor, manifests and checksums |
 
-Human curation normally appears under `assets/city_packs/<city>/curation/`; curated image bytes appear under `assets/city_packs/<city>/images/<place_id>/`. The baseline SQLite file remains unchanged.
+Human curation normally appears under `assets/city_packs/<city>/curation/`; new imported image bytes use `assets/city_packs/<city>/images/curated_<place_id>_<content_hash>/` so baseline sync cannot overwrite them. The baseline SQLite file remains unchanged.
 
 ## Documentation
 

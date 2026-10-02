@@ -139,6 +139,7 @@ class CuratedImageImportService {
     required String originalFilename,
     required String source,
     required String sourcePage,
+    String author = '',
     required String license,
     required String licenseUrl,
     required String contributor,
@@ -166,17 +167,22 @@ class CuratedImageImportService {
     if (processed.errorMessage != null) {
       throw ImageImportException(processed.errorMessage!);
     }
+    if (author.trim().isEmpty || licenseUrl.trim().isEmpty ||
+        (sourcePage.trim().isEmpty && source.trim().toLowerCase() != 'own work')) {
+      throw const ImageImportException('Add the photographer or author, source page and license URL. Own work may omit the source page.');
+    }
 
     final safeCityId = _safeSegment(cityId, label: 'city');
     final safePlaceId = _safeSegment(placeId, label: 'place');
+    final curatedFolder = 'curated_${safePlaceId}_${sha256.convert(sourceBytes).toString().substring(0, 12)}';
     final packRelativePrimary = p.posix.join(
       'images',
-      safePlaceId,
+      curatedFolder,
       'primary.webp',
     );
     final packRelativeThumbnail = p.posix.join(
       'images',
-      safePlaceId,
+      curatedFolder,
       'thumbnail.webp',
     );
 
@@ -187,7 +193,7 @@ class CuratedImageImportService {
         'city_packs',
         safeCityId,
         'images',
-        safePlaceId,
+        curatedFolder,
       ),
     );
     final mediaDirectory = Directory(
@@ -217,7 +223,7 @@ class CuratedImageImportService {
       'originalSha256': sha256.convert(sourceBytes).toString(),
       'source': source.trim(),
       'sourcePage': sourcePage.trim(),
-      'author': '',
+      'author': author.trim(),
       'license': license.trim(),
       'licenseUrl': licenseUrl.trim(),
       'originalWidth': processed.originalWidth,
@@ -233,7 +239,7 @@ class CuratedImageImportService {
       '${const JsonEncoder.withIndent('  ').convert(metadata)}\n',
     );
 
-    await _registerAssetDirectory(safeCityId, safePlaceId);
+    await _registerAssetDirectory(safeCityId, curatedFolder);
     await _replaceFiles(
       primaryFile: primaryFile,
       primaryBytes: processed.primaryBytes!,

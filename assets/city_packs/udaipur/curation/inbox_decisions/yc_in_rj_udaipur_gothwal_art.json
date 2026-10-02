@@ -1,0 +1,38 @@
+{
+  "canonical_id": "yc_in_rj_udaipur_gothwal_art",
+  "city_id": "udaipur",
+  "pack_version": "v3",
+  "verdict": "NEEDS_RESEARCH",
+  "author": "Contributor",
+  "decided_at": "2026-10-01T23:14:27.159272",
+  "snapshot": {
+    "semantic_fields": {
+      "name": "Gothwal Art",
+      "category": "shopping",
+      "subcategory": "craft_and_handicraft",
+      "tier": "recommended",
+      "latitude": 24.580193,
+      "longitude": 73.683011,
+      "wikidata_id": null,
+      "commons_image": null,
+      "wikidata_p18": null,
+      "external_ids": {
+        "overture_ids": [
+          "6c48cad9-8840-4dae-a789-4ac76fa5c055"
+        ]
+      },
+      "osm_tags": {}
+    },
+    "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+    "travel_relevance_score": 0.45,
+    "confidence": 0.5026755928993225,
+    "suggested_action": "APPROVE_AS_SECONDARY_DESTINATION",
+    "missing_fields": [
+      "primary_image",
+      "description",
+      "opening_hours",
+      "website"
+    ]
+  },
+  "changed_since_review": false
+}

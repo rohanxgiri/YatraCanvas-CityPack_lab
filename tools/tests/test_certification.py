@@ -5,6 +5,7 @@ import json
 import sqlite3
 import tempfile
 import unittest
+from contextlib import closing
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -58,6 +59,59 @@ class CertificationTest(unittest.TestCase):
 
     def tearDown(self) -> None:
         self.temp.cleanup()
+
+    def test_inbox_keep_is_applied_without_mutating_source(self) -> None:
+        candidate = {'canonical_id': 'inbox_cafe', 'name': 'Reviewed Cafe',
+                     'latitude': 26.9, 'longitude': 75.8, 'category': 'cafe',
+                     'tier': 'recommended', 'missing_fields': [], 'external_ids': {'openstreetmap': ['node/123']}}
+        self._write_json(self.pack / 'review_candidates.json', [candidate])
+        decision = {'canonical_id': 'inbox_cafe', 'city_id': 'test_city',
+                    'verdict': 'APPROVED', 'author': 'Curator', 'snapshot': {},
+                    'decided_at': '2026-10-01T00:00:00Z'}
+        self._write_json(self.pack / 'curation/inbox_decisions/inbox_cafe.json', decision)
+        before = self._sha(self.pack / 'yatracanvas.db')
+        result = build_certified_pack(pack_dir=self.pack, output_dir=self.root / 'inbox-output',
+                                      release_evidence_path=self.root / 'ready.json')
+        self.assertIn('inbox_cafe', result.reconciliation.applied_additions)
+        self.assertEqual(before, self._sha(self.pack / 'yatracanvas.db'))
+        with closing(sqlite3.connect((result.output_dir / 'yatracanvas.db').as_uri() + '?mode=ro', uri=True)) as db:
+            self.assertEqual(db.execute("SELECT name FROM places WHERE id='inbox_cafe'").fetchone()[0], 'Reviewed Cafe')
+            self.assertEqual(db.execute("SELECT source_id FROM place_sources WHERE place_id='inbox_cafe' AND source='openstreetmap'").fetchone()[0], 'node/123')
+
+    def test_media_removal_applies_to_database_and_manifest_without_resurrection(self):
+        override = self.pack / 'curation/overrides/place_keep.json'
+        data = self._read_json(override)
+        data['primary_image_path'] = ''
+        self._write_json(override, data)
+        before = self._sha(self.pack / 'yatracanvas.db')
+        result = build_certified_pack(pack_dir=self.pack, output_dir=self.root / 'media-removed',
+                                      release_evidence_path=self.root / 'ready.json')
+        with closing(sqlite3.connect((result.output_dir / 'yatracanvas.db').as_uri()+'?mode=ro', uri=True)) as db:
+            self.assertEqual(db.execute("SELECT primary_image_path FROM places WHERE id='place_keep'").fetchone()[0], '')
+            self.assertEqual(db.execute("SELECT COUNT(*) FROM place_images WHERE place_id='place_keep'").fetchone()[0], 0)
+        self.assertNotIn('place_keep', self._read_json(result.output_dir / 'image_manifest.json'))
+        self.assertEqual(before, self._sha(self.pack / 'yatracanvas.db'))
+
+    def test_optional_missing_sqlite_gallery_rows_are_pruned_only_in_output(self):
+        with closing(sqlite3.connect(self.pack / 'yatracanvas.db')) as db:
+            db.execute("INSERT INTO place_images (place_id, original_file, local_path, license) VALUES ('place_keep', 'absent.jpg', 'images/absent_gallery.webp', 'CC BY 4.0')")
+            db.commit()
+        before = self._sha(self.pack / 'yatracanvas.db')
+        result = build_certified_pack(pack_dir=self.pack, output_dir=self.root / 'gallery-pruned',
+                                      release_evidence_path=self.root / 'ready.json')
+        with closing(sqlite3.connect((result.output_dir / 'yatracanvas.db').as_uri()+'?mode=ro', uri=True)) as db:
+            self.assertEqual(db.execute("SELECT COUNT(*) FROM place_images WHERE local_path='images/absent_gallery.webp'").fetchone()[0], 0)
+        self.assertEqual(before, self._sha(self.pack / 'yatracanvas.db'))
+
+    def test_inbox_source_changes_block_certification(self) -> None:
+        self._write_json(self.pack / 'review_candidates.json', [{
+            'canonical_id': 'place_keep', 'category': 'religious', 'missing_fields': []}])
+        self._write_json(self.pack / 'curation/inbox_decisions/place_keep.json', {
+            'canonical_id': 'place_keep', 'city_id': 'test_city', 'verdict': 'APPROVED',
+            'snapshot': {'semantic_fields': {'category': 'heritage'}}})
+        with self.assertRaisesRegex(CertificationFailure, 'source evidence changed'):
+            build_certified_pack(pack_dir=self.pack, output_dir=self.root / 'changed-output',
+                                 release_evidence_path=self.root / 'ready.json')
 
     def test_ready_build_applies_curation_and_regenerates_artifacts(self) -> None:
         """covers: AC-1, AC-4, AC-6, AC-7"""

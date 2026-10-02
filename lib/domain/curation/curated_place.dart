@@ -28,7 +28,9 @@ class FieldProvenanceInfo {
     this.verifiedDate,
   });
 
-  bool get isManuallyVerified => origin == FieldOrigin.humanOverride || origin == FieldOrigin.manualAddition;
+  bool get isManuallyVerified =>
+      origin == FieldOrigin.humanOverride ||
+      origin == FieldOrigin.manualAddition;
 }
 
 /// Represents the resolved composite place:
@@ -44,7 +46,10 @@ class CuratedPlace {
     this.override,
     this.addition,
     this.exclusion,
-  }) : assert(rawPlace != null || addition != null, 'Must provide either rawPlace or addition');
+  }) : assert(
+         rawPlace != null || addition != null,
+         'Must provide either rawPlace or addition',
+       );
 
   String get id => addition?.id ?? rawPlace!.id;
   String get cityId => addition?.cityId ?? rawPlace!.cityId;
@@ -59,42 +64,65 @@ class CuratedPlace {
   // 3. Best trusted provider value (rawPlace)
   // 4. Fallback / Unknown
 
-  String get name => override?.name ?? addition?.name ?? rawPlace?.name ?? 'Unknown';
-  String? get nameHi => override?.nameHi ?? addition?.nameHi ?? rawPlace?.nameHi;
+  String get name =>
+      override?.name ?? addition?.name ?? rawPlace?.name ?? 'Unknown';
+  String? get nameHi =>
+      override?.nameHi ?? addition?.nameHi ?? rawPlace?.nameHi;
 
-  double get latitude => override?.latitude ?? addition?.latitude ?? rawPlace?.latitude ?? 0.0;
-  double get longitude => override?.longitude ?? addition?.longitude ?? rawPlace?.longitude ?? 0.0;
+  double get latitude =>
+      override?.latitude ?? addition?.latitude ?? rawPlace?.latitude ?? 0.0;
+  double get longitude =>
+      override?.longitude ?? addition?.longitude ?? rawPlace?.longitude ?? 0.0;
 
-  String? get address => override?.address ?? addition?.address ?? rawPlace?.address;
+  String? get address =>
+      override?.address ?? addition?.address ?? rawPlace?.address;
 
-  String get category => override?.category ?? addition?.category ?? rawPlace?.category ?? 'other';
-  String? get subcategory => override?.subcategory ?? addition?.subcategory ?? rawPlace?.subcategory;
+  String get category =>
+      override?.category ?? addition?.category ?? rawPlace?.category ?? 'other';
+  String? get subcategory =>
+      override?.subcategory ?? addition?.subcategory ?? rawPlace?.subcategory;
 
   String get tier {
     if (override?.tier != null) return override!.tier!;
     if (override?.isCore == true) return 'core_destination';
-    if (override?.isCore == false && rawPlace?.tier == 'core_destination') return 'recommended';
+    if (override?.isCore == false && rawPlace?.tier == 'core_destination') {
+      return 'recommended';
+    }
     return addition?.tier ?? rawPlace?.tier ?? 'discovery';
   }
 
   bool get isCore => tier == 'core_destination';
 
-  String? get openingHours => override?.openingHours ?? addition?.openingHours ?? rawPlace?.openingHours;
-  bool get hasOpeningHours => openingHours != null && openingHours!.trim().isNotEmpty;
+  String? get openingHours =>
+      override?.openingHours ??
+      addition?.openingHours ??
+      rawPlace?.openingHours;
+  bool get hasOpeningHours =>
+      openingHours != null && openingHours!.trim().isNotEmpty;
 
-  String? get primaryImagePath => override?.primaryImagePath ?? addition?.primaryImagePath ?? rawPlace?.primaryImagePath;
-  bool get hasImage => primaryImagePath != null && primaryImagePath!.trim().isNotEmpty;
+  String? get primaryImagePath =>
+      override?.primaryImagePath ??
+      addition?.primaryImagePath ??
+      rawPlace?.primaryImagePath;
+  bool get hasImage =>
+      primaryImagePath != null && primaryImagePath!.trim().isNotEmpty;
 
-  String? get website => override?.website ?? addition?.website ?? rawPlace?.website;
+  String? get website =>
+      override?.website ?? addition?.website ?? rawPlace?.website;
   String? get phone => override?.phone ?? addition?.phone ?? rawPlace?.phone;
-  String? get description => override?.description ?? addition?.description;
+  String? get description =>
+      override?.description ?? addition?.description ?? rawPlace?.description;
 
-  int? get recommendedVisitMinutes => addition?.recommendedVisitMinutes ?? rawPlace?.recommendedVisitMinutes;
-  int? get familyFriendly => addition?.familyFriendly ?? rawPlace?.familyFriendly;
+  int? get recommendedVisitMinutes =>
+      addition?.recommendedVisitMinutes ?? rawPlace?.recommendedVisitMinutes;
+  int? get familyFriendly =>
+      addition?.familyFriendly ?? rawPlace?.familyFriendly;
   String? get bestTime => addition?.bestTime ?? rawPlace?.bestTime;
 
-  double get travelRelevanceScore => rawPlace?.travelRelevanceScore ?? (isCore ? 0.95 : 0.75);
-  double get prominenceScore => rawPlace?.prominenceScore ?? (isCore ? 0.90 : 0.70);
+  double get travelRelevanceScore =>
+      rawPlace?.travelRelevanceScore ?? (isCore ? 0.95 : 0.75);
+  double get prominenceScore =>
+      rawPlace?.prominenceScore ?? (isCore ? 0.90 : 0.70);
 
   FieldProvenanceInfo getProvenance(String fieldName) {
     if (isManuallyAdded) {
@@ -112,7 +140,8 @@ class CuratedPlace {
       return FieldProvenanceInfo(
         fieldName: fieldName,
         currentValue: _getValue(fieldName),
-        previousValue: override!.previousValues[fieldName] ?? _getRawValue(fieldName),
+        previousValue:
+            override!.previousValues[fieldName] ?? _getRawValue(fieldName),
         origin: FieldOrigin.humanOverride,
         sourceLabel: '$source (${override!.author})',
         verifiedDate: override!.updatedAt,
@@ -123,15 +152,20 @@ class CuratedPlace {
     final rawVal = _getRawValue(fieldName);
     String provider = 'Normalized Provider';
     if (rawPlace != null && rawPlace!.sources.isNotEmpty) {
-      provider = rawPlace!.sources.map((s) => s.source.toUpperCase()).join(' + ');
-    } else if (rawPlace?.wikidataId != null && rawPlace!.wikidataId!.isNotEmpty) {
+      provider = rawPlace!.sources
+          .map((s) => s.source.toUpperCase())
+          .join(' + ');
+    } else if (rawPlace?.wikidataId != null &&
+        rawPlace!.wikidataId!.isNotEmpty) {
       provider = 'Wikidata / OpenStreetMap';
     }
 
     return FieldProvenanceInfo(
       fieldName: fieldName,
       currentValue: rawVal,
-      origin: rawVal != null ? FieldOrigin.trustedProvider : FieldOrigin.unknown,
+      origin: rawVal != null
+          ? FieldOrigin.trustedProvider
+          : FieldOrigin.unknown,
       sourceLabel: rawVal != null ? provider : 'UNKNOWN',
     );
   }
@@ -234,6 +268,7 @@ class CuratedPlace {
       cityId: base.cityId,
       name: name,
       nameHi: nameHi,
+      description: description,
       latitude: latitude,
       longitude: longitude,
       address: address,

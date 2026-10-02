@@ -1,0 +1,12 @@
+{
+  "id": "issue_yc_in_rj_jaipur_akshardham_temple_1790937585227",
+  "place_id": "yc_in_rj_jaipur_akshardham_temple",
+  "city_id": "jaipur",
+  "place_name": "Akshardham Temple",
+  "issue_type": "missing_expected_information",
+  "status": "open",
+  "note": "core temple lacks hours and description. photo preview shows garden only.",
+  "author": "Contributor",
+  "created_at": "2026-10-02T16:09:45.227625",
+  "updated_at": "2026-10-02T16:09:45.227625"
+}

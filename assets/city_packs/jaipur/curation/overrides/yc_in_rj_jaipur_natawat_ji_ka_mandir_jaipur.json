@@ -1,0 +1,17 @@
+{
+  "place_id": "yc_in_rj_jaipur_natawat_ji_ka_mandir_jaipur",
+  "city_id": "jaipur",
+  "pack_version": "v3",
+  "author": "Contributor",
+  "updated_at": "2026-10-01T23:03:22.855570",
+  "verified": true,
+  "name": "Natawat Ji Ka Mandir, Jaipur",
+  "tier": "recommended",
+  "is_core": false,
+  "field_sources": {
+    "name": "Manual typography correction: removed space before comma; place identity remains under research"
+  },
+  "previous_values": {
+    "name": "Natawat Ji Ka Mandir , Jaipur"
+  }
+}

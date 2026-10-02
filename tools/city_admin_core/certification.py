@@ -9,10 +9,13 @@ import shutil
 import sqlite3
 import tempfile
 import uuid
+from contextlib import closing
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
+from .media_integrity import inspect_manifest
+from .identity_conflicts import reconcile
 
 
 class CertificationFailure(RuntimeError):
@@ -212,6 +215,34 @@ def _safe_pack_path(pack_root: Path, relative_path: str) -> Path:
     return candidate
 
 
+def _inbox_candidate_changed(snapshot: dict[str, Any], candidate: dict[str, Any]) -> bool:
+    for key in ('travel_relevance_reason', 'suggested_action'):
+        if key in snapshot and snapshot[key] != candidate.get(key):
+            return True
+    for key in ('travel_relevance_score', 'confidence'):
+        if key in snapshot and abs(float(snapshot[key]) - float(candidate.get(key, 0.5))) > 0.05:
+            return True
+    if set(snapshot.get('missing_fields') or []) != set(candidate.get('missing_fields') or []):
+        return True
+    semantic = snapshot.get('semantic_fields')
+    if semantic is None:
+        return False  # Legacy snapshots cannot attest fields never recorded.
+    for key, before in semantic.items():
+        after = candidate.get(key)
+        if key in ('latitude', 'longitude') and isinstance(before, (int, float)) and isinstance(after, (int, float)):
+            if abs(before - after) <= 0.0005:
+                continue
+        if key == 'osm_tags':
+            after = {tag: value for tag, value in (after or {}).items()
+                     if tag in ('amenity', 'building', 'tourism', 'historic', 'religion',
+                                'denomination', 'shop', 'leisure', 'name', 'wikidata')}
+        if key == 'external_ids':
+            after = {source: sorted(set(ids)) for source, ids in (after or {}).items()}
+        if before != after:
+            return True
+    return False
+
+
 def _apply_curation(
     database_path: Path,
     curation_dir: Path,
@@ -224,6 +255,29 @@ def _apply_curation(
     overrides = _load_records(curation_dir / "overrides", "override")
     exclusions = _load_records(curation_dir / "exclusions", "exclusion")
     media_records = _load_records(curation_dir / "media", "media record")
+    removed_media_ids = {_record_id(data, path, 'place_id', 'placeId') for path, data in overrides
+                         if data.get('verified') is True and data.get('primary_image_path') == ''}
+
+    # Inbox verdicts are the durable store. Adapt them to the existing
+    # reconciliation pipeline only in memory, never write duplicate stores.
+    inbox = _load_records(curation_dir / "inbox_decisions", "inbox decision")
+    manifest_path = pack_dir / "review_candidates.json"
+    candidate_map = {}
+    if manifest_path.is_file():
+        try:
+            candidates = json.loads(manifest_path.read_text(encoding="utf-8"))
+            if not isinstance(candidates, list):
+                raise ValueError("expected a candidate list")
+            with closing(sqlite3.connect(database_path)) as identity_db:
+                published_ids = {row[0] for row in identity_db.execute('SELECT id FROM places')}
+            resolutions = {record['canonical_id']: record for _, record in
+                           _load_records(curation_dir / 'identity_conflicts', 'identity conflict')}
+            candidate_map, conflicts = reconcile(candidates, resolutions, published_ids, _inbox_candidate_changed)
+            report.conflicts.extend(conflicts)
+        except (ValueError, KeyError, TypeError) as exc:
+            report.conflicts.append(f"Review manifest needs repair: {exc}")
+    elif inbox:
+        report.conflicts.append("Review manifest missing for saved inbox decisions.")
 
     connection = sqlite3.connect(database_path)
     connection.row_factory = sqlite3.Row
@@ -233,6 +287,36 @@ def _apply_curation(
             raise CertificationFailure(["Certified database is missing the places table."])
         place_columns = _table_columns(connection, "places")
         ids = {row[0] for row in connection.execute("SELECT id FROM places")}
+        for path, decision in inbox:
+            identifier = _record_id(decision, path, "canonical_id")
+            candidate = candidate_map.get(identifier)
+            if candidate is None:
+                report.conflicts.append(f"{path}: reviewed candidate is missing from the source manifest.")
+                continue
+            if decision.get('city_id') != city_id:
+                report.conflicts.append(f"{path}: decision belongs to another city.")
+                continue
+            if decision.get('changed_since_review'):
+                report.conflicts.append(f"{path}: candidate changed since review.")
+                continue
+            if _inbox_candidate_changed(decision.get('snapshot') or {}, candidate):
+                report.conflicts.append(f"{path}: source evidence changed since review, reopen City Lab and review again.")
+                continue
+            verdict = decision.get('verdict')
+            if verdict not in ('APPROVED', 'EDITED', 'REJECTED'):
+                continue
+            if verdict == 'REJECTED':
+                if identifier in ids:
+                    exclusions.append((path, {'place_id': identifier, 'reason': decision.get('verdict_note') or 'Explicit inbox exclusion'}))
+                else:
+                    report.applied_exclusions.append(identifier)
+            elif identifier not in ids and not any(record.get('id') == identifier for _, record in additions):
+                additions.append((path, {
+                    **candidate, 'id': identifier, 'city_id': city_id,
+                    'author': decision.get('author'), 'created_at': decision.get('decided_at'),
+                    'evidence_source': f'DataFactory review candidate {identifier}',
+                    # Source prose has no description column in v3 SQLite.
+                }))
         with connection:
             for path, data in additions:
                 place_id = _record_id(data, path, "id", "place_id", "placeId")
@@ -280,6 +364,7 @@ def _apply_curation(
                     "primary_image_path": data.get("primary_image_path"),
                     "generated_at": data.get("created_at"),
                     "description": data.get("description"),
+                    "wikidata_id": data.get("wikidata_id"),
                 }
                 unsupported = [
                     key
@@ -299,6 +384,12 @@ def _apply_curation(
                     values,
                 )
                 if _table_exists(connection, "place_sources"):
+                    for source, source_ids in (data.get("external_ids") or {}).items():
+                        for source_id in source_ids if isinstance(source_ids, list) else [source_ids]:
+                            connection.execute(
+                                "INSERT INTO place_sources (place_id, source, source_id, retrieved_at) VALUES (?, ?, ?, ?)",
+                                (place_id, source, str(source_id), data.get("created_at") or author),
+                            )
                     connection.execute(
                         "INSERT INTO place_sources "
                         "(place_id, source, source_id, retrieved_at) VALUES (?, ?, ?, ?)",
@@ -360,6 +451,11 @@ def _apply_curation(
                         f"UPDATE places SET {', '.join(updates)} WHERE id = ?", values
                     )
                     report.applied_overrides.append(place_id)
+                    if data.get('primary_image_path') == '':
+                        if 'thumbnail_image_path' in place_columns:
+                            connection.execute('UPDATE places SET thumbnail_image_path = NULL WHERE id = ?', (place_id,))
+                        if _table_exists(connection, 'place_images'):
+                            connection.execute('DELETE FROM place_images WHERE place_id = ?', (place_id,))
 
             for path, data in exclusions:
                 place_id = _record_id(data, path, "place_id", "placeId")
@@ -382,6 +478,8 @@ def _apply_curation(
 
             for path, data in media_records:
                 place_id = _record_id(data, path, "place_id", "placeId")
+                if place_id in removed_media_ids:
+                    continue
                 if place_id not in ids:
                     report.orphaned_media.append(place_id)
                     continue
@@ -403,6 +501,8 @@ def _apply_curation(
                     for name in required
                     if not isinstance(data.get(name), str) or not data[name].strip()
                 ]
+                if data.get('source', '').strip().lower() == 'own work' and 'sourcePage' in missing:
+                    missing.remove('sourcePage')
                 for dimension in (
                     "originalWidth",
                     "originalHeight",
@@ -672,10 +772,22 @@ def build_certified_pack(
         report, curated_media = _apply_curation(
             staging / "yatracanvas.db", curation_dir, pack_dir, city_id
         )
+        # The source SQLite is immutable and may still contain optional gallery
+        # rows for files omitted upstream. Prune those rows in the output copy.
+        with closing(sqlite3.connect(staging / 'yatracanvas.db')) as media_connection:
+            if _table_exists(media_connection, 'place_images'):
+                rows = media_connection.execute(
+                    'SELECT i.rowid, i.local_path, p.primary_image_path FROM place_images i '
+                    'JOIN places p ON p.id = i.place_id').fetchall()
+                for row_id, local_path, primary_path in rows:
+                    if local_path != primary_path and (not local_path or not (staging / local_path).is_file()):
+                        media_connection.execute('DELETE FROM place_images WHERE rowid = ?', (row_id,))
+                media_connection.commit()
         _validate_database_and_media(staging / "yatracanvas.db", staging)
         connection = sqlite3.connect(staging / "yatracanvas.db")
         try:
             active_ids = {row[0] for row in connection.execute("SELECT id FROM places")}
+            media_ids = {row[0] for row in connection.execute("SELECT id FROM places WHERE COALESCE(primary_image_path, '') <> ''")}
         finally:
             connection.close()
         baseline_image_path = pack_dir / "image_manifest.json"
@@ -686,10 +798,14 @@ def build_certified_pack(
             if baseline_image_path.is_file()
             else {}
         )
-        _write_json(
-            staging / "image_manifest.json",
-            _merge_image_manifest(baseline_images, curated_media, active_ids),
-        )
+        effective_images, media_report = inspect_manifest(
+            _merge_image_manifest(baseline_images, curated_media, media_ids), staging,
+            prune_optional=True)
+        media_blockers = media_report['missing_primary'] + media_report['metadata_errors']
+        if media_blockers:
+            raise CertificationFailure(media_blockers)
+        _write_json(staging / 'image_manifest.json', effective_images)
+        _write_json(staging / 'media_validation.json', media_report)
 
         actual_counts = _query_counts(staging / "yatracanvas.db")
         counts = dict(baseline_manifest.get("counts") or {})

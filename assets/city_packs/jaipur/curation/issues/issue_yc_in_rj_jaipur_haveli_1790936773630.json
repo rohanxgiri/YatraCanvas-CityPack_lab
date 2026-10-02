@@ -1,0 +1,12 @@
+{
+  "id": "issue_yc_in_rj_jaipur_haveli_1790936773630",
+  "place_id": "yc_in_rj_jaipur_haveli",
+  "city_id": "jaipur",
+  "place_name": "Haveli",
+  "issue_type": "missing_expected_information",
+  "status": "open",
+  "note": "hcore haveli lacks opening hours and description. identity needs evidence.",
+  "author": "Contributor",
+  "created_at": "2026-10-02T15:56:13.630245",
+  "updated_at": "2026-10-02T15:56:13.630245"
+}

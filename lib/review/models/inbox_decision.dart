@@ -105,7 +105,7 @@ class InboxDecision {
     this.changedFields,
   });
 
-  bool get isResolved => verdict.isResolved;
+  bool get isResolved => verdict.isResolved && !changedSinceReview;
 
   InboxDecision copyWith({
     InboxVerdict? verdict,
@@ -173,10 +173,11 @@ class InboxDecision {
       verdict: verdict,
       verdictNote: json['verdict_note'] as String?,
       author: json['author'] as String? ?? 'contributor',
-      decidedAt: json['decided_at'] as String? ??
-          DateTime.now().toIso8601String(),
+      decidedAt:
+          json['decided_at'] as String? ?? DateTime.now().toIso8601String(),
       snapshot: InboxDecisionSnapshot.fromJson(
-          (json['snapshot'] as Map<String, dynamic>?) ?? {}),
+        (json['snapshot'] as Map<String, dynamic>?) ?? {},
+      ),
       changedSinceReview: json['changed_since_review'] as bool? ?? false,
       changedFields: json['changed_fields'] as String?,
     );
@@ -208,6 +209,7 @@ class InboxDecision {
 /// Snapshot of key DataFactory fields at decision time.
 /// Used to detect whether DataFactory regeneration changed something meaningful.
 class InboxDecisionSnapshot {
+  final Map<String, dynamic>? semanticFields;
   final String travelRelevanceReason;
   final double travelRelevanceScore;
   final double confidence;
@@ -215,6 +217,7 @@ class InboxDecisionSnapshot {
   final List<String> missingFields;
 
   const InboxDecisionSnapshot({
+    this.semanticFields,
     required this.travelRelevanceReason,
     required this.travelRelevanceScore,
     required this.confidence,
@@ -223,22 +226,24 @@ class InboxDecisionSnapshot {
   });
 
   Map<String, dynamic> toJson() => {
-        'travel_relevance_reason': travelRelevanceReason,
-        'travel_relevance_score': travelRelevanceScore,
-        'confidence': confidence,
-        'suggested_action': suggestedAction,
-        'missing_fields': missingFields,
-      };
+    if (semanticFields != null) 'semantic_fields': semanticFields,
+    'travel_relevance_reason': travelRelevanceReason,
+    'travel_relevance_score': travelRelevanceScore,
+    'confidence': confidence,
+    'suggested_action': suggestedAction,
+    'missing_fields': missingFields,
+  };
 
   factory InboxDecisionSnapshot.fromJson(Map<String, dynamic> json) {
     return InboxDecisionSnapshot(
-      travelRelevanceReason:
-          json['travel_relevance_reason'] as String? ?? '',
+      semanticFields: json['semantic_fields'] as Map<String, dynamic>?,
+      travelRelevanceReason: json['travel_relevance_reason'] as String? ?? '',
       travelRelevanceScore:
           (json['travel_relevance_score'] as num?)?.toDouble() ?? 0.5,
       confidence: (json['confidence'] as num?)?.toDouble() ?? 0.5,
       suggestedAction: json['suggested_action'] as String? ?? '',
-      missingFields: (json['missing_fields'] as List<dynamic>?)
+      missingFields:
+          (json['missing_fields'] as List<dynamic>?)
               ?.map((e) => e.toString())
               .toList() ??
           const [],

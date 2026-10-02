@@ -79,9 +79,11 @@ flutter:
     - assets/city_packs/gulmarg/images/yc_in_ja_gulmarg_tangmarg/
     - assets/city_packs/jaipur/
     - assets/city_packs/jaipur/curation/exclusions/
+    - assets/city_packs/jaipur/curation/inbox_decisions/
     - assets/city_packs/jaipur/curation/issues/
     - assets/city_packs/jaipur/curation/media/
     - assets/city_packs/jaipur/curation/overrides/
+    - assets/city_packs/jaipur/curation/reviews/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_akabar_ke_kos_chinha/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_akshardham_temple/
     - assets/city_packs/jaipur/images/yc_in_rj_jaipur_albert_hall_museum/
@@ -221,6 +223,7 @@ flutter:
     - assets/city_packs/rishikesh/images/yc_in_uk_rishikesh_virbhadra_temple/
     - assets/city_packs/rishikesh/images/yc_in_uk_rishikesh_yog_nagari_rishikesh_railway_station/
     - assets/city_packs/udaipur/
+    - assets/city_packs/udaipur/curation/inbox_decisions/
     - assets/city_packs/udaipur/images/yc_in_rj_udaipur_agasthyavanam_biological_park/
     - assets/city_packs/udaipur/images/yc_in_rj_udaipur_ahar_cenotaphs/
     - assets/city_packs/udaipur/images/yc_in_rj_udaipur_ahar_museum/
@@ -269,6 +272,7 @@ flutter:
     - assets/city_packs/udaipur/images/yc_in_rj_udaipur_udaipur_solar_observatory/
     - assets/city_packs/udaipur/images/yc_in_rj_udaipur_vintage_and_classic_car_museum/
     - assets/city_packs/varanasi/
+    - assets/city_packs/varanasi/curation/inbox_decisions/
     - assets/city_packs/varanasi/images/yc_in_up_varanasi_aircraft/
     - assets/city_packs/varanasi/images/yc_in_up_varanasi_alamgir_mosque/
     - assets/city_packs/varanasi/images/yc_in_up_varanasi_annapurna_devi_mandir/

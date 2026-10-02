@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../app/app_state.dart';
 import '../app/lab_theme.dart';
+import '../review/models/review_candidate.dart';
 
 class HomeScreen extends StatelessWidget {
   final AppState state;
@@ -115,9 +116,11 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: LabSpacing.sm),
                     LayoutBuilder(
                       builder: (context, constraints) {
-                        final hasInboxCandidates = state.reviewCandidates.isNotEmpty;
+                        final hasInboxCandidates =
+                            state.reviewCandidates.isNotEmpty;
                         final unresolvedInbox = state.unresolvedReviewCount;
-                        final unresolvedHigh = state.unresolvedHighPriorityCount;
+                        final unresolvedHigh =
+                            state.unresolvedHighPriorityCount;
                         final columns = constraints.maxWidth >= 1180
                             ? (hasInboxCandidates ? 5 : 4)
                             : constraints.maxWidth >= 880
@@ -176,9 +179,8 @@ class HomeScreen extends StatelessWidget {
                                 icon: Icons.mark_email_unread_outlined,
                                 count: unresolvedInbox,
                                 title: 'Review Inbox',
-                                message: unresolvedHigh > 0
-                                    ? '$unresolvedHigh high priority candidate${unresolvedHigh == 1 ? '' : 's'}'
-                                    : 'DataFactory review candidates',
+                                message:
+                                    '$unresolvedHigh high priority · ${state.reviewCandidates.where((c) => c.reviewPriority.label == 'MEDIUM' && !(state.inboxDecisions[c.canonicalId]?.isResolved ?? false)).length} medium · ${state.reviewCandidates.length} available',
                                 accent: LabPalette.ink,
                                 onTap: onNavigateToInbox ?? onNavigateToReview,
                               ),

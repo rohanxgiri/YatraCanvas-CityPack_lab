@@ -1,0 +1,1829 @@
+{
+  "jaipur": {
+    "published": 684,
+    "candidates": 893,
+    "schema": "3.0",
+    "version": "v3",
+    "media_records": 73,
+    "missing_media_paths": [
+      "images/yc_in_rj_jaipur_moti_dungri_mandir_g1/primary.webp",
+      "images/yc_in_rj_jaipur_moti_dungri_mandir_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_moti_dungri_mandir_g2/primary.webp",
+      "images/yc_in_rj_jaipur_moti_dungri_mandir_g2/thumbnail.webp",
+      "images/yc_in_rj_jaipur_jantar_mantar_g1/primary.webp",
+      "images/yc_in_rj_jaipur_jantar_mantar_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_jantar_mantar_g2/primary.webp",
+      "images/yc_in_rj_jaipur_jantar_mantar_g2/thumbnail.webp",
+      "images/yc_in_rj_jaipur_albert_hall_museum_g1/primary.webp",
+      "images/yc_in_rj_jaipur_albert_hall_museum_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_albert_hall_museum_g2/primary.webp",
+      "images/yc_in_rj_jaipur_albert_hall_museum_g2/thumbnail.webp",
+      "images/yc_in_rj_jaipur_sisodia_rani_palace_and_garden_g1/primary.webp",
+      "images/yc_in_rj_jaipur_sisodia_rani_palace_and_garden_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_sisodia_rani_palace_and_garden_g2/primary.webp",
+      "images/yc_in_rj_jaipur_sisodia_rani_palace_and_garden_g2/thumbnail.webp",
+      "images/yc_in_rj_jaipur_city_palace_g1/primary.webp",
+      "images/yc_in_rj_jaipur_city_palace_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_city_palace_g2/primary.webp",
+      "images/yc_in_rj_jaipur_city_palace_g2/thumbnail.webp",
+      "images/yc_in_rj_jaipur_birla_mandir_aka_the_marble_temple_g1/primary.webp",
+      "images/yc_in_rj_jaipur_birla_mandir_aka_the_marble_temple_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_birla_mandir_aka_the_marble_temple_g2/primary.webp",
+      "images/yc_in_rj_jaipur_birla_mandir_aka_the_marble_temple_g2/thumbnail.webp",
+      "images/yc_in_rj_jaipur_galtaji_g1/primary.webp",
+      "images/yc_in_rj_jaipur_galtaji_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_galtaji_g2/primary.webp",
+      "images/yc_in_rj_jaipur_galtaji_g2/thumbnail.webp",
+      "images/yc_in_rj_jaipur_govind_devji_temple_g1/primary.webp",
+      "images/yc_in_rj_jaipur_govind_devji_temple_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_govind_devji_temple_g2/primary.webp",
+      "images/yc_in_rj_jaipur_govind_devji_temple_g2/thumbnail.webp",
+      "images/yc_in_rj_jaipur_amrapali_museum_g1/primary.webp",
+      "images/yc_in_rj_jaipur_amrapali_museum_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_amrapali_museum_g2/primary.webp",
+      "images/yc_in_rj_jaipur_amrapali_museum_g2/thumbnail.webp",
+      "images/yc_in_rj_jaipur_shri_digamber_jain_atishya_kshetra_mandir_sanghiji_g1/primary.webp",
+      "images/yc_in_rj_jaipur_shri_digamber_jain_atishya_kshetra_mandir_sanghiji_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_shri_digamber_jain_atishya_kshetra_mandir_sanghiji_g2/primary.webp",
+      "images/yc_in_rj_jaipur_shri_digamber_jain_atishya_kshetra_mandir_sanghiji_g2/thumbnail.webp",
+      "images/yc_in_rj_jaipur_jawahar_circle_g1/primary.webp",
+      "images/yc_in_rj_jaipur_jawahar_circle_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_dalaram_bagh_g1/primary.webp",
+      "images/yc_in_rj_jaipur_dalaram_bagh_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_dalaram_bagh_g2/primary.webp",
+      "images/yc_in_rj_jaipur_dalaram_bagh_g2/thumbnail.webp",
+      "images/yc_in_rj_jaipur_akabar_ke_kos_chinha_g1/primary.webp",
+      "images/yc_in_rj_jaipur_akabar_ke_kos_chinha_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_kesar_kyari_g1/primary.webp",
+      "images/yc_in_rj_jaipur_kesar_kyari_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_kesar_kyari_g2/primary.webp",
+      "images/yc_in_rj_jaipur_kesar_kyari_g2/thumbnail.webp",
+      "images/yc_in_rj_jaipur_royal_gaitor_g1/primary.webp",
+      "images/yc_in_rj_jaipur_royal_gaitor_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_royal_gaitor_g2/primary.webp",
+      "images/yc_in_rj_jaipur_royal_gaitor_g2/thumbnail.webp",
+      "images/yc_in_rj_jaipur_stepwell_panna_meena_g1/primary.webp",
+      "images/yc_in_rj_jaipur_stepwell_panna_meena_g1/thumbnail.webp",
+      "images/yc_in_rj_jaipur_stepwell_panna_meena_g2/primary.webp",
+      "images/yc_in_rj_jaipur_stepwell_panna_meena_g2/thumbnail.webp"
+    ],
+    "incomplete_media_licenses": [],
+    "registry_version": "v3",
+    "integrity": "ok",
+    "tables": [
+      "cities",
+      "places",
+      "place_tags",
+      "place_images",
+      "sqlite_sequence",
+      "place_sources"
+    ],
+    "priority": {
+      "HIGH": 892,
+      "MEDIUM": 1
+    },
+    "reasons": {
+      "CONTRADICTORY_BUILDING_AMENITY": 2,
+      "SECONDARY_COMMERCIAL_REQUIRES_AUDIT": 891
+    },
+    "duplicate_ids": 16,
+    "colliding_id_groups": 13,
+    "withheld_records": 29,
+    "files": [
+      "checksums.json",
+      "city.json",
+      "image_manifest.json",
+      "images_manifest.json",
+      "lab_sync_receipt.json",
+      "license_manifest.json",
+      "manifest.json",
+      "review_candidates.json",
+      "source_manifest.json",
+      "yatracanvas.db"
+    ],
+    "decisions": [
+      {
+        "canonical_id": "yc_in_rj_jaipur_handicraft_jaipur",
+        "city_id": "jaipur",
+        "pack_version": "v3",
+        "verdict": "APPROVED",
+        "author": "Contributor",
+        "decided_at": "2026-10-01T22:54:29.333130",
+        "snapshot": {
+          "semantic_fields": {
+            "name": "Handicraft Jaipur",
+            "category": "shopping",
+            "subcategory": "craft_and_handicraft",
+            "tier": "recommended",
+            "latitude": 26.839861,
+            "longitude": 75.769713,
+            "wikidata_id": null,
+            "commons_image": null,
+            "wikidata_p18": null,
+            "external_ids": {
+              "overture_ids": [
+                "904e494e-e7c9-4838-99ea-450eb7a0b6d2"
+              ]
+            },
+            "osm_tags": {}
+          },
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "travel_relevance_score": 0.45,
+          "confidence": 0.5001690983772278,
+          "suggested_action": "APPROVE_AS_SECONDARY_DESTINATION",
+          "missing_fields": [
+            "primary_image",
+            "description",
+            "opening_hours"
+          ]
+        },
+        "changed_since_review": false
+      },
+      {
+        "canonical_id": "yc_in_rj_jaipur_natawat_ji_ka_mandir_jaipur",
+        "city_id": "jaipur",
+        "pack_version": "v3",
+        "verdict": "NEEDS_RESEARCH",
+        "author": "Contributor",
+        "decided_at": "2026-10-01T23:03:37.466300",
+        "snapshot": {
+          "semantic_fields": {
+            "name": "Natawat Ji Ka Mandir , Jaipur",
+            "category": "religious",
+            "subcategory": "hindu_temple",
+            "tier": "recommended",
+            "latitude": 26.964548,
+            "longitude": 75.848423,
+            "wikidata_id": null,
+            "commons_image": null,
+            "wikidata_p18": null,
+            "external_ids": {
+              "openstreetmap_ids": [
+                "way/331540541"
+              ]
+            },
+            "osm_tags": {
+              "amenity": "place_of_worship",
+              "building": "house",
+              "religion": "hindu",
+              "name": "Natawat Ji Ka Mandir , Jaipur"
+            }
+          },
+          "travel_relevance_reason": "CONTRADICTORY_BUILDING_AMENITY",
+          "travel_relevance_score": 0.5,
+          "confidence": 0.85,
+          "suggested_action": "VERIFY_AMENITY_SIGNIFICANCE",
+          "missing_fields": [
+            "primary_image",
+            "description",
+            "opening_hours",
+            "website",
+            "address"
+          ]
+        },
+        "changed_since_review": false
+      },
+      {
+        "canonical_id": "yc_in_rj_jaipur_nice_cafe_its_the_name",
+        "city_id": "jaipur",
+        "pack_version": "v3",
+        "verdict": "NEEDS_RESEARCH",
+        "author": "Contributor",
+        "decided_at": "2026-10-01T22:44:23.765032",
+        "snapshot": {
+          "semantic_fields": {
+            "name": "Nice Cafe (it's the name)",
+            "category": "cafe",
+            "subcategory": "coffee_shop",
+            "tier": "recommended",
+            "latitude": 26.934283,
+            "longitude": 75.825319,
+            "wikidata_id": null,
+            "commons_image": null,
+            "wikidata_p18": null,
+            "external_ids": {
+              "openstreetmap_ids": [
+                "node/5579575445",
+                "way/331543458"
+              ]
+            },
+            "osm_tags": {
+              "amenity": "cafe",
+              "building": "house",
+              "name": "Nice Cafe"
+            }
+          },
+          "travel_relevance_reason": "CONTRADICTORY_BUILDING_AMENITY",
+          "travel_relevance_score": 0.5,
+          "confidence": 0.85,
+          "suggested_action": "VERIFY_AMENITY_SIGNIFICANCE",
+          "missing_fields": [
+            "primary_image",
+            "description",
+            "opening_hours",
+            "website",
+            "address"
+          ]
+        },
+        "changed_since_review": false
+      },
+      {
+        "canonical_id": "yc_in_rj_jaipur_prince_residential_school",
+        "city_id": "jaipur",
+        "pack_version": "v3",
+        "verdict": "REJECTED",
+        "author": "Contributor",
+        "decided_at": "2026-10-01T23:06:33.194697",
+        "snapshot": {
+          "semantic_fields": {
+            "name": "Prince Residential School",
+            "category": "hotel",
+            "subcategory": "hostel",
+            "tier": "support",
+            "latitude": 26.957986,
+            "longitude": 75.705072,
+            "wikidata_id": null,
+            "commons_image": null,
+            "wikidata_p18": null,
+            "external_ids": {
+              "openstreetmap_ids": [
+                "node/11690661271"
+              ]
+            },
+            "osm_tags": {
+              "tourism": "hostel",
+              "name": "Prince Residential School"
+            }
+          },
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "travel_relevance_score": 0.45,
+          "confidence": 0.85,
+          "suggested_action": "APPROVE_AS_SECONDARY_DESTINATION",
+          "missing_fields": [
+            "primary_image",
+            "description",
+            "opening_hours",
+            "website",
+            "address"
+          ]
+        },
+        "changed_since_review": false,
+        "verdict_note": "Bulk excluded"
+      },
+      {
+        "canonical_id": "yc_in_rj_jaipur_prince_school_hostel",
+        "city_id": "jaipur",
+        "pack_version": "v3",
+        "verdict": "REJECTED",
+        "author": "Contributor",
+        "decided_at": "2026-10-01T23:05:40.783556",
+        "snapshot": {
+          "semantic_fields": {
+            "name": "Prince School Hostel",
+            "category": "hotel",
+            "subcategory": "hostel",
+            "tier": "support",
+            "latitude": 26.958078,
+            "longitude": 75.70559,
+            "wikidata_id": null,
+            "commons_image": null,
+            "wikidata_p18": null,
+            "external_ids": {
+              "openstreetmap_ids": [
+                "node/11697086213"
+              ]
+            },
+            "osm_tags": {
+              "tourism": "hostel",
+              "name": "Prince School Hostel"
+            }
+          },
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "travel_relevance_score": 0.45,
+          "confidence": 0.85,
+          "suggested_action": "APPROVE_AS_SECONDARY_DESTINATION",
+          "missing_fields": [
+            "primary_image",
+            "description",
+            "opening_hours",
+            "website",
+            "address"
+          ]
+        },
+        "changed_since_review": false
+      }
+    ],
+    "checksum_failures": [],
+    "priority_samples": {
+      "HIGH": [
+        {
+          "canonical_id": "yc_in_rj_jaipur_nice_cafe_its_the_name",
+          "name": "Nice Cafe (it's the name)",
+          "category": "cafe",
+          "subcategory": "coffee_shop",
+          "tier": "recommended",
+          "travel_relevance_reason": "CONTRADICTORY_BUILDING_AMENITY",
+          "osm_tags": {
+            "amenity": "cafe",
+            "name:en": "Nice Cafe (it's the name)",
+            "building": "house",
+            "name": "Nice Cafe"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_kalyan_rooftop_restaurant",
+          "name": "Kalyan Rooftop Restaurant",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:housenumber": "59 hathroi fort",
+            "addr:postcode": "302001",
+            "addr:street": "Hari Kisham Somani Marg",
+            "amenity": "restaurant",
+            "cuisine": "italian_pizza;crepe;noodles;asian;pancake;italian;sandwich;curry;ice_cream;local;mediterranean;chinese;tea;fine_dining;pizza;pasta;indian",
+            "email": "hotelkalyan@gmail.com",
+            "internet_access": "wlan",
+            "name": "Kalyan Rooftop Restaurant",
+            "opening_hours": "Mo-Su 07:00-23:50",
+            "operator": "Manoj Gupta",
+            "phone": "9314501591",
+            "website": "https://www.hotelkalyan.com/dining"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_roseberry",
+          "name": "Roseberry",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Jaipur",
+            "addr:housenumber": "Plot No. 1-A, 1st Floor, Jawahar Nagar Colony",
+            "addr:postcode": "302018",
+            "addr:street": "Tonk Road",
+            "air_conditioning": "yes",
+            "amenity": "restaurant",
+            "cuisine": "indian;pizza;italian;chinese;mexican",
+            "delivery": "yes",
+            "diet:vegetarian": "yes",
+            "email": "roseberry.dine@gmail.com",
+            "name": "Roseberry",
+            "opening_hours": "Mo-Su 12:30 - 23:30",
+            "phone": "+91 78921022278",
+            "website": "https://www.theroseberry.in"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_bts_burger_to_shakei",
+          "name": "BTS Burger To Shakei",
+          "category": "cafe",
+          "subcategory": "coffee_shop",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Jaipur",
+            "addr:district": "Jaipur",
+            "addr:housenumber": "Plot No.124/497,",
+            "addr:postcode": "302020",
+            "addr:street": "Madhyam Marg",
+            "amenity": "cafe",
+            "cuisine": "burger;fries",
+            "internet_access": "yes",
+            "internet_access:fee": "no",
+            "name": "BTS Burger To Shakei",
+            "opening_hours": "Tu-Su 10:00-23:50",
+            "phone": "+91-7880778806",
+            "website": "https://www.zomato.com/jaipur/bts-burger-to-shakei-1-mansarovar/order"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_giardino",
+          "name": "Giardino",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:street": "Jacob Road",
+            "amenity": "restaurant",
+            "cuisine": "italian_pizza;italian",
+            "diet:vegan": "yes",
+            "name:en": "Giardino",
+            "opening_hours": "Mo-Su 07:00-23:00"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_shree_khandelwal_pavitra_bhojanalaya_2nd_floor",
+          "name": "Shree Khandelwal Pavitra Bhojanalaya (2nd floor)",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:street": "Jamwa Ramgarh Road",
+            "amenity": "restaurant",
+            "cuisine": "indian",
+            "name:en": "Shree Khandelwal Pavitra Bhojanalaya (2nd floor)",
+            "opening_hours": "Mo-Su 10:00-23:00"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_bazingaa",
+          "name": "Bazingaa",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Jaipur",
+            "addr:housenumber": "Bazingaa",
+            "addr:postcode": "302031",
+            "addr:street": "LNMIIT",
+            "amenity": "restaurant",
+            "cuisine": "pizza;regional;burger;italian;sandwich;indian",
+            "name": "Bazingaa",
+            "opening_hours": "Mo-Su 09:00-21:00"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_food_barn",
+          "name": "Food Barn",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Jaipur",
+            "addr:housenumber": "Food Barn",
+            "addr:postcode": "302031",
+            "addr:street": "LNMIIT",
+            "air_conditioning": "yes",
+            "amenity": "restaurant",
+            "cuisine": "pizza;regional;burger;coffee_shop;indian",
+            "delivery": "yes",
+            "name": "Food Barn",
+            "opening_hours": "24/7"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_blue_door_cafe",
+          "name": "Blue Door Cafe",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:postcode": "302002",
+            "addr:street": "Kabutro ka chowk",
+            "amenity": "restaurant",
+            "cuisine": "indian;international",
+            "email": "r@jaipurecovillage.com",
+            "internet_access": "wlan",
+            "name": "Blue door Cafe  , Jaipur",
+            "name:en": "Blue Door Cafe",
+            "name:fr": "Café Veda",
+            "opening_hours": "Su,Sa,Fr,Th,Tu-We,Mo 09:30-22:00",
+            "phone": "+91 97841 04113"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_the_hungry_owl",
+          "name": "The Hungry Owl",
+          "category": "cafe",
+          "subcategory": "coffee_shop",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Jaipur",
+            "addr:housenumber": "94/09",
+            "addr:postcode": "302020",
+            "addr:street": "Madhyam Marg",
+            "amenity": "cafe",
+            "cuisine": "pizza;coffee_shop;burger;italian;sandwich;chinese;ice_cream;shake",
+            "internet_access": "yes",
+            "name": "The Hungry Owl",
+            "opening_hours": "Mo-Su 17:00-05:00",
+            "opening_hours:covid19": "closed",
+            "outdoor_seating": "yes"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_chokhi_dhani_tonk_road",
+          "name": "Chokhi Dhani - Tonk Road",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Jaipur",
+            "addr:housenumber": "12 Miles",
+            "addr:street": "Tonk Road",
+            "amenity": "restaurant",
+            "cuisine": "Rajasthani",
+            "diet:vegetarian": "yes",
+            "name": "Chokhi Dhani - Tonk Road",
+            "not:name": "Choki_dhani;chhoki_dhani",
+            "opening_hours": "Mo-Su 17:00-23:00"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_coffee_america",
+          "name": "Coffee America",
+          "category": "cafe",
+          "subcategory": "coffee_shop",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Jaipur",
+            "addr:housenumber": "76\\9",
+            "addr:postcode": "302020",
+            "addr:street": "Shipra Path",
+            "amenity": "cafe",
+            "cuisine": "coffee_shop;pizza;italian;chinese;regional",
+            "delivery": "yes",
+            "internet_access": "yes",
+            "internet_access:fee": "yes",
+            "name": "Coffee America",
+            "opening_hours": "Mo-Su 10:00-23:00",
+            "outdoor_seating": "yes",
+            "phone": "+917737034113"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_the_burning_bites_non_veg",
+          "name": "The Burning bites (non veg)",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:postcode": "302028",
+            "addr:street": "Amer Road",
+            "amenity": "restaurant",
+            "cuisine": "chinese;indian;italian",
+            "name:en": "The Burning bites (non veg)",
+            "opening_hours": "Mo-Su 09:00-22:00",
+            "phone": "+91 8076135082"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_daisy_and_jade_jaipur",
+          "name": "Daisy and Jade Jaipur",
+          "category": "cafe",
+          "subcategory": "coffee_shop",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Jaipur",
+            "addr:district": "Jaipur",
+            "addr:housenumber": "B 137",
+            "addr:postcode": "302021",
+            "addr:street": "Lalarpura Road Maa Hinglaj Nagar",
+            "air_conditioning": "yes",
+            "amenity": "cafe",
+            "cuisine": "coffee_shop;pizza;cake;pancake;tea;mocktails;plants;bakery",
+            "delivery": "yes",
+            "drive_through": "yes",
+            "internet_access": "yes",
+            "internet_access:fee": "yes",
+            "name": "Daisy and Jade Jaipur",
+            "opening_hours": "Mo-Su 12:00-23:00",
+            "outdoor_seating": "yes",
+            "payment:cards": "yes",
+            "payment:cash": "yes",
+            "payment:mobile_phone": "yes",
+            "payment:upi": "yes",
+            "phone": "‎+91 92162 99342",
+            "smoking": "outside"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_mehfil_e_chaii",
+          "name": "Mehfil e Chaii",
+          "category": "cafe",
+          "subcategory": "coffee_shop",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Jaipur",
+            "addr:district": "Jaipur district",
+            "addr:housenumber": "Shop No. 3",
+            "addr:postcode": "302034",
+            "addr:street": "Maharana Pratap Marg",
+            "amenity": "cafe",
+            "cuisine": "pizza;coffee_shop;burger;chinese;sandwich;indian;ice_cream;noodle;fries;tea;breakfast",
+            "delivery": "yes",
+            "internet_access": "yes",
+            "internet_access:fee": "customers",
+            "name": "Mehfil e Chaii",
+            "opening_hours": "Mo-Su 11:00-23:00",
+            "outdoor_seating": "yes",
+            "phone": "+91 8905950450",
+            "takeaway": "yes",
+            "toilets": "yes"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_kokum_bistro",
+          "name": "Kokum Bistro",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "restaurant",
+            "cuisine": "breakfast;burger;coffee_shop;diner;indian;international;local",
+            "name": "Kokum Bistro",
+            "opening_hours": "Mo-Su 09:00-20:00",
+            "self_service": "no"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_elvinas_cuisine_hub",
+          "name": "Elvina's Cuisine Hub",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "JAIPUR",
+            "addr:district": "JAIPUR",
+            "addr:housenumber": "172-A",
+            "addr:postcode": "302029",
+            "addr:street": "SHRI BALAJI NAGAR-A, RAMPURA  ROAD, KALYANPURA, SANGANER",
+            "amenity": "restaurant",
+            "brand": "Elvina's Cuisine Hub",
+            "contact:instagram": "Elvina Cuisine Hub",
+            "cuisine": "burger;chinese;indian;noodle;diner;brunch",
+            "delivery": "yes",
+            "diet:gluten_free": "yes",
+            "diet:healthy": "yes",
+            "diet:local": "yes",
+            "diet:vegan": "yes",
+            "diet:vegetarian": "yes",
+            "name": "Elvina's Cuisine Hub",
+            "opening_hours": "Mo-Su 12:00PM-22:00PM",
+            "phone": "8824896715",
+            "takeaway": "yes"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_doodh_misthan_bhandar",
+          "name": "Doodh Misthan Bhandar",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Jaipur",
+            "addr:postcode": "302016",
+            "addr:street": "Meera Marg",
+            "amenity": "restaurant",
+            "check_date": "2026-07-28",
+            "contact:instagram": "https://www.instagram.com/doodhmisthanbhandar",
+            "diet:vegetarian": "only",
+            "name": "Doodh Misthan Bhandar",
+            "shop": "confectionery",
+            "short_name": "DMB",
+            "toilets": "yes",
+            "toilets:wheelchair": "no",
+            "website": "https://doodhmisthanbhandar.com/"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_hotel_marc_inn",
+          "name": "Hotel Marc Inn",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "jaipur",
+            "addr:housenumber": "S-5",
+            "addr:postcode": "302021",
+            "addr:street": "JDA Central Market, Beside MTS office, Near Amarpali Circle, Vaishali Nagar",
+            "amenity": "restaurant",
+            "capacity": "50",
+            "delivery": "yes",
+            "email": "hotelmarcinn@gmail.com",
+            "name": "Hotel Marc Inn",
+            "outdoor_seating": "yes",
+            "phone": "+91-9001094661",
+            "smoking": "outside",
+            "takeaway": "yes",
+            "website": "https://www.hotelmarcinn.com/"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_jaipur_gupt_vrindavan_dham",
+          "name": "Gupt Vrindavan Dham",
+          "category": "religious",
+          "subcategory": "hindu_temple",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Jaipur",
+            "addr:district": "Rajasthan",
+            "addr:housenumber": "C6,",
+            "addr:postcode": "302017",
+            "addr:street": "Hare Krishna Marg, Jagatpura",
+            "amenity": "place_of_worship",
+            "denomination": "hindu",
+            "description": "Gupt Vrindavan Dham, located in the heart of Jaipur, Rajasthan, is the state's largest temple and cultural complex. Inspired by the vision of Srila Prabhupada, this majestic 17-story structure encompasses the grand temple of Sri Sri Krishna Balaram.",
+            "email": "jaiput.harekrishna@gmail.com",
+            "mobile": "+919799999881",
+            "name": "Gupt Vrindavan Dham",
+            "religion": "hindu",
+            "service_times": "04:30 Am to 08:45 Pm",
+            "website": "https://guptvrindavandham.org/"
+          }
+        }
+      ],
+      "MEDIUM": [
+        {
+          "canonical_id": "yc_in_rj_jaipur_natawat_ji_ka_mandir_jaipur",
+          "name": "Natawat Ji Ka Mandir , Jaipur",
+          "category": "religious",
+          "subcategory": "hindu_temple",
+          "tier": "recommended",
+          "travel_relevance_reason": "CONTRADICTORY_BUILDING_AMENITY",
+          "osm_tags": {
+            "amenity": "place_of_worship",
+            "building": "house",
+            "building:levels": "1",
+            "name": "Natawat Ji Ka Mandir , Jaipur",
+            "religion": "hindu",
+            "wheelchair": "no"
+          }
+        }
+      ],
+      "LOW": []
+    },
+    "searches": {
+      "Lassiwala": 0,
+      "Mandir": 17,
+      "Cafe": 16,
+      "Johari": 0,
+      "Ghat": 1,
+      "Temple": 14
+    }
+  },
+  "udaipur": {
+    "published": 324,
+    "candidates": 322,
+    "schema": "3.0",
+    "version": "v3",
+    "media_records": 77,
+    "missing_media_paths": [
+      "images/yc_in_rj_udaipur_udaipur_g1/primary.webp",
+      "images/yc_in_rj_udaipur_udaipur_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_udaipur_g2/primary.webp",
+      "images/yc_in_rj_udaipur_udaipur_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_bharatiya_lok_kala_mandal_g1/primary.webp",
+      "images/yc_in_rj_udaipur_bharatiya_lok_kala_mandal_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_bharatiya_lok_kala_mandal_g2/primary.webp",
+      "images/yc_in_rj_udaipur_bharatiya_lok_kala_mandal_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_city_palace_udaipur_g1/primary.webp",
+      "images/yc_in_rj_udaipur_city_palace_udaipur_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_city_palace_udaipur_g2/primary.webp",
+      "images/yc_in_rj_udaipur_city_palace_udaipur_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_jag_mandir_g1/primary.webp",
+      "images/yc_in_rj_udaipur_jag_mandir_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_jag_mandir_g2/primary.webp",
+      "images/yc_in_rj_udaipur_jag_mandir_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_bagore_ki_haveli_g1/primary.webp",
+      "images/yc_in_rj_udaipur_bagore_ki_haveli_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_bagore_ki_haveli_g2/primary.webp",
+      "images/yc_in_rj_udaipur_bagore_ki_haveli_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_jagdish_temple_udaipur_g1/primary.webp",
+      "images/yc_in_rj_udaipur_jagdish_temple_udaipur_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_jagdish_temple_udaipur_g2/primary.webp",
+      "images/yc_in_rj_udaipur_jagdish_temple_udaipur_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_shiv_niwas_palace_g1/primary.webp",
+      "images/yc_in_rj_udaipur_shiv_niwas_palace_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_shiv_niwas_palace_g2/primary.webp",
+      "images/yc_in_rj_udaipur_shiv_niwas_palace_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_monsoon_palace_g1/primary.webp",
+      "images/yc_in_rj_udaipur_monsoon_palace_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_monsoon_palace_g2/primary.webp",
+      "images/yc_in_rj_udaipur_monsoon_palace_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_ahar_cenotaphs_g1/primary.webp",
+      "images/yc_in_rj_udaipur_ahar_cenotaphs_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_ahar_cenotaphs_g2/primary.webp",
+      "images/yc_in_rj_udaipur_ahar_cenotaphs_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_gulab_bagh_and_zoo_g1/primary.webp",
+      "images/yc_in_rj_udaipur_gulab_bagh_and_zoo_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_gulab_bagh_and_zoo_g2/primary.webp",
+      "images/yc_in_rj_udaipur_gulab_bagh_and_zoo_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_saheliyon_ki_bari_g1/primary.webp",
+      "images/yc_in_rj_udaipur_saheliyon_ki_bari_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_saheliyon_ki_bari_g2/primary.webp",
+      "images/yc_in_rj_udaipur_saheliyon_ki_bari_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_karni_mata_udaipur_g1/primary.webp",
+      "images/yc_in_rj_udaipur_karni_mata_udaipur_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_karni_mata_udaipur_g2/primary.webp",
+      "images/yc_in_rj_udaipur_karni_mata_udaipur_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_sajjangarh_biological_park_g1/primary.webp",
+      "images/yc_in_rj_udaipur_sajjangarh_biological_park_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_sajjangarh_biological_park_g2/primary.webp",
+      "images/yc_in_rj_udaipur_sajjangarh_biological_park_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_agasthyavanam_biological_park_g1/primary.webp",
+      "images/yc_in_rj_udaipur_agasthyavanam_biological_park_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_agasthyavanam_biological_park_g2/primary.webp",
+      "images/yc_in_rj_udaipur_agasthyavanam_biological_park_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_kingdom_of_mewar_g1/primary.webp",
+      "images/yc_in_rj_udaipur_kingdom_of_mewar_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_kingdom_of_mewar_g2/primary.webp",
+      "images/yc_in_rj_udaipur_kingdom_of_mewar_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_vintage_and_classic_car_museum_g1/primary.webp",
+      "images/yc_in_rj_udaipur_vintage_and_classic_car_museum_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_vintage_and_classic_car_museum_g2/primary.webp",
+      "images/yc_in_rj_udaipur_vintage_and_classic_car_museum_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_moti_magari_ke_prasad_g1/primary.webp",
+      "images/yc_in_rj_udaipur_moti_magari_ke_prasad_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_moti_magari_ke_prasad_g2/primary.webp",
+      "images/yc_in_rj_udaipur_moti_magari_ke_prasad_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_gangodbhav_kund_g1/primary.webp",
+      "images/yc_in_rj_udaipur_gangodbhav_kund_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_gangodbhav_kund_g2/primary.webp",
+      "images/yc_in_rj_udaipur_gangodbhav_kund_g2/thumbnail.webp",
+      "images/yc_in_rj_udaipur_cenotaph_of_raja_rama_shahs_sons_ahar_g1/primary.webp",
+      "images/yc_in_rj_udaipur_cenotaph_of_raja_rama_shahs_sons_ahar_g1/thumbnail.webp",
+      "images/yc_in_rj_udaipur_cenotaph_of_raja_rama_shahs_sons_ahar_g2/primary.webp",
+      "images/yc_in_rj_udaipur_cenotaph_of_raja_rama_shahs_sons_ahar_g2/thumbnail.webp"
+    ],
+    "incomplete_media_licenses": [],
+    "registry_version": "v3",
+    "integrity": "ok",
+    "tables": [
+      "cities",
+      "places",
+      "place_tags",
+      "place_images",
+      "sqlite_sequence",
+      "place_sources"
+    ],
+    "priority": {
+      "HIGH": 322
+    },
+    "reasons": {
+      "SECONDARY_COMMERCIAL_REQUIRES_AUDIT": 322
+    },
+    "duplicate_ids": 3,
+    "colliding_id_groups": 3,
+    "withheld_records": 6,
+    "files": [
+      "checksums.json",
+      "city.json",
+      "image_manifest.json",
+      "images_manifest.json",
+      "lab_sync_receipt.json",
+      "license_manifest.json",
+      "manifest.json",
+      "review_candidates.json",
+      "source_manifest.json",
+      "yatracanvas.db"
+    ],
+    "decisions": [
+      {
+        "canonical_id": "yc_in_rj_udaipur_gothwal_art",
+        "city_id": "udaipur",
+        "pack_version": "v3",
+        "verdict": "NEEDS_RESEARCH",
+        "author": "Contributor",
+        "decided_at": "2026-10-01T23:14:27.159272",
+        "snapshot": {
+          "semantic_fields": {
+            "name": "Gothwal Art",
+            "category": "shopping",
+            "subcategory": "craft_and_handicraft",
+            "tier": "recommended",
+            "latitude": 24.580193,
+            "longitude": 73.683011,
+            "wikidata_id": null,
+            "commons_image": null,
+            "wikidata_p18": null,
+            "external_ids": {
+              "overture_ids": [
+                "6c48cad9-8840-4dae-a789-4ac76fa5c055"
+              ]
+            },
+            "osm_tags": {}
+          },
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "travel_relevance_score": 0.45,
+          "confidence": 0.5026755928993225,
+          "suggested_action": "APPROVE_AS_SECONDARY_DESTINATION",
+          "missing_fields": [
+            "primary_image",
+            "description",
+            "opening_hours",
+            "website"
+          ]
+        },
+        "changed_since_review": false
+      }
+    ],
+    "checksum_failures": [],
+    "priority_samples": {
+      "HIGH": [
+        {
+          "canonical_id": "yc_in_rj_udaipur_doctor_cafe",
+          "name": "Doctor Cafe",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:housenumber": "12",
+            "addr:postcode": "313001",
+            "addr:street": "Lal Ghat",
+            "amenity": "restaurant",
+            "cuisine": "regional;pancake;italian;breakfast;diner;italian_pizza;indian",
+            "diet:vegan": "yes",
+            "email": "sheikhk942@gmail.com",
+            "internet_access": "wlan",
+            "name": "Doctor Cafe",
+            "name:en": "Doctor Cafe",
+            "opening_hours": "Mo-Su 09:00-00:00",
+            "phone": "+919929507355",
+            "website": "https://www.tripadvisor.co.uk/7282430?m=19905"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_neelam_restaurant",
+          "name": "Neelam Restaurant",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Udaipur",
+            "addr:country": "IN",
+            "addr:housenumber": "18",
+            "addr:postcode": "313001",
+            "addr:state": "RJ",
+            "addr:street": "Gangaur Ghat Marg",
+            "amenity": "restaurant",
+            "cuisine": "indian;local",
+            "diet:vegetarian": "yes",
+            "name": "Neelam",
+            "name:en": "Neelam Restaurant",
+            "opening_hours": "Mo-Su 08:00-22:00"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_kitchen_of_mewar",
+          "name": "Kitchen of Mewar",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "restaurant",
+            "cuisine": "indian;asian",
+            "diet:vegan": "yes",
+            "internet_access": "wlan",
+            "name": "Kitchen of Mewar",
+            "opening_hours": "Mo-Su 08:30-22:30"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_kabab_mistri",
+          "name": "Kabab Mistri",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:housenumber": "3",
+            "addr:postcode": "313001",
+            "addr:street": "The Trident Road",
+            "amenity": "restaurant",
+            "cuisine": "irish;chinese;lebanese",
+            "name:en": "Kabab Mistri",
+            "opening_hours": "Mo-Su 12:30-23:00"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_raajwada",
+          "name": "Raajwada",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "restaurant",
+            "cuisine": "regional;indian;south_indian",
+            "name": "Raajwada",
+            "opening_hours": "Mo-Su 07:00-23:00",
+            "outdoor_seating": "yes",
+            "phone": "0294 298 0423",
+            "takeaway": "yes"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_the_royal_taste_if_marwar",
+          "name": "The Royal Taste if Marwar",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:street": "Gangaur Ghat",
+            "amenity": "restaurant",
+            "contact:instagram": "marwadi_bhojnalaya",
+            "cuisine": "indian;local;regional",
+            "diet:vegetarian": "yes",
+            "name": "Marwadi Bhojnalaya",
+            "name:en": "The Royal Taste if Marwar",
+            "opening_hours": "Mo-Su 10:00-23:30",
+            "phone": "+918952970560",
+            "self_service": "no"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_kool_korner_kaffe",
+          "name": "Kool Korner Kaffe",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "restaurant",
+            "cuisine": "breakfast;indian",
+            "diet:gluten_free": "yes",
+            "diet:vegan": "yes",
+            "diet:vegetarian": "only",
+            "indoor_seating": "yes",
+            "internet_access": "wlan",
+            "internet_access:fee": "no",
+            "name": "Kool Korner Kaffe",
+            "opening_hours": "Mo-Su 07:30-23:30",
+            "outdoor_seating": "yes",
+            "takeaway": "yes",
+            "wheelchair": "limited"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_ramada_hotel",
+          "name": "Ramada Hotel",
+          "category": "hotel",
+          "subcategory": "hotel",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "name": "Ramada Hotel",
+            "tourism": "hotel",
+            "website": "https://www.ramadaudaipur.com/"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_city_lights",
+          "name": "City Lights",
+          "category": "hotel",
+          "subcategory": "hostel",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Udaipur",
+            "addr:country": "IN",
+            "addr:housenumber": "75",
+            "addr:postcode": "313001",
+            "addr:state": "RJ",
+            "addr:street": "Gangaur Ghat",
+            "email": "sajjanvilla@gmail.com",
+            "internet_access": "wlan",
+            "internet_access:fee": "no",
+            "name": "City Lights",
+            "operator": "Narendra Soni",
+            "phone": "+91 294 2423406",
+            "toilets:wheelchair": "no",
+            "tourism": "hostel",
+            "website": "http://www.thesajjanvilla.in",
+            "wheelchair": "limited"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_mewargarh_palace",
+          "name": "Mewargarh Palace",
+          "category": "hotel",
+          "subcategory": "hotel",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "name": "Mewargarh Palace",
+            "tourism": "hotel",
+            "website": "http://www.mewargarhpalace.com"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_kiran_palace",
+          "name": "Kiran Palace",
+          "category": "hotel",
+          "subcategory": "hotel",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:housenumber": "19",
+            "addr:street": "Bhatiyani Chotta",
+            "email": "hotelkiranpalace@gmail.com",
+            "internet_access": "wlan",
+            "name": "Kiran Palace",
+            "phone": "9799722009",
+            "tourism": "hotel",
+            "website": "www.thekiranpalace.com"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_bawarchi_restaurant",
+          "name": "Bawarchi Restaurant",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "restaurant",
+            "name:en": "Bawarchi Restaurant",
+            "website": "http://www.bawarchirestaurant.in"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_charcoal_by_carlson",
+          "name": "Charcoal by Carlson",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "restaurant",
+            "name:en": "Charcoal by Carlson",
+            "website": "https://www.charcoalpb.com/"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_laxmi_vilas_hotel_the_lalit",
+          "name": "Laxmi Vilas Hotel (The Lalit)",
+          "category": "hotel",
+          "subcategory": "hotel",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "name": "Laxmi Vilas Hotel (The Lalit)",
+            "tourism": "hotel"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_fatehgarh_hotel",
+          "name": "Fatehgarh Hotel",
+          "category": "hotel",
+          "subcategory": "hotel",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "name": "Fatehgarh Hotel",
+            "tourism": "hotel"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_atiti",
+          "name": "Atiti",
+          "category": "hotel",
+          "subcategory": "guest_house",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "name": "Atiti",
+            "tourism": "guest_house"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_pannadhay_palace",
+          "name": "Pannadhay Palace",
+          "category": "hotel",
+          "subcategory": "hotel",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "name": "Pannadhay Palace",
+            "tourism": "hotel"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_cafe_namaste_natural_city_view",
+          "name": "Café Namaste & Natural City View",
+          "category": "cafe",
+          "subcategory": "coffee_shop",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:housenumber": "339",
+            "addr:street": "Gangaur Ghat Marg",
+            "amenity": "cafe",
+            "name": "Café Namaste & Natural City View"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_the_little_prince",
+          "name": "The Little Prince",
+          "category": "cafe",
+          "subcategory": "coffee_shop",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "cafe",
+            "name": "The Little Prince"
+          }
+        },
+        {
+          "canonical_id": "yc_in_rj_udaipur_hari_garh_restaurant",
+          "name": "Hari Garh Restaurant",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "restaurant",
+            "name": "Hari Garh Restaurant",
+            "name:fr": "Hari Garh Restaurant"
+          }
+        }
+      ],
+      "MEDIUM": [],
+      "LOW": []
+    },
+    "searches": {
+      "Lassiwala": 0,
+      "Mandir": 2,
+      "Cafe": 11,
+      "Johari": 0,
+      "Ghat": 1,
+      "Temple": 5
+    }
+  },
+  "varanasi": {
+    "published": 348,
+    "candidates": 372,
+    "schema": "3.0",
+    "version": "v3",
+    "media_records": 151,
+    "missing_media_paths": [
+      "images/yc_in_up_varanasi_sankat_mochan_hanuman_temple_g1/primary.webp",
+      "images/yc_in_up_varanasi_sankat_mochan_hanuman_temple_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_sankat_mochan_hanuman_temple_g2/primary.webp",
+      "images/yc_in_up_varanasi_sankat_mochan_hanuman_temple_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_varanasi_g1/primary.webp",
+      "images/yc_in_up_varanasi_varanasi_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_varanasi_g2/primary.webp",
+      "images/yc_in_up_varanasi_varanasi_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_roman_catholic_diocese_of_varanasi_g1/primary.webp",
+      "images/yc_in_up_varanasi_roman_catholic_diocese_of_varanasi_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_roman_catholic_diocese_of_varanasi_g2/primary.webp",
+      "images/yc_in_up_varanasi_roman_catholic_diocese_of_varanasi_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_sarnath_museum_g1/primary.webp",
+      "images/yc_in_up_varanasi_sarnath_museum_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_sarnath_museum_g2/primary.webp",
+      "images/yc_in_up_varanasi_sarnath_museum_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_scindia_ghat_g1/primary.webp",
+      "images/yc_in_up_varanasi_scindia_ghat_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_scindia_ghat_g2/primary.webp",
+      "images/yc_in_up_varanasi_scindia_ghat_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_vishalakshi_temple_g1/primary.webp",
+      "images/yc_in_up_varanasi_vishalakshi_temple_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_munshi_ghat_g1/primary.webp",
+      "images/yc_in_up_varanasi_munshi_ghat_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_munshi_ghat_g2/primary.webp",
+      "images/yc_in_up_varanasi_munshi_ghat_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_bharat_mata_mandir_g1/primary.webp",
+      "images/yc_in_up_varanasi_bharat_mata_mandir_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_bharat_mata_mandir_g2/primary.webp",
+      "images/yc_in_up_varanasi_bharat_mata_mandir_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_man_singh_observatory_g1/primary.webp",
+      "images/yc_in_up_varanasi_man_singh_observatory_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_man_singh_observatory_g2/primary.webp",
+      "images/yc_in_up_varanasi_man_singh_observatory_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_nepali_mandir_g1/primary.webp",
+      "images/yc_in_up_varanasi_nepali_mandir_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_nepali_mandir_g2/primary.webp",
+      "images/yc_in_up_varanasi_nepali_mandir_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_lalita_ghat_g1/primary.webp",
+      "images/yc_in_up_varanasi_lalita_ghat_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_lalita_ghat_g2/primary.webp",
+      "images/yc_in_up_varanasi_lalita_ghat_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_dalmia_bhawan_g1/primary.webp",
+      "images/yc_in_up_varanasi_dalmia_bhawan_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_dalmia_bhawan_g2/primary.webp",
+      "images/yc_in_up_varanasi_dalmia_bhawan_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_chaukhandi_stupa_g1/primary.webp",
+      "images/yc_in_up_varanasi_chaukhandi_stupa_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_chaukhandi_stupa_g2/primary.webp",
+      "images/yc_in_up_varanasi_chaukhandi_stupa_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_dhamek_stupa_g1/primary.webp",
+      "images/yc_in_up_varanasi_dhamek_stupa_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_dhamek_stupa_g2/primary.webp",
+      "images/yc_in_up_varanasi_dhamek_stupa_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_lion_capital_of_asoka_g1/primary.webp",
+      "images/yc_in_up_varanasi_lion_capital_of_asoka_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_lion_capital_of_asoka_g2/primary.webp",
+      "images/yc_in_up_varanasi_lion_capital_of_asoka_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_manikarnika_ghat_g1/primary.webp",
+      "images/yc_in_up_varanasi_manikarnika_ghat_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_manikarnika_ghat_g2/primary.webp",
+      "images/yc_in_up_varanasi_manikarnika_ghat_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_assi_ghat_g1/primary.webp",
+      "images/yc_in_up_varanasi_assi_ghat_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_assi_ghat_g2/primary.webp",
+      "images/yc_in_up_varanasi_assi_ghat_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_durga_mandir_g1/primary.webp",
+      "images/yc_in_up_varanasi_durga_mandir_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_durga_mandir_g2/primary.webp",
+      "images/yc_in_up_varanasi_durga_mandir_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_malviya_bridge_g1/primary.webp",
+      "images/yc_in_up_varanasi_malviya_bridge_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_malviya_bridge_g2/primary.webp",
+      "images/yc_in_up_varanasi_malviya_bridge_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_shri_guru_ravidass_janam_asthan_g1/primary.webp",
+      "images/yc_in_up_varanasi_shri_guru_ravidass_janam_asthan_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_shri_guru_ravidass_janam_asthan_g2/primary.webp",
+      "images/yc_in_up_varanasi_shri_guru_ravidass_janam_asthan_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_tulsi_ghat_g1/primary.webp",
+      "images/yc_in_up_varanasi_tulsi_ghat_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_tulsi_ghat_g2/primary.webp",
+      "images/yc_in_up_varanasi_tulsi_ghat_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_durga_mandir_varanasi_g1/primary.webp",
+      "images/yc_in_up_varanasi_durga_mandir_varanasi_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_durga_mandir_varanasi_g2/primary.webp",
+      "images/yc_in_up_varanasi_durga_mandir_varanasi_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_new_vishwanath_temple_g1/primary.webp",
+      "images/yc_in_up_varanasi_new_vishwanath_temple_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_new_vishwanath_temple_g2/primary.webp",
+      "images/yc_in_up_varanasi_new_vishwanath_temple_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_tulsi_manas_mandir_g1/primary.webp",
+      "images/yc_in_up_varanasi_tulsi_manas_mandir_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_tulsi_manas_mandir_g2/primary.webp",
+      "images/yc_in_up_varanasi_tulsi_manas_mandir_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_parshvanath_jain_temples_varanasi_g1/primary.webp",
+      "images/yc_in_up_varanasi_parshvanath_jain_temples_varanasi_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_alamgir_mosque_g1/primary.webp",
+      "images/yc_in_up_varanasi_alamgir_mosque_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_alamgir_mosque_g2/primary.webp",
+      "images/yc_in_up_varanasi_alamgir_mosque_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_ratneshwar_mahadev_temple_g1/primary.webp",
+      "images/yc_in_up_varanasi_ratneshwar_mahadev_temple_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_ratneshwar_mahadev_temple_g2/primary.webp",
+      "images/yc_in_up_varanasi_ratneshwar_mahadev_temple_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_indian_institute_of_technology_bhu_varanasi_g1/primary.webp",
+      "images/yc_in_up_varanasi_indian_institute_of_technology_bhu_varanasi_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_indian_institute_of_technology_bhu_varanasi_g2/primary.webp",
+      "images/yc_in_up_varanasi_indian_institute_of_technology_bhu_varanasi_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_lal_khan_tomb_g1/primary.webp",
+      "images/yc_in_up_varanasi_lal_khan_tomb_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_lal_khan_tomb_g2/primary.webp",
+      "images/yc_in_up_varanasi_lal_khan_tomb_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_benares_state_g1/primary.webp",
+      "images/yc_in_up_varanasi_benares_state_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_benares_state_g2/primary.webp",
+      "images/yc_in_up_varanasi_benares_state_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_shivala_ghat_g1/primary.webp",
+      "images/yc_in_up_varanasi_shivala_ghat_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_shivala_ghat_g2/primary.webp",
+      "images/yc_in_up_varanasi_shivala_ghat_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_kashi_vishwanath_temple_g1/primary.webp",
+      "images/yc_in_up_varanasi_kashi_vishwanath_temple_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_kashi_vishwanath_temple_g2/primary.webp",
+      "images/yc_in_up_varanasi_kashi_vishwanath_temple_g2/thumbnail.webp",
+      "images/yc_in_up_varanasi_gyanvapi_mosque_g1/primary.webp",
+      "images/yc_in_up_varanasi_gyanvapi_mosque_g1/thumbnail.webp",
+      "images/yc_in_up_varanasi_gyanvapi_mosque_g2/primary.webp",
+      "images/yc_in_up_varanasi_gyanvapi_mosque_g2/thumbnail.webp"
+    ],
+    "incomplete_media_licenses": [],
+    "registry_version": "v3",
+    "integrity": "ok",
+    "tables": [
+      "cities",
+      "places",
+      "place_tags",
+      "place_images",
+      "sqlite_sequence",
+      "place_sources"
+    ],
+    "priority": {
+      "HIGH": 372
+    },
+    "reasons": {
+      "SECONDARY_COMMERCIAL_REQUIRES_AUDIT": 372
+    },
+    "duplicate_ids": 4,
+    "colliding_id_groups": 3,
+    "withheld_records": 7,
+    "files": [
+      "checksums.json",
+      "city.json",
+      "image_manifest.json",
+      "images_manifest.json",
+      "lab_sync_receipt.json",
+      "license_manifest.json",
+      "manifest.json",
+      "review_candidates.json",
+      "source_manifest.json",
+      "yatracanvas.db"
+    ],
+    "decisions": [
+      {
+        "canonical_id": "yc_in_up_varanasi_chaudhary_textiles",
+        "city_id": "varanasi",
+        "pack_version": "v3",
+        "verdict": "NEEDS_RESEARCH",
+        "author": "Contributor",
+        "decided_at": "2026-10-01T23:18:14.398761",
+        "snapshot": {
+          "semantic_fields": {
+            "name": "Chaudhary Textiles",
+            "category": "shopping",
+            "subcategory": "craft_and_handicraft",
+            "tier": "recommended",
+            "latitude": 25.312766,
+            "longitude": 83.004577,
+            "wikidata_id": null,
+            "commons_image": null,
+            "wikidata_p18": null,
+            "external_ids": {
+              "overture_ids": [
+                "1bf789f4-17b3-4f0c-a0d3-83740e023e2a"
+              ]
+            },
+            "osm_tags": {}
+          },
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "travel_relevance_score": 0.45,
+          "confidence": 0.499206006526947,
+          "suggested_action": "APPROVE_AS_SECONDARY_DESTINATION",
+          "missing_fields": [
+            "primary_image",
+            "description",
+            "opening_hours",
+            "website"
+          ]
+        },
+        "changed_since_review": false
+      }
+    ],
+    "checksum_failures": [],
+    "priority_samples": {
+      "HIGH": [
+        {
+          "canonical_id": "yc_in_up_varanasi_dosa_cafe",
+          "name": "Dosa Cafe",
+          "category": "cafe",
+          "subcategory": "coffee_shop",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Varanasi",
+            "addr:conscriptionnumber": "49",
+            "addr:country": "IN",
+            "addr:full": "15/49, Manmandir, Dashashwamedh, Varanasi-221001 (U.P.), India",
+            "addr:housenumber": "15",
+            "addr:place": "Manmandir",
+            "addr:postcode": "221001",
+            "addr:state": "Uttar Pradesh",
+            "addr:suburb": "Dashashwamedh",
+            "amenity": "cafe",
+            "cuisine": "indian",
+            "diet:vegan": "yes",
+            "diet:vegetarian": "only",
+            "indoor_seating": "yes",
+            "name": "Dosa Cafe",
+            "opening_hours": "Th-Tu 09:00-21:00",
+            "outdoor_seating": "no",
+            "smoking": "no"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_sha_chicken_hut",
+          "name": "Sha Chicken Hut",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:housenumber": "CK 67/64",
+            "addr:postcode": "221001",
+            "addr:street": "Nai Sarak Road",
+            "amenity": "restaurant",
+            "cuisine": "indian",
+            "name": "Sha",
+            "name:en": "Sha Chicken Hut",
+            "name:hi": "ष चिकन हूत",
+            "opening_hours": "Mo-Su 13:45-23:00",
+            "phone": "097920 44370"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_bowl_of_compassion",
+          "name": "Bowl of compassion",
+          "category": "cafe",
+          "subcategory": "coffee_shop",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "cafe",
+            "cuisine": "indian",
+            "diet:vegan": "yes",
+            "diet:vegetarian": "yes",
+            "indoor_seating": "yes",
+            "name": "Bowl of compassion",
+            "opening_hours": "Mo-Su 10:00-22:00",
+            "outdoor_seating": "no"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_shivangi_lunch_house",
+          "name": "Shivangi Lunch House",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:postcode": "221010",
+            "addr:street": "Rathyatra Mahmoorganj Road",
+            "amenity": "restaurant",
+            "cuisine": "indian",
+            "diet:vegetarian": "yes",
+            "name": "शिवांगी लंच हाउस",
+            "name:en": "Shivangi Lunch House",
+            "opening_hours": "Tu-Su 09:00-23:45"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_ccd",
+          "name": "CCD",
+          "category": "cafe",
+          "subcategory": "coffee_shop",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Varanasi",
+            "addr:district": "varanasi",
+            "addr:postcode": "221005",
+            "addr:street": "Radial Road 11",
+            "amenity": "cafe",
+            "cuisine": "coffee_shop",
+            "internet_access": "yes",
+            "internet_access:fee": "no",
+            "name": "CCD",
+            "opening_hours": "Mo-Sa 08:00-18:00"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_relish_scoop_bar_and_cafe",
+          "name": "Relish Scoop Bar and Cafe",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Varanasi",
+            "addr:district": "varanasi",
+            "addr:street": "hydrabad gate",
+            "amenity": "restaurant",
+            "cuisine": "sandwich;fries;noodles;burger;coffee",
+            "diet:vegetarian": "yes",
+            "name": "Relish Scoop Bar and Cafe",
+            "opening_hours": "Mo-Su 09:00-21:00",
+            "phone": "9628850009"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_fruit_stall",
+          "name": "fruit stall",
+          "category": "cafe",
+          "subcategory": "coffee_shop",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "cafe",
+            "cuisine": "juice;salad",
+            "name": "fruit stall",
+            "opening_hours": "mo-su 7:00-19:00",
+            "outdoor_seating": "yes"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_minnano_cafe",
+          "name": "Minnano Cafe",
+          "category": "cafe",
+          "subcategory": "coffee_shop",
+          "tier": "discovery",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "cafe",
+            "cuisine": "coffee_shop;japanese",
+            "internet_access": "wlan",
+            "name": "Minnano Cafe",
+            "opening_hours": "Mo-Su 08:00-22:00",
+            "outdoor_seating": "yes"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_ganga_love_hotel",
+          "name": "Ganga Love Hotel",
+          "category": "hotel",
+          "subcategory": "hotel",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "internet_access": "wlan",
+            "name": "Ganga Love Hotel",
+            "phone": "+917398054186",
+            "tourism": "hotel",
+            "website": "http://www.gangalovedeluxe.in"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_s_s_saluja_hostel",
+          "name": "S. S. Saluja Hostel",
+          "category": "hotel",
+          "subcategory": "hostel",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Varanasi",
+            "addr:district": "Varanasi",
+            "addr:housenumber": "Semi Circle Road 6",
+            "addr:postcode": "221005",
+            "addr:street": "IIT (BHU) Campus, BHU",
+            "guest_house": "bed_and_breakfast",
+            "internet_access": "wlan",
+            "internet_access:fee": "no",
+            "name": "S. S. Saluja Hostel",
+            "operator": "IIT (BHU), Varanasi",
+            "phone": "0542-257-5994",
+            "rooms": "20",
+            "tourism": "hostel",
+            "website": "https://www.iitbhu.ac.in/hostels/saluja_hostel"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_rooms_in_varanasi",
+          "name": "Rooms in Varanasi",
+          "category": "hotel",
+          "subcategory": "guest_house",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "name": "Rooms in Varanasi",
+            "tourism": "guest_house",
+            "website": "https://www.airbnb.com/"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_la_vaca_india_boutique_stay",
+          "name": "La Vaca India Boutique Stay",
+          "category": "hotel",
+          "subcategory": "guest_house",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:street": "La Vaca Casa Varanasi\nD-35/31, jangambari, , Varanasi,",
+            "name": "La Vaca India Boutique Stay",
+            "phone": "099180 71807",
+            "tourism": "guest_house",
+            "website": "https://hotels.eglobe-solutions.com/lavacaboutique/booking/hotels/la-vaca-india-boutique-stay-varanasi"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_mosaic_hostel_varanasi",
+          "name": "Mosaic Hostel Varanasi",
+          "category": "hotel",
+          "subcategory": "hostel",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:city": "Varanasi",
+            "addr:district": "Varanasi",
+            "addr:housenumber": "B1/85C",
+            "addr:postcode": "221005",
+            "addr:street": "Assi Ghat Road",
+            "air_conditioning": "yes",
+            "contact:instagram": "https://www.instagram.com/mosaichostels/",
+            "email": "mosaichostels@gmail.com",
+            "internet_access": "wlan",
+            "internet_access:fee": "no",
+            "name": "Mosaic Hostel Varanasi",
+            "phone": "+919125492225",
+            "rooms": "8",
+            "tourism": "hostel",
+            "website": "https://www.mosaichostels.com"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_the_commune_varanasi",
+          "name": "The Commune Varanasi",
+          "category": "hotel",
+          "subcategory": "hostel",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "addr:housenumber": "D 53/83-84",
+            "addr:postcode": "221010",
+            "addr:street": "Luxa Road",
+            "name": "The Commune Varanasi",
+            "tourism": "hostel",
+            "website": "https://www.thecommunevaranasi.com/"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_blw_cinema_hall",
+          "name": "BLW Cinema Hall",
+          "category": "entertainment",
+          "subcategory": "cinema",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "cinema",
+            "name": "BLW Cinema Hall"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_st_marys_church",
+          "name": "St Marys Church",
+          "category": "religious",
+          "subcategory": "church",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "place_of_worship",
+            "name": "St Marys Church",
+            "religion": "christian"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_clark_s_hotel",
+          "name": "Clark ́s Hotel",
+          "category": "hotel",
+          "subcategory": "hotel",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "name": "Clark´s Hotel",
+            "tourism": "hotel"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_lal_girja_cni_church",
+          "name": "Lal Girja CNI Church",
+          "category": "religious",
+          "subcategory": "church",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "place_of_worship",
+            "name": "Lal Girja CNI Church",
+            "religion": "christian"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_phulwari_restaurant",
+          "name": "Phulwari Restaurant",
+          "category": "food",
+          "subcategory": "restaurant",
+          "tier": "recommended",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "amenity": "restaurant",
+            "diet:vegan": "yes",
+            "diet:vegetarian": "yes",
+            "name": "Phulwari Restaurant"
+          }
+        },
+        {
+          "canonical_id": "yc_in_up_varanasi_yogi_lodge",
+          "name": "Yogi Lodge",
+          "category": "hotel",
+          "subcategory": "hotel",
+          "tier": "support",
+          "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+          "osm_tags": {
+            "name": "Yogi Lodge",
+            "tourism": "hotel"
+          }
+        }
+      ],
+      "MEDIUM": [],
+      "LOW": []
+    },
+    "searches": {
+      "Lassiwala": 0,
+      "Mandir": 6,
+      "Cafe": 20,
+      "Johari": 0,
+      "Ghat": 0,
+      "Temple": 11
+    }
+  }
+}

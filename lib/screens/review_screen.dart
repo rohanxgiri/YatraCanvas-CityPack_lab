@@ -240,7 +240,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Manual QA & Review'),
+        title: const Text('Manual QA: spot check published places'),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),

@@ -1,0 +1,44 @@
+{
+  "canonical_id": "yc_in_rj_jaipur_nice_cafe_its_the_name",
+  "city_id": "jaipur",
+  "pack_version": "v3",
+  "verdict": "NEEDS_RESEARCH",
+  "author": "Contributor",
+  "decided_at": "2026-10-01T22:44:23.765032",
+  "snapshot": {
+    "semantic_fields": {
+      "name": "Nice Cafe (it's the name)",
+      "category": "cafe",
+      "subcategory": "coffee_shop",
+      "tier": "recommended",
+      "latitude": 26.934283,
+      "longitude": 75.825319,
+      "wikidata_id": null,
+      "commons_image": null,
+      "wikidata_p18": null,
+      "external_ids": {
+        "openstreetmap_ids": [
+          "node/5579575445",
+          "way/331543458"
+        ]
+      },
+      "osm_tags": {
+        "amenity": "cafe",
+        "building": "house",
+        "name": "Nice Cafe"
+      }
+    },
+    "travel_relevance_reason": "CONTRADICTORY_BUILDING_AMENITY",
+    "travel_relevance_score": 0.5,
+    "confidence": 0.85,
+    "suggested_action": "VERIFY_AMENITY_SIGNIFICANCE",
+    "missing_fields": [
+      "primary_image",
+      "description",
+      "opening_hours",
+      "website",
+      "address"
+    ]
+  },
+  "changed_since_review": false
+}

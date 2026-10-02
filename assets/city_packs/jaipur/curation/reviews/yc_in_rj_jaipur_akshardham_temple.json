@@ -1,0 +1,13 @@
+{
+  "id": "rev_yc_in_rj_jaipur_akshardham_temple",
+  "place_id": "yc_in_rj_jaipur_akshardham_temple",
+  "city_id": "jaipur",
+  "place_name": "Akshardham Temple",
+  "tier": "core_destination",
+  "category": "heritage",
+  "verdict": "missing_expected_information",
+  "reviewer": "Contributor",
+  "timestamp": "2026-10-02T16:09:44.825560",
+  "issue_type": "missing_expected_information",
+  "notes": "core temple lacks hours and description. photo preview shows garden only."
+}

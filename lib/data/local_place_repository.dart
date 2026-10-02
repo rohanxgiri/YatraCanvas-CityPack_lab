@@ -1,4 +1,7 @@
 import 'dart:io' show File;
+
+import 'package:flutter/foundation.dart';
+
 import '../domain/lab_place.dart';
 import 'city_pack_database.dart';
 import 'local_image_resolver.dart';
@@ -7,10 +10,7 @@ class LocalPlaceRepository {
   final CityPackDatabase database;
   final LocalImageResolver imageResolver;
 
-  LocalPlaceRepository({
-    required this.database,
-    required this.imageResolver,
-  });
+  LocalPlaceRepository({required this.database, required this.imageResolver});
 
   String get cityId => database.cityId;
 
@@ -22,11 +22,10 @@ class LocalPlaceRepository {
   Future<Map<String, List<LabPlace>>> getDiscoverSections({
     List<String> interests = const [],
     int limitPerSection = 20,
-  }) =>
-      database.getDiscoverSections(
-        interests: interests,
-        limitPerSection: limitPerSection,
-      );
+  }) => database.getDiscoverSections(
+    interests: interests,
+    limitPerSection: limitPerSection,
+  );
 
   Future<List<LabPlace>> search({
     required String query,
@@ -35,15 +34,14 @@ class LocalPlaceRepository {
     bool onlyTravelRelevant = false,
     int limit = 50,
     int offset = 0,
-  }) =>
-      database.searchPlaces(
-        query,
-        category: category,
-        tier: tier,
-        onlyTravelRelevant: onlyTravelRelevant,
-        limit: limit,
-        offset: offset,
-      );
+  }) => database.searchPlaces(
+    query,
+    category: category,
+    tier: tier,
+    onlyTravelRelevant: onlyTravelRelevant,
+    limit: limit,
+    offset: offset,
+  );
 
   Future<List<LabPlace>> getByCategory({
     required String category,
@@ -51,21 +49,19 @@ class LocalPlaceRepository {
     bool onlyTravelRelevant = false,
     int limit = 50,
     int offset = 0,
-  }) =>
-      database.getPlacesByCategory(
-        category,
-        sortBy: sortBy,
-        onlyTravelRelevant: onlyTravelRelevant,
-        limit: limit,
-        offset: offset,
-      );
+  }) => database.getPlacesByCategory(
+    category,
+    sortBy: sortBy,
+    onlyTravelRelevant: onlyTravelRelevant,
+    limit: limit,
+    offset: offset,
+  );
 
   Future<List<LabPlace>> getByTier({
     required String tier,
     int limit = 50,
     int offset = 0,
-  }) =>
-      database.getPlacesByTier(tier, limit: limit, offset: offset);
+  }) => database.getPlacesByTier(tier, limit: limit, offset: offset);
 
   Future<List<LabPlace>> getForMap({
     String? category,
@@ -74,7 +70,22 @@ class LocalPlaceRepository {
   }) =>
       database.getAllPlacesForMap(category: category, tier: tier, limit: limit);
 
-  Future<LabPlace?> getPlaceById(String id) => database.getPlaceById(id);
+  Future<LabPlace?> getPlaceById(String id) async {
+    final place = await database.getPlaceById(id);
+    if (place == null || kIsWeb) return place;
+    // Optional gallery rows remain in the immutable source database. Hide only
+    // unavailable optional files; retain primary evidence for defect inspection.
+    return place.copyWith(
+      images: place.images
+          .where(
+            (image) =>
+                image.localPath == place.primaryImagePath ||
+                imageResolver.resolveImage(image.localPath)?.existsSync() ==
+                    true,
+          )
+          .toList(),
+    );
+  }
 
   Future<List<LabPlace>> getPlacesByIds(List<String> ids) =>
       database.getPlacesByIds(ids);
@@ -84,13 +95,12 @@ class LocalPlaceRepository {
     String? tier,
     String? category,
     int seed = 42,
-  }) =>
-      database.getRandomPlaces(
-        count: count,
-        tier: tier,
-        category: category,
-        seed: seed,
-      );
+  }) => database.getRandomPlaces(
+    count: count,
+    tier: tier,
+    category: category,
+    seed: seed,
+  );
 
   Future<Map<String, dynamic>> getQualityStats() => database.getQualityStats();
 
@@ -102,13 +112,12 @@ class LocalPlaceRepository {
     int limit = 50,
     int offset = 0,
     String? category,
-  }) =>
-      database.getPlacesForGap(
-        filterPreset,
-        limit: limit,
-        offset: offset,
-        category: category,
-      );
+  }) => database.getPlacesForGap(
+    filterPreset,
+    limit: limit,
+    offset: offset,
+    category: category,
+  );
 
   File? resolveImage(String? relativeImagePath) =>
       imageResolver.resolveImage(relativeImagePath);

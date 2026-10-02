@@ -1,3 +1,8 @@
+import '../../domain/qa_session.dart';
+import '../../domain/curation/place_review.dart';
+import '../../domain/curation/curation_issue.dart';
+import '../../domain/qa_issue.dart';
+
 enum ManualQaState {
   notStarted,
   inProgress,
@@ -34,17 +39,20 @@ class ManualQaSummary {
   String get displayStatus {
     switch (state) {
       case ManualQaState.notStarted:
-        return 'NOT STARTED';
+        return 'NOT_STARTED';
       case ManualQaState.inProgress:
-        return 'PENDING ($reviewedCount/$minimumRequired)';
+        return 'IN_PROGRESS ($reviewedCount/$minimumRequired)';
       case ManualQaState.sufficientSample:
-        return 'PASSED (${(score! * 100).round()}%)';
+        return 'SAMPLE COMPLETE ($reviewedCount/$minimumRequired, $issueCount issues, $uncertainCount needs research)';
       case ManualQaState.insufficientSample:
         return 'INSUFFICIENT SAMPLE ($reviewedCount/$minimumRequired)';
     }
   }
 
-  factory ManualQaSummary.fromQaSession(dynamic session, {int minimumRequired = 50}) {
+  factory ManualQaSummary.fromQaSession(
+    dynamic session, {
+    int minimumRequired = 50,
+  }) {
     if (session == null) {
       return ManualQaSummary(
         state: ManualQaState.notStarted,
@@ -77,11 +85,11 @@ class ManualQaSummary {
     ManualQaState state;
     double? score;
 
-    if (reviewed == 0 && issueCount == 0) {
+    if (reviewed == 0) {
       state = ManualQaState.notStarted;
       score = null;
     } else if (reviewed < minimumRequired) {
-      state = ManualQaState.insufficientSample;
+      state = ManualQaState.inProgress;
       score = null;
     } else {
       state = ManualQaState.sufficientSample;
@@ -105,28 +113,56 @@ class ManualQaSummary {
     required List<dynamic> issues,
     int minimumRequired = 50,
   }) {
-    final reviewed = reviews.length;
-    final issueCount = issues.length;
+    final verdicts = <String, String>{};
+    for (final review in reviews) {
+      final id = review is PlaceReview
+          ? review.placeId
+          : (review as RandomReviewRecord).placeId;
+      final verdict = review is PlaceReview
+          ? review.verdict
+          : (review as RandomReviewRecord).result;
+      verdicts.putIfAbsent(id, () => verdict.toLowerCase());
+    }
+    final defectIds = <String>{};
+    for (final issue in issues) {
+      if (issue is CurationIssue &&
+          const {
+            CurationIssueStatus.fixed,
+            CurationIssueStatus.verified,
+            CurationIssueStatus.ignored,
+          }.contains(issue.status)) {
+        continue;
+      }
+      final id = issue is CurationIssue
+          ? issue.placeId
+          : (issue as QaIssue).placeId;
+      if (verdicts.containsKey(id)) defectIds.add(id);
+    }
+    final reviewed = verdicts.length;
     int approved = 0;
     int uncertain = 0;
 
-    for (final r in reviews) {
-      final res = (r.verdict as String? ?? (r.result as String? ?? '')).toLowerCase();
+    for (final entry in verdicts.entries) {
+      final res = entry.value;
+      if (defectIds.contains(entry.key)) continue;
       if (res == 'looks_good' || res == 'approved' || res == 'pass') {
         approved++;
       } else if (res == 'uncertain' || res == 'unsure') {
         uncertain++;
+      } else {
+        defectIds.add(entry.key);
       }
     }
+    final issueCount = defectIds.length;
 
     ManualQaState state;
     double? score;
 
-    if (reviewed == 0 && issueCount == 0) {
+    if (reviewed == 0) {
       state = ManualQaState.notStarted;
       score = null;
     } else if (reviewed < minimumRequired) {
-      state = ManualQaState.insufficientSample;
+      state = ManualQaState.inProgress;
       score = null;
     } else {
       state = ManualQaState.sufficientSample;
@@ -146,14 +182,14 @@ class ManualQaSummary {
   }
 
   Map<String, dynamic> toJson() => {
-        'state': state.name,
-        'reviewed_count': reviewedCount,
-        'minimum_required': minimumRequired,
-        'approved_count': approvedCount,
-        'issue_count': issueCount,
-        'uncertain_count': uncertainCount,
-        'defect_rate': defectRate,
-        'score': score,
-        'notes': notes,
-      };
+    'state': state.name,
+    'reviewed_count': reviewedCount,
+    'minimum_required': minimumRequired,
+    'approved_count': approvedCount,
+    'issue_count': issueCount,
+    'uncertain_count': uncertainCount,
+    'defect_rate': defectRate,
+    'score': score,
+    'notes': notes,
+  };
 }

@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+
 import '../domain/qa_issue.dart';
 import '../domain/qa_session.dart';
 
@@ -26,7 +28,9 @@ class QaRepository {
     try {
       base = await getApplicationDocumentsDirectory();
     } catch (_) {
-      base = Directory(p.join(Directory.systemTemp.path, 'yatracanvas_lab_docs'));
+      base = Directory(
+        p.join(Directory.systemTemp.path, 'yatracanvas_lab_docs'),
+      );
     }
 
     final dir = Directory(p.join(base.path, 'qa_sessions'));
@@ -108,6 +112,9 @@ class QaRepository {
 
   Future<void> addRandomReview(String cityId, RandomReviewRecord record) async {
     final session = await loadSession(cityId, 'v3');
+    session.randomReviews.removeWhere(
+      (review) => review.placeId == record.placeId,
+    );
     session.randomReviews.add(record);
     await saveSession(session);
   }

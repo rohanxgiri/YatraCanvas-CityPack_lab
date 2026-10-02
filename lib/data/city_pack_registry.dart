@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:crypto/crypto.dart';
+
 import '../domain/city_pack.dart';
 
 class CityPackRegistry {
@@ -37,7 +39,9 @@ class CityPackRegistry {
         if (dir.existsSync()) {
           for (final entity in dir.listSync()) {
             if (entity is Directory) {
-              final cid = entity.uri.pathSegments.reversed.where((s) => s.isNotEmpty).first;
+              final cid = entity.uri.pathSegments.reversed
+                  .where((s) => s.isNotEmpty)
+                  .first;
               indexJson[cid] = {'city_id': cid};
             }
           }
@@ -47,7 +51,10 @@ class CityPackRegistry {
 
     for (final entry in indexJson.entries) {
       final cityId = entry.key;
-      final pack = await _loadSinglePack(cityId, entry.value as Map<String, dynamic>);
+      final pack = await _loadSinglePack(
+        cityId,
+        entry.value as Map<String, dynamic>,
+      );
       packs.add(pack);
     }
 
@@ -56,27 +63,36 @@ class CityPackRegistry {
     return packs;
   }
 
-  Future<CityPack> _loadSinglePack(String cityId, Map<String, dynamic> indexData) async {
+  Future<CityPack> _loadSinglePack(
+    String cityId,
+    Map<String, dynamic> indexData,
+  ) async {
     try {
       Map<String, dynamic> manifest = {};
       Map<String, dynamic> cityMeta = {};
       Map<String, dynamic> receipt = {};
 
       // Load manifest.json
-      manifest = await _loadJsonAsset('assets/city_packs/$cityId/manifest.json');
+      manifest = await _loadJsonAsset(
+        'assets/city_packs/$cityId/manifest.json',
+      );
       // Load city.json
       cityMeta = await _loadJsonAsset('assets/city_packs/$cityId/city.json');
       // Load receipt
-      receipt = await _loadJsonAsset('assets/city_packs/$cityId/lab_sync_receipt.json');
+      receipt = await _loadJsonAsset(
+        'assets/city_packs/$cityId/lab_sync_receipt.json',
+      );
 
       final String name = manifest['city_name'] ?? cityMeta['name'] ?? cityId;
       final String state = manifest['state'] ?? cityMeta['state'] ?? '';
-      final String country = manifest['country'] ?? cityMeta['country'] ?? 'India';
+      final String country =
+          manifest['country'] ?? cityMeta['country'] ?? 'India';
       final String version = manifest['city_pack_version'] ?? 'v3';
 
       final counts = manifest['counts'] as Map<String, dynamic>? ?? {};
       final int placeCount = counts['accepted'] as int? ?? 0;
-      final int imageCount = counts['with_images'] as int? ?? receipt['image_count'] as int? ?? 0;
+      final int imageCount =
+          counts['with_images'] as int? ?? receipt['image_count'] as int? ?? 0;
 
       // Extract coordinates & bbox
       double centerLat = 0.0;
@@ -152,16 +168,17 @@ class CityPackRegistry {
         return IntegrityStatus.unknown;
       }
 
-      if (kIsWeb) {
-        return IntegrityStatus.pass;
+      final asset = await rootBundle.load(
+        'assets/city_packs/$cityId/yatracanvas.db',
+      );
+      var bytes = asset.buffer.asUint8List(
+        asset.offsetInBytes,
+        asset.lengthInBytes,
+      );
+      if (!kIsWeb) {
+        final localDb = File('assets/city_packs/$cityId/yatracanvas.db');
+        if (localDb.existsSync()) bytes = await localDb.readAsBytes();
       }
-
-      final File localDb = File('assets/city_packs/$cityId/yatracanvas.db');
-      if (!localDb.existsSync()) {
-        return IntegrityStatus.pass; // Will be verified upon asset loading
-      }
-
-      final bytes = await localDb.readAsBytes();
       final actualHash = sha256.convert(bytes).toString();
       if (actualHash.toLowerCase() == expectedDbHash.toLowerCase()) {
         return IntegrityStatus.pass;
@@ -169,7 +186,7 @@ class CityPackRegistry {
         return IntegrityStatus.fail;
       }
     } catch (_) {
-      return IntegrityStatus.unknown;
+      return IntegrityStatus.fail;
     }
   }
 

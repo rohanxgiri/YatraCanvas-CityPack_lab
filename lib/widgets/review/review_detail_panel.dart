@@ -18,6 +18,8 @@ import '../../app/lab_theme.dart';
 import '../../review/models/review_candidate.dart';
 import '../../review/models/inbox_decision.dart';
 import '../../review/services/review_reason_translator.dart';
+import '../../domain/curation/curated_place.dart';
+import '../curation/place_editor_dialog.dart';
 
 class ReviewDetailPanel extends StatefulWidget {
   final ReviewCandidate candidate;
@@ -85,10 +87,12 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
   Widget build(BuildContext context) {
     final c = widget.candidate;
     final decision = widget.decision;
-    final translation =
-        ReviewReasonTranslator.translateReason(c.travelRelevanceReason);
-    final actionTranslation =
-        ReviewReasonTranslator.translateAction(c.suggestedAction);
+    final translation = ReviewReasonTranslator.translateReason(
+      c.travelRelevanceReason,
+    );
+    final actionTranslation = ReviewReasonTranslator.translateAction(
+      c.suggestedAction,
+    );
     final changedSince = decision?.changedSinceReview ?? false;
 
     return Column(
@@ -97,7 +101,9 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
         Container(
           color: Theme.of(context).colorScheme.surfaceContainerLow,
           padding: const EdgeInsets.symmetric(
-              horizontal: LabSpacing.md, vertical: LabSpacing.sm),
+            horizontal: LabSpacing.md,
+            vertical: LabSpacing.sm,
+          ),
           child: Row(
             children: [
               const Icon(Icons.policy_outlined, size: 16),
@@ -153,7 +159,8 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
                       ),
                       const SizedBox(height: 6),
                       Text(
-                        decision!.changedFields ?? 'DataFactory updated this candidate.',
+                        decision!.changedFields ??
+                            'DataFactory updated this candidate.',
                         style: const TextStyle(fontSize: 11),
                       ),
                     ],
@@ -164,25 +171,34 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
 
               // ── Place identity ───────────────────────────────────
               _SectionHeader('Place identity'),
-              _IdentityRow('Name', c.name),
+              _IdentityRow('DataFactory name', c.name),
+              if (widget.state.curationService.overrides[c.canonicalId]?.name != null)
+                _IdentityRow('Human override / effective name', widget.state.curationService.overrides[c.canonicalId]!.name!),
               if (c.nameHi != null) _IdentityRow('Name (Hindi)', c.nameHi!),
               if (c.alternateNames.isNotEmpty)
                 _IdentityRow(
-                    'Also known as', c.alternateNames.take(3).join(', ')),
-              _IdentityRow('Category',
-                  '${_capitalize(c.category)}${c.subcategory != null ? " · ${_capitalize(c.subcategory!)}" : ""}'),
+                  'Also known as',
+                  c.alternateNames.take(3).join(', '),
+                ),
+              _IdentityRow(
+                'Category',
+                '${_capitalize(c.category)}${c.subcategory != null ? " · ${_capitalize(c.subcategory!)}" : ""}',
+              ),
               _IdentityRow('Tier', _tierLabel(c.tier)),
               _IdentityRow(
-                  'Coordinates',
-                  '${c.latitude.toStringAsFixed(5)}, '
-                      '${c.longitude.toStringAsFixed(5)}'),
+                'Coordinates',
+                '${c.latitude.toStringAsFixed(5)}, '
+                    '${c.longitude.toStringAsFixed(5)}',
+              ),
               const SizedBox(height: 16),
 
               // ── DataFactory decision ──────────────────────────────
               _SectionHeader('DataFactory decision'),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.orange.withAlpha(15),
                   borderRadius: BorderRadius.circular(6),
@@ -218,9 +234,10 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
                       : Theme.of(context).colorScheme.surfaceContainerLow,
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                      color: translation.isCritical
-                          ? Colors.red.withAlpha(40)
-                          : Theme.of(context).dividerColor),
+                    color: translation.isCritical
+                        ? Colors.red.withAlpha(40)
+                        : Theme.of(context).dividerColor,
+                  ),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -228,8 +245,11 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
                     if (translation.isCritical)
                       Row(
                         children: [
-                          const Icon(Icons.warning_amber,
-                              size: 14, color: Colors.red),
+                          const Icon(
+                            Icons.warning_amber,
+                            size: 14,
+                            color: Colors.red,
+                          ),
                           const SizedBox(width: 4),
                           Text(
                             translation.title,
@@ -269,6 +289,13 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
               const SizedBox(height: 16),
 
               // ── Evidence ─────────────────────────────────────────
+              if (c.prose != null && c.prose!.trim().isNotEmpty) ...[
+                _SectionHeader('Source description'),
+                Text(c.prose!, maxLines: 5, overflow: TextOverflow.ellipsis),
+                Text('Source: ${c.wikipediaUrl ?? c.sourceNames.join(', ')}', style: const TextStyle(fontSize: 11)),
+                ExpansionTile(title: const Text('Read full description'), children: [Text(c.prose!)]),
+              ],
+              if (!c.hasImage) const Text('No image attached. Media gaps for minor places are optional.'),
               if (c.travelRelevanceEvidence.isNotEmpty) ...[
                 _SectionHeader('Evidence'),
                 _EvidenceView(evidence: c.travelRelevanceEvidence),
@@ -276,7 +303,16 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
               ],
 
               // ── OSM Tags (if present) ─────────────────────────────
-              if (c.osmTags.isNotEmpty) ...[
+              if (c.travelRelevanceReason ==
+                  'CONTRADICTORY_BUILDING_AMENITY') ...[
+                Text(
+                  'The map describes this place as ${c.osmTags['amenity'] == 'place_of_worship' ? 'a place of worship' : c.osmTags['amenity'] ?? 'a visitor destination'}, '
+                  'but describes its building as ${c.osmTags['building'] ?? 'a different type'}. '
+                  'A business or temple can operate inside a house. Confirm the actual use before deciding.',
+                ),
+                const SizedBox(height: 16),
+              ],
+              if (_showTechnical && c.osmTags.isNotEmpty) ...[
                 _SectionHeader('Source tags'),
                 _OsmTagsView(tags: c.osmTags),
                 const SizedBox(height: 16),
@@ -284,31 +320,37 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
 
               // ── Source provenance ─────────────────────────────────
               _SectionHeader('Source provenance'),
-              ...c.sourcesProvenance.map((s) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 2),
-                    child: Row(
-                      children: [
-                        _SourceIcon(source: s.source),
-                        const SizedBox(width: 6),
-                        Text(
-                          s.source,
-                          style: const TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.w500),
+              ...c.sourcesProvenance.map(
+                (s) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 2),
+                  child: Row(
+                    children: [
+                      _SourceIcon(source: s.source),
+                      const SizedBox(width: 6),
+                      Text(
+                        s.source,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
                         ),
-                        if (s.sourceId != null) ...[
-                          const SizedBox(width: 6),
-                          Expanded(
-                            child: Text(
-                              s.sourceId!,
-                              style: const TextStyle(
-                                  fontSize: 11, color: Colors.grey),
-                              overflow: TextOverflow.ellipsis,
+                      ),
+                      if (s.sourceId != null) ...[
+                        const SizedBox(width: 6),
+                        Expanded(
+                          child: Text(
+                            s.sourceId!,
+                            style: const TextStyle(
+                              fontSize: 11,
+                              color: Colors.grey,
                             ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                        ],
+                        ),
                       ],
-                    ),
-                  )),
+                    ],
+                  ),
+                ),
+              ),
               const SizedBox(height: 16),
 
               // ── Data completeness ─────────────────────────────────
@@ -318,22 +360,18 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
 
               // ── Technical details (expandable) ───────────────────
               InkWell(
-                onTap: () =>
-                    setState(() => _showTechnical = !_showTechnical),
+                onTap: () => setState(() => _showTechnical = !_showTechnical),
                 child: Row(
                   children: [
                     Icon(
-                      _showTechnical
-                          ? Icons.expand_less
-                          : Icons.expand_more,
+                      _showTechnical ? Icons.expand_less : Icons.expand_more,
                       size: 16,
                       color: LabPalette.muted,
                     ),
                     const SizedBox(width: 4),
                     Text(
                       'Technical details',
-                      style: TextStyle(
-                          fontSize: 12, color: LabPalette.muted),
+                      style: TextStyle(fontSize: 12, color: LabPalette.muted),
                     ),
                   ],
                 ),
@@ -353,27 +391,37 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
                       SelectableText(
                         'Reason code: ${c.travelRelevanceReason}',
                         style: const TextStyle(
-                            fontFamily: 'monospace', fontSize: 11),
+                          fontFamily: 'monospace',
+                          fontSize: 11,
+                        ),
                       ),
                       SelectableText(
                         'Suggested action: ${c.suggestedAction}',
                         style: const TextStyle(
-                            fontFamily: 'monospace', fontSize: 11),
+                          fontFamily: 'monospace',
+                          fontSize: 11,
+                        ),
                       ),
                       SelectableText(
                         'canonical_id: ${c.canonicalId}',
                         style: const TextStyle(
-                            fontFamily: 'monospace', fontSize: 11),
+                          fontFamily: 'monospace',
+                          fontSize: 11,
+                        ),
                       ),
                       SelectableText(
                         'confidence: ${c.confidence}',
                         style: const TextStyle(
-                            fontFamily: 'monospace', fontSize: 11),
+                          fontFamily: 'monospace',
+                          fontSize: 11,
+                        ),
                       ),
                       SelectableText(
                         'travel_score: ${c.travelRelevanceScore}',
                         style: const TextStyle(
-                            fontFamily: 'monospace', fontSize: 11),
+                          fontFamily: 'monospace',
+                          fontSize: 11,
+                        ),
                       ),
                     ],
                   ),
@@ -390,14 +438,17 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
                   hintText: 'Add context for future reviewers…',
                   border: OutlineInputBorder(),
                   isDense: true,
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 8,
+                  ),
                 ),
                 style: const TextStyle(fontSize: 12),
               ),
 
               // ── Existing decision info ───────────────────────────
-              if (decision != null && decision.verdict != InboxVerdict.unreviewed) ...[
+              if (decision != null &&
+                  decision.verdict != InboxVerdict.unreviewed) ...[
                 const SizedBox(height: 12),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -412,13 +463,17 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
                       Text(
                         'Current decision: ${decision.verdict.displayLabel}',
                         style: const TextStyle(
-                            fontSize: 11, fontWeight: FontWeight.bold),
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       Text(
                         'By ${decision.author} at '
                         '${decision.decidedAt.substring(0, 10)}',
                         style: const TextStyle(
-                            fontSize: 10, color: Colors.grey),
+                          fontSize: 10,
+                          color: Colors.grey,
+                        ),
                       ),
                     ],
                   ),
@@ -441,8 +496,9 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
                 children: [
                   Expanded(
                     child: FilledButton.icon(
-                      onPressed: () =>
-                          widget.onDecision(_buildDecision(InboxVerdict.approved)),
+                      onPressed: () => widget.onDecision(
+                        _buildDecision(InboxVerdict.approved),
+                      ),
                       icon: const Icon(Icons.check, size: 16),
                       label: Text(
                         actionTranslation.keepLabel,
@@ -450,16 +506,16 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
                       ),
                       style: FilledButton.styleFrom(
                         backgroundColor: Colors.teal,
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 10),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
                       ),
                     ),
                   ),
                   const SizedBox(width: 8),
                   Expanded(
                     child: FilledButton.icon(
-                      onPressed: () =>
-                          widget.onDecision(_buildDecision(InboxVerdict.rejected)),
+                      onPressed: () => widget.onDecision(
+                        _buildDecision(InboxVerdict.rejected),
+                      ),
                       icon: const Icon(Icons.close, size: 16),
                       label: Text(
                         actionTranslation.excludeLabel,
@@ -467,8 +523,7 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
                       ),
                       style: FilledButton.styleFrom(
                         backgroundColor: Colors.red.shade700,
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 10),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
                       ),
                     ),
                   ),
@@ -476,12 +531,53 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
               ),
               const SizedBox(height: 6),
               // Secondary: Needs Research
+              OutlinedButton.icon(
+                icon: const Icon(Icons.edit, size: 14),
+                label: const Text('Edit details with a human override'),
+                onPressed: () {
+                  final raw = c.toLabPlace(widget.state.activePack!.id);
+                  PlaceEditorDialog.show(
+                    context,
+                    place: CuratedPlace(
+                      rawPlace: raw,
+                      override:
+                          widget.state.curationService.overrides[c.canonicalId],
+                    ),
+                    onSave:
+                        ({
+                          required name,
+                          nameHi,
+                          description,
+                          website,
+                          phone,
+                          tier,
+                          required evidenceSource,
+                        }) async {
+                          await widget.state.saveFieldOverride(
+                            place: raw,
+                            name: name,
+                            description: description,
+                            website: website,
+                            phone: phone,
+                            tier: tier,
+                            fieldName: 'name',
+                            evidenceSource: evidenceSource,
+                            previousValue: raw.name,
+                          );
+                          widget.onDecision(
+                            _buildDecision(InboxVerdict.edited),
+                          );
+                        },
+                  );
+                },
+              ),
               Row(
                 children: [
                   Expanded(
                     child: OutlinedButton.icon(
                       onPressed: () => widget.onDecision(
-                          _buildDecision(InboxVerdict.needsResearch)),
+                        _buildDecision(InboxVerdict.needsResearch),
+                      ),
                       icon: const Icon(Icons.flag_outlined, size: 14),
                       label: Text(
                         actionTranslation.reviewLabel,
@@ -489,8 +585,7 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
                       ),
                       style: OutlinedButton.styleFrom(
                         foregroundColor: Colors.amber.shade700,
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 6),
+                        padding: const EdgeInsets.symmetric(vertical: 6),
                       ),
                     ),
                   ),
@@ -500,12 +595,13 @@ class _ReviewDetailPanelState extends State<ReviewDetailPanel> {
                     OutlinedButton.icon(
                       onPressed: widget.onUndo,
                       icon: const Icon(Icons.undo, size: 14),
-                      label: const Text('Undo',
-                          style: TextStyle(fontSize: 12)),
+                      label: const Text('Undo', style: TextStyle(fontSize: 12)),
                       style: OutlinedButton.styleFrom(
                         foregroundColor: Colors.grey,
                         padding: const EdgeInsets.symmetric(
-                            vertical: 6, horizontal: 16),
+                          vertical: 6,
+                          horizontal: 16,
+                        ),
                       ),
                     ),
                   ],
@@ -600,9 +696,7 @@ class _EvidenceView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: evidence.entries
-          .where((e) => e.value != null)
-          .map((e) {
+      children: evidence.entries.where((e) => e.value != null).map((e) {
         final value = e.value is List
             ? (e.value as List).join(', ')
             : e.value.toString();
@@ -616,9 +710,10 @@ class _EvidenceView extends StatelessWidget {
                 child: Text(
                   e.key,
                   style: const TextStyle(
-                      fontSize: 11,
-                      fontFamily: 'monospace',
-                      color: Colors.grey),
+                    fontSize: 11,
+                    fontFamily: 'monospace',
+                    color: Colors.grey,
+                  ),
                 ),
               ),
               Expanded(
@@ -652,8 +747,7 @@ class _OsmTagsView extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
                 decoration: BoxDecoration(
                   color: Colors.blue.withAlpha(15),
                   borderRadius: BorderRadius.circular(3),
@@ -661,16 +755,16 @@ class _OsmTagsView extends StatelessWidget {
                 child: Text(
                   e.key,
                   style: const TextStyle(
-                      fontSize: 10,
-                      fontFamily: 'monospace',
-                      color: Colors.blue),
+                    fontSize: 10,
+                    fontFamily: 'monospace',
+                    color: Colors.blue,
+                  ),
                 ),
               ),
               const SizedBox(width: 6),
               Text(
                 '= ${e.value}',
-                style:
-                    const TextStyle(fontSize: 11, fontFamily: 'monospace'),
+                style: const TextStyle(fontSize: 11, fontFamily: 'monospace'),
               ),
             ],
           ),

@@ -1,0 +1,13 @@
+{
+  "id": "rev_yc_in_rj_jaipur_nahargarh_wildlife_sanctuary",
+  "place_id": "yc_in_rj_jaipur_nahargarh_wildlife_sanctuary",
+  "city_id": "jaipur",
+  "place_name": "Nahargarh Wildlife Sanctuary",
+  "tier": "core_destination",
+  "category": "heritage",
+  "verdict": "missing_expected_information",
+  "reviewer": "Contributor",
+  "timestamp": "2026-10-02T16:13:56.805069",
+  "issue_type": "missing_expected_information",
+  "notes": "core sanctuary lacks photo and hours."
+}

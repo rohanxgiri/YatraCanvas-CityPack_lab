@@ -11,6 +11,7 @@ class ImageImportSelection {
   final String filename;
   final String source;
   final String sourcePage;
+  final String author;
   final String license;
   final String licenseUrl;
 
@@ -19,6 +20,7 @@ class ImageImportSelection {
     required this.filename,
     required this.source,
     required this.sourcePage,
+    this.author = '',
     required this.license,
     required this.licenseUrl,
   });
@@ -87,6 +89,7 @@ class _ImageCuratorDialogState extends State<ImageCuratorDialog> {
 
   final _sourceController = TextEditingController();
   final _sourcePageController = TextEditingController();
+  final _authorController = TextEditingController();
   String _selectedLicense = 'CC BY-SA 4.0';
   Uint8List? _selectedBytes;
   String? _selectedFilename;
@@ -97,6 +100,7 @@ class _ImageCuratorDialogState extends State<ImageCuratorDialog> {
   void dispose() {
     _sourceController.dispose();
     _sourcePageController.dispose();
+    _authorController.dispose();
     super.dispose();
   }
 
@@ -150,6 +154,10 @@ class _ImageCuratorDialogState extends State<ImageCuratorDialog> {
       setState(() => _errorMessage = 'Add the image source to continue.');
       return;
     }
+    if (_authorController.text.trim().isEmpty) {
+      setState(() => _errorMessage = 'Add the photographer or author to continue.');
+      return;
+    }
 
     setState(() {
       _isSaving = true;
@@ -162,6 +170,7 @@ class _ImageCuratorDialogState extends State<ImageCuratorDialog> {
           filename: filename,
           source: _sourceController.text.trim(),
           sourcePage: _sourcePageController.text.trim(),
+          author: _authorController.text.trim(),
           license: _selectedLicense,
           licenseUrl: _licenseUrls[_selectedLicense] ?? '',
         ),
@@ -270,6 +279,8 @@ class _ImageCuratorDialogState extends State<ImageCuratorDialog> {
                 ),
                 const SizedBox(height: LabSpacing.sm),
                 _buildLicenseField(),
+                TextField(controller: _authorController, enabled: !_isSaving,
+                  decoration: const InputDecoration(labelText: 'Photographer or author')),
                 const SizedBox(height: LabSpacing.sm),
                 Text(
                   'The app creates a 1600 px primary WebP, a 480 px thumbnail, and a Git tracked attribution record. The source database remains unchanged.',

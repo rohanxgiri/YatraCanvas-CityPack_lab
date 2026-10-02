@@ -73,7 +73,8 @@ void main() {
 
       final fields = find.byType(TextField);
       await tester.enterText(fields.at(0), 'Wikimedia Commons');
-      expect(find.text('Photographer or author'), findsNothing);
+      expect(find.text('Photographer or author'), findsOneWidget);
+      await tester.enterText(fields.at(2), 'Test Photographer');
       await tester.tap(find.text('Import photo'));
       await tester.pumpAndSettle();
 

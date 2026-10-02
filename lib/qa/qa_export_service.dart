@@ -234,6 +234,7 @@ class QaExportService {
     required dynamic releaseGate, // ReleaseGateResult
     required dynamic manualQa, // ManualQaSummary
     Map<String, dynamic>? dbStats,
+    Map<String, dynamic>? reviewState,
   }) async {
     final now = DateTime.now();
 
@@ -269,7 +270,12 @@ class QaExportService {
       'certified_at': isCertified ? now.toUtc().toIso8601String() : null,
       'data_quality_score': dataQuality.overallScore,
       'travel_readiness_score': travelReadiness.overallScore,
-      'manual_qa_passed': manualQa.isSufficient,
+      'manual_qa_passed':
+          releaseGate.checks['manual_qa_sufficient'] ??
+          (releaseGate.isReady && manualQa.isSufficient),
+      'validation_summary': releaseGate.checks,
+      'warning_details': releaseGate.warnings,
+      'review_state': reviewState ?? {},
       'manual_qa_reviewed_count': manualQa.reviewedCount,
       'manual_qa_minimum_required': manualQa.minimumRequired,
       'release_gate_status': releaseGate.displayStatus,

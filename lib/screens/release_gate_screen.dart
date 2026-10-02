@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import '../app/app_state.dart';
 import '../quality/models/release_gate_result.dart';
+import '../review/models/review_candidate.dart';
+import '../app/city_lab_operations.dart';
+import 'certification_blockers_screen.dart';
+
+import 'dart:io';
+
+import 'package:path/path.dart' as p;
 
 class ReleaseGateScreen extends StatefulWidget {
   final AppState state;
+  final VoidCallback? onOpenInbox;
 
-  const ReleaseGateScreen({super.key, required this.state});
+  const ReleaseGateScreen({super.key, required this.state, this.onOpenInbox});
 
   @override
   State<ReleaseGateScreen> createState() => _ReleaseGateScreenState();
@@ -14,6 +23,84 @@ class ReleaseGateScreen extends StatefulWidget {
 
 class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
   bool _isExporting = false;
+
+  Future<void> _buildCertifiedPack() async {
+    setState(() => _isExporting = true);
+    try {
+      await widget.state.evaluateCityQuality();
+      if (!(widget.state.releaseGateResult?.isReady ?? false)) {
+        throw StateError(
+          '${widget.state.activePack?.name} cannot be certified yet. '
+          '${widget.state.releaseGateResult?.criticalBlockers.length ?? 0} blockers remain.',
+        );
+      }
+      final evidence = await widget.state.exportCertifiedRelease();
+      if (evidence == null) {
+        throw StateError('Release evidence is unavailable.');
+      }
+      final operations = CityLabOperations();
+      await operations.load();
+      final city = widget.state.activePack!.id;
+      final buildDir = Directory(
+        p.join(
+          operations.projectPath,
+          'artifacts',
+          'certified',
+          '${city}_${DateTime.now().millisecondsSinceEpoch}',
+        ),
+      );
+      final evidenceFile = File('${buildDir.path}_evidence.json');
+      await evidenceFile.parent.create(recursive: true);
+      await evidenceFile.writeAsString(evidence['release.json']!, flush: true);
+      final result = await operations.run('build', [
+        '--city',
+        city,
+        '--evidence',
+        evidenceFile.path,
+        '--output',
+        buildDir.path,
+      ]);
+      if (!mounted) return;
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text('Certified Pack Built'),
+          content: SizedBox(
+            width: 600,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SelectableText(
+                    '$city ${widget.state.activePack!.version}\n${(result['release'] as Map)['place_count']} places\nSQLite integrity: ${result['integrity']}\nMedia integrity: ${result['media']}\nSchema: ${result['schema']}\n'
+                    'Certification evidence: written\nOutput: ${result['output']}',
+                  ),
+                  ExpansionTile(
+                    title: const Text('Technical logs'),
+                    children: [SelectableText(result['logs'] as String)],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text('Close'),
+            ),
+          ],
+        ),
+      );
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('$e')));
+      }
+    } finally {
+      if (mounted) setState(() => _isExporting = false);
+    }
+  }
 
   void _exportCertifiedRelease() async {
     setState(() => _isExporting = true);
@@ -29,21 +116,33 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
       if (mounted) {
         setState(() => _isExporting = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Export failed: $e'), backgroundColor: Colors.red),
+          SnackBar(
+            content: Text('Export failed: $e'),
+            backgroundColor: Colors.red,
+          ),
         );
       }
     }
   }
 
   void _showExportSuccessModal(Map<String, String> exported) {
+    final ready = widget.state.releaseGateResult?.isReady ?? false;
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Row(
+        title: Row(
           children: [
-            Icon(Icons.verified, color: Colors.green),
-            SizedBox(width: 8),
-            Text('Certified Release Exported', style: TextStyle(fontSize: 17)),
+            Icon(
+              ready ? Icons.verified : Icons.description,
+              color: ready ? Colors.green : Colors.orange,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              ready
+                  ? 'Certified Release Evidence Exported'
+                  : 'Blocked Release Report Exported',
+              style: const TextStyle(fontSize: 17),
+            ),
           ],
         ),
         content: SizedBox(
@@ -58,14 +157,39 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
                 ),
                 const SizedBox(height: 10),
-                _buildArtifactTile('release.json', exported['release.json'] ?? ''),
-                _buildArtifactTile('quality_report.json', exported['quality_report.json'] ?? ''),
-                _buildArtifactTile('release_report.md', exported['release_report.md'] ?? ''),
+                _buildArtifactTile(
+                  'release.json',
+                  exported['release.json'] ?? '',
+                ),
+                _buildArtifactTile(
+                  'quality_report.json',
+                  exported['quality_report.json'] ?? '',
+                ),
+                _buildArtifactTile(
+                  'release_report.md',
+                  exported['release_report.md'] ?? '',
+                ),
               ],
             ),
           ),
         ),
         actions: [
+          TextButton(
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (_) => CertificationBlockersScreen(
+                  state: widget.state,
+                  onOpenInbox: widget.onOpenInbox,
+                ),
+              ),
+            ),
+            child: const Text('View Blockers'),
+          ),
+          TextButton(
+            onPressed: _isExporting ? null : _buildCertifiedPack,
+            child: const Text('Build Certified Pack'),
+          ),
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(),
             child: const Text('Close'),
@@ -92,7 +216,11 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
             children: [
               Text(
                 filename,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'monospace', fontSize: 12),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'monospace',
+                  fontSize: 12,
+                ),
               ),
               IconButton(
                 icon: const Icon(Icons.copy, size: 16),
@@ -111,7 +239,11 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
             child: SingleChildScrollView(
               child: Text(
                 content,
-                style: const TextStyle(fontSize: 10, fontFamily: 'monospace', color: Colors.black87),
+                style: const TextStyle(
+                  fontSize: 10,
+                  fontFamily: 'monospace',
+                  color: Colors.black87,
+                ),
               ),
             ),
           ),
@@ -128,7 +260,11 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
     final gate = widget.state.releaseGateResult;
     final qa = widget.state.manualQaSummary;
 
-    if (pack == null || dq == null || tr == null || gate == null || qa == null) {
+    if (pack == null ||
+        dq == null ||
+        tr == null ||
+        gate == null ||
+        qa == null) {
       return const Center(child: CircularProgressIndicator());
     }
 
@@ -148,13 +284,15 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
         bannerColor = Colors.orange.shade800;
         bannerIcon = Icons.warning_amber_rounded;
         bannerTitle = 'REVIEW REQUIRED BEFORE RELEASE';
-        bannerSubtitle = 'Zero critical blockers, but ${gate.warnings.length} warning(s) require QA sign-off.';
+        bannerSubtitle =
+            'Zero critical blockers, but ${gate.warnings.length} warning(s) require QA sign-off.';
         break;
       case ReleaseStatus.blocked:
         bannerColor = Colors.red.shade800;
         bannerIcon = Icons.block;
         bannerTitle = 'RELEASE BLOCKED';
-        bannerSubtitle = '${gate.criticalBlockers.length} critical blocker(s) prevent integration into YatraCanvas.';
+        bannerSubtitle =
+            '${gate.criticalBlockers.length} critical blocker(s) prevent integration into YatraCanvas.';
         break;
     }
 
@@ -183,6 +321,22 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text(
+                  '${pack.name} ${pack.version}',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                Text(
+                  'Critical blockers: ${gate.criticalBlockers.length} · High priority unresolved: ${widget.state.unresolvedHighPriorityCount} · Warnings: ${gate.warnings.length}',
+                ),
+                Text(
+                  'Medium reviews: ${widget.state.reviewCandidates.where((c) => c.reviewPriority.label == 'MEDIUM' && !(widget.state.inboxDecisions[c.canonicalId]?.isResolved ?? false)).length}',
+                ),
+                if (gate.criticalBlockers.isNotEmpty &&
+                    widget.onOpenInbox != null)
+                  TextButton(
+                    onPressed: widget.onOpenInbox,
+                    child: const Text('Open Review Inbox'),
+                  ),
                 Row(
                   children: [
                     Icon(bannerIcon, color: bannerColor, size: 32),
@@ -238,14 +392,16 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
                 child: _buildRecapTile(
                   'Travel Readiness',
                   '${tr.overallScore}/100',
-                  tr.overallScore >= 60 ? Colors.indigo : Colors.orange.shade800,
+                  tr.overallScore >= 60
+                      ? Colors.indigo
+                      : Colors.orange.shade800,
                 ),
               ),
               const SizedBox(width: 10),
               Expanded(
                 child: _buildRecapTile(
                   'Manual QA',
-                  qa.isSufficient ? 'SUFFICIENT' : 'INCOMPLETE',
+                  qa.displayStatus,
                   qa.isSufficient ? Colors.green : Colors.red.shade800,
                 ),
               ),
@@ -256,7 +412,9 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
           // Explicit Gate Checklist
           Card(
             elevation: 1,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -264,9 +422,26 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
                 children: [
                   const Text(
                     'CONFIGURED RELEASE GATES',
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, letterSpacing: 0.8, color: Colors.black54),
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.8,
+                      color: Colors.black54,
+                    ),
                   ),
                   const SizedBox(height: 14),
+                  _buildGateRow(
+                    'Database integrity',
+                    gate.checks['database_integrity'] ?? false,
+                    'Bundled database checksum verified',
+                  ),
+                  const Divider(height: 16),
+                  _buildGateRow(
+                    'Media licenses',
+                    gate.checks['media_licenses_valid'] ?? false,
+                    'Attached media must carry license metadata',
+                  ),
+                  const Divider(height: 16),
                   _buildGateRow(
                     'SQLite & Manifest Schema Valid',
                     gate.checks['schema_valid'] ?? false,
@@ -282,7 +457,7 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
                   _buildGateRow(
                     'Manual QA Sample Completed',
                     gate.checks['manual_qa_sufficient'] ?? false,
-                    'Minimum ${qa.minimumRequired} stratified human reviews with < 20% defects',
+                    'Minimum ${qa.minimumRequired} stratified human reviews within the configured defect limit',
                   ),
                   const Divider(height: 16),
                   _buildGateRow(
@@ -336,25 +511,27 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
                       ],
                     ),
                     const SizedBox(height: 12),
-                    ...gate.criticalBlockers.map((b) => Padding(
-                          padding: const EdgeInsets.only(bottom: 6),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text('❌ ', style: TextStyle(fontSize: 12)),
-                              Expanded(
-                                child: Text(
-                                  b,
-                                  style: TextStyle(
-                                    color: Colors.red.shade900,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                    ...gate.criticalBlockers.map(
+                      (b) => Padding(
+                        padding: const EdgeInsets.only(bottom: 6),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text('❌ ', style: TextStyle(fontSize: 12)),
+                            Expanded(
+                              child: Text(
+                                b,
+                                style: TextStyle(
+                                  color: Colors.red.shade900,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
-                            ],
-                          ),
-                        )),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -377,7 +554,10 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.warning_amber, color: Colors.orange.shade900),
+                        Icon(
+                          Icons.warning_amber,
+                          color: Colors.orange.shade900,
+                        ),
                         const SizedBox(width: 8),
                         Text(
                           '${gate.warnings.length} RELEASE WARNINGS',
@@ -390,24 +570,26 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
                       ],
                     ),
                     const SizedBox(height: 12),
-                    ...gate.warnings.map((w) => Padding(
-                          padding: const EdgeInsets.only(bottom: 6),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text('⚠️ ', style: TextStyle(fontSize: 12)),
-                              Expanded(
-                                child: Text(
-                                  w,
-                                  style: TextStyle(
-                                    color: Colors.orange.shade900,
-                                    fontSize: 13,
-                                  ),
+                    ...gate.warnings.map(
+                      (w) => Padding(
+                        padding: const EdgeInsets.only(bottom: 6),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text('⚠️ ', style: TextStyle(fontSize: 12)),
+                            Expanded(
+                              child: Text(
+                                w,
+                                style: TextStyle(
+                                  color: Colors.orange.shade900,
+                                  fontSize: 13,
                                 ),
                               ),
-                            ],
-                          ),
-                        )),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -416,21 +598,39 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
           ],
 
           // Export Action Button
+          if (!gate.isReady) ...[
+            const ElevatedButton(
+              onPressed: null,
+              child: Text('Certify City Pack — blocked by release checks'),
+            ),
+            const SizedBox(height: 8),
+          ],
           ElevatedButton.icon(
             onPressed: _isExporting ? null : _exportCertifiedRelease,
             icon: _isExporting
-                ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+                ? const SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: Colors.white,
+                    ),
+                  )
                 : const Icon(Icons.file_download),
             label: Text(
               gate.isReady
-                  ? 'Export Certified Release Artifacts (release.json)'
+                  ? 'Certify City Pack & Export Release Evidence'
                   : 'Export Quality & Release Gate Report',
             ),
             style: ElevatedButton.styleFrom(
-              backgroundColor: gate.isReady ? Colors.green.shade800 : Colors.indigo,
+              backgroundColor: gate.isReady
+                  ? Colors.green.shade800
+                  : Colors.indigo,
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 14),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
           ),
           const SizedBox(height: 24),
@@ -450,11 +650,18 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label, style: const TextStyle(fontSize: 10, color: Colors.black54)),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 10, color: Colors.black54),
+          ),
           const SizedBox(height: 4),
           Text(
             value,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: color),
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: color,
+            ),
             overflow: TextOverflow.ellipsis,
           ),
         ],

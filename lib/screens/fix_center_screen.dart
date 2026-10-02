@@ -475,6 +475,7 @@ class _FixCenterScreenState extends State<FixCenterScreen> {
               originalFilename: selection.filename,
               source: selection.source,
               sourcePage: selection.sourcePage,
+              author: selection.author,
               license: selection.license,
               licenseUrl: selection.licenseUrl,
             );

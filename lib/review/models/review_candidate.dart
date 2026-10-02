@@ -8,8 +8,28 @@
 /// records alongside it.
 library;
 
+import '../../domain/lab_place.dart';
+
 /// Parsed from `assets/city_packs/<city>/review_candidates.json`.
 class ReviewCandidate {
+  LabPlace toLabPlace(String cityId) => LabPlace.fromMap({
+    'id': canonicalId,
+    'city_id': cityId,
+    'name': name,
+    'name_hi': nameHi,
+    'latitude': latitude,
+    'longitude': longitude,
+    'address': address,
+    'category': category,
+    'subcategory': subcategory,
+    'tier': tier,
+    'website': website,
+    'phone': phone,
+    'opening_hours': openingHours,
+    'description': prose,
+    'wikidata_id': wikidataId,
+    'travel_relevance_score': travelRelevanceScore,
+  }, tags: tags);
   // ── Identity ────────────────────────────────────────────────────────
   /// Stable canonical ID produced by DataFactory — use for stable matching.
   final String canonicalId;
@@ -58,7 +78,69 @@ class ReviewCandidate {
   final double confidence;
   final String? relevanceStage1;
   final String? relevanceReason1;
-  final ReviewPriority reviewPriority;
+  final ReviewPriority upstreamReviewPriority;
+  final bool isPublished;
+
+  /// Urgency is impact, not confidence. Upstream priority remains diagnostic.
+  ReviewPriority get reviewPriority {
+    const identity = {
+      'ENTITY_CONFLICT',
+      'IDENTITY_CONFLICT',
+      'DUPLICATE_CANONICAL_ID',
+    };
+    const critical = {
+      ...identity,
+      'COORDINATE_OUTLIER',
+      'INVALID_COORDINATES',
+      'MISSING_MEDIA_LICENSE',
+      'REQUIRED_MEDIA_MISSING',
+      'CONTRADICTORY_BUILDING_AMENITY',
+      'CATEGORY_CONFLICT',
+      'IMAGE_CONFLICT',
+    };
+    final reason = travelRelevanceReason;
+    final invalidGeo =
+        !latitude.isFinite ||
+        !longitude.isFinite ||
+        latitude.abs() > 90 ||
+        longitude.abs() > 180 ||
+        (latitude == 0 && longitude == 0);
+    if ((isCore && (critical.contains(reason) || invalidGeo)) ||
+        (isPublished &&
+            (identity.contains(reason) ||
+                reason == 'MISSING_MEDIA_LICENSE' ||
+                reason == 'REQUIRED_MEDIA_MISSING'))) {
+      return ReviewPriority.blocking;
+    }
+    if (isCore ||
+        ((isPublished || isRecommended) &&
+            (critical.contains(reason) || invalidGeo))) {
+      return ReviewPriority.high;
+    }
+    final votedCategories = categoryVotes
+        .where((v) => v.weight >= 2)
+        .map((v) => v.category)
+        .toSet();
+    if (isRecommended &&
+        votedCategories.length > 1 &&
+        (isPublished || travelRelevanceScore >= 0.6)) {
+      return ReviewPriority.high;
+    }
+    if (tier == 'support' && !critical.contains(reason)) {
+      return ReviewPriority.low;
+    }
+    if (critical.contains(reason) ||
+        isPublished ||
+        (isRecommended && travelRelevanceScore >= 0.4) ||
+        (travelRelevanceScore >= 0.6 && sourceCount > 1) ||
+        (isRecommended &&
+            !missingFields.contains('description') &&
+            wikidataId != null)) {
+      return ReviewPriority.medium;
+    }
+    return ReviewPriority.low;
+  }
+
   final String suggestedAction;
   final String travelRelevanceDecision;
   final String travelRelevanceReason;
@@ -99,14 +181,15 @@ class ReviewCandidate {
     required this.confidence,
     this.relevanceStage1,
     this.relevanceReason1,
-    required this.reviewPriority,
+    required ReviewPriority reviewPriority,
+    this.isPublished = false,
     required this.suggestedAction,
     required this.travelRelevanceDecision,
     required this.travelRelevanceReason,
     required this.travelRelevanceScore,
     this.travelRelevanceEvidence = const {},
     this.missingFields = const [],
-  });
+  }) : upstreamReviewPriority = reviewPriority;
 
   bool get hasImage =>
       commonsImage != null ||
@@ -127,10 +210,17 @@ class ReviewCandidate {
   List<String> get sourceNames =>
       sourcesProvenance.map((s) => s.source).toSet().toList();
 
-  factory ReviewCandidate.fromJson(Map<String, dynamic> json) {
+  factory ReviewCandidate.fromJson(
+    Map<String, dynamic> json, {
+    bool isPublished = false,
+  }) {
     ReviewPriority priority;
-    final priorityStr = (json['review_priority'] as String? ?? 'LOW').toUpperCase();
+    final priorityStr = (json['review_priority'] as String? ?? 'LOW')
+        .toUpperCase();
     switch (priorityStr) {
+      case 'BLOCKING':
+        priority = ReviewPriority.blocking;
+        break;
       case 'HIGH':
         priority = ReviewPriority.high;
         break;
@@ -142,28 +232,32 @@ class ReviewCandidate {
     }
 
     return ReviewCandidate(
-      canonicalId: json['canonical_id'] as String? ??
+      canonicalId:
+          json['canonical_id'] as String? ??
           json['place_id'] as String? ??
           '${json['name']}_${json['latitude']}_${json['longitude']}',
       name: json['name'] as String? ?? 'Unknown',
       nameEn: json['name_en'] as String?,
       nameHi: json['name_hi'] as String?,
-      alternateNames: (json['alternate_names'] as List<dynamic>?)
+      alternateNames:
+          (json['alternate_names'] as List<dynamic>?)
               ?.map((e) => e.toString())
               .toList() ??
           const [],
-      alternateNameRecords: (json['alternate_name_records'] as List<dynamic>?)
-              ?.map((e) => AlternateNameRecord.fromJson(
-                  e as Map<String, dynamic>))
+      alternateNameRecords:
+          (json['alternate_name_records'] as List<dynamic>?)
+              ?.map(
+                (e) => AlternateNameRecord.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           const [],
       latitude: (json['latitude'] as num?)?.toDouble() ?? 0.0,
       longitude: (json['longitude'] as num?)?.toDouble() ?? 0.0,
       category: json['category'] as String? ?? 'unknown',
       subcategory: json['subcategory'] as String?,
-      categoryVotes: (json['category_votes'] as List<dynamic>?)
-              ?.map((e) =>
-                  CategoryVote.fromJson(e as Map<String, dynamic>))
+      categoryVotes:
+          (json['category_votes'] as List<dynamic>?)
+              ?.map((e) => CategoryVote.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       tier: json['tier'] as String? ?? 'discovery',
@@ -179,14 +273,16 @@ class ReviewCandidate {
       commonsImage: json['commons_image'] as String?,
       commonsCategory: json['commons_category'] as String?,
       prose: json['prose'] as String?,
-      tags: (json['tags'] as List<dynamic>?)
-              ?.map((e) => e.toString())
-              .toList() ??
+      tags:
+          (json['tags'] as List<dynamic>?)?.map((e) => e.toString()).toList() ??
           const [],
-      osmTags: (json['osm_tags'] as Map<String, dynamic>?)
-              ?.map((k, v) => MapEntry(k, v.toString())) ??
+      osmTags:
+          (json['osm_tags'] as Map<String, dynamic>?)?.map(
+            (k, v) => MapEntry(k, v.toString()),
+          ) ??
           const {},
-      externalIds: (json['external_ids'] as Map<String, dynamic>?)?.map(
+      externalIds:
+          (json['external_ids'] as Map<String, dynamic>?)?.map(
             (k, v) => MapEntry(
               k,
               (v as List<dynamic>).map((e) => e.toString()).toList(),
@@ -195,17 +291,19 @@ class ReviewCandidate {
           const {},
       sourcesProvenance:
           (json['sources_provenance'] as List<dynamic>?)
-                  ?.map((e) => SourceProvenanceRecord.fromJson(
-                      e as Map<String, dynamic>))
-                  .toList() ??
-              const [],
+              ?.map(
+                (e) =>
+                    SourceProvenanceRecord.fromJson(e as Map<String, dynamic>),
+              )
+              .toList() ??
+          const [],
       sourceCount: (json['source_count'] as int?) ?? 1,
       confidence: (json['confidence'] as num?)?.toDouble() ?? 0.5,
       relevanceStage1: json['relevance_stage1'] as String?,
       relevanceReason1: json['relevance_reason1'] as String?,
       reviewPriority: priority,
-      suggestedAction:
-          json['suggested_action'] as String? ?? 'REVIEW',
+      isPublished: isPublished,
+      suggestedAction: json['suggested_action'] as String? ?? 'REVIEW',
       travelRelevanceDecision:
           json['travel_relevance_decision'] as String? ?? 'REVIEW',
       travelRelevanceReason:
@@ -214,8 +312,9 @@ class ReviewCandidate {
           (json['travel_relevance_score'] as num?)?.toDouble() ?? 0.5,
       travelRelevanceEvidence:
           (json['travel_relevance_evidence'] as Map<String, dynamic>?) ??
-              const {},
-      missingFields: (json['missing_fields'] as List<dynamic>?)
+          const {},
+      missingFields:
+          (json['missing_fields'] as List<dynamic>?)
               ?.map((e) => e.toString())
               .toList() ??
           const [],
@@ -223,11 +322,13 @@ class ReviewCandidate {
   }
 }
 
-enum ReviewPriority { high, medium, low }
+enum ReviewPriority { blocking, high, medium, low }
 
 extension ReviewPriorityX on ReviewPriority {
   String get label {
     switch (this) {
+      case ReviewPriority.blocking:
+        return 'BLOCKING';
       case ReviewPriority.high:
         return 'HIGH';
       case ReviewPriority.medium:
@@ -239,6 +340,8 @@ extension ReviewPriorityX on ReviewPriority {
 
   int get sortOrder {
     switch (this) {
+      case ReviewPriority.blocking:
+        return -1;
       case ReviewPriority.high:
         return 0;
       case ReviewPriority.medium:
@@ -299,10 +402,7 @@ class SourceProvenanceRecord {
   final String source;
   final String? sourceId;
 
-  const SourceProvenanceRecord({
-    required this.source,
-    this.sourceId,
-  });
+  const SourceProvenanceRecord({required this.source, this.sourceId});
 
   factory SourceProvenanceRecord.fromJson(Map<String, dynamic> json) {
     return SourceProvenanceRecord(

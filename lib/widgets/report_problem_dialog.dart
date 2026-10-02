@@ -1,24 +1,30 @@
 import 'package:flutter/material.dart';
+
+import 'dart:async';
+
 import '../domain/lab_place.dart';
 import '../domain/qa_issue.dart';
 
 class ReportProblemDialog extends StatefulWidget {
   final LabPlace place;
   final String packVersion;
-  final Function(QaIssue) onSubmit;
+  final FutureOr<void> Function(QaIssue) onSubmit;
+  final QaIssueType initialType;
 
   const ReportProblemDialog({
     super.key,
     required this.place,
     required this.packVersion,
     required this.onSubmit,
+    this.initialType = QaIssueType.wrongCategory,
   });
 
   static Future<void> show(
     BuildContext context, {
     required LabPlace place,
     required String packVersion,
-    required Function(QaIssue) onSubmit,
+    required FutureOr<void> Function(QaIssue) onSubmit,
+    QaIssueType initialType = QaIssueType.wrongCategory,
   }) {
     return showDialog(
       context: context,
@@ -26,6 +32,7 @@ class ReportProblemDialog extends StatefulWidget {
         place: place,
         packVersion: packVersion,
         onSubmit: onSubmit,
+        initialType: initialType,
       ),
     );
   }
@@ -35,8 +42,15 @@ class ReportProblemDialog extends StatefulWidget {
 }
 
 class _ReportProblemDialogState extends State<ReportProblemDialog> {
-  QaIssueType _selectedType = QaIssueType.wrongCategory;
+  late QaIssueType _selectedType;
+  @override
+  void initState() {
+    super.initState();
+    _selectedType = widget.initialType;
+  }
+
   final TextEditingController _noteController = TextEditingController();
+  bool _saving = false;
 
   @override
   void dispose() {
@@ -44,7 +58,9 @@ class _ReportProblemDialogState extends State<ReportProblemDialog> {
     super.dispose();
   }
 
-  void _submit() {
+  Future<void> _submit() async {
+    if (_saving) return;
+    setState(() => _saving = true);
     final issue = QaIssue(
       id: 'qa_${widget.place.id}_${DateTime.now().millisecondsSinceEpoch}',
       timestamp: DateTime.now().toIso8601String(),
@@ -60,12 +76,27 @@ class _ReportProblemDialogState extends State<ReportProblemDialog> {
       note: _noteController.text.trim(),
     );
 
-    widget.onSubmit(issue);
+    try {
+      await widget.onSubmit(issue);
+    } catch (e) {
+      if (mounted) {
+        setState(() => _saving = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Issue could not be saved: $e. Please retry.'),
+          ),
+        );
+      }
+      return;
+    }
+    if (!mounted) return;
     Navigator.of(context).pop();
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Reported "${_selectedType.label}" for ${widget.place.name}'),
+        content: Text(
+          'Reported "${_selectedType.label}" for ${widget.place.name}',
+        ),
         backgroundColor: Colors.green.shade700,
         duration: const Duration(seconds: 2),
       ),
@@ -96,7 +127,10 @@ class _ReportProblemDialogState extends State<ReportProblemDialog> {
             children: [
               Text(
                 widget.place.name,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
               ),
               Text(
                 'ID: ${widget.place.id} • Tier: ${widget.place.tier}',
@@ -113,12 +147,18 @@ class _ReportProblemDialogState extends State<ReportProblemDialog> {
                 isExpanded: true,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 8,
+                  ),
                 ),
                 items: QaIssueType.values.map((type) {
                   return DropdownMenuItem(
                     value: type,
-                    child: Text(type.label, style: const TextStyle(fontSize: 13)),
+                    child: Text(
+                      type.label,
+                      style: const TextStyle(fontSize: 13),
+                    ),
                   );
                 }).toList(),
                 onChanged: (val) {
@@ -152,7 +192,7 @@ class _ReportProblemDialogState extends State<ReportProblemDialog> {
           child: const Text('Cancel'),
         ),
         ElevatedButton(
-          onPressed: _submit,
+          onPressed: _saving ? null : _submit,
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.red.shade700,
             foregroundColor: Colors.white,

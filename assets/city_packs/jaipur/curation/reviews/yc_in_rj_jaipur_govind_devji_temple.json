@@ -1,0 +1,13 @@
+{
+  "id": "rev_yc_in_rj_jaipur_govind_devji_temple",
+  "place_id": "yc_in_rj_jaipur_govind_devji_temple",
+  "city_id": "jaipur",
+  "place_name": "Govind Devji Temple",
+  "tier": "core_destination",
+  "category": "heritage",
+  "verdict": "missing_expected_information",
+  "reviewer": "Contributor",
+  "timestamp": "2026-10-02T16:14:57.579444",
+  "issue_type": "missing_expected_information",
+  "notes": "missing temple opening hours. gallery files need upstream repair."
+}

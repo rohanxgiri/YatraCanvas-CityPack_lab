@@ -9,8 +9,22 @@ import '../domain/curation/place_review.dart';
 import '../domain/lab_place.dart';
 import '../city_admin/contracts/curation_repository_contract.dart';
 import 'curation_repository.dart';
+import '../review/models/inbox_decision.dart';
+import '../review/models/review_candidate.dart';
 
 class CurationSummary {
+  Map<String, int> toJson() => {
+    'total_overrides': totalOverrides,
+    'total_additions': totalAdditions,
+    'total_exclusions': totalExclusions,
+    'total_reviews': totalReviews,
+    'total_issues': totalIssues,
+    'open_issues': openIssues,
+    'images_fixed': imagesFixed,
+    'hours_fixed': hoursFixed,
+    'coords_fixed': coordsFixed,
+    'categories_fixed': categoriesFixed,
+  };
   final int totalOverrides;
   final int totalAdditions;
   final int totalExclusions;
@@ -37,6 +51,56 @@ class CurationSummary {
 }
 
 class CurationService {
+  /// Derive the effective view from the single durable inbox decision store.
+  /// Reload persisted curation first when changing or undoing a decision.
+  void applyInboxDecisions(
+    List<ReviewCandidate> candidates,
+    Map<String, InboxDecision> decisions,
+    Set<String> publishedIds,
+  ) {
+    for (final c in candidates) {
+      final d = decisions[c.canonicalId];
+      if (d == null || !d.isResolved) continue;
+      if (d.verdict == InboxVerdict.rejected) {
+        if (publishedIds.contains(c.canonicalId)) {
+          _exclusions[c.canonicalId] = PlaceExclusion(
+            placeId: c.canonicalId,
+            cityId: d.cityId,
+            placeName: c.name,
+            reason: 'inbox_exclusion',
+            notes: d.verdictNote,
+            excludedBy: d.author,
+            timestamp: d.decidedAt,
+          );
+        }
+      } else if (!publishedIds.contains(c.canonicalId)) {
+        _additions.putIfAbsent(
+          c.canonicalId,
+          () => PlaceAddition(
+            id: c.canonicalId,
+            cityId: d.cityId,
+            name: c.name,
+            nameHi: c.nameHi,
+            category: c.category,
+            subcategory: c.subcategory,
+            tier: c.tier,
+            latitude: c.latitude,
+            longitude: c.longitude,
+            address: c.address,
+            openingHours: c.openingHours,
+            website: c.website,
+            phone: c.phone,
+            description: c.prose,
+            author: d.author,
+            createdAt: d.decidedAt,
+            evidenceSource: 'DataFactory review candidate ${c.canonicalId}',
+            notes: d.verdictNote,
+          ),
+        );
+      }
+    }
+  }
+
   final CurationRepositoryContract repository;
   String currentContributor;
 

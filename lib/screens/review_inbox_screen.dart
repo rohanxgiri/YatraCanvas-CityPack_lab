@@ -16,6 +16,7 @@ import '../review/models/inbox_decision.dart';
 import '../review/services/review_reason_translator.dart';
 import '../widgets/review/review_candidate_card.dart';
 import '../widgets/review/review_detail_panel.dart';
+import 'identity_conflicts_screen.dart';
 
 class ReviewInboxScreen extends StatefulWidget {
   final AppState state;
@@ -35,6 +36,9 @@ class _ReviewInboxScreenState extends State<ReviewInboxScreen>
   String? _filterCategory;
   String? _filterReason;
   String? _filterTier;
+  String? _filterSubcategory;
+  String? _filterMissingField;
+  String _grouping = 'reason';
   String? _filterStatus; // null = all, 'unresolved', 'resolved', 'changed'
 
   // Pagination
@@ -57,7 +61,7 @@ class _ReviewInboxScreenState extends State<ReviewInboxScreen>
   @override
   void initState() {
     super.initState();
-    _priorityTabController = TabController(length: 4, vsync: this);
+    _priorityTabController = TabController(length: 6, vsync: this);
     _scrollController.addListener(_onScroll);
   }
 
@@ -82,13 +86,17 @@ class _ReviewInboxScreenState extends State<ReviewInboxScreen>
   String get _priorityFilter {
     switch (_priorityTabController.index) {
       case 1:
-        return 'HIGH';
+        return 'BLOCKING';
       case 2:
-        return 'MEDIUM';
+        return 'HIGH';
       case 3:
+        return 'MEDIUM';
+      case 4:
         return 'LOW';
-      default:
+      case 5:
         return 'ALL';
+      default:
+        return 'URGENT';
     }
   }
 
@@ -97,12 +105,37 @@ class _ReviewInboxScreenState extends State<ReviewInboxScreen>
     var list = List<ReviewCandidate>.from(state.reviewCandidates);
 
     // Priority tab filter
-    if (_priorityFilter != 'ALL') {
+    if (_priorityFilter == 'URGENT') {
+      list = list
+          .where(
+            (c) =>
+                c.reviewPriority.sortOrder <= ReviewPriority.high.sortOrder &&
+                !(state.inboxDecisions[c.canonicalId]?.isResolved ?? false),
+          )
+          .toList();
+    } else if (_priorityFilter != 'ALL') {
       list = list
           .where((c) => c.reviewPriority.label == _priorityFilter)
           .toList();
     }
 
+    if (_filterSubcategory != null) {
+      list = list.where((c) => c.subcategory == _filterSubcategory).toList();
+    }
+    if (_filterMissingField != null) {
+      list = list
+          .where((c) => c.missingFields.contains(_filterMissingField))
+          .toList();
+    }
+    if (_filterStatus == 'research') {
+      list = list
+          .where(
+            (c) =>
+                state.inboxDecisions[c.canonicalId]?.verdict ==
+                InboxVerdict.needsResearch,
+          )
+          .toList();
+    }
     // Category filter
     if (_filterCategory != null) {
       list = list.where((c) => c.category == _filterCategory).toList();
@@ -123,18 +156,23 @@ class _ReviewInboxScreenState extends State<ReviewInboxScreen>
     // Status filter
     if (_filterStatus == 'unresolved') {
       list = list
-          .where((c) =>
-              !(state.inboxDecisions[c.canonicalId]?.isResolved ?? false))
+          .where(
+            (c) => !(state.inboxDecisions[c.canonicalId]?.isResolved ?? false),
+          )
           .toList();
     } else if (_filterStatus == 'resolved') {
       list = list
           .where(
-              (c) => state.inboxDecisions[c.canonicalId]?.isResolved ?? false)
+            (c) => state.inboxDecisions[c.canonicalId]?.isResolved ?? false,
+          )
           .toList();
     } else if (_filterStatus == 'changed') {
       list = list
-          .where((c) =>
-              state.inboxDecisions[c.canonicalId]?.changedSinceReview ?? false)
+          .where(
+            (c) =>
+                state.inboxDecisions[c.canonicalId]?.changedSinceReview ??
+                false,
+          )
           .toList();
     }
 
@@ -154,10 +192,16 @@ class _ReviewInboxScreenState extends State<ReviewInboxScreen>
   }
 
   Map<String, List<ReviewCandidate>> _groupByReasonCode(
-      List<ReviewCandidate> candidates) {
+    List<ReviewCandidate> candidates,
+  ) {
     final groups = <String, List<ReviewCandidate>>{};
     for (final c in candidates) {
-      groups.putIfAbsent(c.travelRelevanceReason, () => []).add(c);
+      final key = _grouping == 'category'
+          ? c.category
+          : _grouping == 'priority'
+          ? c.reviewPriority.label
+          : c.travelRelevanceReason;
+      groups.putIfAbsent(key, () => []).add(c);
     }
     // Sort groups by count descending
     final sorted = Map.fromEntries(
@@ -167,15 +211,64 @@ class _ReviewInboxScreenState extends State<ReviewInboxScreen>
     return sorted;
   }
 
+  Future<bool> _confirmBulk(bool exclude) async {
+    final selected = widget.state.reviewCandidates
+        .where((c) => _selectedIds.contains(c.canonicalId))
+        .toList();
+    final reasons = <String, int>{};
+    for (final c in selected) {
+      reasons.update(c.travelRelevanceReason, (n) => n + 1, ifAbsent: () => 1);
+    }
+    return await showDialog<bool>(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('${selected.length} places selected'),
+            content: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  for (final e in reasons.entries)
+                    Text(
+                      '${e.value} ${ReviewReasonTranslator.translateReason(e.key).title}',
+                    ),
+                  if (reasons.length > 1 ||
+                      selected.map((c) => c.category).toSet().length > 1)
+                    const Text(
+                      'This selection contains different kinds of places. Check each before applying one decision.',
+                    ),
+                  const Text('Only explicitly selected places will change.'),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: const Text('Cancel'),
+              ),
+              FilledButton(
+                onPressed: () => Navigator.pop(context, true),
+                child: Text(
+                  '${exclude ? 'Exclude' : 'Keep'} ${selected.length} Places',
+                ),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+  }
+
   Future<void> _bulkApprove() async {
-    if (_selectedIds.isEmpty) return;
+    if (_selectedIds.isEmpty || !await _confirmBulk(false)) return;
     final state = widget.state;
     final pack = state.activePack;
     if (pack == null) return;
 
-    for (final id in _selectedIds) {
-      final candidate =
-          state.reviewCandidates.firstWhere((c) => c.canonicalId == id);
+    final approvedCount = _selectedIds.length;
+    for (final id in List<String>.of(_selectedIds)) {
+      final candidate = state.reviewCandidates.firstWhere(
+        (c) => c.canonicalId == id,
+      );
       final decision = InboxDecision(
         canonicalId: id,
         cityId: pack.id,
@@ -196,23 +289,21 @@ class _ReviewInboxScreenState extends State<ReviewInboxScreen>
 
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-              '${_selectedIds.isNotEmpty ? _selectedIds.length : "Selected"} candidates approved.'),
-        ),
+        SnackBar(content: Text('$approvedCount candidates approved.')),
       );
     }
   }
 
   Future<void> _bulkExclude() async {
-    if (_selectedIds.isEmpty) return;
+    if (_selectedIds.isEmpty || !await _confirmBulk(true)) return;
     final state = widget.state;
     final pack = state.activePack;
     if (pack == null) return;
 
-    for (final id in _selectedIds) {
-      final candidate =
-          state.reviewCandidates.firstWhere((c) => c.canonicalId == id);
+    for (final id in List<String>.of(_selectedIds)) {
+      final candidate = state.reviewCandidates.firstWhere(
+        (c) => c.canonicalId == id,
+      );
       final decision = InboxDecision(
         canonicalId: id,
         cityId: pack.id,
@@ -268,9 +359,25 @@ class _ReviewInboxScreenState extends State<ReviewInboxScreen>
                     highUnresolved: highUnresolved,
                     changedCount: changedCount,
                     filterStatus: _filterStatus,
-                    onFilterStatus: (v) =>
-                        setState(() => _filterStatus = v),
+                    onFilterStatus: (v) => setState(() => _filterStatus = v),
                   ),
+                  if (state.identityConflicts.isNotEmpty)
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: TextButton.icon(
+                        icon: const Icon(Icons.compare),
+                        label: Text(
+                          'Identity Conflicts (${state.identityConflicts.where((c) => !c.resolved).length} unresolved)',
+                        ),
+                        onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (_) =>
+                                IdentityConflictsScreen(state: state),
+                          ),
+                        ),
+                      ),
+                    ),
                   _SearchFilterBar(
                     controller: _searchController,
                     candidates: state.reviewCandidates,
@@ -296,6 +403,87 @@ class _ReviewInboxScreenState extends State<ReviewInboxScreen>
                     onClearSelection: () =>
                         setState(() => _selectedIds.clear()),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Wrap(
+                      spacing: 16,
+                      children: [
+                        _DropdownFilter(
+                          label: 'Subcategory',
+                          value: _filterSubcategory,
+                          items:
+                              state.reviewCandidates
+                                  .map((c) => c.subcategory)
+                                  .whereType<String>()
+                                  .toSet()
+                                  .toList()
+                                ..sort(),
+                          onChanged: (v) => setState(() {
+                            _filterSubcategory = v;
+                            _displayedCount = _pageSize;
+                          }),
+                        ),
+                        _DropdownFilter(
+                          label: 'Missing field',
+                          value: _filterMissingField,
+                          items:
+                              state.reviewCandidates
+                                  .expand((c) => c.missingFields)
+                                  .toSet()
+                                  .toList()
+                                ..sort(),
+                          onChanged: (v) => setState(() {
+                            _filterMissingField = v;
+                            _displayedCount = _pageSize;
+                          }),
+                        ),
+                        _DropdownFilter(
+                          label: 'Status',
+                          value: _filterStatus,
+                          items: const [
+                            'unresolved',
+                            'resolved',
+                            'research',
+                            'changed',
+                          ],
+                          displayMap: const {
+                            'unresolved': 'Unresolved',
+                            'resolved': 'Reviewed',
+                            'research': 'Needs Research',
+                            'changed': 'Changed since review',
+                          },
+                          onChanged: (v) => setState(() {
+                            _filterStatus = v;
+                            _displayedCount = _pageSize;
+                          }),
+                        ),
+                        if (_groupByReason)
+                          _DropdownFilter(
+                            label: 'Group',
+                            value: _grouping,
+                            items: const ['reason', 'category', 'priority'],
+                            onChanged: (v) =>
+                                setState(() => _grouping = v ?? 'reason'),
+                          ),
+                        TextButton(
+                          onPressed: _clearFilters,
+                          child: const Text('Clear filters'),
+                        ),
+                        Text(
+                          '${filtered.length} matching',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                      ],
+                    ),
+                  ),
+                  if (state.reviewManifestWarning != null)
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Text(
+                        state.reviewManifestWarning!,
+                        style: const TextStyle(color: Colors.deepOrange),
+                      ),
+                    ),
                   TabBar(
                     controller: _priorityTabController,
                     labelColor: LabPalette.saffron,
@@ -303,96 +491,99 @@ class _ReviewInboxScreenState extends State<ReviewInboxScreen>
                     indicatorColor: LabPalette.saffron,
                     onTap: (_) => setState(() => _displayedCount = _pageSize),
                     tabs: [
+                      Tab(text: 'Start here ($highUnresolved)'),
+                      Tab(
+                        text:
+                            'Blocking (${state.reviewCandidates.where((c) => c.reviewPriority == ReviewPriority.blocking).length})',
+                      ),
+                      Tab(
+                        text:
+                            'High (${state.reviewCandidates.where((c) => c.reviewPriority == ReviewPriority.high).length})',
+                      ),
+                      Tab(
+                        text:
+                            'Medium (${state.reviewCandidates.where((c) => c.reviewPriority == ReviewPriority.medium).length})',
+                      ),
+                      Tab(
+                        text:
+                            'Low (${state.reviewCandidates.where((c) => c.reviewPriority == ReviewPriority.low).length})',
+                      ),
                       Tab(text: 'All ($total)'),
-                      Tab(
-                          text:
-                              'High (${state.reviewCandidates.where((c) => c.reviewPriority == ReviewPriority.high).length})'),
-                      Tab(
-                          text:
-                              'Medium (${state.reviewCandidates.where((c) => c.reviewPriority == ReviewPriority.medium).length})'),
-                      Tab(
-                          text:
-                              'Low (${state.reviewCandidates.where((c) => c.reviewPriority == ReviewPriority.low).length})'),
                     ],
                   ),
                   Expanded(
                     child: filtered.isEmpty
                         ? _EmptyInboxState(
-                            hasFilters: _searchQuery.isNotEmpty ||
+                            hasFilters:
+                                _searchQuery.isNotEmpty ||
                                 _filterCategory != null ||
                                 _filterReason != null ||
-                                _filterStatus != null,
-                            onClear: () => setState(() {
-                              _searchQuery = '';
-                              _searchController.clear();
-                              _filterCategory = null;
-                              _filterReason = null;
-                              _filterTier = null;
-                              _filterStatus = null;
-                            }),
+                                _filterStatus != null ||
+                                _filterTier != null ||
+                                _filterSubcategory != null ||
+                                _filterMissingField != null ||
+                                _priorityFilter != 'ALL',
+                            onClear: _clearFilters,
                           )
                         : _groupByReason
-                            ? _GroupedView(
-                                groups: _groupByReasonCode(displayed),
-                                decisions: state.inboxDecisions,
-                                selectedIds: _selectedIds,
+                        ? _GroupedView(
+                            groups: _groupByReasonCode(filtered),
+                            decisions: state.inboxDecisions,
+                            selectedIds: _selectedIds,
+                            bulkMode: _bulkMode,
+                            onSelect: (id, sel) => setState(() {
+                              if (sel) {
+                                _selectedIds.add(id);
+                              } else {
+                                _selectedIds.remove(id);
+                              }
+                            }),
+                            onCardTap: (c) =>
+                                setState(() => _detailCandidate = c),
+                            onQuickDecision: _handleQuickDecision,
+                            state: state,
+                            groupByReason: _grouping == 'reason',
+                          )
+                        : ListView.builder(
+                            controller: _scrollController,
+                            padding: const EdgeInsets.all(LabSpacing.md),
+                            itemCount:
+                                displayed.length +
+                                (displayed.length < filtered.length ? 1 : 0),
+                            itemBuilder: (context, index) {
+                              if (index == displayed.length) {
+                                return const Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 16),
+                                  child: Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                );
+                              }
+                              final candidate = displayed[index];
+                              final decision =
+                                  state.inboxDecisions[candidate.canonicalId];
+                              return ReviewCandidateCard(
+                                candidate: candidate,
+                                decision: decision,
+                                isSelected: _selectedIds.contains(
+                                  candidate.canonicalId,
+                                ),
                                 bulkMode: _bulkMode,
-                                onSelect: (id, sel) => setState(() {
+                                onTap: () => setState(
+                                  () => _detailCandidate = candidate,
+                                ),
+                                onSelect: (sel) => setState(() {
                                   if (sel) {
-                                    _selectedIds.add(id);
+                                    _selectedIds.add(candidate.canonicalId);
                                   } else {
-                                    _selectedIds.remove(id);
+                                    _selectedIds.remove(candidate.canonicalId);
                                   }
                                 }),
-                                onCardTap: (c) =>
-                                    setState(() => _detailCandidate = c),
-                                onQuickDecision: _handleQuickDecision,
-                                state: state,
-                              )
-                            : ListView.builder(
-                                controller: _scrollController,
-                                padding:
-                                    const EdgeInsets.all(LabSpacing.md),
-                                itemCount: displayed.length +
-                                    (displayed.length < filtered.length
-                                        ? 1
-                                        : 0),
-                                itemBuilder: (context, index) {
-                                  if (index == displayed.length) {
-                                    return const Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 16),
-                                      child: Center(
-                                          child:
-                                              CircularProgressIndicator()),
-                                    );
-                                  }
-                                  final candidate = displayed[index];
-                                  final decision = state.inboxDecisions[
-                                      candidate.canonicalId];
-                                  return ReviewCandidateCard(
-                                    candidate: candidate,
-                                    decision: decision,
-                                    isSelected: _selectedIds
-                                        .contains(candidate.canonicalId),
-                                    bulkMode: _bulkMode,
-                                    onTap: () => setState(
-                                        () => _detailCandidate = candidate),
-                                    onSelect: (sel) => setState(() {
-                                      if (sel) {
-                                        _selectedIds
-                                            .add(candidate.canonicalId);
-                                      } else {
-                                        _selectedIds.remove(
-                                            candidate.canonicalId);
-                                      }
-                                    }),
-                                    onQuickDecision: (verdict) =>
-                                        _handleQuickDecision(
-                                            candidate, verdict),
-                                  );
-                                },
-                              ),
+                                onQuickDecision: (verdict) =>
+                                    _handleQuickDecision(candidate, verdict),
+                              );
+                            },
+                          ),
                   ),
                 ],
               ),
@@ -414,7 +605,8 @@ class _ReviewInboxScreenState extends State<ReviewInboxScreen>
                   },
                   onUndo: () async {
                     await state.removeInboxDecision(
-                        _detailCandidate!.canonicalId);
+                      _detailCandidate!.canonicalId,
+                    );
                     setState(() {});
                   },
                 ),
@@ -426,8 +618,26 @@ class _ReviewInboxScreenState extends State<ReviewInboxScreen>
     );
   }
 
+  void _clearFilters() {
+    setState(() {
+      _searchQuery = '';
+      _searchController.clear();
+      _filterCategory = null;
+      _filterSubcategory = null;
+      _filterReason = null;
+      _filterTier = null;
+      _filterStatus = null;
+      _filterMissingField = null;
+      _priorityTabController.index = 0;
+      _displayedCount = _pageSize;
+      _selectedIds.clear();
+    });
+  }
+
   Future<void> _handleQuickDecision(
-      ReviewCandidate candidate, InboxVerdict verdict) async {
+    ReviewCandidate candidate,
+    InboxVerdict verdict,
+  ) async {
     final pack = widget.state.activePack;
     if (pack == null) return;
     final decision = InboxDecision(
@@ -468,16 +678,17 @@ class _InboxHeader extends StatelessWidget {
     return Container(
       color: Theme.of(context).colorScheme.surfaceContainerLow,
       padding: const EdgeInsets.symmetric(
-          horizontal: LabSpacing.lg, vertical: LabSpacing.sm),
+        horizontal: LabSpacing.lg,
+        vertical: LabSpacing.sm,
+      ),
       child: Row(
         children: [
           const Icon(Icons.inbox_outlined, size: 18),
           const SizedBox(width: 8),
           Text(
             'Review Inbox',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(context).textTheme.titleMedium
+                ?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(width: 16),
           _StatusChip(
@@ -485,7 +696,8 @@ class _InboxHeader extends StatelessWidget {
             color: unresolved > 0 ? Colors.orange : Colors.green,
             selected: filterStatus == 'unresolved',
             onTap: () => onFilterStatus(
-                filterStatus == 'unresolved' ? null : 'unresolved'),
+              filterStatus == 'unresolved' ? null : 'unresolved',
+            ),
           ),
           const SizedBox(width: 6),
           if (highUnresolved > 0) ...[
@@ -502,8 +714,8 @@ class _InboxHeader extends StatelessWidget {
               label: '$changedCount changed',
               color: Colors.purple,
               selected: filterStatus == 'changed',
-              onTap: () => onFilterStatus(
-                  filterStatus == 'changed' ? null : 'changed'),
+              onTap: () =>
+                  onFilterStatus(filterStatus == 'changed' ? null : 'changed'),
             ),
             const SizedBox(width: 6),
           ],
@@ -511,15 +723,13 @@ class _InboxHeader extends StatelessWidget {
             label: '${total - unresolved} resolved',
             color: Colors.teal,
             selected: filterStatus == 'resolved',
-            onTap: () => onFilterStatus(
-                filterStatus == 'resolved' ? null : 'resolved'),
+            onTap: () =>
+                onFilterStatus(filterStatus == 'resolved' ? null : 'resolved'),
           ),
           const Spacer(),
           Text(
             '$total candidates',
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall
+            style: Theme.of(context).textTheme.bodySmall
                 ?.copyWith(color: LabPalette.muted),
           ),
         ],
@@ -551,7 +761,9 @@ class _StatusChip extends StatelessWidget {
           color: selected ? color.withAlpha(30) : color.withAlpha(12),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-              color: selected ? color : color.withAlpha(60), width: 1),
+            color: selected ? color : color.withAlpha(60),
+            width: 1,
+          ),
         ),
         child: Text(
           label,
@@ -609,22 +821,18 @@ class _SearchFilterBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final categories = candidates.map((c) => c.category).toSet().toList()
       ..sort();
-    final reasons = candidates
-        .map((c) => c.travelRelevanceReason)
-        .toSet()
-        .toList()
-      ..sort();
+    final reasons =
+        candidates.map((c) => c.travelRelevanceReason).toSet().toList()..sort();
     final tiers = candidates.map((c) => c.tier).toSet().toList()..sort();
 
     return Container(
       padding: const EdgeInsets.symmetric(
-          horizontal: LabSpacing.md, vertical: LabSpacing.sm),
+        horizontal: LabSpacing.md,
+        vertical: LabSpacing.sm,
+      ),
       decoration: BoxDecoration(
         border: Border(
-          bottom: BorderSide(
-            color: Theme.of(context).dividerColor,
-            width: 0.5,
-          ),
+          bottom: BorderSide(color: Theme.of(context).dividerColor, width: 0.5),
         ),
       ),
       child: Column(
@@ -641,18 +849,22 @@ class _SearchFilterBar extends StatelessWidget {
                 prefixIcon: const Icon(Icons.search, size: 18),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(
-                      color: Theme.of(context).dividerColor),
+                  borderSide: BorderSide(color: Theme.of(context).dividerColor),
                 ),
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 0,
+                ),
                 isDense: true,
               ),
             ),
           ),
           const SizedBox(height: 8),
           // Filter row
-          Row(
+          Wrap(
+            spacing: 8,
+            runSpacing: 4,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               _DropdownFilter(
                 label: 'Category',
@@ -681,12 +893,14 @@ class _SearchFilterBar extends StatelessWidget {
               const SizedBox(width: 8),
               // Group toggle
               FilterChip(
-                label: const Text('Group by reason', style: TextStyle(fontSize: 12)),
+                label: const Text(
+                  'Group by reason',
+                  style: TextStyle(fontSize: 12),
+                ),
                 selected: groupByReason,
                 onSelected: onGroupToggle,
                 visualDensity: VisualDensity.compact,
               ),
-              const Spacer(),
               // Bulk mode
               if (bulkMode) ...[
                 Text(
@@ -699,16 +913,18 @@ class _SearchFilterBar extends StatelessWidget {
                   icon: const Icon(Icons.check, size: 16),
                   label: Text('Keep $selectedCount'),
                   style: TextButton.styleFrom(
-                      foregroundColor: Colors.teal,
-                      visualDensity: VisualDensity.compact),
+                    foregroundColor: Colors.teal,
+                    visualDensity: VisualDensity.compact,
+                  ),
                 ),
                 TextButton.icon(
                   onPressed: selectedCount > 0 ? onBulkExclude : null,
                   icon: const Icon(Icons.close, size: 16),
                   label: Text('Exclude $selectedCount'),
                   style: TextButton.styleFrom(
-                      foregroundColor: Colors.red,
-                      visualDensity: VisualDensity.compact),
+                    foregroundColor: Colors.red,
+                    visualDensity: VisualDensity.compact,
+                  ),
                 ),
                 TextButton(
                   onPressed: onClearSelection,
@@ -718,10 +934,13 @@ class _SearchFilterBar extends StatelessWidget {
               TextButton.icon(
                 onPressed: onBulkModeToggle,
                 icon: Icon(bulkMode ? Icons.close : Icons.checklist, size: 16),
-                label:
-                    Text(bulkMode ? 'Exit bulk' : 'Select', style: const TextStyle(fontSize: 12)),
+                label: Text(
+                  bulkMode ? 'Exit bulk' : 'Select',
+                  style: const TextStyle(fontSize: 12),
+                ),
                 style: TextButton.styleFrom(
-                    visualDensity: VisualDensity.compact),
+                  visualDensity: VisualDensity.compact,
+                ),
               ),
             ],
           ),
@@ -749,24 +968,44 @@ class _DropdownFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String?>(
-      hint: Text(label, style: const TextStyle(fontSize: 12)),
+      hint: Text(
+        label,
+        style: TextStyle(
+          fontSize: 12,
+          color: Theme.of(context).colorScheme.onSurface,
+        ),
+      ),
       value: value,
       isDense: true,
-      style: const TextStyle(fontSize: 12),
+      style: TextStyle(
+        fontSize: 12,
+        color: Theme.of(context).colorScheme.onSurface,
+      ),
       underline: const SizedBox.shrink(),
       items: [
         DropdownMenuItem<String?>(
           value: null,
-          child: Text('All $label', style: const TextStyle(fontSize: 12)),
+          child: Text(
+            'All $label',
+            style: TextStyle(
+              fontSize: 12,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+          ),
         ),
-        ...items.map((item) => DropdownMenuItem<String?>(
-              value: item,
-              child: Text(
-                displayMap?[item] ?? item,
-                style: const TextStyle(fontSize: 12),
-                overflow: TextOverflow.ellipsis,
+        ...items.map(
+          (item) => DropdownMenuItem<String?>(
+            value: item,
+            child: Text(
+              displayMap?[item] ?? item,
+              style: TextStyle(
+                fontSize: 12,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
-            )),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ),
       ],
       onChanged: onChanged,
     );
@@ -774,6 +1013,7 @@ class _DropdownFilter extends StatelessWidget {
 }
 
 class _GroupedView extends StatelessWidget {
+  final bool groupByReason;
   final Map<String, List<ReviewCandidate>> groups;
   final Map<String, InboxDecision> decisions;
   final Set<String> selectedIds;
@@ -784,6 +1024,7 @@ class _GroupedView extends StatelessWidget {
   final AppState state;
 
   const _GroupedView({
+    required this.groupByReason,
     required this.groups,
     required this.decisions,
     required this.selectedIds,
@@ -804,7 +1045,7 @@ class _GroupedView extends StatelessWidget {
         final translation = ReviewReasonTranslator.translateReason(reason);
         return _GroupSection(
           reasonCode: reason,
-          reasonTitle: translation.title,
+          reasonTitle: groupByReason ? translation.title : reason,
           candidates: candidates,
           decisions: decisions,
           selectedIds: selectedIds,
@@ -849,12 +1090,14 @@ class _GroupSection extends StatefulWidget {
 }
 
 class _GroupSectionState extends State<_GroupSection> {
-  bool _expanded = true;
+  bool _expanded = false;
+  int _visibleCount = 30;
 
   @override
   Widget build(BuildContext context) {
-    final resolved =
-        widget.candidates.where((c) => widget.decisions[c.canonicalId]?.isResolved ?? false).length;
+    final resolved = widget.candidates
+        .where((c) => widget.decisions[c.canonicalId]?.isResolved ?? false)
+        .length;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -866,9 +1109,7 @@ class _GroupSectionState extends State<_GroupSection> {
             decoration: BoxDecoration(
               color: widget.isCritical
                   ? Colors.red.withAlpha(12)
-                  : Theme.of(context)
-                      .colorScheme
-                      .surfaceContainerLow,
+                  : Theme.of(context).colorScheme.surfaceContainerLow,
               borderRadius: BorderRadius.circular(8),
               border: Border.all(
                 color: widget.isCritical
@@ -882,14 +1123,19 @@ class _GroupSectionState extends State<_GroupSection> {
                 if (widget.isCritical)
                   const Padding(
                     padding: EdgeInsets.only(right: 6),
-                    child: Icon(Icons.warning_amber,
-                        size: 16, color: Colors.red),
+                    child: Icon(
+                      Icons.warning_amber,
+                      size: 16,
+                      color: Colors.red,
+                    ),
                   ),
                 Expanded(
                   child: Text(
                     widget.reasonTitle,
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 13),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
+                    ),
                   ),
                 ),
                 Text(
@@ -904,7 +1150,9 @@ class _GroupSectionState extends State<_GroupSection> {
                 const SizedBox(width: 6),
                 Container(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 8, vertical: 2),
+                    horizontal: 8,
+                    vertical: 2,
+                  ),
                   decoration: BoxDecoration(
                     color: LabPalette.saffronSoft,
                     borderRadius: BorderRadius.circular(10),
@@ -920,9 +1168,7 @@ class _GroupSectionState extends State<_GroupSection> {
                 ),
                 const SizedBox(width: 4),
                 Icon(
-                  _expanded
-                      ? Icons.expand_less
-                      : Icons.expand_more,
+                  _expanded ? Icons.expand_less : Icons.expand_more,
                   size: 18,
                   color: LabPalette.muted,
                 ),
@@ -931,7 +1177,7 @@ class _GroupSectionState extends State<_GroupSection> {
           ),
         ),
         if (_expanded)
-          ...widget.candidates.map((candidate) {
+          ...widget.candidates.take(_visibleCount).map((candidate) {
             final decision = widget.decisions[candidate.canonicalId];
             return Padding(
               padding: const EdgeInsets.only(left: 12, top: 4),
@@ -942,11 +1188,15 @@ class _GroupSectionState extends State<_GroupSection> {
                 bulkMode: widget.bulkMode,
                 onTap: () => widget.onCardTap(candidate),
                 onSelect: (sel) => widget.onSelect(candidate.canonicalId, sel),
-                onQuickDecision: (v) =>
-                    widget.onQuickDecision(candidate, v),
+                onQuickDecision: (v) => widget.onQuickDecision(candidate, v),
               ),
             );
           }),
+        if (_expanded && _visibleCount < widget.candidates.length)
+          TextButton(
+            onPressed: () => setState(() => _visibleCount += 30),
+            child: const Text('Load 30 more'),
+          ),
         const SizedBox(height: 12),
       ],
     );
@@ -987,7 +1237,7 @@ class _MissingManifestState extends StatelessWidget {
                 border: Border.all(color: Colors.grey.shade300),
               ),
               child: SelectableText(
-                'python tools/sync_city_packs.py --cities $cityId',
+                'Open Sync Latest City Packs in the workbench toolbar, verify the DataFactory repository, and refresh $cityId.',
                 style: const TextStyle(fontFamily: 'monospace', fontSize: 13),
               ),
             ),

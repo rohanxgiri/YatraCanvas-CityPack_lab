@@ -73,6 +73,7 @@ class LabPlace {
   final String cityId;
   final String name;
   final String? nameHi;
+  final String? description;
   final double latitude;
   final double longitude;
   final String? address;
@@ -108,6 +109,7 @@ class LabPlace {
     required this.cityId,
     required this.name,
     this.nameHi,
+    this.description,
     required this.latitude,
     required this.longitude,
     this.address,
@@ -154,6 +156,7 @@ class LabPlace {
       cityId: map['city_id'] as String,
       name: map['name'] as String,
       nameHi: map['name_hi'] as String?,
+      description: map['description'] as String?,
       latitude: (map['latitude'] as num).toDouble(),
       longitude: (map['longitude'] as num).toDouble(),
       address: map['address'] as String?,
@@ -161,7 +164,8 @@ class LabPlace {
       subcategory: map['subcategory'] as String?,
       primaryEntityType: map['primary_entity_type'] as String?,
       tier: map['tier'] as String? ?? 'discovery',
-      travelRelevanceScore: (map['travel_relevance_score'] as num?)?.toDouble() ?? 0.0,
+      travelRelevanceScore:
+          (map['travel_relevance_score'] as num?)?.toDouble() ?? 0.0,
       prominenceScore: (map['prominence_score'] as num?)?.toDouble() ?? 0.0,
       recommendedVisitMinutes: map['recommended_visit_minutes'] as int?,
       tourismPriority: (map['tourism_priority'] as num?)?.toDouble(),
@@ -199,6 +203,7 @@ class LabPlace {
       cityId: cityId,
       name: name,
       nameHi: nameHi,
+      description: description,
       latitude: latitude,
       longitude: longitude,
       address: address,

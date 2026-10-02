@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import '../../domain/lab_place.dart';
 import '../../data/city_pack_database.dart';
 
@@ -43,7 +44,8 @@ class QaSamplingService {
     final List<LabPlace> unifiedList = [];
 
     void addPlace(String bucketName, LabPlace place) {
-      if (!seenPlaceIds.contains(place.id)) {
+      if (unifiedList.length < targetTotal &&
+          !seenPlaceIds.contains(place.id)) {
         seenPlaceIds.add(place.id);
         unifiedList.add(place);
         bucketMap.putIfAbsent(bucketName, () => []).add(place);
@@ -51,7 +53,10 @@ class QaSamplingService {
     }
 
     // 1. Core POIs Bucket
-    final corePlaces = await db.getPlacesByTier('core_destination', limit: coreQuota * 2);
+    final corePlaces = await db.getPlacesByTier(
+      'core_destination',
+      limit: coreQuota * 2,
+    );
     final rng = Random(seed);
     final shuffledCore = List<LabPlace>.from(corePlaces)..shuffle(rng);
     for (final p in shuffledCore.take(coreQuota)) {
@@ -62,18 +67,29 @@ class QaSamplingService {
     final stats = await db.getQualityStats();
     final List<String> anomalyIds = [];
     if (stats.containsKey('outside_bounds_ids')) {
-      anomalyIds.addAll((stats['outside_bounds_ids'] as List<dynamic>).map((e) => e.toString()));
+      anomalyIds.addAll(
+        (stats['outside_bounds_ids'] as List<dynamic>).map((e) => e.toString()),
+      );
     }
     if (stats.containsKey('core_missing_image_ids')) {
-      anomalyIds.addAll((stats['core_missing_image_ids'] as List<dynamic>).map((e) => e.toString()));
+      anomalyIds.addAll(
+        (stats['core_missing_image_ids'] as List<dynamic>).map(
+          (e) => e.toString(),
+        ),
+      );
     }
     if (stats.containsKey('shared_coords_ids')) {
-      anomalyIds.addAll((stats['shared_coords_ids'] as List<dynamic>).map((e) => e.toString()));
+      anomalyIds.addAll(
+        (stats['shared_coords_ids'] as List<dynamic>).map((e) => e.toString()),
+      );
     }
 
     if (anomalyIds.isNotEmpty) {
-      final anomalyPlaces = await db.getPlacesByIds(anomalyIds.take(anomalyQuota * 2).toList());
-      final shuffledAnomalies = List<LabPlace>.from(anomalyPlaces)..shuffle(rng);
+      final anomalyPlaces = await db.getPlacesByIds(
+        anomalyIds.take(anomalyQuota * 2).toList(),
+      );
+      final shuffledAnomalies = List<LabPlace>.from(anomalyPlaces)
+        ..shuffle(rng);
       for (final p in shuffledAnomalies.take(anomalyQuota)) {
         addPlace('Potential Anomalies & Gaps', p);
       }
@@ -82,7 +98,8 @@ class QaSamplingService {
     // 3. Category Balanced Bucket
     final categories = await db.getCategoriesWithCounts();
     for (final entry in categories.entries) {
-      if (bucketMap['Category Balanced'] != null && bucketMap['Category Balanced']!.length >= categoryQuota) {
+      if (bucketMap['Category Balanced'] != null &&
+          bucketMap['Category Balanced']!.length >= categoryQuota) {
         break;
       }
       final catPlaces = await db.getPlacesByCategory(entry.key, limit: 3);
@@ -95,14 +112,39 @@ class QaSamplingService {
     }
 
     // 4. Random Sample Bucket
-    final randomPlaces = await db.getRandomPlaces(count: randomQuota * 2, seed: seed);
+    final randomPlaces = await db.getRandomPlaces(
+      count: randomQuota * 2,
+      seed: seed,
+    );
     for (final p in randomPlaces) {
-      if (bucketMap['Random Sample'] != null && bucketMap['Random Sample']!.length >= randomQuota) {
+      if (bucketMap['Random Sample'] != null &&
+          bucketMap['Random Sample']!.length >= randomQuota) {
         break;
       }
       addPlace('Random Sample', p);
     }
 
+    // Sparse anomaly buckets must not leave the curator unable to reach 50.
+    // Ensure each available tier is represented before deterministic top up.
+    for (final tier in ['recommended', 'discovery', 'support']) {
+      final places = await db.getRandomPlaces(
+        count: targetTotal,
+        tier: tier,
+        seed: seed,
+      );
+      for (final place in places.take(3)) {
+        addPlace('Tier Balanced', place);
+      }
+    }
+    if (unifiedList.length < targetTotal) {
+      final places = await db.getRandomPlaces(
+        count: targetTotal * 2,
+        seed: seed,
+      );
+      for (final place in places) {
+        addPlace('Sample Top Up', place);
+      }
+    }
     return StratifiedQaSample(
       allPlaces: unifiedList,
       bucketMap: bucketMap,

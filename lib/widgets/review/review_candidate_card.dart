@@ -244,6 +244,9 @@ class _PriorityBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     Color color;
     switch (priority) {
+      case ReviewPriority.blocking:
+        color = Colors.purple.shade700;
+        break;
       case ReviewPriority.high:
         color = Colors.red.shade600;
         break;

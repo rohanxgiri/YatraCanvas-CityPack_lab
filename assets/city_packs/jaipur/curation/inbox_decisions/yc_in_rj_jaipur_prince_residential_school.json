@@ -1,0 +1,43 @@
+{
+  "canonical_id": "yc_in_rj_jaipur_prince_residential_school",
+  "city_id": "jaipur",
+  "pack_version": "v3",
+  "verdict": "REJECTED",
+  "author": "Contributor",
+  "decided_at": "2026-10-01T23:06:33.194697",
+  "snapshot": {
+    "semantic_fields": {
+      "name": "Prince Residential School",
+      "category": "hotel",
+      "subcategory": "hostel",
+      "tier": "support",
+      "latitude": 26.957986,
+      "longitude": 75.705072,
+      "wikidata_id": null,
+      "commons_image": null,
+      "wikidata_p18": null,
+      "external_ids": {
+        "openstreetmap_ids": [
+          "node/11690661271"
+        ]
+      },
+      "osm_tags": {
+        "tourism": "hostel",
+        "name": "Prince Residential School"
+      }
+    },
+    "travel_relevance_reason": "SECONDARY_COMMERCIAL_REQUIRES_AUDIT",
+    "travel_relevance_score": 0.45,
+    "confidence": 0.85,
+    "suggested_action": "APPROVE_AS_SECONDARY_DESTINATION",
+    "missing_fields": [
+      "primary_image",
+      "description",
+      "opening_hours",
+      "website",
+      "address"
+    ]
+  },
+  "changed_since_review": false,
+  "verdict_note": "Bulk excluded"
+}

@@ -20,7 +20,7 @@ class ReleaseGateConfig {
     this.minDataQualityScore = 70.0,
     this.minTravelReadinessScore = 60.0,
     this.maxAllowedQuarantinedRatio = 0.60,
-    this.maxManualDefectRate = 0.20,
+    this.maxManualDefectRate = 0.10,
   });
 
   static const ReleaseGateConfig standard = ReleaseGateConfig();

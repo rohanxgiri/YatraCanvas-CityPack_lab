@@ -16,40 +16,7 @@
       "local_path": "images/yc_in_up_varanasi_sankat_mochan_hanuman_temple/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_sankat_mochan_hanuman_temple/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Sankat_Mochan_temple_entrance,_Varanasi_-_IRCTC_2017_(2).jpg",
-        "original_file": "Sankat Mochan temple entrance, Varanasi - IRCTC 2017 (2).jpg",
-        "author": "Vinayaraj",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:18.700751+00:00",
-        "local_path": "images/yc_in_up_varanasi_sankat_mochan_hanuman_temple_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_sankat_mochan_hanuman_temple_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Sankat_Mochan_temple_entrance,_Varanasi_-_IRCTC_2017.jpg",
-        "original_file": "Sankat Mochan temple entrance, Varanasi - IRCTC 2017.jpg",
-        "author": "Vinayaraj",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:18.709693+00:00",
-        "local_path": "images/yc_in_up_varanasi_sankat_mochan_hanuman_temple_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_sankat_mochan_hanuman_temple_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_varanasi": {
     "primary": {
@@ -68,40 +35,7 @@
       "local_path": "images/yc_in_up_varanasi_varanasi/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_varanasi/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:1._Aghori_Gaze_(Varanasi).jpg",
-        "original_file": "1. Aghori Gaze (Varanasi).jpg",
-        "author": "Leszek Posłuszny",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:02.609929+00:00",
-        "local_path": "images/yc_in_up_varanasi_varanasi_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_varanasi_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:A_Random_Afternoon,_Varanasi,_2025.jpg",
-        "original_file": "A Random Afternoon, Varanasi, 2025.jpg",
-        "author": "Sunidhiwiki",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 720,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:02.617376+00:00",
-        "local_path": "images/yc_in_up_varanasi_varanasi_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_varanasi_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_roman_catholic_diocese_of_varanasi": {
     "primary": {
@@ -120,40 +54,7 @@
       "local_path": "images/yc_in_up_varanasi_roman_catholic_diocese_of_varanasi/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_roman_catholic_diocese_of_varanasi/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:BHU_(42504).jpg",
-        "original_file": "BHU (42504).jpg",
-        "author": "Pushpam Kumar",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 720,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:03.280537+00:00",
-        "local_path": "images/yc_in_up_varanasi_roman_catholic_diocese_of_varanasi_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_roman_catholic_diocese_of_varanasi_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Kedharnath.jpg",
-        "original_file": "Kedharnath.jpg",
-        "author": "Pushpam Kumar",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 720,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:03.287880+00:00",
-        "local_path": "images/yc_in_up_varanasi_roman_catholic_diocese_of_varanasi_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_roman_catholic_diocese_of_varanasi_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_sarnath_museum": {
     "primary": {
@@ -172,40 +73,7 @@
       "local_path": "images/yc_in_up_varanasi_sarnath_museum/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_sarnath_museum/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:001_Asokan_Lion_Pillar.jpg",
-        "original_file": "001 Asokan Lion Pillar.jpg",
-        "author": "Anandajoti",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 2679,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:04.088872+00:00",
-        "local_path": "images/yc_in_up_varanasi_sarnath_museum_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_sarnath_museum_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:002_Railing,_2nd_BCE.jpg",
-        "original_file": "002 Railing, 2nd BCE.jpg",
-        "author": "Anandajoti",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 694,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:04.097053+00:00",
-        "local_path": "images/yc_in_up_varanasi_sarnath_museum_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_sarnath_museum_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_varanasi_junction": {
     "primary": {
@@ -243,40 +111,7 @@
       "local_path": "images/yc_in_up_varanasi_dashashwamedh_ghat/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_dashashwamedh_ghat/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:2_Varanasi.jpg",
-        "original_file": "2 Varanasi.jpg",
-        "author": "PLBechly",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 872,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:04.762764+00:00",
-        "local_path": "images/yc_in_up_varanasi_dashashwamedh_ghat_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_dashashwamedh_ghat_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:A_Wonderful_view_of_Ganga_Aarati(worship)_at_Varanasi,_India.jpg",
-        "original_file": "A Wonderful view of Ganga Aarati(worship) at Varanasi, India.jpg",
-        "author": "Dr. Pushpendra Singh Rathore",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:04.770745+00:00",
-        "local_path": "images/yc_in_up_varanasi_dashashwamedh_ghat_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_dashashwamedh_ghat_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_scindia_ghat": {
     "primary": {
@@ -295,40 +130,7 @@
       "local_path": "images/yc_in_up_varanasi_scindia_ghat/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_scindia_ghat/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:\"Suttee\"_pillar_where_Hindu_widows_were_burned,_Benares,_India_(14671460675).jpg",
-        "original_file": "\"Suttee\" pillar where Hindu widows were burned, Benares, India (14671460675).jpg",
-        "author": "Boston Public Library",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 643,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:05.525285+00:00",
-        "local_path": "images/yc_in_up_varanasi_scindia_ghat_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_scindia_ghat_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Anauthorized_Constructions,_Scindia_Ghat_Varanasi.jpg",
-        "original_file": "Anauthorized Constructions, Scindia Ghat Varanasi.jpg",
-        "author": "Rahulkepapa",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 258,
-        "height": 474,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:05.534170+00:00",
-        "local_path": "images/yc_in_up_varanasi_scindia_ghat_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_scindia_ghat_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_vishalakshi_temple": {
     "primary": {
@@ -347,24 +149,7 @@
       "local_path": "images/yc_in_up_varanasi_vishalakshi_temple/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_vishalakshi_temple/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:காசி_விசாலாட்சி_கோயில்_கல்வெட்டு.jpg",
-        "original_file": "காசி விசாலாட்சி கோயில் கல்வெட்டு.jpg",
-        "author": "Kailash PL",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:06.242724+00:00",
-        "local_path": "images/yc_in_up_varanasi_vishalakshi_temple_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_vishalakshi_temple_g1/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_munshi_ghat": {
     "primary": {
@@ -383,40 +168,7 @@
       "local_path": "images/yc_in_up_varanasi_munshi_ghat/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_munshi_ghat/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:A_view_of_Munshi_Ghat,_Varanasi,_Uttar_Pradesh.jpg",
-        "original_file": "A view of Munshi Ghat, Varanasi, Uttar Pradesh.jpg",
-        "author": "Sangramgovardhane",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:06.986042+00:00",
-        "local_path": "images/yc_in_up_varanasi_munshi_ghat_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_munshi_ghat_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Ahilyabai,_Munshi,_Darbhanga_and_Rana-Mahal_Ghat,_Varanasi.jpg",
-        "original_file": "Ahilyabai, Munshi, Darbhanga and Rana-Mahal Ghat, Varanasi.jpg",
-        "author": "Vishwaalok",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 502,
-        "height": 377,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:06.987019+00:00",
-        "local_path": "images/yc_in_up_varanasi_munshi_ghat_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_munshi_ghat_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_bharat_mata_mandir": {
     "primary": {
@@ -435,40 +187,7 @@
       "local_path": "images/yc_in_up_varanasi_bharat_mata_mandir/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_bharat_mata_mandir/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Bharat_Mata_(6333841995).jpg",
-        "original_file": "Bharat Mata (6333841995).jpg",
-        "author": "Manuel Menal",
-        "license": "CC BY-SA 2.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1925,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:07.662101+00:00",
-        "local_path": "images/yc_in_up_varanasi_bharat_mata_mandir_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_bharat_mata_mandir_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Bharat_Mata_Mandir_Varanasi_India_-_panoramio.jpg",
-        "original_file": "Bharat Mata Mandir Varanasi India - panoramio.jpg",
-        "author": "Hiroki Ogawa",
-        "license": "CC BY 3.0",
-        "license_url": "https://creativecommons.org/licenses/by/3.0",
-        "attribution": "Hiroki Ogawa",
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:07.662758+00:00",
-        "local_path": "images/yc_in_up_varanasi_bharat_mata_mandir_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_bharat_mata_mandir_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_shri_tilbhandeshwar_mahadev_mandir": {
     "primary": {
@@ -506,40 +225,7 @@
       "local_path": "images/yc_in_up_varanasi_man_singh_observatory/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_man_singh_observatory/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Banarasjan2.jpg",
-        "original_file": "Banarasjan2.jpg",
-        "author": "Archibald Campbell",
-        "license": "Public domain",
-        "license_url": "",
-        "attribution": null,
-        "width": 767,
-        "height": 411,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:08.470299+00:00",
-        "local_path": "images/yc_in_up_varanasi_man_singh_observatory_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_man_singh_observatory_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Benares_observatory.jpg",
-        "original_file": "Benares observatory.jpg",
-        "author": "Edward Crichton Hawkshaw",
-        "license": "Public domain",
-        "license_url": "",
-        "attribution": null,
-        "width": 500,
-        "height": 347,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:08.471285+00:00",
-        "local_path": "images/yc_in_up_varanasi_man_singh_observatory_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_man_singh_observatory_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_nepali_mandir": {
     "primary": {
@@ -558,40 +244,7 @@
       "local_path": "images/yc_in_up_varanasi_nepali_mandir/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_nepali_mandir/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Benares,_the_Nepalese_Temple_(cropped).jpg",
-        "original_file": "Benares, the Nepalese Temple (cropped).jpg",
-        "author": "Getty Museum Collection",
-        "license": "CC0",
-        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-        "attribution": null,
-        "width": 1280,
-        "height": 974,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:09.412810+00:00",
-        "local_path": "images/yc_in_up_varanasi_nepali_mandir_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_nepali_mandir_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Benares,_The_Nepalese_Temple_LACMA_M.90.24.65.jpg",
-        "original_file": "Benares, The Nepalese Temple LACMA M.90.24.65.jpg",
-        "author": "Samuel Bourne (England, 1834-1912)",
-        "license": "Public domain",
-        "license_url": "",
-        "attribution": null,
-        "width": 1280,
-        "height": 1860,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:09.419920+00:00",
-        "local_path": "images/yc_in_up_varanasi_nepali_mandir_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_nepali_mandir_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_lalita_ghat": {
     "primary": {
@@ -610,40 +263,7 @@
       "local_path": "images/yc_in_up_varanasi_lalita_ghat/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_lalita_ghat/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:'Hanuman_Temple'_in_Lalaita_Ghat..jpg",
-        "original_file": "'Hanuman Temple' in Lalaita Ghat..jpg",
-        "author": "Rudolph.A.furtado",
-        "license": "CC0",
-        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-        "attribution": null,
-        "width": 1100,
-        "height": 825,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:10.169330+00:00",
-        "local_path": "images/yc_in_up_varanasi_lalita_ghat_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_lalita_ghat_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:'Lalita_Ghat'.jpg",
-        "original_file": "'Lalita Ghat'.jpg",
-        "author": "Rudolph.A.furtado",
-        "license": "CC0",
-        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-        "attribution": null,
-        "width": 1120,
-        "height": 840,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:10.178307+00:00",
-        "local_path": "images/yc_in_up_varanasi_lalita_ghat_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_lalita_ghat_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_lalita_gauri_mandir": {
     "primary": {
@@ -681,40 +301,7 @@
       "local_path": "images/yc_in_up_varanasi_dalmia_bhawan/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_dalmia_bhawan/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Dalmia_House_2.jpg",
-        "original_file": "Dalmia House 2.jpg",
-        "author": "Rangan Datta Wiki",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1216,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:11.054574+00:00",
-        "local_path": "images/yc_in_up_varanasi_dalmia_bhawan_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_dalmia_bhawan_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Dalmia_House_3.jpg",
-        "original_file": "Dalmia House 3.jpg",
-        "author": "Rangan Datta Wiki",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 848,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:11.062415+00:00",
-        "local_path": "images/yc_in_up_varanasi_dalmia_bhawan_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_dalmia_bhawan_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_assi_river": {
     "primary": {
@@ -752,40 +339,7 @@
       "local_path": "images/yc_in_up_varanasi_chaukhandi_stupa/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_chaukhandi_stupa/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Chaukhandi_Stupa_1.JPG",
-        "original_file": "Chaukhandi Stupa 1.JPG",
-        "author": "Rmanish1973",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 836,
-        "height": 550,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:11.833619+00:00",
-        "local_path": "images/yc_in_up_varanasi_chaukhandi_stupa_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_chaukhandi_stupa_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Chaukhandi_Stupa_2.JPG",
-        "original_file": "Chaukhandi Stupa 2.JPG",
-        "author": "Rmanish1973",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 864,
-        "height": 576,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:11.842888+00:00",
-        "local_path": "images/yc_in_up_varanasi_chaukhandi_stupa_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_chaukhandi_stupa_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_varuna_river": {
     "primary": {
@@ -823,40 +377,7 @@
       "local_path": "images/yc_in_up_varanasi_dhamek_stupa/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_dhamek_stupa/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:025_Dhamekh_Stupa,_Sarnath_(9239967466).jpg",
-        "original_file": "025 Dhamekh Stupa, Sarnath (9239967466).jpg",
-        "author": "Photo Dharma from Penang, Malaysia",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1706,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:12.846577+00:00",
-        "local_path": "images/yc_in_up_varanasi_dhamek_stupa_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_dhamek_stupa_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:026_Dhamekh_Stupa,_Sarnath_(9237176593).jpg",
-        "original_file": "026 Dhamekh Stupa, Sarnath (9237176593).jpg",
-        "author": "Photo Dharma from Penang, Malaysia",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1706,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:12.854330+00:00",
-        "local_path": "images/yc_in_up_varanasi_dhamek_stupa_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_dhamek_stupa_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_lion_capital_of_asoka": {
     "primary": {
@@ -875,40 +396,7 @@
       "local_path": "images/yc_in_up_varanasi_lion_capital_of_asoka/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_lion_capital_of_asoka/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:2018-10-22_0107_Indien,_Varanasi,_Sarnath-Museum,_Löwenkapitell.jpg",
-        "original_file": "2018-10-22 0107 Indien, Varanasi, Sarnath-Museum, Löwenkapitell.jpg",
-        "author": "Joachim_Hofmann",
-        "license": "CC BY-SA 2.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1926,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:13.632385+00:00",
-        "local_path": "images/yc_in_up_varanasi_lion_capital_of_asoka_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_lion_capital_of_asoka_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:2018-10-22_0108_Indien,_Varanasi,_Sarnath-Museum,_Löwenkapitell.jpg",
-        "original_file": "2018-10-22 0108 Indien, Varanasi, Sarnath-Museum, Löwenkapitell.jpg",
-        "author": "Joachim_Hofmann",
-        "license": "CC BY-SA 2.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1926,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:13.642579+00:00",
-        "local_path": "images/yc_in_up_varanasi_lion_capital_of_asoka_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_lion_capital_of_asoka_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_manikarnika_ghat": {
     "primary": {
@@ -927,40 +415,7 @@
       "local_path": "images/yc_in_up_varanasi_manikarnika_ghat/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_manikarnika_ghat/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:\"Suttee\"_pillar_where_Hindu_widows_were_burned,_Benares,_India_(14671460675).jpg",
-        "original_file": "\"Suttee\" pillar where Hindu widows were burned, Benares, India (14671460675).jpg",
-        "author": "Boston Public Library",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 643,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:14.432073+00:00",
-        "local_path": "images/yc_in_up_varanasi_manikarnika_ghat_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_manikarnika_ghat_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:'1'_Varanasi,_India_River_Ganges_Ghat_January_2014.jpg",
-        "original_file": "'1' Varanasi, India River Ganges Ghat January 2014.jpg",
-        "author": "utpal.",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 1200,
-        "height": 799,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:14.440236+00:00",
-        "local_path": "images/yc_in_up_varanasi_manikarnika_ghat_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_manikarnika_ghat_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_ramnagar_fort": {
     "primary": {
@@ -979,40 +434,7 @@
       "local_path": "images/yc_in_up_varanasi_ramnagar_fort/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_ramnagar_fort/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Balcony_of_kings_rooms.jpg",
-        "original_file": "Balcony of kings rooms.jpg",
-        "author": "Sidhiwasi",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 2269,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:15.335165+00:00",
-        "local_path": "images/yc_in_up_varanasi_ramnagar_fort_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_ramnagar_fort_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Bird_Shaped_fountain_in_Ramnagar_fort,_Varanasi.jpg",
-        "original_file": "Bird Shaped fountain in Ramnagar fort, Varanasi.jpg",
-        "author": "Sujay25",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1912,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:15.342446+00:00",
-        "local_path": "images/yc_in_up_varanasi_ramnagar_fort_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_ramnagar_fort_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_assi_ghat": {
     "primary": {
@@ -1031,40 +453,7 @@
       "local_path": "images/yc_in_up_varanasi_assi_ghat/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_assi_ghat/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:A_shop_at_Assi_Ghat.JPG",
-        "original_file": "A shop at Assi Ghat.JPG",
-        "author": "Sagar Das, Rosehub",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 894,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:16.376838+00:00",
-        "local_path": "images/yc_in_up_varanasi_assi_ghat_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_assi_ghat_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:ABI.jpg",
-        "original_file": "ABI.jpg",
-        "author": "Johannes Beltz",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 194,
-        "height": 259,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:16.384334+00:00",
-        "local_path": "images/yc_in_up_varanasi_assi_ghat_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_assi_ghat_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_baba_keenaram_sthal": {
     "primary": {
@@ -1102,40 +491,7 @@
       "local_path": "images/yc_in_up_varanasi_durga_mandir/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_durga_mandir/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Corner_View_of_Old_Durga_Temple_of_Banaras.jpg",
-        "original_file": "Corner View of Old Durga Temple of Banaras.jpg",
-        "author": "Super.Kid.Sais",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 640,
-        "height": 800,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:17.225020+00:00",
-        "local_path": "images/yc_in_up_varanasi_durga_mandir_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_durga_mandir_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Elefant_wall_work_of_old_Durga_Temple_of_Banaras.jpg",
-        "original_file": "Elefant wall work of old Durga Temple of Banaras.jpg",
-        "author": "Super.Kid.Sais",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 750,
-        "height": 600,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:17.225634+00:00",
-        "local_path": "images/yc_in_up_varanasi_durga_mandir_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_durga_mandir_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_malviya_bridge": {
     "primary": {
@@ -1154,40 +510,7 @@
       "local_path": "images/yc_in_up_varanasi_malviya_bridge/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_malviya_bridge/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:An_Unknown_Shakti_fitted_with_GM_DBR_crosses_the_Ganges_at_Varanasi_-_Flickr_-_Dr._Santulan_Mahanta.jpg",
-        "original_file": "An Unknown Shakti fitted with GM DBR crosses the Ganges at Varanasi - Flickr - Dr. Santulan Mahanta.jpg",
-        "author": "Santulan Mahanta from Golaghat (GLGT), Guwahati (GHY), Lucknow (LKO), New Delhi (NDLS), INDIA",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 960,
-        "height": 486,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:17.837473+00:00",
-        "local_path": "images/yc_in_up_varanasi_malviya_bridge_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_malviya_bridge_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:India,_Day_16_(3621198920).jpg",
-        "original_file": "India, Day 16 (3621198920).jpg",
-        "author": "Scott Dexter from Brooklyn, US",
-        "license": "CC BY-SA 2.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 849,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:17.844708+00:00",
-        "local_path": "images/yc_in_up_varanasi_malviya_bridge_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_malviya_bridge_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_banaras_railway_station": {
     "primary": {
@@ -1244,40 +567,7 @@
       "local_path": "images/yc_in_up_varanasi_shri_guru_ravidass_janam_asthan/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_shri_guru_ravidass_janam_asthan/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Devotees_at_635th_Anniversary_of_Sri_Guru_Ravidass_ji.jpg",
-        "original_file": "Devotees at 635th Anniversary of Sri Guru Ravidass ji.jpg",
-        "author": "Amoster",
-        "license": "CC BY 3.0",
-        "license_url": "https://creativecommons.org/licenses/by/3.0",
-        "attribution": null,
-        "width": 1023,
-        "height": 593,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:19.753897+00:00",
-        "local_path": "images/yc_in_up_varanasi_shri_guru_ravidass_janam_asthan_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_shri_guru_ravidass_janam_asthan_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:GuruRavida.jpg",
-        "original_file": "GuruRavida.jpg",
-        "author": "Ravidassia",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 620,
-        "height": 440,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:19.761354+00:00",
-        "local_path": "images/yc_in_up_varanasi_shri_guru_ravidass_janam_asthan_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_shri_guru_ravidass_janam_asthan_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_tulsi_ghat": {
     "primary": {
@@ -1296,40 +586,7 @@
       "local_path": "images/yc_in_up_varanasi_tulsi_ghat/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_tulsi_ghat/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:9_-Tulsi-ghat.jpg",
-        "original_file": "9 -Tulsi-ghat.jpg",
-        "author": "Dwivedi Ashok",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1024,
-        "height": 685,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:21.016057+00:00",
-        "local_path": "images/yc_in_up_varanasi_tulsi_ghat_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_tulsi_ghat_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:An_ancient_monument_in_Tulsi_Ghat,_Varanasi,_Uttar_Pradesh,_India_(2017).jpg",
-        "original_file": "An ancient monument in Tulsi Ghat, Varanasi, Uttar Pradesh, India (2017).jpg",
-        "author": "Grjsonu",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 720,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:21.016718+00:00",
-        "local_path": "images/yc_in_up_varanasi_tulsi_ghat_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_tulsi_ghat_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_hindu_temples_in_varanasi": {
     "primary": {
@@ -1367,40 +624,7 @@
       "local_path": "images/yc_in_up_varanasi_durga_mandir_varanasi/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_durga_mandir_varanasi/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Banaras,_1953_(4339131569).jpg",
-        "original_file": "Banaras, 1953 (4339131569).jpg",
-        "author": "Nathan Hughes Hamilton from Sacramento, California, USA",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 944,
-        "height": 644,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:21.821404+00:00",
-        "local_path": "images/yc_in_up_varanasi_durga_mandir_varanasi_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_durga_mandir_varanasi_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Banaras,_1953_(7986771907).jpg",
-        "original_file": "Banaras, 1953 (7986771907).jpg",
-        "author": "Nathan Hughes Hamilton from Sacramento, California, USA",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 1024,
-        "height": 722,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:21.828843+00:00",
-        "local_path": "images/yc_in_up_varanasi_durga_mandir_varanasi_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_durga_mandir_varanasi_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_new_vishwanath_temple": {
     "primary": {
@@ -1419,40 +643,7 @@
       "local_path": "images/yc_in_up_varanasi_new_vishwanath_temple/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_new_vishwanath_temple/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Aisle_to_Nirvana.jpg",
-        "original_file": "Aisle to Nirvana.jpg",
-        "author": "Ritambhara chauhan",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 960,
-        "height": 1280,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:22.509000+00:00",
-        "local_path": "images/yc_in_up_varanasi_new_vishwanath_temple_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_new_vishwanath_temple_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:An_Aisle_to_Nirvana.jpg",
-        "original_file": "An Aisle to Nirvana.jpg",
-        "author": "Ritambhara chauhan",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 960,
-        "height": 1280,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:22.516346+00:00",
-        "local_path": "images/yc_in_up_varanasi_new_vishwanath_temple_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_new_vishwanath_temple_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_tulsi_manas_mandir": {
     "primary": {
@@ -1471,40 +662,7 @@
       "local_path": "images/yc_in_up_varanasi_tulsi_manas_mandir/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_tulsi_manas_mandir/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Figurines_in_Tulsi_Manas_Mandir_(24337898740).jpg",
-        "original_file": "Figurines in Tulsi Manas Mandir (24337898740).jpg",
-        "author": "juggadery",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 1024,
-        "height": 768,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:23.423665+00:00",
-        "local_path": "images/yc_in_up_varanasi_tulsi_manas_mandir_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_tulsi_manas_mandir_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:MINIATURE_ART,_TULSI_MANDIR_BANARAS,_UTTAR_PRADESH.jpg",
-        "original_file": "MINIATURE ART, TULSI MANDIR BANARAS, UTTAR PRADESH.jpg",
-        "author": "Prateek Priyadeep",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 750,
-        "height": 1000,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:23.431676+00:00",
-        "local_path": "images/yc_in_up_varanasi_tulsi_manas_mandir_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_tulsi_manas_mandir_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_sankata_devi_mandir": {
     "primary": {
@@ -1580,24 +738,7 @@
       "local_path": "images/yc_in_up_varanasi_parshvanath_jain_temples_varanasi/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_parshvanath_jain_temples_varanasi/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:1593_CE,_Adi_Shankara_bhasya_Aitareya_Upanishad,_Varanasi_Jain_temple_bhandara,_Sanskrit,_Devanagari,_MS_Add.2092.jpg",
-        "original_file": "1593 CE, Adi Shankara bhasya Aitareya Upanishad, Varanasi Jain temple bhandara, Sanskrit, Devanagari, MS Add.2092.jpg",
-        "author": "Ms Sarah Welch",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 515,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:24.769595+00:00",
-        "local_path": "images/yc_in_up_varanasi_parshvanath_jain_temples_varanasi_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_parshvanath_jain_temples_varanasi_g1/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_alamgir_mosque": {
     "primary": {
@@ -1616,40 +757,7 @@
       "local_path": "images/yc_in_up_varanasi_alamgir_mosque/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_alamgir_mosque/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Alamgir_masjid_Varanasi_UP,_India.jpg",
-        "original_file": "Alamgir masjid Varanasi UP, India.jpg",
-        "author": "Rajputbhu000",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:25.449093+00:00",
-        "local_path": "images/yc_in_up_varanasi_alamgir_mosque_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_alamgir_mosque_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:ALAMGIR_MASJID.jpg",
-        "original_file": "ALAMGIR MASJID.jpg",
-        "author": "Anoy Kumar Saha",
-        "license": "CC0",
-        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:25.456551+00:00",
-        "local_path": "images/yc_in_up_varanasi_alamgir_mosque_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_alamgir_mosque_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_sant_ravidas_ghat": {
     "primary": {
@@ -1744,40 +852,7 @@
       "local_path": "images/yc_in_up_varanasi_ratneshwar_mahadev_temple/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_ratneshwar_mahadev_temple/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:\"Suttee\"_pillar_where_Hindu_widows_were_burned,_Benares,_India_(14671460675).jpg",
-        "original_file": "\"Suttee\" pillar where Hindu widows were burned, Benares, India (14671460675).jpg",
-        "author": "Boston Public Library",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 643,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:28.026684+00:00",
-        "local_path": "images/yc_in_up_varanasi_ratneshwar_mahadev_temple_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_ratneshwar_mahadev_temple_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Aditya_Narayan_Mishra_varanasi_(7).jpg",
-        "original_file": "Aditya Narayan Mishra varanasi (7).jpg",
-        "author": "Aditya Mishra varanasi",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 960,
-        "height": 733,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:28.027486+00:00",
-        "local_path": "images/yc_in_up_varanasi_ratneshwar_mahadev_temple_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_ratneshwar_mahadev_temple_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_sarnath_deer_park": {
     "primary": {
@@ -1815,40 +890,7 @@
       "local_path": "images/yc_in_up_varanasi_indian_institute_of_technology_bhu_varanasi/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_indian_institute_of_technology_bhu_varanasi/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:IIT_BHU_Varanasi.jpg",
-        "original_file": "IIT BHU Varanasi.jpg",
-        "author": "Rosehubwiki",
-        "license": "CC BY 4.0",
-        "license_url": "https://creativecommons.org/licenses/by/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 347,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:32.300565+00:00",
-        "local_path": "images/yc_in_up_varanasi_indian_institute_of_technology_bhu_varanasi_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_indian_institute_of_technology_bhu_varanasi_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Library_reading_hall.jpg",
-        "original_file": "Library reading hall.jpg",
-        "author": "Deepak Singhanwal",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:32.309416+00:00",
-        "local_path": "images/yc_in_up_varanasi_indian_institute_of_technology_bhu_varanasi_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_indian_institute_of_technology_bhu_varanasi_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_lal_khan_tomb": {
     "primary": {
@@ -1867,40 +909,7 @@
       "local_path": "images/yc_in_up_varanasi_lal_khan_tomb/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_lal_khan_tomb/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Graves_at_the_tomb_of_Lal_Khan.jpg",
-        "original_file": "Graves at the tomb of Lal Khan.jpg",
-        "author": "Nandanupadhyay",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:33.054017+00:00",
-        "local_path": "images/yc_in_up_varanasi_lal_khan_tomb_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_lal_khan_tomb_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Information_board_at_Tomb_of_Lal_Khan.jpg",
-        "original_file": "Information board at Tomb of Lal Khan.jpg",
-        "author": "Nandanupadhyay",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:33.062895+00:00",
-        "local_path": "images/yc_in_up_varanasi_lal_khan_tomb_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_lal_khan_tomb_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_stay_banaras": {
     "primary": {
@@ -1957,40 +966,7 @@
       "local_path": "images/yc_in_up_varanasi_benares_state/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_benares_state/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:\"Burning_Ghat_in_Benares\"_Around_the_World_on_Wheels_Letter_No._47_\"The_Inter_Ocean\"_July_18,_1897.jpg",
-        "original_file": "\"Burning Ghat in Benares\" Around the World on Wheels Letter No. 47 \"The Inter Ocean\" July 18, 1897.jpg",
-        "author": "Unknown authorUnknown author",
-        "license": "Public domain",
-        "license_url": "",
-        "attribution": null,
-        "width": 1150,
-        "height": 814,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:35.240203+00:00",
-        "local_path": "images/yc_in_up_varanasi_benares_state_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_benares_state_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Around_the_World_on_Wheels_Letter_No._47_\"The_Inter_Ocean\"_July_18,_1897_page_32.jpg",
-        "original_file": "Around the World on Wheels Letter No. 47 \"The Inter Ocean\" July 18, 1897 page 32.jpg",
-        "author": "Unknown authorUnknown author",
-        "license": "Public domain",
-        "license_url": "",
-        "attribution": null,
-        "width": 1280,
-        "height": 1548,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:35.249059+00:00",
-        "local_path": "images/yc_in_up_varanasi_benares_state_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_benares_state_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_mrityunjay_mahadev_mandir": {
     "primary": {
@@ -2066,40 +1042,7 @@
       "local_path": "images/yc_in_up_varanasi_shivala_ghat/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_shivala_ghat/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Chet_Singh_Ghat,_Varanasi,_India_-_October_2014.jpg",
-        "original_file": "Chet Singh Ghat, Varanasi, India - October 2014.jpg",
-        "author": "Rickard Törnblad",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 720,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:41.308506+00:00",
-        "local_path": "images/yc_in_up_varanasi_shivala_ghat_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_shivala_ghat_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Early_morning_holy_bathing_at_Shivala_Ghat..JPG",
-        "original_file": "Early morning holy bathing at Shivala Ghat..JPG",
-        "author": "Rudolph.A.furtado",
-        "license": "CC0",
-        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-        "attribution": null,
-        "width": 1160,
-        "height": 870,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:41.317279+00:00",
-        "local_path": "images/yc_in_up_varanasi_shivala_ghat_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_shivala_ghat_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_lal_bahadur_shastri_airport": {
     "primary": {
@@ -2137,40 +1080,7 @@
       "local_path": "images/yc_in_up_varanasi_kashi_vishwanath_temple/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_kashi_vishwanath_temple/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20220519159L2022071406593520220714082601.jpg",
-        "original_file": "20220519159L2022071406593520220714082601.jpg",
-        "author": "Das740724",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 600,
-        "height": 450,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:41.982749+00:00",
-        "local_path": "images/yc_in_up_varanasi_kashi_vishwanath_temple_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_kashi_vishwanath_temple_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Devotees_in_and_around_Kashi_Vishwanath_Temple_and_Gyan_Vapi_Masjid_in_Varanasi_India_During_Dev_Dipawali_01.jpg",
-        "original_file": "Devotees in and around Kashi Vishwanath Temple and Gyan Vapi Masjid in Varanasi India During Dev Dipawali 01.jpg",
-        "author": "Goutam1962",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 720,
-        "height": 607,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:41.983535+00:00",
-        "local_path": "images/yc_in_up_varanasi_kashi_vishwanath_temple_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_kashi_vishwanath_temple_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_gyanvapi_mosque": {
     "primary": {
@@ -2189,40 +1099,7 @@
       "local_path": "images/yc_in_up_varanasi_gyanvapi_mosque/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_gyanvapi_mosque/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Devotees_in_and_around_Kashi_Vishwanath_Temple_and_Gyan_Vapi_Masjid_in_Varanasi_India_During_Dev_Dipawali_01.jpg",
-        "original_file": "Devotees in and around Kashi Vishwanath Temple and Gyan Vapi Masjid in Varanasi India During Dev Dipawali 01.jpg",
-        "author": "Goutam1962",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 590,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:47.150983+00:00",
-        "local_path": "images/yc_in_up_varanasi_gyanvapi_mosque_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_gyanvapi_mosque_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Devotees_in_and_around_Kashi_Vishwanath_Temple_and_Gyan_Vapi_Masjid_in_Varanasi_India_During_Dev_Dipawali_02.jpg",
-        "original_file": "Devotees in and around Kashi Vishwanath Temple and Gyan Vapi Masjid in Varanasi India During Dev Dipawali 02.jpg",
-        "author": "Goutam1962",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 590,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:41:47.159336+00:00",
-        "local_path": "images/yc_in_up_varanasi_gyanvapi_mosque_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_gyanvapi_mosque_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_rani_laxmibai_janmasthali": {
     "primary": {
@@ -2317,40 +1194,7 @@
       "local_path": "images/yc_in_up_varanasi_bharat_mata_temple/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_bharat_mata_temple/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Bharat_Mata_(6333841995).jpg",
-        "original_file": "Bharat Mata (6333841995).jpg",
-        "author": "Manuel Menal",
-        "license": "CC BY-SA 2.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1925,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:42:05.174964+00:00",
-        "local_path": "images/yc_in_up_varanasi_bharat_mata_temple_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_bharat_mata_temple_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Bharat_Mata_Mandir_Varanasi_India_-_panoramio.jpg",
-        "original_file": "Bharat Mata Mandir Varanasi India - panoramio.jpg",
-        "author": "Hiroki Ogawa",
-        "license": "CC BY 3.0",
-        "license_url": "https://creativecommons.org/licenses/by/3.0",
-        "attribution": "Hiroki Ogawa",
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:42:05.176243+00:00",
-        "local_path": "images/yc_in_up_varanasi_bharat_mata_temple_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_bharat_mata_temple_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_durga_temple": {
     "primary": {
@@ -2369,40 +1213,7 @@
       "local_path": "images/yc_in_up_varanasi_durga_temple/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_durga_temple/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Corner_View_of_Old_Durga_Temple_of_Banaras.jpg",
-        "original_file": "Corner View of Old Durga Temple of Banaras.jpg",
-        "author": "Super.Kid.Sais",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 640,
-        "height": 800,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:42:05.833238+00:00",
-        "local_path": "images/yc_in_up_varanasi_durga_temple_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_durga_temple_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Elefant_wall_work_of_old_Durga_Temple_of_Banaras.jpg",
-        "original_file": "Elefant wall work of old Durga Temple of Banaras.jpg",
-        "author": "Super.Kid.Sais",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 750,
-        "height": 600,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:42:05.833773+00:00",
-        "local_path": "images/yc_in_up_varanasi_durga_temple_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_durga_temple_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_kaal_bhairav_temple": {
     "primary": {
@@ -2459,40 +1270,7 @@
       "local_path": "images/yc_in_up_varanasi_ahilyabai_ghat/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_ahilyabai_ghat/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:A_view_of_Munshi_Ghat,_Varanasi,_Uttar_Pradesh.jpg",
-        "original_file": "A view of Munshi Ghat, Varanasi, Uttar Pradesh.jpg",
-        "author": "Sangramgovardhane",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:42:17.742076+00:00",
-        "local_path": "images/yc_in_up_varanasi_ahilyabai_ghat_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_ahilyabai_ghat_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Ahilyabai,_Munshi,_Darbhanga_and_Rana-Mahal_Ghat,_Varanasi.jpg",
-        "original_file": "Ahilyabai, Munshi, Darbhanga and Rana-Mahal Ghat, Varanasi.jpg",
-        "author": "Vishwaalok",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 502,
-        "height": 377,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:42:17.742923+00:00",
-        "local_path": "images/yc_in_up_varanasi_ahilyabai_ghat_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_ahilyabai_ghat_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_ranamahal_ghat": {
     "primary": {
@@ -2701,40 +1479,7 @@
       "local_path": "images/yc_in_up_varanasi_reewa_ghat/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_reewa_ghat/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:9_-Tulsi-ghat.jpg",
-        "original_file": "9 -Tulsi-ghat.jpg",
-        "author": "Dwivedi Ashok",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1024,
-        "height": 685,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:42:53.295642+00:00",
-        "local_path": "images/yc_in_up_varanasi_reewa_ghat_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_reewa_ghat_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:An_ancient_monument_in_Tulsi_Ghat,_Varanasi,_Uttar_Pradesh,_India_(2017).jpg",
-        "original_file": "An ancient monument in Tulsi Ghat, Varanasi, Uttar Pradesh, India (2017).jpg",
-        "author": "Grjsonu",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 720,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:42:53.296246+00:00",
-        "local_path": "images/yc_in_up_varanasi_reewa_ghat_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_reewa_ghat_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_sakka_ghat": {
     "primary": {
@@ -3000,40 +1745,7 @@
       "local_path": "images/yc_in_up_varanasi_half_sunk_temple/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_half_sunk_temple/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:\"Suttee\"_pillar_where_Hindu_widows_were_burned,_Benares,_India_(14671460675).jpg",
-        "original_file": "\"Suttee\" pillar where Hindu widows were burned, Benares, India (14671460675).jpg",
-        "author": "Boston Public Library",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 643,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:44:10.744326+00:00",
-        "local_path": "images/yc_in_up_varanasi_half_sunk_temple_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_half_sunk_temple_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Aditya_Narayan_Mishra_varanasi_(7).jpg",
-        "original_file": "Aditya Narayan Mishra varanasi (7).jpg",
-        "author": "Aditya Mishra varanasi",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 960,
-        "height": 733,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:44:10.744851+00:00",
-        "local_path": "images/yc_in_up_varanasi_half_sunk_temple_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_half_sunk_temple_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_vaccharaja_ghat": {
     "primary": {
@@ -3147,40 +1859,7 @@
       "local_path": "images/yc_in_up_varanasi_man_singh_palace/primary.webp",
       "thumbnail_path": "images/yc_in_up_varanasi_man_singh_palace/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Banarasjan2.jpg",
-        "original_file": "Banarasjan2.jpg",
-        "author": "Archibald Campbell",
-        "license": "Public domain",
-        "license_url": "",
-        "attribution": null,
-        "width": 767,
-        "height": 411,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:44:25.628950+00:00",
-        "local_path": "images/yc_in_up_varanasi_man_singh_palace_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_man_singh_palace_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Benares_observatory.jpg",
-        "original_file": "Benares observatory.jpg",
-        "author": "Edward Crichton Hawkshaw",
-        "license": "Public domain",
-        "license_url": "",
-        "attribution": null,
-        "width": 500,
-        "height": 347,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:44:25.629914+00:00",
-        "local_path": "images/yc_in_up_varanasi_man_singh_palace_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_up_varanasi_man_singh_palace_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_up_varanasi_ashi_ghat_vanarasi": {
     "primary": {

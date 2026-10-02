@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../domain/curation/curated_place.dart';
 
 class PlaceEditorDialog extends StatefulWidget {
@@ -11,7 +12,8 @@ class PlaceEditorDialog extends StatefulWidget {
     String? phone,
     String? tier,
     required String evidenceSource,
-  }) onSave;
+  })
+  onSave;
 
   const PlaceEditorDialog({
     super.key,
@@ -30,7 +32,8 @@ class PlaceEditorDialog extends StatefulWidget {
       String? phone,
       String? tier,
       required String evidenceSource,
-    }) onSave,
+    })
+    onSave,
   }) {
     return showDialog(
       context: context,
@@ -56,10 +59,16 @@ class _PlaceEditorDialogState extends State<PlaceEditorDialog> {
     super.initState();
     _nameController = TextEditingController(text: widget.place.name);
     _nameHiController = TextEditingController(text: widget.place.nameHi ?? '');
-    _descController = TextEditingController(text: widget.place.description ?? '');
-    _websiteController = TextEditingController(text: widget.place.website ?? '');
+    _descController = TextEditingController(
+      text: widget.place.description ?? '',
+    );
+    _websiteController = TextEditingController(
+      text: widget.place.website ?? '',
+    );
     _phoneController = TextEditingController(text: widget.place.phone ?? '');
-    _sourceController = TextEditingController(text: 'Official website / Tourism department info');
+    _sourceController = TextEditingController(
+      text: 'Manual contributor correction',
+    );
     _selectedTier = widget.place.tier;
   }
 
@@ -81,7 +90,10 @@ class _PlaceEditorDialogState extends State<PlaceEditorDialog> {
         children: [
           const Icon(Icons.edit_note, color: Colors.blueAccent),
           const SizedBox(width: 8),
-          const Text('Edit Place Details', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          const Text(
+            'Edit Place Details',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
         ],
       ),
       content: SingleChildScrollView(
@@ -92,44 +104,80 @@ class _PlaceEditorDialogState extends State<PlaceEditorDialog> {
             mainAxisSize: MainAxisSize.min,
             children: [
               // English Name
-              const Text('Place Name (English):', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+              const Text(
+                'Place Name (English):',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+              ),
               const SizedBox(height: 6),
               TextField(
                 controller: _nameController,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 10,
+                  ),
                 ),
               ),
               const SizedBox(height: 12),
 
               // Hindi Name
-              const Text('Name (Hindi / Local Script):', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+              const Text(
+                'Name (Hindi / Local Script):',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+              ),
               const SizedBox(height: 6),
               TextField(
                 controller: _nameHiController,
                 decoration: InputDecoration(
                   hintText: 'e.g. हवा महल',
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 10,
+                  ),
                 ),
               ),
               const SizedBox(height: 12),
 
               // Tier selector
-              const Text('Tourism Tier / Prominence:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+              const Text(
+                'Tourism Tier / Prominence:',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+              ),
               const SizedBox(height: 6),
               DropdownButtonFormField<String>(
                 initialValue: _selectedTier,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 10,
+                  ),
                 ),
                 items: const [
-                  DropdownMenuItem(value: 'core_destination', child: Text('CORE DESTINATION (Flagship Landmark)')),
-                  DropdownMenuItem(value: 'recommended', child: Text('RECOMMENDED (Standard Sight / Dining)')),
-                  DropdownMenuItem(value: 'discovery', child: Text('DISCOVERY (Lesser-known spot)')),
-                  DropdownMenuItem(value: 'support', child: Text('SUPPORT (Transit / Facility)')),
+                  DropdownMenuItem(
+                    value: 'core_destination',
+                    child: Text('CORE DESTINATION (Flagship Landmark)'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'recommended',
+                    child: Text('RECOMMENDED (Standard Sight / Dining)'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'discovery',
+                    child: Text('DISCOVERY (Lesser-known spot)'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'support',
+                    child: Text('SUPPORT (Transit / Facility)'),
+                  ),
                 ],
                 onChanged: (val) {
                   if (val != null) setState(() => _selectedTier = val);
@@ -138,14 +186,20 @@ class _PlaceEditorDialogState extends State<PlaceEditorDialog> {
               const SizedBox(height: 12),
 
               // Description
-              const Text('Short Description:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+              const Text(
+                'Short Description:',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+              ),
               const SizedBox(height: 6),
               TextField(
                 controller: _descController,
                 maxLines: 3,
                 decoration: InputDecoration(
-                  hintText: 'Brief summary of what travelers can see and do here...',
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                  hintText:
+                      'Brief summary of what travelers can see and do here...',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                   contentPadding: const EdgeInsets.all(10),
                 ),
               ),
@@ -158,14 +212,25 @@ class _PlaceEditorDialogState extends State<PlaceEditorDialog> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Official Website:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                        const Text(
+                          'Official Website:',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                          ),
+                        ),
                         const SizedBox(height: 4),
                         TextField(
                           controller: _websiteController,
                           decoration: InputDecoration(
                             hintText: 'https://...',
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 8,
+                            ),
                           ),
                         ),
                       ],
@@ -176,14 +241,25 @@ class _PlaceEditorDialogState extends State<PlaceEditorDialog> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Phone Number:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                        const Text(
+                          'Phone Number:',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                          ),
+                        ),
                         const SizedBox(height: 4),
                         TextField(
                           controller: _phoneController,
                           decoration: InputDecoration(
                             hintText: '+91 ...',
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 8,
+                            ),
                           ),
                         ),
                       ],
@@ -194,14 +270,22 @@ class _PlaceEditorDialogState extends State<PlaceEditorDialog> {
               const SizedBox(height: 12),
 
               // Source
-              const Text('Source Evidence:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+              const Text(
+                'Source Evidence:',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+              ),
               const SizedBox(height: 6),
               TextField(
                 controller: _sourceController,
                 decoration: InputDecoration(
                   hintText: 'e.g. Official brochure, Rajasthan Tourism Portal',
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 10,
+                  ),
                 ),
               ),
             ],
@@ -231,12 +315,22 @@ class _PlaceEditorDialogState extends State<PlaceEditorDialog> {
 
             widget.onSave(
               name: name,
-              nameHi: _nameHiController.text.trim().isNotEmpty ? _nameHiController.text.trim() : null,
-              description: _descController.text.trim().isNotEmpty ? _descController.text.trim() : null,
-              website: _websiteController.text.trim().isNotEmpty ? _websiteController.text.trim() : null,
-              phone: _phoneController.text.trim().isNotEmpty ? _phoneController.text.trim() : null,
+              nameHi: _nameHiController.text.trim().isNotEmpty
+                  ? _nameHiController.text.trim()
+                  : null,
+              description: _descController.text.trim().isNotEmpty
+                  ? _descController.text.trim()
+                  : null,
+              website: _websiteController.text.trim().isNotEmpty
+                  ? _websiteController.text.trim()
+                  : null,
+              phone: _phoneController.text.trim().isNotEmpty
+                  ? _phoneController.text.trim()
+                  : null,
               tier: _selectedTier,
-              evidenceSource: _sourceController.text.trim().isNotEmpty ? _sourceController.text.trim() : 'Manual CMS Edit',
+              evidenceSource: _sourceController.text.trim().isNotEmpty
+                  ? _sourceController.text.trim()
+                  : 'Manual CMS Edit',
             );
             Navigator.of(context).pop();
           },

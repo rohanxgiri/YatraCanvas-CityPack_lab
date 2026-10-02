@@ -18,6 +18,22 @@ You do **not** need DataFactory or the YatraCanvas traveller-app repository for 
 
 ## 1. First-time setup
 
+### Curating a City
+
+1. Already committed packs need no DataFactory checkout. To refresh them, open **Sync Latest City Packs** in the workbench toolbar. Enter the DataFactory repository location, choose **Verify**, select cities, and choose **Sync**. The location is saved locally, outside Git. DataFactory need not be a sibling checkout.
+2. Run `.\citylab.ps1 start -Target windows`, select the city, and open its workbench.
+3. Start with **Release → View Blockers**, then **Inbox → Start Here**, which shows unresolved BLOCKING and HIGH records. Priority measures curator impact independently of confidence. Medium and Low remain available. **Identity Conflicts** shows colliding source records and records merge, separate, exclude or research decisions. Published collisions and repeated source identities require upstream repair. KEEP and EXCLUDE remain separate inclusion decisions after an identity resolution.
+4. Use **Edit details with a human override** for evidence backed corrections. The source name and human override remain separate. Never edit SQLite or the review manifest yourself.
+5. Open **QA** to spot check published places. Inspect the image, description, coordinates, hours and source information before PASS, ISSUE or Needs Research. P means Pass, I opens an Issue, and J/K or arrows move through the queue when you are not entering text. Skip does not count as reviewed. Progress and defects persist. **Open Place** and **Fix Now** connect findings to curation; **Recheck reviewed places** lets you inspect a correction again. Complete at least 50 distinct reviews. Finishing the sample does not dismiss defects or research.
+6. Open **Release**, refresh validation, inspect blockers and warnings, and export the report. A blocked report is evidence of unfinished work. Missing primary media, invalid replacement image evidence and unsafe identity decisions prevent certification. Sync removes unavailable optional gallery entries and keeps those removals in its validation receipt.
+7. When validation is READY, choose **Build Certified Pack** in Release. The canonical Python builder validates a separate output copy and writes its integrity and certification evidence. It applies curated changes without altering the source SQLite. The result includes its output location and expandable technical logs. Publishing remains a separate explicit action. Inspect and commit the curation artifacts through a Pull Request.
+
+The normal curator flow is graphical after initial setup. Python must be available locally for sync and certified builds. In **Local tools settings**, you can configure its executable and the City Lab checkout when necessary. Launch the desktop app through the checkout's start script so its working directory points to the same checkout. Changing the tools setting alone does not relocate the active curation workspace.
+
+Commit relevant `assets/city_packs/<city>/curation/inbox_decisions/*.json`, overrides, additions, exclusions, reviews, issues, media metadata, and the corresponding imported image files. Include `pubspec.yaml` only when its asset registrations intentionally changed. Sync preserves Inbox decisions and extra curated media files; inspect refreshed baseline files separately.
+
+Do not commit `build/`, `.dart_tool/`, temporary audit output, application support database copies, or generated QA exports by default. Release evidence belongs in a reviewed release submission when intentionally requested. The pack registry's source path is a sync receipt, not a required contributor path.
+
 Install:
 
 - Git;

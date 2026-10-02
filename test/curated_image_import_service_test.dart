@@ -41,13 +41,15 @@ void main() {
         originalFilename: 'Hawa Mahal.jpg',
         source: 'Wikimedia Commons',
         sourcePage: 'https://commons.wikimedia.org/example',
+        author: 'Test Photographer',
         license: 'CC BY-SA 4.0',
         licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
         contributor: 'qa-user',
       );
 
-      expect(result.primaryImagePath, 'images/hawa_mahal/primary.webp');
-      expect(result.thumbnailImagePath, 'images/hawa_mahal/thumbnail.webp');
+      expect(result.primaryImagePath, startsWith('images/curated_hawa_mahal_'));
+      expect(result.primaryImagePath, endsWith('/primary.webp'));
+      expect(result.thumbnailImagePath, endsWith('/thumbnail.webp'));
       expect(result.width, 1600);
       expect(result.height, lessThan(1600));
 
@@ -57,7 +59,7 @@ void main() {
         'city_packs',
         'jaipur',
         'images',
-        'hawa_mahal',
+        p.basename(p.dirname(result.primaryImagePath)),
       );
       final primaryBytes = await File(p.join(imageRoot, 'primary.webp'))
           .readAsBytes();
@@ -84,7 +86,7 @@ void main() {
       final metadata =
           jsonDecode(await metadataFile.readAsString()) as Map<String, dynamic>;
       expect(metadata['schemaVersion'], 1);
-      expect(metadata['author'], '');
+      expect(metadata['author'], 'Test Photographer');
       expect(metadata['contributor'], 'qa-user');
       expect(metadata['importedAt'], '2026-09-27T12:30:00.000Z');
       expect(metadata['originalSha256'], hasLength(64));
@@ -100,7 +102,8 @@ void main() {
           placeId: 'bad_file',
           sourceBytes: utf8.encode('not an image'),
           originalFilename: 'bad.jpg',
-          source: 'Contributor',
+          source: 'own work',
+      author: 'Test Photographer',
           sourcePage: '',
           license: 'Contributor owned',
           licenseUrl: '',
@@ -139,7 +142,8 @@ void main() {
         placeId: 'small_image',
         sourceBytes: img.encodePng(small),
         originalFilename: 'small.png',
-        source: 'Contributor',
+        source: 'own work',
+      author: 'Test Photographer',
         sourcePage: '',
         license: 'Contributor owned',
         licenseUrl: '',
@@ -163,10 +167,11 @@ void main() {
       placeId: 'amber_fort',
       sourceBytes: img.encodePng(source),
       originalFilename: 'amber.png',
-      source: 'Contributor',
+      source: 'own work',
+      author: 'Test Photographer',
       sourcePage: '',
       license: 'Contributor owned',
-      licenseUrl: '',
+      licenseUrl: 'https://creativecommons.org/licenses/by/4.0/',
       contributor: 'qa-user',
     );
 
@@ -175,7 +180,7 @@ void main() {
 
     final pubspec = await File(p.join(workspace.path, 'pubspec.yaml'))
         .readAsString();
-    final matches = RegExp('assets/city_packs/jaipur/images/amber_fort/')
+    final matches = RegExp('assets/city_packs/jaipur/images/curated_amber_fort_[a-f0-9]+/')
         .allMatches(pubspec);
     expect(matches.length, 1);
     expect(pubspec, contains('\r\n'));

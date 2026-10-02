@@ -16,40 +16,7 @@
       "local_path": "images/yc_in_rj_jaipur_jaigarh_fort/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_jaigarh_fort/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:18th_century_.38_bore_iron_pistol_at_Jaigarh_Fort.jpg",
-        "original_file": "18th century .38 bore iron pistol at Jaigarh Fort.jpg",
-        "author": "Noon Plastic",
-        "license": "CC BY 4.0",
-        "license_url": "https://creativecommons.org/licenses/by/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 720,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:10.655010+00:00",
-        "local_path": "images/yc_in_rj_jaipur_jaigarh_fort_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_jaigarh_fort_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:18th_century_.38_bore_iron_pistols_at_Jaigarh_Fort.jpg",
-        "original_file": "18th century .38 bore iron pistols at Jaigarh Fort.jpg",
-        "author": "Noon Plastic",
-        "license": "CC BY 4.0",
-        "license_url": "https://creativecommons.org/licenses/by/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 2275,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:10.655886+00:00",
-        "local_path": "images/yc_in_rj_jaipur_jaigarh_fort_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_jaigarh_fort_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_hawa_mahal": {
     "primary": {
@@ -68,40 +35,7 @@
       "local_path": "images/yc_in_rj_jaipur_hawa_mahal/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_hawa_mahal/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:2013-Jaipur-Hawa-Mahal-104.JPG",
-        "original_file": "2013-Jaipur-Hawa-Mahal-104.JPG",
-        "author": "Wiki-uk",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1920,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:11.391211+00:00",
-        "local_path": "images/yc_in_rj_jaipur_hawa_mahal_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_hawa_mahal_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:2013-Jaipur-Hawa-Mahal-106.JPG",
-        "original_file": "2013-Jaipur-Hawa-Mahal-106.JPG",
-        "author": "Wiki-uk",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:11.391860+00:00",
-        "local_path": "images/yc_in_rj_jaipur_hawa_mahal_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_hawa_mahal_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_moti_dungri_mandir": {
     "primary": {
@@ -120,40 +54,7 @@
       "local_path": "images/yc_in_rj_jaipur_moti_dungri_mandir/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_moti_dungri_mandir/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Ganesh_temple_jaipur_.jpg",
-        "original_file": "Ganesh temple jaipur .jpg",
-        "author": "Kanhaiyalal Chouhan",
-        "license": "CC BY 4.0",
-        "license_url": "https://creativecommons.org/licenses/by/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:12.052934+00:00",
-        "local_path": "images/yc_in_rj_jaipur_moti_dungri_mandir_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_moti_dungri_mandir_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Ganesh_temple_jaipur_2.jpg",
-        "original_file": "Ganesh temple jaipur 2.jpg",
-        "author": "Kanhaiyalal Chouhan",
-        "license": "CC BY 4.0",
-        "license_url": "https://creativecommons.org/licenses/by/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:12.053644+00:00",
-        "local_path": "images/yc_in_rj_jaipur_moti_dungri_mandir_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_moti_dungri_mandir_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_jantar_mantar": {
     "primary": {
@@ -172,40 +73,7 @@
       "local_path": "images/yc_in_rj_jaipur_jantar_mantar/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_jantar_mantar/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20191218_Jantar_Mantar,_Jaipur_0908_8989.jpg",
-        "original_file": "20191218 Jantar Mantar, Jaipur 0908 8989.jpg",
-        "author": "Jakub Hałun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 851,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:12.637447+00:00",
-        "local_path": "images/yc_in_rj_jaipur_jantar_mantar_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_jantar_mantar_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:A_section_of_Jantar_Mantar.jpg",
-        "original_file": "A section of Jantar Mantar.jpg",
-        "author": "Vabinik",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:12.638171+00:00",
-        "local_path": "images/yc_in_rj_jaipur_jantar_mantar_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_jantar_mantar_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_anokhi_museum_of_hand_printing": {
     "primary": {
@@ -243,40 +111,7 @@
       "local_path": "images/yc_in_rj_jaipur_albert_hall_museum/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_albert_hall_museum/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Handbook_to_the_Jeypore_Museum_(IA_handbooktojeypor00jaip).pdf",
-        "original_file": "Handbook to the Jeypore Museum (IA handbooktojeypor00jaip).pdf",
-        "author": "Jaipur (India). Museum Hendley, Thomas Holbein, 1847-1917 Griggs, William, 1832-1911",
-        "license": "Public domain",
-        "license_url": "",
-        "attribution": null,
-        "width": 768,
-        "height": 1024,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:13.267255+00:00",
-        "local_path": "images/yc_in_rj_jaipur_albert_hall_museum_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_albert_hall_museum_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Albert_Hall_(inside).JPG",
-        "original_file": "Albert Hall (inside).JPG",
-        "author": "Manaska",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:13.268002+00:00",
-        "local_path": "images/yc_in_rj_jaipur_albert_hall_museum_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_albert_hall_museum_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_sisodia_rani_palace_and_garden": {
     "primary": {
@@ -295,40 +130,7 @@
       "local_path": "images/yc_in_rj_jaipur_sisodia_rani_palace_and_garden/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_sisodia_rani_palace_and_garden/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Jeu_De_Lumières_2_(102580575).jpeg",
-        "original_file": "Jeu De Lumières 2 (102580575).jpeg",
-        "author": "Alexandre Ultré",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:14.006851+00:00",
-        "local_path": "images/yc_in_rj_jaipur_sisodia_rani_palace_and_garden_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_sisodia_rani_palace_and_garden_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Sisodia_Rani_Bagh,_Jaipur,_Rajasthan_(DSCN4756).jpg",
-        "original_file": "Sisodia Rani Bagh, Jaipur, Rajasthan (DSCN4756).jpg",
-        "author": "কুমুদ ঘোষ",
-        "license": "CC BY 4.0",
-        "license_url": "https://creativecommons.org/licenses/by/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:14.007715+00:00",
-        "local_path": "images/yc_in_rj_jaipur_sisodia_rani_palace_and_garden_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_sisodia_rani_palace_and_garden_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_zoological_garden": {
     "primary": {
@@ -347,24 +149,7 @@
       "local_path": "images/yc_in_rj_jaipur_zoological_garden/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_zoological_garden/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Lotus_leaves.jpg",
-        "original_file": "Lotus leaves.jpg",
-        "author": "ARPITGUPTA17051993",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 720,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:14.607571+00:00",
-        "local_path": "images/yc_in_rj_jaipur_zoological_garden_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_zoological_garden_g1/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_city_palace": {
     "primary": {
@@ -383,40 +168,7 @@
       "local_path": "images/yc_in_rj_jaipur_city_palace/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_city_palace/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:A_gate_in_Jaipur_city_palace_looking_out_to_the_Mubaraq_Mahal.jpg",
-        "original_file": "A gate in Jaipur city palace looking out to the Mubaraq Mahal.jpg",
-        "author": "Chainwit.",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:15.968215+00:00",
-        "local_path": "images/yc_in_rj_jaipur_city_palace_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_city_palace_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:A_light_structure_in_the_City_Palace_complex,_Jaipur.jpg",
-        "original_file": "A light structure in the City Palace complex, Jaipur.jpg",
-        "author": "Dainis Matisons from Mezares, Latvia, EU",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1706,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:15.969016+00:00",
-        "local_path": "images/yc_in_rj_jaipur_city_palace_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_city_palace_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_birla_mandir_aka_the_marble_temple": {
     "primary": {
@@ -435,40 +187,7 @@
       "local_path": "images/yc_in_rj_jaipur_birla_mandir_aka_the_marble_temple/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_birla_mandir_aka_the_marble_temple/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:A_old_fort_with_beautiful_flowers.jpg",
-        "original_file": "A old fort with beautiful flowers.jpg",
-        "author": "Gujjarnottyy",
-        "license": "CC0",
-        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-        "attribution": null,
-        "width": 1280,
-        "height": 575,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:16.647176+00:00",
-        "local_path": "images/yc_in_rj_jaipur_birla_mandir_aka_the_marble_temple_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_birla_mandir_aka_the_marble_temple_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Astik_at_Birla_Mandir_Jaipur.jpg",
-        "original_file": "Astik at Birla Mandir Jaipur.jpg",
-        "author": "Sau275",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 2275,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:16.648167+00:00",
-        "local_path": "images/yc_in_rj_jaipur_birla_mandir_aka_the_marble_temple_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_birla_mandir_aka_the_marble_temple_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_galtaji": {
     "primary": {
@@ -487,40 +206,7 @@
       "local_path": "images/yc_in_rj_jaipur_galtaji/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_galtaji/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Galta_Ji_Mandir_(14-07-2022)_img_04.jpg",
-        "original_file": "Galta Ji Mandir (14-07-2022) img 04.jpg",
-        "author": "Chainwit.",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:17.331408+00:00",
-        "local_path": "images/yc_in_rj_jaipur_galtaji_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_galtaji_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Galtaji_in_Jaipur-7.jpg",
-        "original_file": "Galtaji in Jaipur-7.jpg",
-        "author": "Immanuelle",
-        "license": "CC BY 4.0",
-        "license_url": "https://creativecommons.org/licenses/by/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:17.332230+00:00",
-        "local_path": "images/yc_in_rj_jaipur_galtaji_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_galtaji_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_govind_devji_temple": {
     "primary": {
@@ -539,40 +225,7 @@
       "local_path": "images/yc_in_rj_jaipur_govind_devji_temple/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_govind_devji_temple/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Barbajit_Pur.jpg",
-        "original_file": "Barbajit Pur.jpg",
-        "author": "Santanulove",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1258,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:17.993133+00:00",
-        "local_path": "images/yc_in_rj_jaipur_govind_devji_temple_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_govind_devji_temple_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Echoes_of_ancient_architecture.jpg",
-        "original_file": "Echoes of ancient architecture.jpg",
-        "author": "Arjunfotografer",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:17.993825+00:00",
-        "local_path": "images/yc_in_rj_jaipur_govind_devji_temple_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_govind_devji_temple_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_jagat_shiromani_temple": {
     "primary": {
@@ -591,40 +244,7 @@
       "local_path": "images/yc_in_rj_jaipur_jagat_shiromani_temple/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_jagat_shiromani_temple/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:\"A_beautiful_moment\",_Jagat_Shiromani_temple,_Amer,_Jaipur,_India.jpg",
-        "original_file": "\"A beautiful moment\", Jagat Shiromani temple, Amer, Jaipur, India.jpg",
-        "author": "Wellwornbackpack",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1924,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:18.629683+00:00",
-        "local_path": "images/yc_in_rj_jaipur_jagat_shiromani_temple_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_jagat_shiromani_temple_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Amber_-_Sri_Jagat_Siromani_Temple_-_1.jpg",
-        "original_file": "Amber - Sri Jagat Siromani Temple - 1.jpg",
-        "author": "This illustration was made by Peter Potrowl. Please credit this with : © Peter Potrowl in the immediate vicinity of the image. A link to my website sitemai.eu would be much appreciated but isn't mandatory. An email to Peter Potrowl would be appreciated too. Do not copy this image illegally by ignoring the terms of the license below, as it is not in the public domain. If you would like special permission to use, license, or purchase the image please contact me Peter Potrowl to negotiate terms. More free pictures in my website. Donations are accepted here and here.",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:18.630396+00:00",
-        "local_path": "images/yc_in_rj_jaipur_jagat_shiromani_temple_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_jagat_shiromani_temple_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_amrapali_museum": {
     "primary": {
@@ -643,40 +263,7 @@
       "local_path": "images/yc_in_rj_jaipur_amrapali_museum/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_amrapali_museum/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:AMRAPALI_ASHOK_MARG.png",
-        "original_file": "AMRAPALI ASHOK MARG.png",
-        "author": "Amrapali Museum",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 577,
-        "height": 582,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:19.283220+00:00",
-        "local_path": "images/yc_in_rj_jaipur_amrapali_museum_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_amrapali_museum_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Bracelets_from_Assam.jpg",
-        "original_file": "Bracelets from Assam.jpg",
-        "author": "Neek-Theri",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 768,
-        "height": 1024,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:19.283975+00:00",
-        "local_path": "images/yc_in_rj_jaipur_amrapali_museum_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_amrapali_museum_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_taj_rambagh_palace_hotel": {
     "primary": {
@@ -714,40 +301,7 @@
       "local_path": "images/yc_in_rj_jaipur_amber_fort/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_amber_fort/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:13278-Jaipur_(49214021817).jpg",
-        "original_file": "13278-Jaipur (49214021817).jpg",
-        "author": "xiquinhosilva",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 780,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:20.565443+00:00",
-        "local_path": "images/yc_in_rj_jaipur_amber_fort_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_amber_fort_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:13284-Jaipur_(49213310643).jpg",
-        "original_file": "13284-Jaipur (49213310643).jpg",
-        "author": "xiquinhosilva",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1706,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:20.566338+00:00",
-        "local_path": "images/yc_in_rj_jaipur_amber_fort_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_amber_fort_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_nahargarh_fort": {
     "primary": {
@@ -766,40 +320,7 @@
       "local_path": "images/yc_in_rj_jaipur_nahargarh_fort/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_nahargarh_fort/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Nahargarh_007.jpg",
-        "original_file": "Nahargarh 007.jpg",
-        "author": "Anupamg",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:21.192281+00:00",
-        "local_path": "images/yc_in_rj_jaipur_nahargarh_fort_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_nahargarh_fort_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20191218_Fort_Nahargarh,_Jaipur_1514_9294.jpg",
-        "original_file": "20191218 Fort Nahargarh, Jaipur 1514 9294.jpg",
-        "author": "Jakub Hałun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 862,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:21.193018+00:00",
-        "local_path": "images/yc_in_rj_jaipur_nahargarh_fort_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_nahargarh_fort_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_jal_mahal": {
     "primary": {
@@ -856,40 +377,7 @@
       "local_path": "images/yc_in_rj_jaipur_shri_digamber_jain_atishya_kshetra_mandir_sanghiji/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_shri_digamber_jain_atishya_kshetra_mandir_sanghiji/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Ancient_gate_with_intricate_carvings_at_Sanghiji_Jain_Temple_in_Sanganer,_Jaipur,_Rajasthan,_India._The_temple_enshrines_a_beautiful_and_ancient_idol_of_Lord_Parshvanath_Bhagwan..jpg",
-        "original_file": "Ancient gate with intricate carvings at Sanghiji Jain Temple in Sanganer, Jaipur, Rajasthan, India. The temple enshrines a beautiful and ancient idol of Lord Parshvanath Bhagwan..jpg",
-        "author": "Hiten Jain (Glory of Jainism)",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1700,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:21.874833+00:00",
-        "local_path": "images/yc_in_rj_jaipur_shri_digamber_jain_atishya_kshetra_mandir_sanghiji_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_shri_digamber_jain_atishya_kshetra_mandir_sanghiji_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Ancient_idol_of_Lord_Parshvanath_with_other_Tirthankaras_at_Sanghiji,_Sanganer,_Jaipur.jpg",
-        "original_file": "Ancient idol of Lord Parshvanath with other Tirthankaras at Sanghiji, Sanganer, Jaipur.jpg",
-        "author": "Hiten Jain (Glory of Jainism)",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1700,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:21.875859+00:00",
-        "local_path": "images/yc_in_rj_jaipur_shri_digamber_jain_atishya_kshetra_mandir_sanghiji_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_shri_digamber_jain_atishya_kshetra_mandir_sanghiji_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_jawahar_circle": {
     "primary": {
@@ -908,24 +396,7 @@
       "local_path": "images/yc_in_rj_jaipur_jawahar_circle/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_jawahar_circle/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:ASHOK_KUMAR_2026.jpg",
-        "original_file": "ASHOK KUMAR 2026.jpg",
-        "author": "ASHOKRAJASTHHANN",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1118,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:22.507069+00:00",
-        "local_path": "images/yc_in_rj_jaipur_jawahar_circle_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_jawahar_circle_g1/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_sawai_mansingh_stadium": {
     "primary": {
@@ -1058,40 +529,7 @@
       "local_path": "images/yc_in_rj_jaipur_dalaram_bagh/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_dalaram_bagh/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Amber_Fort_-_Mahota_Lake_and_Garden.jpg",
-        "original_file": "Amber Fort - Mahota Lake and Garden.jpg",
-        "author": "Vssun",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:25.012137+00:00",
-        "local_path": "images/yc_in_rj_jaipur_dalaram_bagh_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_dalaram_bagh_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Amber_Fort_Jaipur_Rajasthan_2.jpg",
-        "original_file": "Amber Fort Jaipur Rajasthan 2.jpg",
-        "author": "LaxmanJangidMokhampura",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:25.012806+00:00",
-        "local_path": "images/yc_in_rj_jaipur_dalaram_bagh_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_dalaram_bagh_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_ram_niwas_garden": {
     "primary": {
@@ -1129,24 +567,7 @@
       "local_path": "images/yc_in_rj_jaipur_akabar_ke_kos_chinha/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_akabar_ke_kos_chinha/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Kos_minar_16_September_2024.jpg",
-        "original_file": "Kos minar 16 September 2024.jpg",
-        "author": "Vargau",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1706,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:36.431011+00:00",
-        "local_path": "images/yc_in_rj_jaipur_akabar_ke_kos_chinha_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_akabar_ke_kos_chinha_g1/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_jaivan_canon": {
     "primary": {
@@ -1184,40 +605,7 @@
       "local_path": "images/yc_in_rj_jaipur_kesar_kyari/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_kesar_kyari/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:(An)_Aerial_view_of_Jaipur_Rajasthan_India_2013.jpg",
-        "original_file": "(An) Aerial view of Jaipur Rajasthan India 2013.jpg",
-        "author": "Piyush Kumar",
-        "license": "CC BY 2.0",
-        "license_url": "https://creativecommons.org/licenses/by/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:40.448085+00:00",
-        "local_path": "images/yc_in_rj_jaipur_kesar_kyari_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_kesar_kyari_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:500px_photo_(102577897).jpeg",
-        "original_file": "500px photo (102577897).jpeg",
-        "author": "Alexandre Ultré",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:40.448962+00:00",
-        "local_path": "images/yc_in_rj_jaipur_kesar_kyari_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_kesar_kyari_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_bissau_palace_hotel": {
     "primary": {
@@ -1255,40 +643,7 @@
       "local_path": "images/yc_in_rj_jaipur_royal_gaitor/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_royal_gaitor/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:02f-Gaitore_Ki_Chhatriyan_(NgnL)-0002332.jpg",
-        "original_file": "02f-Gaitore Ki Chhatriyan (NgnL)-0002332.jpg",
-        "author": "No(0)GoodNamesLeft",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:42.710908+00:00",
-        "local_path": "images/yc_in_rj_jaipur_royal_gaitor_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_royal_gaitor_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20111024_-_044_-_Royal_Gaitor.jpg",
-        "original_file": "20111024 - 044 - Royal Gaitor.jpg",
-        "author": "Politvs",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:42.711704+00:00",
-        "local_path": "images/yc_in_rj_jaipur_royal_gaitor_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_royal_gaitor_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_stepwell_panna_meena": {
     "primary": {
@@ -1307,40 +662,7 @@
       "local_path": "images/yc_in_rj_jaipur_stepwell_panna_meena/primary.webp",
       "thumbnail_path": "images/yc_in_rj_jaipur_stepwell_panna_meena/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20191219_Panna_Meena_ka_Kund_step_well,_Amber,_Jaipur,_1130_9628.jpg",
-        "original_file": "20191219 Panna Meena ka Kund step well, Amber, Jaipur, 1130 9628.jpg",
-        "author": "Jakub Hałun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 2085,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:43.536980+00:00",
-        "local_path": "images/yc_in_rj_jaipur_stepwell_panna_meena_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_stepwell_panna_meena_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20191219_Panna_Meena_ka_Kund_step_well,_Amber,_Jaipur,_1130_9630.jpg",
-        "original_file": "20191219 Panna Meena ka Kund step well, Amber, Jaipur, 1130 9630.jpg",
-        "author": "Jakub Hałun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1925,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:32:43.537731+00:00",
-        "local_path": "images/yc_in_rj_jaipur_stepwell_panna_meena_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_jaipur_stepwell_panna_meena_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_jaipur_jaipur_wax_museum": {
     "primary": {

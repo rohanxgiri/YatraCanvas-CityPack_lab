@@ -31,6 +31,8 @@ import '../review/models/review_candidate.dart';
 import '../review/models/inbox_decision.dart';
 import '../review/services/review_manifest_loader.dart';
 import '../review/repository/inbox_decision_repository.dart';
+import '../review/models/identity_conflict.dart';
+import '../quality/services/media_integrity_service.dart';
 
 class AppState extends ChangeNotifier {
   final CityPackRegistry registry = CityPackRegistry();
@@ -92,11 +94,15 @@ class AppState extends ChangeNotifier {
 
   /// Whether review_candidates.json was absent when the pack was opened.
   bool reviewManifestMissing = false;
+  List<String> mediaIntegrityBlockers = [];
+  List<IdentityConflict> identityConflicts = [];
 
   int get unresolvedHighPriorityCount => reviewCandidates
-      .where((c) =>
-          c.reviewPriority == ReviewPriority.high &&
-          !(inboxDecisions[c.canonicalId]?.isResolved ?? false))
+      .where(
+        (c) =>
+            c.reviewPriority.sortOrder <= ReviewPriority.high.sortOrder &&
+            !(inboxDecisions[c.canonicalId]?.isResolved ?? false),
+      )
       .length;
 
   int get unresolvedReviewCount => reviewCandidates
@@ -176,8 +182,14 @@ class AppState extends ChangeNotifier {
   /// Detects "changed since review" for any candidate that changed in a
   /// DataFactory regeneration.
   Future<void> loadReviewManifest(String cityId) async {
-    final result = await _manifestLoader.load(cityId);
+    final published =
+        await repository?.database.db.query('places', columns: ['id']) ?? [];
+    final result = await _manifestLoader.load(
+      cityId,
+      publishedIds: published.map((row) => row['id'] as String).toSet(),
+    );
     reviewManifestMissing = result.isMissing;
+    identityConflicts = result.conflicts;
     reviewManifestWarning = result.warnings.isNotEmpty
         ? result.warnings.join(' ')
         : result.error;
@@ -186,6 +198,24 @@ class AppState extends ChangeNotifier {
 
     // Load previously saved decisions
     final saved = await inboxDecisionRepo.loadDecisions(cityId);
+    final availableIds = {
+      ...sorted.map((c) => c.canonicalId),
+      ...identityConflicts.map((c) => c.canonicalId),
+    };
+    final stale = saved.keys.where((id) => !availableIds.contains(id)).toList();
+    if (stale.isNotEmpty) {
+      reviewManifestWarning = [
+        ?reviewManifestWarning,
+        '${stale.length} saved decisions refer to missing candidates: ${stale.join(", ")}. '
+            'They are preserved but not applied. Refresh the source to restore missing evidence before certification.',
+      ].join(' ');
+    }
+    if (inboxDecisionRepo.loadWarnings.isNotEmpty) {
+      reviewManifestWarning = [
+        ?reviewManifestWarning,
+        ...inboxDecisionRepo.loadWarnings,
+      ].join(' ');
+    }
 
     // Run changed-since-review detection
     final updated = <String, InboxDecision>{};
@@ -235,6 +265,7 @@ class AppState extends ChangeNotifier {
   /// decision.
   InboxDecisionSnapshot snapshotOf(ReviewCandidate c) {
     return InboxDecisionSnapshot(
+      semanticFields: InboxDecisionRepository.semanticFieldsOf(c),
       travelRelevanceReason: c.travelRelevanceReason,
       travelRelevanceScore: c.travelRelevanceScore,
       confidence: c.confidence,
@@ -249,6 +280,16 @@ class AppState extends ChangeNotifier {
     notifyListeners();
 
     try {
+      await curationService.loadCityCuration(activePack!.id);
+      final published = await repository!.database.db.query(
+        'places',
+        columns: ['id'],
+      );
+      curationService.applyInboxDecisions(
+        reviewCandidates,
+        inboxDecisions,
+        published.map((p) => p['id'] as String).toSet(),
+      );
       final rawStats = await repository!.getQualityStats();
       qualityStats = curationService.computeCuratedStats(rawStats);
       categoryCoverageMatrix = await repository!.getCategoryCoverageMatrix();
@@ -256,7 +297,9 @@ class AppState extends ChangeNotifier {
       // Combine git-tracked reviews/issues with any session reviews/issues
       final combinedReviews = [
         ...curationService.reviews.values,
-        ...(currentSession?.randomReviews ?? []),
+        ...(currentSession?.randomReviews ?? []).where(
+          (review) => !curationService.reviews.containsKey(review.placeId),
+        ),
       ];
       final combinedIssues = [
         ...curationService.issues.values,
@@ -279,6 +322,15 @@ class AppState extends ChangeNotifier {
         dbStats: qualityStats ?? {},
       );
 
+      mediaIntegrityBlockers = await MediaIntegrityService().validate(
+        activePack!.id,
+        excluded: curationService.exclusions.keys.toSet(),
+        overrides: {
+          for (final e in curationService.overrides.entries)
+            if (e.value.primaryImagePath != null)
+              e.key: e.value.primaryImagePath!,
+        },
+      );
       releaseGateResult = releaseGateService.evaluate(
         pack: activePack!,
         dbStats: qualityStats ?? {},
@@ -287,6 +339,8 @@ class AppState extends ChangeNotifier {
         manualQa: manualQaSummary!,
         reviewCandidates: reviewCandidates,
         inboxDecisions: inboxDecisions,
+        reviewManifestProblem: reviewManifestWarning,
+        mediaIntegrityBlockers: mediaIntegrityBlockers,
       );
 
       dataGaps = dataGapService.analyzeGaps(
@@ -295,6 +349,15 @@ class AppState extends ChangeNotifier {
       );
     } catch (e) {
       debugPrint('[ERROR] Failed to evaluate city quality: $e');
+      releaseGateResult = ReleaseGateResult(
+        status: ReleaseStatus.blocked,
+        criticalBlockers: [
+          'Quality evaluation failed: $e. Reopen the city or refresh valid source data before certification.',
+        ],
+        warnings: const [],
+        checks: const {'quality_evaluation_valid': false},
+        timestamp: DateTime.now().toUtc().toIso8601String(),
+      );
     } finally {
       isEvaluatingQuality = false;
       notifyListeners();
@@ -478,6 +541,7 @@ class AppState extends ChangeNotifier {
     required String originalFilename,
     required String source,
     required String sourcePage,
+    String author = '',
     required String license,
     required String licenseUrl,
   }) async {
@@ -495,6 +559,7 @@ class AppState extends ChangeNotifier {
       originalFilename: originalFilename,
       source: source,
       sourcePage: sourcePage,
+      author: author,
       license: license,
       licenseUrl: licenseUrl,
       contributor: contributorName,
@@ -670,6 +735,17 @@ class AppState extends ChangeNotifier {
       releaseGate: releaseGateResult!,
       manualQa: manualQaSummary!,
       dbStats: qualityStats,
+      reviewState: {
+        'selectable_candidates': reviewCandidates.length,
+        'resolved': inboxDecisions.values.where((d) => d.isResolved).length,
+        'needs_research': inboxDecisions.values
+            .where((d) => d.verdict == InboxVerdict.needsResearch)
+            .length,
+        'changed_since_review': inboxDecisions.values
+            .where((d) => d.changedSinceReview)
+            .length,
+        'manifest_warning': reviewManifestWarning,
+      },
     );
   }
 

@@ -59,6 +59,7 @@ void main() {
       final pack = createMockPack();
       final stats = {
         'total_places': 10000,
+        'places_with_valid_category': 10000,
         'core_total': 80,
         'core_with_images': 75,
         'core_with_hours': 70,
@@ -92,7 +93,11 @@ void main() {
         score: 0.95,
       );
 
-      final dq = qualityService.calculateScore(pack: pack, dbStats: stats, manualQa: manualQa);
+      final dq = qualityService.calculateScore(
+        pack: pack,
+        dbStats: stats,
+        manualQa: manualQa,
+      );
       final tr = travelService.calculateScore(pack: pack, dbStats: stats);
       final gate = releaseService.evaluate(
         pack: pack,
@@ -113,6 +118,7 @@ void main() {
       final pack = createMockPack();
       final stats = {
         'total_places': 10000,
+        'places_with_valid_category': 10000,
         'core_total': 80,
         'core_with_images': 75,
         'core_with_hours': 70,
@@ -125,10 +131,7 @@ void main() {
         'with_phone': 8000,
         'shared_coords_places_count': 0,
         'multi_source_count': 6000,
-        'category_counts': {
-          'attraction': 200,
-          'food': 2000,
-        },
+        'category_counts': {'attraction': 200, 'food': 2000},
       };
 
       const manualQa = ManualQaSummary(
@@ -141,7 +144,11 @@ void main() {
         score: 0.97,
       );
 
-      final dq = qualityService.calculateScore(pack: pack, dbStats: stats, manualQa: manualQa);
+      final dq = qualityService.calculateScore(
+        pack: pack,
+        dbStats: stats,
+        manualQa: manualQa,
+      );
       final tr = travelService.calculateScore(pack: pack, dbStats: stats);
       final gate = releaseService.evaluate(
         pack: pack,
@@ -154,62 +161,76 @@ void main() {
       // Even if overall numerical score is relatively high, critical failure MUST block release!
       expect(gate.status, equals(ReleaseStatus.blocked));
       expect(gate.isBlocked, isTrue);
-      expect(gate.criticalBlockers.any((b) => b.contains('Core Destination')), isTrue);
+      expect(
+        gate.criticalBlockers.any((b) => b.contains('Core Destination')),
+        isTrue,
+      );
     });
 
-    test('Case C — Zero manual QA never produces 100% (Non-negotiable 0.1)', () {
-      final pack = createMockPack();
-      final stats = {
-        'total_places': 10000,
-        'core_total': 80,
-        'core_with_images': 50,
-        'core_with_hours': 40,
-        'core_with_wikidata': 50,
-        'core_outside_bounds': 0,
-        'places_outside_bounds': 0,
-        'with_images': 500,
-        'with_opening_hours': 300,
-        'with_website': 1000,
-        'with_phone': 1000,
-        'shared_coords_places_count': 10,
-        'multi_source_count': 500,
-        'category_counts': {'attraction': 50, 'food': 500},
-      };
+    test(
+      'Case C — Zero manual QA never produces 100% (Non-negotiable 0.1)',
+      () {
+        final pack = createMockPack();
+        final stats = {
+          'total_places': 10000,
+          'places_with_valid_category': 10000,
+          'core_total': 80,
+          'core_with_images': 50,
+          'core_with_hours': 40,
+          'core_with_wikidata': 50,
+          'core_outside_bounds': 0,
+          'places_outside_bounds': 0,
+          'with_images': 500,
+          'with_opening_hours': 300,
+          'with_website': 1000,
+          'with_phone': 1000,
+          'shared_coords_places_count': 10,
+          'multi_source_count': 500,
+          'category_counts': {'attraction': 50, 'food': 500},
+        };
 
-      // 0 reviews completed
-      const manualQa = ManualQaSummary(
-        state: ManualQaState.notStarted,
-        reviewedCount: 0,
-        minimumRequired: 50,
-        approvedCount: 0,
-        issueCount: 0,
-        uncertainCount: 0,
-        score: null,
-      );
+        // 0 reviews completed
+        const manualQa = ManualQaSummary(
+          state: ManualQaState.notStarted,
+          reviewedCount: 0,
+          minimumRequired: 50,
+          approvedCount: 0,
+          issueCount: 0,
+          uncertainCount: 0,
+          score: null,
+        );
 
-      expect(manualQa.score, isNull);
-      expect(manualQa.displayStatus, equals('NOT STARTED'));
+        expect(manualQa.score, isNull);
+        expect(manualQa.displayStatus, equals('NOT_STARTED'));
 
-      final dq = qualityService.calculateScore(pack: pack, dbStats: stats, manualQa: manualQa);
-      final manualDimension = dq.getDimension('manual_qa');
+        final dq = qualityService.calculateScore(
+          pack: pack,
+          dbStats: stats,
+          manualQa: manualQa,
+        );
+        final manualDimension = dq.getDimension('manual_qa');
 
-      expect(manualDimension, isNotNull);
-      expect(manualDimension!.score, isNull);
-      expect(manualDimension.status, equals(DimensionStatus.notMeasured));
+        expect(manualDimension, isNotNull);
+        expect(manualDimension!.score, isNull);
+        expect(manualDimension.status, equals(DimensionStatus.notMeasured));
 
-      final tr = travelService.calculateScore(pack: pack, dbStats: stats);
-      final gate = releaseService.evaluate(
-        pack: pack,
-        dbStats: stats,
-        dataQuality: dq,
-        travelReadiness: tr,
-        manualQa: manualQa,
-      );
+        final tr = travelService.calculateScore(pack: pack, dbStats: stats);
+        final gate = releaseService.evaluate(
+          pack: pack,
+          dbStats: stats,
+          dataQuality: dq,
+          travelReadiness: tr,
+          manualQa: manualQa,
+        );
 
-      // Release must be blocked when manual QA has not started
-      expect(gate.status, equals(ReleaseStatus.blocked));
-      expect(gate.criticalBlockers.any((b) => b.contains('Manual QA not started')), isTrue);
-    });
+        // Release must be blocked when manual QA has not started
+        expect(gate.status, equals(ReleaseStatus.blocked));
+        expect(
+          gate.criticalBlockers.any((b) => b.contains('Manual QA not started')),
+          isTrue,
+        );
+      },
+    );
 
     test('Case D — Dirty raw pipeline does NOT penalize final City Pack quality (Non-negotiable 0.3)', () {
       // 100k raw candidates, 90k junk rejected, 10k excellent retained
@@ -222,6 +243,7 @@ void main() {
 
       final stats = {
         'total_places': 10000,
+        'places_with_valid_category': 10000,
         'core_total': 80,
         'core_with_images': 70,
         'core_with_hours': 60,
@@ -247,7 +269,18 @@ void main() {
         score: 0.94,
       );
 
-      final dq = qualityService.calculateScore(pack: packWithDirtyRaw, dbStats: stats, manualQa: manualQa);
+      final dq = qualityService.calculateScore(
+        pack: packWithDirtyRaw,
+        dbStats: stats,
+        manualQa: manualQa,
+      );
+      packWithDirtyRaw.manifest['counts']['category_conflicts'] = 90000;
+      final after = qualityService.calculateScore(
+        pack: packWithDirtyRaw,
+        dbStats: stats,
+        manualQa: manualQa,
+      );
+      expect(after.overallScore, dq.overallScore);
 
       // The 90% rejection rate in raw candidates should NOT force the City Pack quality down to 10%
       expect(dq.overallScore, greaterThanOrEqualTo(75));
@@ -258,6 +291,7 @@ void main() {
       // Perfect metadata, but 100% hotels and restaurants with ZERO attractions or core destinations!
       final stats = {
         'total_places': 5000,
+        'places_with_valid_category': 5000,
         'core_total': 0, // No core destinations!
         'core_with_images': 0,
         'core_with_hours': 0,
@@ -270,10 +304,7 @@ void main() {
         'with_phone': 4800,
         'shared_coords_places_count': 0,
         'multi_source_count': 4500,
-        'category_counts': {
-          'hotel': 3000,
-          'food_and_drink': 2000,
-        },
+        'category_counts': {'hotel': 3000, 'food_and_drink': 2000},
       };
 
       const manualQa = ManualQaSummary(
@@ -286,7 +317,11 @@ void main() {
         score: 0.98,
       );
 
-      final dq = qualityService.calculateScore(pack: pack, dbStats: stats, manualQa: manualQa);
+      final dq = qualityService.calculateScore(
+        pack: pack,
+        dbStats: stats,
+        manualQa: manualQa,
+      );
       final tr = travelService.calculateScore(pack: pack, dbStats: stats);
 
       // Data Quality is high because metadata is clean
@@ -301,6 +336,7 @@ void main() {
       final pack = createMockPack();
       final stats = {
         'total_places': 10060,
+        'places_with_valid_category': 10060,
         'core_total': 80,
         'core_with_images': 47, // 33 missing photos
         'core_with_hours': 17, // 63 missing hours
@@ -318,10 +354,22 @@ void main() {
 
       final gaps = gapService.analyzeGaps(pack: pack, dbStats: stats);
 
-      expect(gaps.any((g) => g.id == 'core_missing_images' && g.count == 33), isTrue);
-      expect(gaps.any((g) => g.id == 'core_missing_hours' && g.count == 63), isTrue);
-      expect(gaps.any((g) => g.id == 'places_outside_bounds' && g.count == 6), isTrue);
-      expect(gaps.any((g) => g.id == 'duplicate_coordinates' && g.count == 982), isTrue);
+      expect(
+        gaps.any((g) => g.id == 'core_missing_images' && g.count == 33),
+        isTrue,
+      );
+      expect(
+        gaps.any((g) => g.id == 'core_missing_hours' && g.count == 63),
+        isTrue,
+      );
+      expect(
+        gaps.any((g) => g.id == 'places_outside_bounds' && g.count == 6),
+        isTrue,
+      );
+      expect(
+        gaps.any((g) => g.id == 'duplicate_coordinates' && g.count == 982),
+        isTrue,
+      );
     });
   });
 }

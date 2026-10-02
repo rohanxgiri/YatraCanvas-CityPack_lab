@@ -143,20 +143,20 @@ void main() {
 
     test('maps priority string to enum correctly', () {
       expect(
-        ReviewCandidate.fromJson(_validCandidate(priority: 'HIGH')).reviewPriority,
+        ReviewCandidate.fromJson(_validCandidate(priority: 'HIGH')).upstreamReviewPriority,
         ReviewPriority.high,
       );
       expect(
-        ReviewCandidate.fromJson(_validCandidate(priority: 'MEDIUM')).reviewPriority,
+        ReviewCandidate.fromJson(_validCandidate(priority: 'MEDIUM')).upstreamReviewPriority,
         ReviewPriority.medium,
       );
       expect(
-        ReviewCandidate.fromJson(_validCandidate(priority: 'LOW')).reviewPriority,
+        ReviewCandidate.fromJson(_validCandidate(priority: 'LOW')).upstreamReviewPriority,
         ReviewPriority.low,
       );
       // Unknown priority falls back to low
       expect(
-        ReviewCandidate.fromJson(_validCandidate(priority: 'CRITICAL')).reviewPriority,
+        ReviewCandidate.fromJson(_validCandidate(priority: 'CRITICAL')).upstreamReviewPriority,
         ReviewPriority.low,
       );
     });
@@ -180,11 +180,11 @@ void main() {
     test('HIGH priority comes before MEDIUM and LOW', () {
       final candidates = [
         ReviewCandidate.fromJson(_validCandidate(
-            canonicalId: 'low', priority: 'LOW', confidence: 0.5)),
+            canonicalId: 'low', tier: 'support', reason: 'SECONDARY_COMMERCIAL_REQUIRES_AUDIT', priority: 'LOW', confidence: 0.5)),
         ReviewCandidate.fromJson(_validCandidate(
             canonicalId: 'high', priority: 'HIGH', confidence: 0.5)),
         ReviewCandidate.fromJson(_validCandidate(
-            canonicalId: 'med', priority: 'MEDIUM', confidence: 0.5)),
+            canonicalId: 'med', reason: 'SECONDARY_COMMERCIAL_REQUIRES_AUDIT', priority: 'MEDIUM', confidence: 0.5)),
       ];
 
       final sorted = ReviewManifestLoader.sortForInbox(candidates);

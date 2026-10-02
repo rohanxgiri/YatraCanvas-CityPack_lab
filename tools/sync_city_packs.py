@@ -26,6 +26,9 @@ import json
 import shutil
 import hashlib
 import argparse
+import sqlite3
+from contextlib import closing
+from city_admin_core.media_integrity import inspect_manifest
 from pathlib import Path
 
 # Fix Windows console UTF-8 output
@@ -184,6 +187,29 @@ def sync_packs(selected_city_ids: list, datafactory_root: Path, target_base: Pat
 
     print(f"\n[SYNC] Synchronizing {len(resolved_ids)} city pack(s) to {target_base}...")
 
+    # Reject corrupt input before replacing any selected local pack.
+    for cid in sorted(resolved_ids):
+        source = Path(all_packs[cid]['source_path'])
+        for required in ('manifest.json', 'city.json', 'yatracanvas.db'):
+            if not (source / required).is_file():
+                raise ValueError(f'{cid}: required release artifact {required} is missing')
+        manifest = json.loads((source / 'manifest.json').read_text(encoding='utf-8'))
+        if manifest.get('schema_version') != '3.0':
+            raise ValueError(f'{cid}: unsupported release schema')
+        declared = dict(manifest.get('checksums') or {})
+        if (source / 'checksums.json').is_file():
+            declared.update(json.loads((source / 'checksums.json').read_text(encoding='utf-8')))
+        for name in DEPLOYMENT_FILES:
+            path = source / name
+            if path.is_file() and name in declared and sha256_file(path) != declared[name]:
+                raise ValueError(f'{cid}: source checksum mismatch for {name}')
+            if path.is_file() and name.endswith('.json'):
+                json.loads(path.read_text(encoding='utf-8'))
+        with closing(sqlite3.connect((source / 'yatracanvas.db').as_uri() + '?mode=ro', uri=True)) as connection:
+            if connection.execute('PRAGMA integrity_check').fetchone()[0] != 'ok':
+                raise ValueError(f'{cid}: source SQLite integrity failed')
+            connection.execute('SELECT COUNT(*) FROM places').fetchone()
+
     for cid in sorted(resolved_ids):
         info = all_packs[cid]
         src_dir = Path(info["source_path"])
@@ -211,14 +237,43 @@ def sync_packs(selected_city_ids: list, datafactory_root: Path, target_base: Pat
         dest_images = dest_dir / "images"
         img_count = 0
         if src_images.is_dir():
-            if dest_images.exists():
-                shutil.rmtree(dest_images)
-            shutil.copytree(src_images, dest_images)
+            # Human imported media shares this tree with baseline images.
+            # Refresh baseline files without deleting curator owned paths.
+            shutil.copytree(src_images, dest_images, dirs_exist_ok=True)
             for _, _, files in os.walk(dest_images):
                 img_count += len(files)
             print(f"  [OK] Copied images/ ({img_count} image files)")
         else:
             print("  [INFO] No images/ folder present.")
+
+        media_reports = {}
+        for fname in ('image_manifest.json', 'images_manifest.json'):
+            image_manifest = dest_dir / fname
+            if image_manifest.is_file():
+                effective, media_report = inspect_manifest(
+                    json.loads(image_manifest.read_text(encoding='utf-8')), dest_dir,
+                    prune_optional=True)
+                image_manifest.write_text(json.dumps(effective, indent=2, ensure_ascii=False), encoding='utf-8')
+                copied_hashes[fname] = sha256_file(image_manifest)
+                media_reports[fname] = media_report
+        # The local manifest describes the sanitized local artifacts.
+        local_manifest = dest_dir / 'manifest.json'
+        manifest_data = json.loads(local_manifest.read_text(encoding='utf-8'))
+        for fname in media_reports:
+            if fname in manifest_data.get('checksums', {}):
+                manifest_data['checksums'][fname] = copied_hashes[fname]
+        checksum_path = dest_dir / 'checksums.json'
+        if checksum_path.is_file():
+            local_checksums = json.loads(checksum_path.read_text(encoding='utf-8'))
+            for fname in media_reports:
+                if fname in local_checksums:
+                    local_checksums[fname] = copied_hashes[fname]
+            checksum_path.write_text(json.dumps(local_checksums, indent=2), encoding='utf-8')
+            copied_hashes['checksums.json'] = sha256_file(checksum_path)
+            if 'checksums.json' in manifest_data.get('checksums', {}):
+                manifest_data['checksums']['checksums.json'] = copied_hashes['checksums.json']
+        local_manifest.write_text(json.dumps(manifest_data, indent=2, ensure_ascii=False), encoding='utf-8')
+        copied_hashes['manifest.json'] = sha256_file(local_manifest)
 
         # Copy review artifacts (review_candidates.json from reports/)
         review_candidate_count = 0
@@ -234,6 +289,10 @@ def sync_packs(selected_city_ids: list, datafactory_root: Path, target_base: Pat
             except Exception as e:
                 print(f"  [WARN] Copied review_candidates.json but could not count candidates: {e}")
         else:
+            # Do not present an old manifest as the current upstream review queue.
+            stale_review = dest_dir / 'review_candidates.json'
+            if stale_review.is_file():
+                stale_review.unlink()
             print(f"  [INFO] No review_candidates.json found for {cid}. "
                   f"Review Inbox will show 'no manifest' until DataFactory runs Quality Pass 2.")
 
@@ -243,10 +302,11 @@ def sync_packs(selected_city_ids: list, datafactory_root: Path, target_base: Pat
             "city_name": info["city_name"],
             "state": info["state"],
             "version": info["version"],
-            "source_path": str(src_dir),
+            "source_release": src_dir.relative_to(datafactory_root).as_posix(),
             "file_checksums": copied_hashes,
             "image_count": img_count,
             "review_candidate_count": review_candidate_count,
+            "media_validation": media_reports,
         }
         with open(dest_dir / "lab_sync_receipt.json", "w", encoding="utf-8") as f:
             json.dump(receipt, f, indent=2)
@@ -328,12 +388,15 @@ def update_pubspec_assets(assets_dir: Path):
 def main():
     parser = argparse.ArgumentParser(description="Sync City Packs from YatraCanvas-DataFactory to CityPack-Lab")
     parser.add_argument("--list", action="store_true", help="List available production packs in DataFactory")
+    parser.add_argument("--source", type=Path, help="Configured DataFactory repository")
     parser.add_argument("--cities", type=str, help="Comma-separated city IDs or names (e.g. 'Manali,Rishikesh,Panaji,Gulmarg')")
     parser.add_argument("--all", action="store_true", help="Sync all available production packs")
     parser.add_argument("--target", type=str, default="assets/city_packs", help="Target assets directory")
     args = parser.parse_args()
 
-    datafactory_root = find_datafactory_root()
+    datafactory_root = args.source.resolve() if args.source else find_datafactory_root()
+    if not (datafactory_root / 'releases').is_dir():
+        parser.error('DataFactory repository must contain releases/')
     print(f"[INFO] Discovered YatraCanvas-DataFactory at: {datafactory_root}")
 
     if args.list:

@@ -16,40 +16,7 @@
       "local_path": "images/yc_in_rj_udaipur_udaipur/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_udaipur/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:\"Courtyard_of_the_Palace_in_Oudeypoor,\"_a_wood_engraving,_1878.jpg",
-        "original_file": "\"Courtyard of the Palace in Oudeypoor,\" a wood engraving, 1878.jpg",
-        "author": "Unknown authorUnknown author",
-        "license": "Public domain",
-        "license_url": "",
-        "attribution": null,
-        "width": 996,
-        "height": 695,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:24.236165+00:00",
-        "local_path": "images/yc_in_rj_udaipur_udaipur_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_udaipur_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:\"Durbar_of_the_Maharana_of_Oudeypoor\"_(including_the_Resident),_wood_engraving,_1878.jpg",
-        "original_file": "\"Durbar of the Maharana of Oudeypoor\" (including the Resident), wood engraving, 1878.jpg",
-        "author": "Unknown authorUnknown author",
-        "license": "Public domain",
-        "license_url": "",
-        "attribution": null,
-        "width": 979,
-        "height": 692,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:24.243764+00:00",
-        "local_path": "images/yc_in_rj_udaipur_udaipur_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_udaipur_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_lake_palace": {
     "primary": {
@@ -68,40 +35,7 @@
       "local_path": "images/yc_in_rj_udaipur_lake_palace/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_lake_palace/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:1977-2-25_Udaipur_-_Palace_Hotel.jpg",
-        "original_file": "1977-2-25 Udaipur - Palace Hotel.jpg",
-        "author": "Guus Gorter",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 854,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:24.908072+00:00",
-        "local_path": "images/yc_in_rj_udaipur_lake_palace_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_lake_palace_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:A_Palace_amongst_the_Lake.jpg",
-        "original_file": "A Palace amongst the Lake.jpg",
-        "author": "Thehumanlens",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:24.915292+00:00",
-        "local_path": "images/yc_in_rj_udaipur_lake_palace_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_lake_palace_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_bharatiya_lok_kala_mandal": {
     "primary": {
@@ -120,40 +54,7 @@
       "local_path": "images/yc_in_rj_udaipur_bharatiya_lok_kala_mandal/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_bharatiya_lok_kala_mandal/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Amaj_Mata,_folk_art,_Bharatiya_Lok_Kala_Museum,_Udaipur,_India.jpg",
-        "original_file": "Amaj Mata, folk art, Bharatiya Lok Kala Museum, Udaipur, India.jpg",
-        "author": "Yann Forget",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": "This file is not in the public domain. Therefore you are requested to use the following next to the image if you reuse this file: © <a href=\"//commons.wikimedia.org/wiki/User:Yann\" title=\"User:Yann\">Yann Forget</a> / <a class=\"external text\" href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>",
-        "width": 1280,
-        "height": 2188,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:26.847810+00:00",
-        "local_path": "images/yc_in_rj_udaipur_bharatiya_lok_kala_mandal_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_bharatiya_lok_kala_mandal_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Bearded_knight_with_lance,_folk_art,_Bharatiya_Lok_Kala_Museum,_Udaipur,_India.jpg",
-        "original_file": "Bearded knight with lance, folk art, Bharatiya Lok Kala Museum, Udaipur, India.jpg",
-        "author": "Yann Forget",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": "This file is not in the public domain. Therefore you are requested to use the following next to the image if you reuse this file: © <a href=\"//commons.wikimedia.org/wiki/User:Yann\" title=\"User:Yann\">Yann Forget</a> / <a class=\"external text\" href=\"https://commons.wikimedia.org\">Wikimedia Commons</a>",
-        "width": 1280,
-        "height": 1861,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:26.856534+00:00",
-        "local_path": "images/yc_in_rj_udaipur_bharatiya_lok_kala_mandal_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_bharatiya_lok_kala_mandal_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_lake_pichola": {
     "primary": {
@@ -172,40 +73,7 @@
       "local_path": "images/yc_in_rj_udaipur_lake_pichola/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_lake_pichola/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20191207_Brzeg_jeziora_Pichola_w_Udajpurze_1416_7173.jpg",
-        "original_file": "20191207 Brzeg jeziora Pichola w Udajpurze 1416 7173.jpg",
-        "author": "Jakub Hałun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1925,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:27.500453+00:00",
-        "local_path": "images/yc_in_rj_udaipur_lake_pichola_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_lake_pichola_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20191207_Lake_Pichola,_Udaipur,_1652_7315.jpg",
-        "original_file": "20191207 Lake Pichola, Udaipur, 1652 7315.jpg",
-        "author": "Jakub Hałun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 587,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:27.509166+00:00",
-        "local_path": "images/yc_in_rj_udaipur_lake_pichola_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_lake_pichola_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_city_palace_udaipur": {
     "primary": {
@@ -224,40 +92,7 @@
       "local_path": "images/yc_in_rj_udaipur_city_palace_udaipur/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_city_palace_udaipur/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:*'Gate_of_the_Palace._Oodipore._Janr._1879',_an_oil_painting_by_Marianne_North*.jpg",
-        "original_file": "*'Gate of the Palace. Oodipore. Janr. 1879', an oil painting by Marianne North*.jpg",
-        "author": "Marianne North",
-        "license": "Public domain",
-        "license_url": "",
-        "attribution": null,
-        "width": 974,
-        "height": 712,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:28.169966+00:00",
-        "local_path": "images/yc_in_rj_udaipur_city_palace_udaipur_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_city_palace_udaipur_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20191207_City_Palace,_Udaipur_0448_6886.jpg",
-        "original_file": "20191207 City Palace, Udaipur 0448 6886.jpg",
-        "author": "Jakub Hałun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 851,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:28.179374+00:00",
-        "local_path": "images/yc_in_rj_udaipur_city_palace_udaipur_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_city_palace_udaipur_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_jag_mandir": {
     "primary": {
@@ -276,40 +111,7 @@
       "local_path": "images/yc_in_rj_udaipur_jag_mandir/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_jag_mandir/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Fountains_in_Jag_Mandir_Palace_garden,_Udaipur.jpg",
-        "original_file": "Fountains in Jag Mandir Palace garden, Udaipur.jpg",
-        "author": "Ashwin Kumar",
-        "license": "CC BY-SA 2.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 2270,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:28.814994+00:00",
-        "local_path": "images/yc_in_rj_udaipur_jag_mandir_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_jag_mandir_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Hotel_jagmandir_udaipur_bath.jpg",
-        "original_file": "Hotel jagmandir udaipur bath.jpg",
-        "author": "HEMLATA PANERY",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:28.821924+00:00",
-        "local_path": "images/yc_in_rj_udaipur_jag_mandir_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_jag_mandir_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_bagore_ki_haveli": {
     "primary": {
@@ -328,40 +130,7 @@
       "local_path": "images/yc_in_rj_udaipur_bagore_ki_haveli/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_bagore_ki_haveli/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20191207_Bagore_Ki_Haveli,_Udaipur,_0646_7054.jpg",
-        "original_file": "20191207 Bagore Ki Haveli, Udaipur, 0646 7054.jpg",
-        "author": "Jakub Hałun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 851,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:29.408186+00:00",
-        "local_path": "images/yc_in_rj_udaipur_bagore_ki_haveli_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_bagore_ki_haveli_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20191207_Bagore_Ki_Haveli,_Udaipur,_0647_7056.jpg",
-        "original_file": "20191207 Bagore Ki Haveli, Udaipur, 0647 7056.jpg",
-        "author": "Jakub Hałun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 851,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:29.416076+00:00",
-        "local_path": "images/yc_in_rj_udaipur_bagore_ki_haveli_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_bagore_ki_haveli_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_jagdish_temple_udaipur": {
     "primary": {
@@ -380,40 +149,7 @@
       "local_path": "images/yc_in_rj_udaipur_jagdish_temple_udaipur/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_jagdish_temple_udaipur/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20191206_Uliczny_grajek_w_Udajpurze_1215_6822_DxO.jpg",
-        "original_file": "20191206 Uliczny grajek w Udajpurze 1215 6822 DxO.jpg",
-        "author": "Jakub Hałun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 851,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:30.111196+00:00",
-        "local_path": "images/yc_in_rj_udaipur_jagdish_temple_udaipur_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_jagdish_temple_udaipur_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20191207_Jagdish_Temple,_Udaipur,_0607_7001.jpg",
-        "original_file": "20191207 Jagdish Temple, Udaipur, 0607 7001.jpg",
-        "author": "Jakub Hałun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1925,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:30.119143+00:00",
-        "local_path": "images/yc_in_rj_udaipur_jagdish_temple_udaipur_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_jagdish_temple_udaipur_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_shiv_niwas_palace": {
     "primary": {
@@ -432,40 +168,7 @@
       "local_path": "images/yc_in_rj_udaipur_shiv_niwas_palace/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_shiv_niwas_palace/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:City_Palace_Udaipuraryagraphy.jpg",
-        "original_file": "City Palace Udaipuraryagraphy.jpg",
-        "author": "Kiran arya",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1080,
-        "height": 810,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:30.878495+00:00",
-        "local_path": "images/yc_in_rj_udaipur_shiv_niwas_palace_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_shiv_niwas_palace_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Entry_gate_of_City_palace_(Udaipur).jpg",
-        "original_file": "Entry gate of City palace (Udaipur).jpg",
-        "author": "Kshitiz Sikka",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:30.887373+00:00",
-        "local_path": "images/yc_in_rj_udaipur_shiv_niwas_palace_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_shiv_niwas_palace_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_chandpole": {
     "primary": {
@@ -503,40 +206,7 @@
       "local_path": "images/yc_in_rj_udaipur_monsoon_palace/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_monsoon_palace/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20191208_Brama_Pałacu_Monsunowego_w_Udajpurze_1246_7576.jpg",
-        "original_file": "20191208 Brama Pałacu Monsunowego w Udajpurze 1246 7576.jpg",
-        "author": "Jakub Hałun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 851,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:31.557185+00:00",
-        "local_path": "images/yc_in_rj_udaipur_monsoon_palace_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_monsoon_palace_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:20191208_Pałac_Monsunowy_w_Udajpurze_1215_7551.jpg",
-        "original_file": "20191208 Pałac Monsunowy w Udajpurze 1215 7551.jpg",
-        "author": "Jakub Hałun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1925,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:31.564909+00:00",
-        "local_path": "images/yc_in_rj_udaipur_monsoon_palace_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_monsoon_palace_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_ahar_cenotaphs": {
     "primary": {
@@ -555,40 +225,7 @@
       "local_path": "images/yc_in_rj_udaipur_ahar_cenotaphs/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_ahar_cenotaphs/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:1919_Cenatoph_of_Pannalal_at_Mahasatiya_in_Udaipur.jpg",
-        "original_file": "1919 Cenatoph of Pannalal at Mahasatiya in Udaipur.jpg",
-        "author": "Pratap Singh Mehta",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1706,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:32.217256+00:00",
-        "local_path": "images/yc_in_rj_udaipur_ahar_cenotaphs_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_ahar_cenotaphs_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Ahar_anony_hoegun.jpg",
-        "original_file": "Ahar anony hoegun.jpg",
-        "author": "Antony Hoegun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 720,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:32.217879+00:00",
-        "local_path": "images/yc_in_rj_udaipur_ahar_cenotaphs_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_ahar_cenotaphs_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_fateh_sagar_lake": {
     "primary": {
@@ -626,40 +263,7 @@
       "local_path": "images/yc_in_rj_udaipur_gulab_bagh_and_zoo/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_gulab_bagh_and_zoo/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Fb_nks.jpg",
-        "original_file": "Fb nks.jpg",
-        "author": "Nittukumar",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 2261,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:33.450356+00:00",
-        "local_path": "images/yc_in_rj_udaipur_gulab_bagh_and_zoo_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_gulab_bagh_and_zoo_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:GulabBagh_Entrancec.jpg",
-        "original_file": "GulabBagh Entrancec.jpg",
-        "author": "Vishal0soni at English Wikipedia",
-        "license": "CC BY 4.0",
-        "license_url": "https://creativecommons.org/licenses/by/4.0",
-        "attribution": "<a href=\"https://en.wikipedia.org/wiki/User:Vishal0soni\" class=\"extiw\" title=\"wikipedia:User:Vishal0soni\">Vishal0soni</a> at <a href=\"https://en.wikipedia.org/wiki/\" class=\"extiw\" title=\"wikipedia:\">English Wikipedia</a>",
-        "width": 1280,
-        "height": 720,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:33.458757+00:00",
-        "local_path": "images/yc_in_rj_udaipur_gulab_bagh_and_zoo_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_gulab_bagh_and_zoo_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_saheliyon_ki_bari": {
     "primary": {
@@ -678,40 +282,7 @@
       "local_path": "images/yc_in_rj_udaipur_saheliyon_ki_bari/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_saheliyon_ki_bari/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:1996_-213-22A_Udaipur_City_Palace_(2233382479).jpg",
-        "original_file": "1996 -213-22A Udaipur City Palace (2233382479).jpg",
-        "author": "Dan Lundberg",
-        "license": "CC BY-SA 2.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 652,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:34.117876+00:00",
-        "local_path": "images/yc_in_rj_udaipur_saheliyon_ki_bari_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_saheliyon_ki_bari_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:A_fountain_inside_the_garder_of_Sahelion_Ki_Bari,_Udaipur.jpg",
-        "original_file": "A fountain inside the garder of Sahelion Ki Bari, Udaipur.jpg",
-        "author": "Schwiki",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1912,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:34.126350+00:00",
-        "local_path": "images/yc_in_rj_udaipur_saheliyon_ki_bari_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_saheliyon_ki_bari_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_udaipur_city_railway_station": {
     "primary": {
@@ -768,40 +339,7 @@
       "local_path": "images/yc_in_rj_udaipur_karni_mata_udaipur/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_karni_mata_udaipur/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:City_Of_Lakes.jpg",
-        "original_file": "City Of Lakes.jpg",
-        "author": "Jitesh Ajaria",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1080,
-        "height": 648,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:34.789854+00:00",
-        "local_path": "images/yc_in_rj_udaipur_karni_mata_udaipur_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_karni_mata_udaipur_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Desi_bharatiya_udaipuri_ooooncha!_mandir.JPG",
-        "original_file": "Desi bharatiya udaipuri ooooncha! mandir.JPG",
-        "author": "Puchu",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 960,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:34.797439+00:00",
-        "local_path": "images/yc_in_rj_udaipur_karni_mata_udaipur_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_karni_mata_udaipur_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_pala_ganesh_temple": {
     "primary": {
@@ -896,40 +434,7 @@
       "local_path": "images/yc_in_rj_udaipur_sajjangarh_biological_park/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_sajjangarh_biological_park/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Bear_standing_on_foot.jpg",
-        "original_file": "Bear standing on foot.jpg",
-        "author": "Msmonu.93",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 720,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:36.909872+00:00",
-        "local_path": "images/yc_in_rj_udaipur_sajjangarh_biological_park_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_sajjangarh_biological_park_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Black_Panda.jpg",
-        "original_file": "Black Panda.jpg",
-        "author": "Manoj Malviya96",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:36.916803+00:00",
-        "local_path": "images/yc_in_rj_udaipur_sajjangarh_biological_park_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_sajjangarh_biological_park_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_agasthyavanam_biological_park": {
     "primary": {
@@ -948,40 +453,7 @@
       "local_path": "images/yc_in_rj_udaipur_agasthyavanam_biological_park/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_agasthyavanam_biological_park/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Agasthyakoodam_Biosphere_Reserve.jpg",
-        "original_file": "Agasthyakoodam Biosphere Reserve.jpg",
-        "author": "Varkey Parakkal",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1920,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:38.398249+00:00",
-        "local_path": "images/yc_in_rj_udaipur_agasthyavanam_biological_park_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_agasthyavanam_biological_park_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Plant_from_Agasthyavanam.jpg",
-        "original_file": "Plant from Agasthyavanam.jpg",
-        "author": "Rekhakottoor",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 961,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:38.407956+00:00",
-        "local_path": "images/yc_in_rj_udaipur_agasthyavanam_biological_park_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_agasthyavanam_biological_park_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_kingdom_of_mewar": {
     "primary": {
@@ -1000,40 +472,7 @@
       "local_path": "images/yc_in_rj_udaipur_kingdom_of_mewar/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_kingdom_of_mewar/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:2002.34_detail01_PS11.webp",
-        "original_file": "2002.34 detail01 PS11.webp",
-        "author": "Ghasi",
-        "license": "Public domain",
-        "license_url": "",
-        "attribution": null,
-        "width": 1080,
-        "height": 1301,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:40.774370+00:00",
-        "local_path": "images/yc_in_rj_udaipur_kingdom_of_mewar_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_kingdom_of_mewar_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:2002.34_detail02_PS11.webp",
-        "original_file": "2002.34 detail02 PS11.webp",
-        "author": "Ghasi",
-        "license": "Public domain",
-        "license_url": "",
-        "attribution": null,
-        "width": 1080,
-        "height": 721,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:40.782102+00:00",
-        "local_path": "images/yc_in_rj_udaipur_kingdom_of_mewar_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_kingdom_of_mewar_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_ambrai_ghat": {
     "primary": {
@@ -1109,40 +548,7 @@
       "local_path": "images/yc_in_rj_udaipur_vintage_and_classic_car_museum/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_vintage_and_classic_car_museum/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:1939_make_Cadillac_in_Vintage_&_Classic_Car_Collection_Museum_of_Udaipur.jpg",
-        "original_file": "1939 make Cadillac in Vintage & Classic Car Collection Museum of Udaipur.jpg",
-        "author": "Schwiki",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 856,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:58.513377+00:00",
-        "local_path": "images/yc_in_rj_udaipur_vintage_and_classic_car_museum_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_vintage_and_classic_car_museum_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Austin_in_Vintage_&_Classic_Car_Collection_Museum,_Udaipur.jpg",
-        "original_file": "Austin in Vintage & Classic Car Collection Museum, Udaipur.jpg",
-        "author": "Schwiki",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 856,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:35:58.521017+00:00",
-        "local_path": "images/yc_in_rj_udaipur_vintage_and_classic_car_museum_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_vintage_and_classic_car_museum_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_sajjangarh": {
     "primary": {
@@ -1180,40 +586,7 @@
       "local_path": "images/yc_in_rj_udaipur_moti_magari_ke_prasad/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_moti_magari_ke_prasad/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Amazing_beauty.jpg",
-        "original_file": "Amazing beauty.jpg",
-        "author": "Smrutirekha sahu",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 720,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:36:03.370469+00:00",
-        "local_path": "images/yc_in_rj_udaipur_moti_magari_ke_prasad_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_moti_magari_ke_prasad_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Moti_magari_area.jpg",
-        "original_file": "Moti magari area.jpg",
-        "author": "Mit Shah",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 2275,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:36:03.379767+00:00",
-        "local_path": "images/yc_in_rj_udaipur_moti_magari_ke_prasad_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_moti_magari_ke_prasad_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_gangodbhav_kund": {
     "primary": {
@@ -1232,40 +605,7 @@
       "local_path": "images/yc_in_rj_udaipur_gangodbhav_kund/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_gangodbhav_kund/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:A_lone_chatri_(dome).jpg",
-        "original_file": "A lone chatri (dome).jpg",
-        "author": "Himanshu Jani",
-        "license": "CC BY-SA 3.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1706,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:36:04.133772+00:00",
-        "local_path": "images/yc_in_rj_udaipur_gangodbhav_kund_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_gangodbhav_kund_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Bhumika_Bolia_photos_of_Gangodbhav_kund_1.jpg",
-        "original_file": "Bhumika Bolia photos of Gangodbhav kund 1.jpg",
-        "author": "Bhumika Bolia",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 853,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:36:04.142285+00:00",
-        "local_path": "images/yc_in_rj_udaipur_gangodbhav_kund_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_gangodbhav_kund_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_cenotaph_of_raja_rama_shahs_sons_ahar": {
     "primary": {
@@ -1284,40 +624,7 @@
       "local_path": "images/yc_in_rj_udaipur_cenotaph_of_raja_rama_shahs_sons_ahar/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_cenotaph_of_raja_rama_shahs_sons_ahar/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:1919_Cenatoph_of_Pannalal_at_Mahasatiya_in_Udaipur.jpg",
-        "original_file": "1919 Cenatoph of Pannalal at Mahasatiya in Udaipur.jpg",
-        "author": "Pratap Singh Mehta",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1706,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:36:04.854080+00:00",
-        "local_path": "images/yc_in_rj_udaipur_cenotaph_of_raja_rama_shahs_sons_ahar_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_cenotaph_of_raja_rama_shahs_sons_ahar_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Ahar_anony_hoegun.jpg",
-        "original_file": "Ahar anony hoegun.jpg",
-        "author": "Antony Hoegun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 720,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:36:04.854716+00:00",
-        "local_path": "images/yc_in_rj_udaipur_cenotaph_of_raja_rama_shahs_sons_ahar_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_cenotaph_of_raja_rama_shahs_sons_ahar_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_meera_temple_ahar": {
     "primary": {
@@ -1564,40 +871,7 @@
       "local_path": "images/yc_in_rj_udaipur_royal_cenotaphs/primary.webp",
       "thumbnail_path": "images/yc_in_rj_udaipur_royal_cenotaphs/thumbnail.webp"
     },
-    "gallery": [
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:1919_Cenatoph_of_Pannalal_at_Mahasatiya_in_Udaipur.jpg",
-        "original_file": "1919 Cenatoph of Pannalal at Mahasatiya in Udaipur.jpg",
-        "author": "Pratap Singh Mehta",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 1706,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:36:49.882342+00:00",
-        "local_path": "images/yc_in_rj_udaipur_royal_cenotaphs_g1/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_royal_cenotaphs_g1/thumbnail.webp"
-      },
-      {
-        "source": "Wikimedia Commons",
-        "source_page": "https://commons.wikimedia.org/wiki/File:Ahar_anony_hoegun.jpg",
-        "original_file": "Ahar anony hoegun.jpg",
-        "author": "Antony Hoegun",
-        "license": "CC BY-SA 4.0",
-        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-        "attribution": null,
-        "width": 1280,
-        "height": 720,
-        "match_method": "commons_category_gallery",
-        "match_confidence": 0.8,
-        "downloaded_at": "2026-10-01T09:36:49.883143+00:00",
-        "local_path": "images/yc_in_rj_udaipur_royal_cenotaphs_g2/primary.webp",
-        "thumbnail_path": "images/yc_in_rj_udaipur_royal_cenotaphs_g2/thumbnail.webp"
-      }
-    ]
+    "gallery": []
   },
   "yc_in_rj_udaipur_shilpgram": {
     "primary": {
