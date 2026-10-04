@@ -9,6 +9,8 @@ class PlaceOverride {
   final String packVersion;
   final String? name;
   final String? nameHi;
+  final List<String>? aliases;
+  final String? openingHoursStatus;
   final String? category;
   final String? subcategory;
   final double? latitude;
@@ -24,6 +26,7 @@ class PlaceOverride {
 
   /// Audit & provenance metadata
   final Map<String, String> fieldSources;
+  final Map<String, String> fieldVersions;
   final Map<String, dynamic> previousValues;
   final String author;
   final String updatedAt;
@@ -36,6 +39,8 @@ class PlaceOverride {
     required this.packVersion,
     this.name,
     this.nameHi,
+    this.aliases,
+    this.openingHoursStatus,
     this.category,
     this.subcategory,
     this.latitude,
@@ -49,6 +54,7 @@ class PlaceOverride {
     this.tier,
     this.isCore,
     this.fieldSources = const {},
+    this.fieldVersions = const {},
     this.previousValues = const {},
     required this.author,
     required this.updatedAt,
@@ -59,6 +65,7 @@ class PlaceOverride {
   bool get hasChanges =>
       name != null ||
       nameHi != null ||
+      aliases != null ||
       category != null ||
       subcategory != null ||
       latitude != null ||
@@ -75,6 +82,8 @@ class PlaceOverride {
   PlaceOverride copyWith({
     String? name,
     String? nameHi,
+    List<String>? aliases,
+    String? openingHoursStatus,
     String? category,
     String? subcategory,
     double? latitude,
@@ -98,8 +107,11 @@ class PlaceOverride {
       placeId: placeId,
       cityId: cityId,
       packVersion: packVersion,
+      fieldVersions: fieldVersions,
       name: name ?? this.name,
       nameHi: nameHi ?? this.nameHi,
+      aliases: aliases ?? this.aliases,
+      openingHoursStatus: openingHoursStatus ?? this.openingHoursStatus,
       category: category ?? this.category,
       subcategory: subcategory ?? this.subcategory,
       latitude: latitude ?? this.latitude,
@@ -134,6 +146,10 @@ class PlaceOverride {
 
     if (name != null) map['name'] = name;
     if (nameHi != null) map['name_hi'] = nameHi;
+    if (aliases != null) map['aliases'] = aliases;
+    if (openingHoursStatus != null) {
+      map['opening_hours_status'] = openingHoursStatus;
+    }
     if (category != null) map['category'] = category;
     if (subcategory != null) map['subcategory'] = subcategory;
     if (latitude != null) map['latitude'] = latitude;
@@ -149,6 +165,7 @@ class PlaceOverride {
     if (reviewNotes != null) map['review_notes'] = reviewNotes;
 
     if (fieldSources.isNotEmpty) map['field_sources'] = fieldSources;
+    if (fieldVersions.isNotEmpty) map['field_versions'] = fieldVersions;
     if (previousValues.isNotEmpty) map['previous_values'] = previousValues;
 
     return map;
@@ -161,6 +178,8 @@ class PlaceOverride {
       packVersion: json['pack_version'] as String? ?? 'v3',
       name: json['name'] as String?,
       nameHi: json['name_hi'] as String?,
+      aliases: (json['aliases'] as List?)?.cast<String>(),
+      openingHoursStatus: json['opening_hours_status'] as String?,
       category: json['category'] as String?,
       subcategory: json['subcategory'] as String?,
       latitude: (json['latitude'] as num?)?.toDouble(),
@@ -173,16 +192,25 @@ class PlaceOverride {
       primaryImagePath: json['primary_image_path'] as String?,
       tier: json['tier'] as String?,
       isCore: json['is_core'] as bool?,
-      fieldSources: (json['field_sources'] as Map<String, dynamic>?)
-              ?.map((k, v) => MapEntry(k, v.toString())) ??
+      fieldSources:
+          (json['field_sources'] as Map<String, dynamic>?)?.map(
+            (k, v) => MapEntry(k, v.toString()),
+          ) ??
           {},
       previousValues: (json['previous_values'] as Map<String, dynamic>?) ?? {},
+      fieldVersions:
+          (json['field_versions'] as Map?)?.map(
+            (k, v) => MapEntry(k.toString(), v.toString()),
+          ) ??
+          {},
       author: json['author'] as String? ?? 'contributor',
-      updatedAt: json['updated_at'] as String? ?? DateTime.now().toIso8601String(),
+      updatedAt:
+          json['updated_at'] as String? ?? DateTime.now().toIso8601String(),
       verified: json['verified'] as bool? ?? true,
       reviewNotes: json['review_notes'] as String?,
     );
   }
 
-  String toFormattedJson() => const JsonEncoder.withIndent('  ').convert(toJson());
+  String toFormattedJson() =>
+      const JsonEncoder.withIndent('  ').convert(toJson());
 }

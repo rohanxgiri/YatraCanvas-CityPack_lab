@@ -8,7 +8,15 @@ class CityPackDatabase {
   final Database db;
   final String cityId;
 
-  CityPackDatabase(this.db, this.cityId);
+  final Map<String, List<String>> aliases;
+  final Map<String, Map<String, dynamic>> reviewMetadata;
+  CityPackDatabase(
+    this.db,
+    this.cityId, {
+    Map<String, List<String>>? aliases,
+    Map<String, Map<String, dynamic>>? reviewMetadata,
+  }) : aliases = Map.of(aliases ?? {}),
+       reviewMetadata = reviewMetadata ?? {};
 
   Future<Map<String, int>> getCategoriesWithCounts({
     bool onlyTravelRelevant = false,
@@ -149,16 +157,38 @@ class CityPackDatabase {
 
     if (cleanQuery.isNotEmpty) {
       final pattern = '%$cleanQuery%';
-      conditions.add('''
-        (name LIKE ? 
+      final aliasIds = aliases.entries
+          .where(
+            (e) => e.value.any(
+              (a) => a.toLowerCase().contains(cleanQuery.toLowerCase()),
+            ),
+          )
+          .map((e) => e.key)
+          .toList();
+      if (aliasIds.isNotEmpty) {
+        conditions.add(
+          '''(id IN (${List.filled(aliasIds.length, '?').join(',')}) OR
+        (id LIKE ?
+         OR name LIKE ?
          OR name_hi LIKE ? 
          OR category LIKE ? 
          OR subcategory LIKE ? 
          OR primary_entity_type LIKE ? 
          OR address LIKE ?
          OR id IN (SELECT place_id FROM place_tags WHERE tag LIKE ?))
-      ''');
+      ''',
+        );
+      } else {
+        conditions.add(
+          '''(id LIKE ? OR name LIKE ? OR name_hi LIKE ? OR category LIKE ? OR subcategory LIKE ? OR primary_entity_type LIKE ? OR address LIKE ? OR id IN (SELECT place_id FROM place_tags WHERE tag LIKE ?))''',
+        );
+      }
+      if (aliasIds.isNotEmpty) {
+        conditions[conditions.length - 1] += ')';
+        args.addAll(aliasIds);
+      }
       args.addAll([
+        pattern,
         pattern,
         pattern,
         pattern,

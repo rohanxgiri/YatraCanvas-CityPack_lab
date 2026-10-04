@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:convert';
 
 import '../domain/curation/curated_place.dart';
 import '../domain/curation/curation_issue.dart';
@@ -103,6 +104,7 @@ class CurationService {
 
   final CurationRepositoryContract repository;
   String currentContributor;
+  String sourcePackVersion = "unknown";
 
   // Active City Caches
   final Map<String, PlaceOverride> _overrides = {};
@@ -186,6 +188,8 @@ class CurationService {
   Future<void> saveFieldOverride({
     required LabPlace place,
     String? name,
+    String? nameHi,
+    List<String>? aliases,
     String? category,
     String? subcategory,
     double? latitude,
@@ -204,6 +208,33 @@ class CurationService {
     final existing = _overrides[place.id];
     final sources = Map<String, String>.from(existing?.fieldSources ?? {});
     final prev = Map<String, dynamic>.from(existing?.previousValues ?? {});
+    final versions = Map<String, String>.from(existing?.fieldVersions ?? {});
+    final reviewed = {
+      'name': name,
+      'name_hi': nameHi,
+      'aliases': aliases,
+      'category': category,
+      'subcategory': subcategory,
+      'latitude': latitude,
+      'longitude': longitude,
+      'opening_hours': openingHours,
+      'primary_image_path': primaryImagePath,
+      'description': description,
+      'website': website,
+      'phone': phone,
+      'tier': tier,
+    };
+    for (final entry in reviewed.entries) {
+      // A details dialog also submits unchanged prefilled fields. Do not silently
+      // rebase those old overlays when the user only repairs another field.
+      final previous = existing?.toJson()[entry.key];
+      if (entry.value != null &&
+          (existing == null ||
+              entry.key == fieldName ||
+              jsonEncode(entry.value) != jsonEncode(previous))) {
+        versions[entry.key] = sourcePackVersion;
+      }
+    }
 
     sources[fieldName] = evidenceSource;
     if (previousValue != null) {
@@ -213,8 +244,18 @@ class CurationService {
     final updated = PlaceOverride(
       placeId: place.id,
       cityId: place.cityId,
-      packVersion: place.generatedAt ?? 'v3',
+      packVersion: existing?.packVersion ?? sourcePackVersion,
+      fieldVersions: versions,
       name: name ?? existing?.name,
+      nameHi: nameHi ?? existing?.nameHi,
+      aliases: aliases ?? existing?.aliases,
+      openingHoursStatus: openingHours == null
+          ? existing?.openingHoursStatus
+          : openingHours.isEmpty
+          ? "UNKNOWN"
+          : evidenceSource.startsWith("Verified hours:")
+          ? "VERIFIED"
+          : "UNVERIFIED",
       category: category ?? existing?.category,
       subcategory: subcategory ?? existing?.subcategory,
       latitude: latitude ?? existing?.latitude,
@@ -223,6 +264,7 @@ class CurationService {
       primaryImagePath: primaryImagePath ?? existing?.primaryImagePath,
       description: description ?? existing?.description,
       website: website ?? existing?.website,
+      phone: phone ?? existing?.phone,
       tier: tier ?? existing?.tier ?? place.tier,
       isCore: isCore ?? existing?.isCore ?? (place.tier == 'core_destination'),
       fieldSources: sources,

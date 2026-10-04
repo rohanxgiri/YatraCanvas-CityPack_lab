@@ -2,18 +2,32 @@
   "city_id": "jaipur",
   "city_name": "Jaipur",
   "state": "Rajasthan",
-  "version": "v3",
-  "source_path": "C:\\Users\\girir\\Documents\\YatraCanvas-DataFactory\\releases\\india\\rajasthan\\jaipur\\v3",
+  "version": "v4-citylab-offline-01",
+  "source_release": "releases/india/rajasthan/jaipur/v4-citylab-offline-01",
   "file_checksums": {
-    "yatracanvas.db": "b96499de299a85d4aedff2ec462e9f0df0a7970ed41921fe9990c4e9d29ccbb7",
-    "manifest.json": "ac88a0d9a1165e2ec5c4bc6d1d05d6e91579bec684c280dae68d9f7299fdc32c",
+    "yatracanvas.db": "273fb6665bda4e37a743f6691b21be346ed564ea222861944b0d544753519262",
+    "manifest.json": "05e497955191ba62a34c8c443a6ca15e2a063da68b18343469b9cf9e4a783388",
     "city.json": "c16e1b0d92b9c54b920c68d97d90b3ea26ca54e3025b5fbe9b12c1772f397e24",
-    "checksums.json": "7c5dea17103000546247b57569426197b5c7f203937fa2d8c9bed317d60259c7",
-    "image_manifest.json": "63433037717af57ff6a237d963d61d99f9ea39da98d76de01a8cd69d871c9806",
-    "images_manifest.json": "63433037717af57ff6a237d963d61d99f9ea39da98d76de01a8cd69d871c9806",
-    "license_manifest.json": "ca96986da832c97a64b35585bf73b8e29dac70466f7089e7c5863a953ee6857d",
-    "source_manifest.json": "01574d17d00c2b687b796fb040a575b54a767cc3a612cd6552447f44b9186e05"
+    "checksums.json": "744b9c4258fa2a848d281f850670fc08ba060f91cdb80b5ae872e51e305691d6",
+    "image_manifest.json": "850fea67ab20749aef69bf89f6523d21b05733f566dae9d3d8a93485d7225c1c",
+    "images_manifest.json": "850fea67ab20749aef69bf89f6523d21b05733f566dae9d3d8a93485d7225c1c",
+    "license_manifest.json": "880efb46545b49523b0f6023a8df856bc9282ebec9dc0d0c9c44b62d8e8e71fd",
+    "source_manifest.json": "9669c8dcfa76194bdca7792cff0b777bba59d9ef6ac493da6330b2054bd1229b"
   },
-  "image_count": 110,
-  "review_candidate_count": 893
+  "image_count": 114,
+  "review_candidate_count": 893,
+  "media_validation": {
+    "image_manifest.json": {
+      "missing_primary": [],
+      "missing_gallery": [],
+      "metadata_errors": [],
+      "removed_gallery_items": 0
+    },
+    "images_manifest.json": {
+      "missing_primary": [],
+      "missing_gallery": [],
+      "metadata_errors": [],
+      "removed_gallery_items": 0
+    }
+  }
 }

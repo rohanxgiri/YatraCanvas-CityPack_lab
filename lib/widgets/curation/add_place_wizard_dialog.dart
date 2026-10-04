@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../domain/curation/place_addition.dart';
 
 class AddPlaceWizardDialog extends StatefulWidget {
@@ -22,7 +23,8 @@ class AddPlaceWizardDialog extends StatefulWidget {
     return showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (_) => AddPlaceWizardDialog(cityId: cityId, bbox: bbox, onAdd: onAdd),
+      builder: (_) =>
+          AddPlaceWizardDialog(cityId: cityId, bbox: bbox, onAdd: onAdd),
     );
   }
 
@@ -40,32 +42,15 @@ class _AddPlaceWizardDialogState extends State<AddPlaceWizardDialog> {
   final _subcategoryController = TextEditingController();
   String _tier = 'recommended';
 
-  final _latController = TextEditingController(text: '26.9124');
-  final _lonController = TextEditingController(text: '75.7873');
+  final _latController = TextEditingController();
+  final _lonController = TextEditingController();
   final _addressController = TextEditingController();
 
   final _descController = TextEditingController();
-  final _hoursController = TextEditingController(text: '09:00-18:00');
+  final _hoursController = TextEditingController();
   final _websiteController = TextEditingController();
   final _phoneController = TextEditingController();
-  final _evidenceController = TextEditingController(text: 'Personal field visit / Official tourism board listing');
-
-  final _imagePathController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget.bbox != null) {
-      final minLat = (widget.bbox!['min_lat'] as num?)?.toDouble();
-      final maxLat = (widget.bbox!['max_lat'] as num?)?.toDouble();
-      final minLon = (widget.bbox!['min_lon'] as num?)?.toDouble();
-      final maxLon = (widget.bbox!['max_lon'] as num?)?.toDouble();
-      if (minLat != null && maxLat != null && minLon != null && maxLon != null) {
-        _latController.text = ((minLat + maxLat) / 2).toStringAsFixed(4);
-        _lonController.text = ((minLon + maxLon) / 2).toStringAsFixed(4);
-      }
-    }
-  }
+  final _evidenceController = TextEditingController();
 
   @override
   void dispose() {
@@ -80,34 +65,67 @@ class _AddPlaceWizardDialogState extends State<AddPlaceWizardDialog> {
     _websiteController.dispose();
     _phoneController.dispose();
     _evidenceController.dispose();
-    _imagePathController.dispose();
     super.dispose();
   }
 
   void _finish() {
-    final lat = double.tryParse(_latController.text.trim()) ?? 0.0;
-    final lon = double.tryParse(_lonController.text.trim()) ?? 0.0;
+    final lat = double.tryParse(_latController.text.trim());
+    final lon = double.tryParse(_lonController.text.trim());
+    if (lat == null ||
+        lon == null ||
+        !lat.isFinite ||
+        !lon.isFinite ||
+        lat.abs() > 90 ||
+        lon.abs() > 180) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Enter valid latitude and longitude.')),
+      );
+      return;
+    }
+    if (_evidenceController.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Add source evidence for this new place.'),
+        ),
+      );
+      return;
+    }
     final now = DateTime.now();
 
     final addition = PlaceAddition(
       id: 'manual_${widget.cityId}_${now.millisecondsSinceEpoch}',
       cityId: widget.cityId,
       name: _nameController.text.trim(),
-      nameHi: _nameHiController.text.trim().isNotEmpty ? _nameHiController.text.trim() : null,
+      nameHi: _nameHiController.text.trim().isNotEmpty
+          ? _nameHiController.text.trim()
+          : null,
       category: _category,
-      subcategory: _subcategoryController.text.trim().isNotEmpty ? _subcategoryController.text.trim() : null,
+      subcategory: _subcategoryController.text.trim().isNotEmpty
+          ? _subcategoryController.text.trim()
+          : null,
       tier: _tier,
       latitude: lat,
       longitude: lon,
-      address: _addressController.text.trim().isNotEmpty ? _addressController.text.trim() : null,
-      description: _descController.text.trim().isNotEmpty ? _descController.text.trim() : null,
-      openingHours: _hoursController.text.trim().isNotEmpty ? _hoursController.text.trim() : null,
-      website: _websiteController.text.trim().isNotEmpty ? _websiteController.text.trim() : null,
-      phone: _phoneController.text.trim().isNotEmpty ? _phoneController.text.trim() : null,
-      primaryImagePath: _imagePathController.text.trim().isNotEmpty ? _imagePathController.text.trim() : null,
+      address: _addressController.text.trim().isNotEmpty
+          ? _addressController.text.trim()
+          : null,
+      description: _descController.text.trim().isNotEmpty
+          ? _descController.text.trim()
+          : null,
+      openingHours: _hoursController.text.trim().isNotEmpty
+          ? _hoursController.text.trim()
+          : null,
+      website: _websiteController.text.trim().isNotEmpty
+          ? _websiteController.text.trim()
+          : null,
+      phone: _phoneController.text.trim().isNotEmpty
+          ? _phoneController.text.trim()
+          : null,
       author: 'Contributor',
       createdAt: now.toIso8601String(),
-      evidenceSource: _evidenceController.text.trim().isNotEmpty ? _evidenceController.text.trim() : 'Manual Curation',
+      evidenceSource: _evidenceController.text.trim().isNotEmpty
+          ? _evidenceController.text.trim()
+          : 'Manual Curation',
     );
 
     widget.onAdd(addition);
@@ -128,11 +146,21 @@ class _AddPlaceWizardDialogState extends State<AddPlaceWizardDialog> {
         children: [
           Container(
             padding: const EdgeInsets.all(6),
-            decoration: BoxDecoration(color: Colors.green.shade100, shape: BoxShape.circle),
-            child: const Icon(Icons.add_location_alt, color: Colors.green, size: 20),
+            decoration: BoxDecoration(
+              color: Colors.green.shade100,
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.add_location_alt,
+              color: Colors.green,
+              size: 20,
+            ),
           ),
           const SizedBox(width: 8),
-          const Text('Add Missing Place (Step-by-Step)', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          const Text(
+            'Add Missing Place (Step-by-Step)',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
         ],
       ),
       content: SizedBox(
@@ -186,18 +214,44 @@ class _AddPlaceWizardDialogState extends State<AddPlaceWizardDialog> {
                   const SizedBox(height: 8),
                   DropdownButtonFormField<String>(
                     initialValue: _category,
-                    decoration: const InputDecoration(labelText: 'Primary Category'),
+                    decoration: const InputDecoration(
+                      labelText: 'Primary Category',
+                    ),
                     items: const [
-                      DropdownMenuItem(value: 'heritage', child: Text('HERITAGE / MONUMENT')),
+                      DropdownMenuItem(
+                        value: 'heritage',
+                        child: Text('HERITAGE / MONUMENT'),
+                      ),
                       DropdownMenuItem(value: 'museum', child: Text('MUSEUM')),
-                      DropdownMenuItem(value: 'religious', child: Text('RELIGIOUS / TEMPLE')),
-                      DropdownMenuItem(value: 'park', child: Text('PARK / GARDEN')),
-                      DropdownMenuItem(value: 'nature', child: Text('NATURE / SCENIC')),
-                      DropdownMenuItem(value: 'viewpoint', child: Text('VIEWPOINT')),
-                      DropdownMenuItem(value: 'food', child: Text('FOOD / RESTAURANT')),
+                      DropdownMenuItem(
+                        value: 'religious',
+                        child: Text('RELIGIOUS / TEMPLE'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'park',
+                        child: Text('PARK / GARDEN'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'nature',
+                        child: Text('NATURE / SCENIC'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'viewpoint',
+                        child: Text('VIEWPOINT'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'food',
+                        child: Text('FOOD / RESTAURANT'),
+                      ),
                       DropdownMenuItem(value: 'cafe', child: Text('CAFE')),
-                      DropdownMenuItem(value: 'shopping', child: Text('SHOPPING / BAZAAR')),
-                      DropdownMenuItem(value: 'experience', child: Text('EXPERIENCE / ACTIVITY')),
+                      DropdownMenuItem(
+                        value: 'shopping',
+                        child: Text('SHOPPING / BAZAAR'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'experience',
+                        child: Text('EXPERIENCE / ACTIVITY'),
+                      ),
                     ],
                     onChanged: (val) {
                       if (val != null) setState(() => _category = val);
@@ -206,11 +260,22 @@ class _AddPlaceWizardDialogState extends State<AddPlaceWizardDialog> {
                   const SizedBox(height: 8),
                   DropdownButtonFormField<String>(
                     initialValue: _tier,
-                    decoration: const InputDecoration(labelText: 'Importance / Tier'),
+                    decoration: const InputDecoration(
+                      labelText: 'Importance / Tier',
+                    ),
                     items: const [
-                      DropdownMenuItem(value: 'core_destination', child: Text('CORE DESTINATION (Flagship)')),
-                      DropdownMenuItem(value: 'recommended', child: Text('RECOMMENDED (Standard)')),
-                      DropdownMenuItem(value: 'discovery', child: Text('DISCOVERY (Lesser-known)')),
+                      DropdownMenuItem(
+                        value: 'core_destination',
+                        child: Text('CORE DESTINATION (Flagship)'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'recommended',
+                        child: Text('RECOMMENDED (Standard)'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'discovery',
+                        child: Text('DISCOVERY (Lesser-known)'),
+                      ),
                     ],
                     onChanged: (val) {
                       if (val != null) setState(() => _tier = val);
@@ -229,16 +294,24 @@ class _AddPlaceWizardDialogState extends State<AddPlaceWizardDialog> {
                       Expanded(
                         child: TextField(
                           controller: _latController,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          decoration: const InputDecoration(labelText: 'Latitude (WGS84)*'),
+                          keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true,
+                          ),
+                          decoration: const InputDecoration(
+                            labelText: 'Latitude (WGS84)*',
+                          ),
                         ),
                       ),
                       const SizedBox(width: 8),
                       Expanded(
                         child: TextField(
                           controller: _lonController,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          decoration: const InputDecoration(labelText: 'Longitude (WGS84)*'),
+                          keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true,
+                          ),
+                          decoration: const InputDecoration(
+                            labelText: 'Longitude (WGS84)*',
+                          ),
                         ),
                       ),
                     ],
@@ -292,12 +365,8 @@ class _AddPlaceWizardDialogState extends State<AddPlaceWizardDialog> {
               content: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextField(
-                    controller: _imagePathController,
-                    decoration: const InputDecoration(
-                      labelText: 'Image File / URL',
-                      hintText: 'e.g. images/my_addition/primary.webp',
-                    ),
+                  const Text(
+                    'Save this place, then use its photo curator to import a real image with provenance.',
                   ),
                   const SizedBox(height: 12),
                   Container(
@@ -328,12 +397,17 @@ class _AddPlaceWizardDialogState extends State<AddPlaceWizardDialog> {
               content: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Summary of New Place:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+                  const Text(
+                    'Summary of New Place:',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                  ),
                   const SizedBox(height: 8),
                   Text('• Name: ${_nameController.text.trim()}'),
                   Text('• Category: ${_category.toUpperCase()}'),
                   Text('• Tier: ${_tier.toUpperCase()}'),
-                  Text('• Location: ${_latController.text.trim()}, ${_lonController.text.trim()}'),
+                  Text(
+                    '• Location: ${_latController.text.trim()}, ${_lonController.text.trim()}',
+                  ),
                   Text('• Hours: ${_hoursController.text.trim()}'),
                   Text('• Evidence: ${_evidenceController.text.trim()}'),
                   const SizedBox(height: 12),

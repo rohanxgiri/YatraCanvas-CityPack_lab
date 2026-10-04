@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -126,7 +127,25 @@ class CityPackLoader {
 
     // Open SQLite database in READ-ONLY mode
     final db = await openReadOnlyDatabase(targetDbFile.absolute.path);
-    final packDb = CityPackDatabase(db, cityId);
+    final aliasFile = File('assets/city_packs/$cityId/aliases.json');
+    final aliases = aliasFile.existsSync()
+        ? (jsonDecode(await aliasFile.readAsString()) as Map).map(
+            (k, v) => MapEntry(k as String, (v as List).cast<String>()),
+          )
+        : <String, List<String>>{};
+    final reviewFile = File('assets/city_packs/$cityId/review_metadata.json');
+    final review = reviewFile.existsSync()
+        ? (jsonDecode(await reviewFile.readAsString()) as Map).map(
+            (k, v) =>
+                MapEntry(k as String, Map<String, dynamic>.from(v as Map)),
+          )
+        : <String, Map<String, dynamic>>{};
+    final packDb = CityPackDatabase(
+      db,
+      cityId,
+      aliases: aliases,
+      reviewMetadata: review,
+    );
 
     return LoadedCityPackContext(
       cityId: cityId,

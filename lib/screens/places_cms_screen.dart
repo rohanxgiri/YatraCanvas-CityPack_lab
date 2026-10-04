@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../app/app_state.dart';
 import '../domain/curation/curated_place.dart';
 import '../widgets/curation/add_place_wizard_dialog.dart';
@@ -28,6 +29,12 @@ class _PlacesCmsScreenState extends State<PlacesCmsScreen> {
     'added_manually': 'Added Manually',
     'missing_image': 'Missing Photos',
     'missing_hours': 'Missing Hours',
+    'unknown_hours': 'Unknown Hours',
+    'unverified_hours': 'Unverified Hours',
+    'test_only_image': 'Test-only Photos',
+    'fallback_image': 'Fallback Photos',
+    'missing_description': 'Missing Description',
+    'duplicate': 'Potential Duplicates',
     'location_issue': 'Location Issues',
     'excluded': 'Excluded Places',
   };
@@ -94,8 +101,13 @@ class _PlacesCmsScreenState extends State<PlacesCmsScreen> {
                                   },
                                 )
                               : null,
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 10,
+                          ),
                         ),
                         onSubmitted: (_) => _loadPlaces(),
                       ),
@@ -107,13 +119,18 @@ class _PlacesCmsScreenState extends State<PlacesCmsScreen> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.indigo,
                         foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
                       ),
                       onPressed: () {
                         AddPlaceWizardDialog.show(
                           context,
                           cityId: widget.state.activePack!.id,
-                          bbox: widget.state.qualityStats?['bbox'] as Map<String, dynamic>?,
+                          bbox:
+                              widget.state.qualityStats?['bbox']
+                                  as Map<String, dynamic>?,
                           onAdd: (addition) async {
                             await widget.state.addManualPlace(addition);
                             _loadPlaces();
@@ -135,7 +152,15 @@ class _PlacesCmsScreenState extends State<PlacesCmsScreen> {
                         padding: const EdgeInsets.only(right: 6),
                         child: FilterChip(
                           selected: selected,
-                          label: Text(f.value, style: TextStyle(fontSize: 11, fontWeight: selected ? FontWeight.bold : FontWeight.normal)),
+                          label: Text(
+                            f.value,
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: selected
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
+                            ),
+                          ),
                           selectedColor: Colors.indigo.shade100,
                           onSelected: (_) {
                             setState(() => _activeFilter = f.key);
@@ -159,7 +184,11 @@ class _PlacesCmsScreenState extends State<PlacesCmsScreen> {
               children: [
                 Text(
                   '${_places.length} places displayed',
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey.shade700),
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey.shade700,
+                  ),
                 ),
                 Text(
                   'Tap any place to inspect provenance or correct details',
@@ -174,26 +203,36 @@ class _PlacesCmsScreenState extends State<PlacesCmsScreen> {
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : _places.isEmpty
-                    ? Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.search_off, size: 48, color: Colors.grey),
-                            const SizedBox(height: 12),
-                            Text('No places found matching "${_filters[_activeFilter]}"', style: const TextStyle(fontWeight: FontWeight.bold)),
-                            const SizedBox(height: 4),
-                            const Text('Try adjusting filters or search query', style: TextStyle(color: Colors.grey, fontSize: 12)),
-                          ],
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.search_off,
+                          size: 48,
+                          color: Colors.grey,
                         ),
-                      )
-                    : ListView.separated(
-                        itemCount: _places.length,
-                        separatorBuilder: (ctx, idx) => const Divider(height: 1),
-                        itemBuilder: (ctx, index) {
-                          final p = _places[index];
-                          return _buildPlaceTile(p);
-                        },
-                      ),
+                        const SizedBox(height: 12),
+                        Text(
+                          'No places found matching "${_filters[_activeFilter]}"',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 4),
+                        const Text(
+                          'Try adjusting filters or search query',
+                          style: TextStyle(color: Colors.grey, fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  )
+                : ListView.separated(
+                    itemCount: _places.length,
+                    separatorBuilder: (ctx, idx) => const Divider(height: 1),
+                    itemBuilder: (ctx, index) {
+                      final p = _places[index];
+                      return _buildPlaceTile(p);
+                    },
+                  ),
           ),
         ],
       ),
@@ -223,7 +262,9 @@ class _PlacesCmsScreenState extends State<PlacesCmsScreen> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
-                decoration: place.isExcluded ? TextDecoration.lineThrough : null,
+                decoration: place.isExcluded
+                    ? TextDecoration.lineThrough
+                    : null,
               ),
               overflow: TextOverflow.ellipsis,
             ),
@@ -242,11 +283,20 @@ class _PlacesCmsScreenState extends State<PlacesCmsScreen> {
           const SizedBox(height: 2),
           Row(
             children: [
-              Icon(Icons.access_time, size: 12, color: place.hasOpeningHours ? Colors.green : Colors.red),
+              Icon(
+                Icons.access_time,
+                size: 12,
+                color: place.hasOpeningHours ? Colors.green : Colors.red,
+              ),
               const SizedBox(width: 4),
               Text(
                 place.openingHours ?? 'Missing hours',
-                style: TextStyle(fontSize: 10, color: place.hasOpeningHours ? Colors.black87 : Colors.red.shade800),
+                style: TextStyle(
+                  fontSize: 10,
+                  color: place.hasOpeningHours
+                      ? Colors.black87
+                      : Colors.red.shade800,
+                ),
               ),
             ],
           ),
@@ -256,7 +306,8 @@ class _PlacesCmsScreenState extends State<PlacesCmsScreen> {
       onTap: () async {
         await Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (_) => CuratedPlaceDetailScreen(place: place, state: widget.state),
+            builder: (_) =>
+                CuratedPlaceDetailScreen(place: place, state: widget.state),
           ),
         );
         _loadPlaces(); // Reload on return
@@ -268,35 +319,85 @@ class _PlacesCmsScreenState extends State<PlacesCmsScreen> {
     if (place.isExcluded) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-        decoration: BoxDecoration(color: Colors.red.shade100, borderRadius: BorderRadius.circular(4)),
-        child: const Text('EXCLUDED', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: Colors.red)),
+        decoration: BoxDecoration(
+          color: Colors.red.shade100,
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: const Text(
+          'EXCLUDED',
+          style: TextStyle(
+            fontSize: 9,
+            fontWeight: FontWeight.bold,
+            color: Colors.red,
+          ),
+        ),
       );
     }
     if (place.isManuallyAdded) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-        decoration: BoxDecoration(color: Colors.purple.shade100, borderRadius: BorderRadius.circular(4)),
-        child: const Text('MANUAL ADD', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: Colors.purple)),
+        decoration: BoxDecoration(
+          color: Colors.purple.shade100,
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: const Text(
+          'MANUAL ADD',
+          style: TextStyle(
+            fontSize: 9,
+            fontWeight: FontWeight.bold,
+            color: Colors.purple,
+          ),
+        ),
       );
     }
     if (place.isManuallyEdited) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-        decoration: BoxDecoration(color: Colors.green.shade100, borderRadius: BorderRadius.circular(4)),
-        child: const Text('CURATED', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: Colors.green)),
+        decoration: BoxDecoration(
+          color: Colors.green.shade100,
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: const Text(
+          'CURATED',
+          style: TextStyle(
+            fontSize: 9,
+            fontWeight: FontWeight.bold,
+            color: Colors.green,
+          ),
+        ),
       );
     }
     if (!place.hasImage || !place.hasOpeningHours) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-        decoration: BoxDecoration(color: Colors.orange.shade50, borderRadius: BorderRadius.circular(4)),
-        child: const Text('INCOMPLETE', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: Colors.orange)),
+        decoration: BoxDecoration(
+          color: Colors.orange.shade50,
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: const Text(
+          'INCOMPLETE',
+          style: TextStyle(
+            fontSize: 9,
+            fontWeight: FontWeight.bold,
+            color: Colors.orange,
+          ),
+        ),
       );
     }
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-      decoration: BoxDecoration(color: Colors.teal.shade50, borderRadius: BorderRadius.circular(4)),
-      child: const Text('READY', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: Colors.teal)),
+      decoration: BoxDecoration(
+        color: Colors.teal.shade50,
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: const Text(
+        'READY',
+        style: TextStyle(
+          fontSize: 9,
+          fontWeight: FontWeight.bold,
+          color: Colors.teal,
+        ),
+      ),
     );
   }
 }

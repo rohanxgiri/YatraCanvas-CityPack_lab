@@ -75,6 +75,15 @@ void main() {
       await tester.enterText(fields.at(0), 'Wikimedia Commons');
       expect(find.text('Photographer or author'), findsOneWidget);
       await tester.enterText(fields.at(2), 'Test Photographer');
+      await tester.ensureVisible(find.byType(CheckboxListTile));
+      await tester.tap(
+        find.text('This is a real photograph of this exact place'),
+      );
+      await tester.pumpAndSettle();
+      expect(
+        tester.widget<CheckboxListTile>(find.byType(CheckboxListTile)).value,
+        isTrue,
+      );
       await tester.tap(find.text('Import photo'));
       await tester.pumpAndSettle();
 

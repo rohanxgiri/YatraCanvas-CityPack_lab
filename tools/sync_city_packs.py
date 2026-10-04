@@ -103,6 +103,15 @@ def discover_releases(datafactory_root: Path) -> dict:
     """Discovers all valid production releases, ignoring quarantine."""
     releases_dir = datafactory_root / "releases"
     discovered = {}
+    heads = {}
+    for file in (datafactory_root / 'data/research/heads').glob('*.json'):
+        row = json.loads(file.read_text(encoding='utf-8'))
+        selected = row.get('output_pack')
+        if selected:
+            selected_path = (releases_dir / selected).resolve()
+            if selected_path.is_relative_to(releases_dir.resolve()):
+                heads[str(selected_path)] = True
+    selected_ranks = {}
 
     for root, dirs, files in os.walk(releases_dir):
         root_path = Path(root)
@@ -116,12 +125,17 @@ def discover_releases(datafactory_root: Path) -> dict:
                     manifest = json.load(f)
                 city_id = manifest.get("city_id")
                 city_name = manifest.get("city_name")
-                if city_id:
+                if city_id and not {'app_packs', 'demo'} & set(root_path.relative_to(releases_dir).parts):
+                    rank = (str(root_path.resolve()) in heads, manifest.get('generated_at', ''), root_path.name)
+                    key = city_id.lower()
+                    if key in selected_ranks and rank <= selected_ranks[key]:
+                        continue
+                    selected_ranks[key] = rank
                     discovered[city_id.lower()] = {
                         "city_id": city_id,
                         "city_name": city_name,
                         "state": manifest.get("state", ""),
-                        "version": manifest.get("city_pack_version", ""),
+                        "version": manifest.get("city_pack_version") or root_path.name,
                         "source_path": root_path,
                         "counts": manifest.get("counts", {}),
                     }
@@ -232,6 +246,20 @@ def sync_packs(selected_city_ids: list, datafactory_root: Path, target_base: Pat
                 copied_hashes[fname] = dest_hash
                 print(f"  [OK] Copied {fname} (SHA256: {dest_hash[:8]}...)")
 
+        # Small canonical alias projection for QA search; the baseline DB stays byte-identical.
+        if (src_dir / 'places.json').exists():
+            places = json.loads((src_dir / 'places.json').read_text(encoding='utf-8'))
+            aliases = {row['id']:row.get('alternate_names', []) for row in places}
+            (dest_dir / 'aliases.json').write_text(json.dumps(aliases, ensure_ascii=False), encoding='utf-8')
+            review = {}
+            for row in places:
+                hours = row.get('opening_hours') or {}
+                primary = (row.get('images') or {}).get('primary') or {}
+                review[row['id']] = {
+                    'hours_state': 'VERIFIED' if hours.get('raw') and hours.get('verified') else 'UNVERIFIED' if hours.get('raw') else 'UNKNOWN',
+                    'media_class': primary.get('media_class', 'UNCLASSIFIED') if primary else 'MISSING',
+                }
+            (dest_dir / 'review_metadata.json').write_text(json.dumps(review, ensure_ascii=False), encoding='utf-8')
         # Copy images directory
         src_images = src_dir / "images"
         dest_images = dest_dir / "images"

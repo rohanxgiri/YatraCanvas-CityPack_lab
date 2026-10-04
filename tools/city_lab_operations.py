@@ -79,6 +79,9 @@ def run(args):
                             'decisions_preserved': sum('/inbox_decisions/' in f for f in preserved),
                             'reviewed_records_changed': changed_reviews, 'curation_files_lost': lost})
         return {'results': results}
+    if args.operation == 'patch':
+        from export_citylab_patch import export_patch
+        return export_patch(base / args.city, Path(args.source), Path(args.output), args.place_id)
     if args.operation == 'media':
         reports = {}
         for name in ('image_manifest.json', 'images_manifest.json'):
@@ -93,12 +96,13 @@ def run(args):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('operation', choices=('discover', 'sync', 'media', 'build'))
+    parser.add_argument('operation', choices=('discover', 'sync', 'media', 'build', 'patch'))
     parser.add_argument('--source')
     parser.add_argument('--cities', nargs='+', default=[])
     parser.add_argument('--city')
     parser.add_argument('--evidence')
     parser.add_argument('--output')
+    parser.add_argument('--place-id', action='append')
     args = parser.parse_args()
     log = io.StringIO()
     try:

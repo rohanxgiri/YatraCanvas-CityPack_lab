@@ -377,3 +377,8 @@ Resolve any conflicts, rerun validation, commit the merge if needed, and push ag
 ## 19. Getting help
 
 Open a GitHub issue or ask in the Pull Request. Include the city, place ID, exact screen/action, error text, and the evidence you checked. Never hide uncertainty—record it so a reviewer can help.
+
+
+## Bundled city-data loop — 2026-10-04
+
+`[IMPLEMENTED]` See [the city-data loop](CITY_DATA_DEV_LOOP.md) for the new immutable app export, base-bound human repair patch and safe sync commands. Existing strict certification/provider architecture remains intact. `[PARTIAL]` Physical-phone acceptance remains unverified. No production migration or paid provider call is part of this loop.

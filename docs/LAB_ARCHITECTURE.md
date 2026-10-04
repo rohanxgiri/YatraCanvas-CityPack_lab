@@ -210,3 +210,8 @@ The application supports cross-platform execution:
    - Uses native `sqflite` with SQLite platform channels.
 4. **Headless VM Test Runner**:
    - Executes full integration and evaluation tests via `flutter test` without a display server.
+
+
+## Bundled city-data loop — 2026-10-04
+
+`[IMPLEMENTED]` See [the city-data loop](CITY_DATA_DEV_LOOP.md) for the new immutable app export, base-bound human repair patch and safe sync commands. Existing strict certification/provider architecture remains intact. `[PARTIAL]` Physical-phone acceptance remains unverified. No production migration or paid provider call is part of this loop.

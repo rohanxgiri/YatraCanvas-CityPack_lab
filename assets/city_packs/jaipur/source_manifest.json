@@ -51,6 +51,22 @@
       "license_url": "https://commons.wikimedia.org/",
       "attribution": "Individual photographers as recorded in image_manifest.json",
       "role": "Verified landmark WebP photography (primary.webp, thumbnail.webp)"
+    },
+    "wikipedia": {
+      "source": "Wikipedia",
+      "license": "CC BY-SA",
+      "attribution": "Wikipedia contributors",
+      "role": "Source excerpts with original article links in field_provenance.json"
+    },
+    "test_only_external_media": {
+      "source": "Manually supplied external test photographs",
+      "license": "UNVERIFIED_TEST_ONLY",
+      "license_verified": false,
+      "usage_scope": "local_testing_only",
+      "role": "Opt-in demo photographs; exact identity confirmed manually; excluded from source readiness",
+      "source_pages": [
+        "https://jaipurthrumylens.com/2016/10/06/history-old-city-gates-of-jaipur-architectural-design-elements/"
+      ]
     }
   },
   "license_isolation_policy": "Factual non-copyrightable data merged into canonical permissive dataset. Wikivoyage prose and Commons imagery maintain exact author attribution and license provenance."

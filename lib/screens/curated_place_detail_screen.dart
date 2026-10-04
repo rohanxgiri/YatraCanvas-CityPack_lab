@@ -267,6 +267,67 @@ class _CuratedPlaceDetailScreenState extends State<CuratedPlaceDetailScreen> {
                   ],
                   const SizedBox(height: 16),
 
+                  SelectableText(
+                    "place_id: ${_place.id}",
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                  const SizedBox(height: 8),
+                  OutlinedButton.icon(
+                    icon: const Icon(Icons.translate),
+                    label: const Text("Edit aliases"),
+                    onPressed: () async {
+                      final controller = TextEditingController(
+                        text:
+                            (_place.override?.aliases ??
+                                    widget
+                                        .state
+                                        .repository
+                                        ?.database
+                                        .aliases[_place.id] ??
+                                    const <String>[])
+                                .join(", "),
+                      );
+                      final aliases = await showDialog<List<String>>(
+                        context: context,
+                        builder: (ctx) => AlertDialog(
+                          title: const Text("Place aliases"),
+                          content: TextField(
+                            controller: controller,
+                            decoration: const InputDecoration(
+                              helperText: "Separate names with commas",
+                            ),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(ctx),
+                              child: const Text("Cancel"),
+                            ),
+                            FilledButton(
+                              onPressed: () => Navigator.pop(
+                                ctx,
+                                controller.text
+                                    .split(",")
+                                    .map((s) => s.trim())
+                                    .where((s) => s.isNotEmpty)
+                                    .toList(),
+                              ),
+                              child: const Text("Save"),
+                            ),
+                          ],
+                        ),
+                      );
+                      controller.dispose();
+                      if (aliases != null) {
+                        await widget.state.saveFieldOverride(
+                          place: _place.toLabPlace(),
+                          aliases: aliases,
+                          fieldName: "aliases",
+                          evidenceSource: "Manual alias correction",
+                        );
+                        _refresh();
+                      }
+                    },
+                  ),
                   // Curation Action Toolbar
                   _buildCurationToolbar(),
                   const SizedBox(height: 20),
@@ -496,6 +557,7 @@ class _CuratedPlaceDetailScreenState extends State<CuratedPlaceDetailScreen> {
                           await widget.state.saveFieldOverride(
                             place: _place.toLabPlace(),
                             name: name,
+                            nameHi: nameHi,
                             category: _place.category,
                             description: description,
                             website: website,

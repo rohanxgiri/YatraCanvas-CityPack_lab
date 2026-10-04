@@ -8,5 +8,11 @@
     "Wikidata: Data provided by Wikidata under CC0 1.0 Universal",
     "Overture Maps: Data provided by Overture Maps Foundation under CDLA Permissive 2.0",
     "Wikimedia Commons: Individual media licenses tracked per file in image_manifest.json"
-  ]
+  ],
+  "test_only_media": {
+    "license_verified": false,
+    "usage_scope": "local_testing_only",
+    "production_reuse_authorized": false,
+    "manifest": "test_media_manifest.json"
+  }
 }

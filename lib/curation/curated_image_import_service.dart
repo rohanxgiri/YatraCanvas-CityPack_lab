@@ -56,8 +56,11 @@ class _ProcessedImage {
       primaryHeight = 0;
 }
 
-_ProcessedImage _processImage(Uint8List sourceBytes) {
-  final decoded = img.decodeImage(sourceBytes);
+_ProcessedImage _processImage(Map<String, dynamic> input) {
+  final sourceBytes = input['bytes'] as Uint8List;
+  final testOnly = input['testOnly'] == true;
+  final raw = img.decodeImage(sourceBytes);
+  final decoded = raw == null ? null : img.bakeOrientation(raw);
   if (decoded == null) {
     return const _ProcessedImage.failure(
       'This file is not a readable JPG, PNG, or WebP image.',
@@ -70,8 +73,10 @@ _ProcessedImage _processImage(Uint8List sourceBytes) {
   final shortEdge = decoded.width < decoded.height
       ? decoded.width
       : decoded.height;
-  if (longEdge < CuratedImageImportService.minimumLongEdge ||
-      shortEdge < CuratedImageImportService.minimumShortEdge) {
+  if (decoded.width * decoded.height > 40000000 ||
+      longEdge < (testOnly ? 320 : CuratedImageImportService.minimumLongEdge) ||
+      shortEdge <
+          (testOnly ? 200 : CuratedImageImportService.minimumShortEdge)) {
     return _ProcessedImage.failure(
       'This image is ${decoded.width} × ${decoded.height}. Use at least 640 × 480 pixels.',
     );
@@ -163,18 +168,28 @@ class CuratedImageImportService {
       );
     }
 
-    final processed = await compute(_processImage, sourceBytes);
+    final processed = await compute(_processImage, {
+      'bytes': sourceBytes,
+      'testOnly': license == 'UNVERIFIED_TEST_ONLY',
+    });
     if (processed.errorMessage != null) {
       throw ImageImportException(processed.errorMessage!);
     }
-    if (author.trim().isEmpty || licenseUrl.trim().isEmpty ||
-        (sourcePage.trim().isEmpty && source.trim().toLowerCase() != 'own work')) {
-      throw const ImageImportException('Add the photographer or author, source page and license URL. Own work may omit the source page.');
+    final testOnly = license == "UNVERIFIED_TEST_ONLY";
+    if (!testOnly &&
+        (author.trim().isEmpty ||
+            licenseUrl.trim().isEmpty ||
+            (sourcePage.trim().isEmpty &&
+                source.trim().toLowerCase() != 'own work'))) {
+      throw const ImageImportException(
+        'Add the photographer or author, source page and license URL. Own work may omit the source page.',
+      );
     }
 
     final safeCityId = _safeSegment(cityId, label: 'city');
     final safePlaceId = _safeSegment(placeId, label: 'place');
-    final curatedFolder = 'curated_${safePlaceId}_${sha256.convert(sourceBytes).toString().substring(0, 12)}';
+    final curatedFolder =
+        'curated_${safePlaceId}_${sha256.convert(sourceBytes).toString().substring(0, 12)}';
     final packRelativePrimary = p.posix.join(
       'images',
       curatedFolder,
@@ -215,6 +230,11 @@ class CuratedImageImportService {
 
     final metadata = <String, dynamic>{
       'schemaVersion': 1,
+      'mediaClass': testOnly ? 'TEST_ONLY_REAL' : 'VERIFIED_REAL',
+      'identityConfirmed': true,
+      'realPhotographConfirmed': true,
+      'countsTowardSourceReadiness': !testOnly,
+      'usageScope': testOnly ? 'local_testing_only' : 'reviewed_media',
       'cityId': safeCityId,
       'placeId': safePlaceId,
       'primaryImagePath': packRelativePrimary,

@@ -152,6 +152,7 @@ class _PlaceEditorDialogState extends State<PlaceEditorDialog> {
               const SizedBox(height: 6),
               DropdownButtonFormField<String>(
                 initialValue: _selectedTier,
+                isExpanded: true,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),

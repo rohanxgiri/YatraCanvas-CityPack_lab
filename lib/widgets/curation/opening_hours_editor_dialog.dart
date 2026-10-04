@@ -1,258 +1,235 @@
 import 'package:flutter/material.dart';
+
 import '../../domain/curation/curated_place.dart';
 
 class OpeningHoursEditorDialog extends StatefulWidget {
-  final CuratedPlace place;
-  final Function({required String openingHours, required String evidenceSource}) onSave;
-
   const OpeningHoursEditorDialog({
-    super.key,
     required this.place,
     required this.onSave,
+    super.key,
   });
-
+  final CuratedPlace place;
+  final Function({required String openingHours, required String evidenceSource})
+  onSave;
   static Future<void> show(
     BuildContext context, {
     required CuratedPlace place,
-    required Function({required String openingHours, required String evidenceSource}) onSave,
-  }) {
-    return showDialog(
-      context: context,
-      builder: (_) => OpeningHoursEditorDialog(place: place, onSave: onSave),
-    );
-  }
-
+    required Function({
+      required String openingHours,
+      required String evidenceSource,
+    })
+    onSave,
+  }) => showDialog(
+    context: context,
+    builder: (_) => OpeningHoursEditorDialog(place: place, onSave: onSave),
+  );
   @override
-  State<OpeningHoursEditorDialog> createState() => _OpeningHoursEditorDialogState();
+  State<OpeningHoursEditorDialog> createState() =>
+      _OpeningHoursEditorDialogState();
 }
 
 class _OpeningHoursEditorDialogState extends State<OpeningHoursEditorDialog> {
-  late final TextEditingController _customController;
-  late final TextEditingController _sourceController;
-  String _selectedPreset = 'custom';
-
-  final List<String> _days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  final Map<String, String> _dayHours = {
-    'Mon': '09:00-17:00',
-    'Tue': '09:00-17:00',
-    'Wed': '09:00-17:00',
-    'Thu': '09:00-17:00',
-    'Fri': '09:00-17:00',
-    'Sat': '09:00-17:00',
-    'Sun': '09:00-17:00',
-  };
-
+  static const days = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ];
+  static const codes = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+  late final TextEditingController _raw;
+  final _source = TextEditingController();
+  final _day = List.generate(7, (_) => TextEditingController());
+  bool _weekly = false, _verified = false;
+  String? _error;
   @override
   void initState() {
     super.initState();
-    _customController = TextEditingController(text: widget.place.openingHours ?? '09:00-17:00');
-    _sourceController = TextEditingController(text: 'Official website / On-site notice board');
+    _raw = TextEditingController(text: widget.place.openingHours ?? '');
+    _verified = widget.place.override?.openingHoursStatus == 'VERIFIED';
+    _source.text = (widget.place.override?.fieldSources['opening_hours'] ?? '')
+        .replaceFirst(RegExp(r'^(Verified|Unverified) hours:\s*'), '');
+    for (final section in _raw.text.split(';')) {
+      final match = RegExp(
+        r'^\s*((?:Mo|Tu|We|Th|Fr|Sa|Su)(?:[-,](?:Mo|Tu|We|Th|Fr|Sa|Su))*)\s+(.+)\s*$',
+      ).firstMatch(section);
+      if (match == null || !_validDay(match[2]!.trim())) continue;
+      for (final range in match[1]!.split(',')) {
+        final limits = range.split('-');
+        var index = codes.indexOf(limits.first);
+        final last = codes.indexOf(limits.last);
+        while (true) {
+          _day[index].text = match[2]!.trim();
+          if (index == last) break;
+          index = (index + 1) % 7;
+        }
+      }
+    }
   }
 
   @override
   void dispose() {
-    _customController.dispose();
-    _sourceController.dispose();
+    _raw.dispose();
+    _source.dispose();
+    for (final c in _day) {
+      c.dispose();
+    }
     super.dispose();
   }
 
-  void _applyPreset(String preset) {
-    setState(() {
-      _selectedPreset = preset;
-      switch (preset) {
-        case 'standard':
-          _customController.text = '09:00-18:00';
-          break;
-        case 'museum':
-          _customController.text = 'Mon-Sat: 09:30-17:00; Sun: Closed';
-          break;
-        case 'restaurant':
-          _customController.text = '11:00-23:00';
-          break;
-        case '24hours':
-          _customController.text = 'Open 24 Hours';
-          break;
-        case 'closed':
-          _customController.text = 'Closed';
-          break;
+  String _weeklyValue() => List.generate(7, (i) {
+    final text = _day[i].text.trim();
+    return '${codes[i]} ${text.isEmpty || text.toLowerCase() == 'unknown'
+        ? 'unknown'
+        : text.toLowerCase() == 'closed'
+        ? 'off'
+        : text == '24 hours' || text == '24/7'
+        ? '00:00-24:00'
+        : text}';
+  }).join('; ');
+  bool _validDay(String text) {
+    if ([
+      '',
+      'unknown',
+      'closed',
+      'off',
+      '24 hours',
+      '24/7',
+    ].contains(text.toLowerCase())) {
+      return true;
+    }
+    for (final interval in text.split(',')) {
+      final match = RegExp(r'^\s*(\d{2}):(\d{2})-(\d{2}):(\d{2})\s*$')
+          .firstMatch(interval);
+      if (match == null) return false;
+      final open = int.parse(match[1]!) * 60 + int.parse(match[2]!),
+          close = int.parse(match[3]!) * 60 + int.parse(match[4]!);
+      if (int.parse(match[2]!) > 59 ||
+          int.parse(match[4]!) > 59 ||
+          open >= 1440 ||
+          close > 1440 ||
+          close <= open) {
+        return false;
       }
-    });
+    }
+    return true;
   }
 
-  void _copyToAll(String hours) {
-    setState(() {
-      for (final d in _days) {
-        _dayHours[d] = hours;
-      }
-      _customController.text = 'Daily: $hours';
-    });
+  void _save() {
+    if (_weekly && _day.any((c) => !_validDay(c.text.trim()))) {
+      setState(
+        () =>
+            _error = 'Use HH:mm-HH:mm intervals, Closed, Unknown, or 24 hours.',
+      );
+      return;
+    }
+    final text = _weekly
+        ? (_day.every(
+                (c) =>
+                    c.text.trim().isEmpty ||
+                    c.text.trim().toLowerCase() == 'unknown',
+              )
+              ? ''
+              : _weeklyValue())
+        : _raw.text.trim();
+    if (_verified && (text.isEmpty || _source.text.trim().isEmpty)) {
+      setState(
+        () => _error = 'Verified hours require a schedule and source evidence.',
+      );
+      return;
+    }
+    widget.onSave(
+      openingHours: text,
+      evidenceSource:
+          '${_verified ? 'Verified hours:' : 'Unverified hours:'} ${_source.text.trim()}',
+    );
+    Navigator.pop(context);
   }
 
   @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Row(
-        children: [
-          const Icon(Icons.access_time_filled, color: Colors.indigo),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
+  Widget build(BuildContext context) => AlertDialog(
+    title: Text('Opening hours: ${widget.place.name}'),
+    content: SizedBox(
+      width: 520,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(
+              'Keep missing hours unknown. Include split intervals when the venue closes between sessions.',
+            ),
+            SwitchListTile(
+              title: const Text('Edit a weekly schedule'),
+              value: _weekly,
+              onChanged: (v) => setState(() => _weekly = v),
+            ),
+            if (_weekly)
+              ...List.generate(
+                7,
+                (i) => Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: TextField(
+                    controller: _day[i],
+                    decoration: InputDecoration(
+                      labelText: days[i],
+                      hintText: 'Unknown, Closed, 09:00-14:00,17:00-22:00',
+                    ),
+                  ),
+                ),
+              )
+            else
+              TextField(
+                controller: _raw,
+                decoration: const InputDecoration(
+                  labelText: 'Source schedule',
+                  helperText: 'Blank means unknown. Example: Mo-Su 09:00-17:00',
+                ),
+              ),
+            Wrap(
+              spacing: 8,
               children: [
-                const Text('Edit Opening Hours', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                Text(
-                  widget.place.name,
-                  style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
-                  overflow: TextOverflow.ellipsis,
+                TextButton(
+                  onPressed: () => setState(() {
+                    _raw.text = '';
+                    _weekly = false;
+                    _verified = false;
+                  }),
+                  child: const Text('Set unknown'),
+                ),
+                TextButton(
+                  onPressed: () => setState(() {
+                    _raw.text = '24/7';
+                    _weekly = false;
+                  }),
+                  child: const Text('24 hours'),
                 ),
               ],
             ),
-          ),
-        ],
-      ),
-      content: SingleChildScrollView(
-        child: SizedBox(
-          width: 480,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // Current value pill
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Row(
-                  children: [
-                    const Icon(Icons.history, size: 16, color: Colors.grey),
-                    const SizedBox(width: 6),
-                    Expanded(
-                      child: Text(
-                        widget.place.openingHours != null
-                            ? 'Current value: ${widget.place.openingHours}'
-                            : 'Currently missing opening hours',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: widget.place.openingHours != null ? Colors.black87 : Colors.red.shade700,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+            TextField(
+              controller: _source,
+              decoration: const InputDecoration(
+                labelText: 'Source or evidence',
               ),
-              const SizedBox(height: 16),
-
-              // Quick Presets
-              const Text('Quick Presets:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
-              const SizedBox(height: 6),
-              Wrap(
-                spacing: 6,
-                runSpacing: 6,
-                children: [
-                  _presetChip('standard', '9 AM - 6 PM'),
-                  _presetChip('museum', 'Museum (Mon-Sat)'),
-                  _presetChip('restaurant', 'Dining (11 AM - 11 PM)'),
-                  _presetChip('24hours', 'Open 24/7'),
-                  _presetChip('closed', 'Closed'),
-                ],
-              ),
-              const SizedBox(height: 16),
-
-              // Formatted Value Input
-              const Text('Opening Hours Value:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
-              const SizedBox(height: 6),
-              TextField(
-                controller: _customController,
-                decoration: InputDecoration(
-                  hintText: 'e.g. 09:00-18:00 or Mon-Sun: 09:30-17:30',
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                ),
-              ),
-              const SizedBox(height: 12),
-
-              // Evidence / Source field
-              const Text('Source / Verification Evidence:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
-              const SizedBox(height: 6),
-              TextField(
-                controller: _sourceController,
-                decoration: InputDecoration(
-                  hintText: 'e.g. Official website link, Google Maps listing, On-site signboard',
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                ),
-              ),
-              const SizedBox(height: 12),
-
-              // Day-by-Day Quick Setter helper
-              ExpansionTile(
-                title: const Text('Day-by-Day Helper', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
-                tilePadding: EdgeInsets.zero,
-                children: [
-                  ..._days.map((day) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 2),
-                        child: Row(
-                          children: [
-                            SizedBox(width: 45, child: Text(day, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12))),
-                            Expanded(
-                              child: Text(_dayHours[day] ?? 'Closed', style: const TextStyle(fontSize: 12)),
-                            ),
-                            TextButton(
-                              onPressed: () => _copyToAll(_dayHours[day] ?? '09:00-17:00'),
-                              child: const Text('Apply to all', style: TextStyle(fontSize: 11)),
-                            ),
-                          ],
-                        ),
-                      )),
-                ],
-              ),
-            ],
-          ),
+            ),
+            CheckboxListTile(
+              title: const Text('I verified this schedule against the source'),
+              value: _verified,
+              onChanged: (v) => setState(() => _verified = v ?? false),
+            ),
+            if (_error != null)
+              Text(_error!, style: const TextStyle(color: Colors.red)),
+          ],
         ),
       ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Cancel'),
-        ),
-        ElevatedButton.icon(
-          icon: const Icon(Icons.check, size: 16),
-          label: const Text('Save Correction'),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.indigo,
-            foregroundColor: Colors.white,
-          ),
-          onPressed: () {
-            final text = _customController.text.trim();
-            final source = _sourceController.text.trim();
-            if (text.isEmpty) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Please enter opening hours')),
-              );
-              return;
-            }
-            widget.onSave(
-              openingHours: text,
-              evidenceSource: source.isNotEmpty ? source : 'Manual Contributor Entry',
-            );
-            Navigator.of(context).pop();
-          },
-        ),
-      ],
-    );
-  }
-
-  Widget _presetChip(String id, String label) {
-    final selected = _selectedPreset == id;
-    return ChoiceChip(
-      label: Text(label, style: TextStyle(fontSize: 11, color: selected ? Colors.white : Colors.black87)),
-      selected: selected,
-      selectedColor: Colors.indigo,
-      onSelected: (_) => _applyPreset(id),
-    );
-  }
+    ),
+    actions: [
+      TextButton(
+        onPressed: () => Navigator.pop(context),
+        child: const Text('Cancel'),
+      ),
+      FilledButton(onPressed: _save, child: const Text('Save Correction')),
+    ],
+  );
 }

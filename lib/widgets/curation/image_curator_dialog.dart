@@ -84,7 +84,8 @@ class _ImageCuratorDialogState extends State<ImageCuratorDialog> {
     'CC BY-SA 4.0': 'https://creativecommons.org/licenses/by-sa/4.0/',
     'CC BY 4.0': 'https://creativecommons.org/licenses/by/4.0/',
     'CC0 / Public Domain': 'https://creativecommons.org/publicdomain/zero/1.0/',
-    'Contributor owned': '',
+    'Contributor owned': 'https://creativecommons.org/licenses/by/4.0/',
+    'UNVERIFIED_TEST_ONLY': '',
   };
 
   final _sourceController = TextEditingController();
@@ -94,6 +95,7 @@ class _ImageCuratorDialogState extends State<ImageCuratorDialog> {
   Uint8List? _selectedBytes;
   String? _selectedFilename;
   bool _isSaving = false;
+  bool _identityConfirmed = false;
   String? _errorMessage;
 
   @override
@@ -154,8 +156,18 @@ class _ImageCuratorDialogState extends State<ImageCuratorDialog> {
       setState(() => _errorMessage = 'Add the image source to continue.');
       return;
     }
-    if (_authorController.text.trim().isEmpty) {
-      setState(() => _errorMessage = 'Add the photographer or author to continue.');
+    if (!_identityConfirmed) {
+      setState(
+        () => _errorMessage =
+            'Confirm this is a real photograph of this exact place.',
+      );
+      return;
+    }
+    if (_selectedLicense != 'UNVERIFIED_TEST_ONLY' &&
+        _authorController.text.trim().isEmpty) {
+      setState(
+        () => _errorMessage = 'Add the photographer or author to continue.',
+      );
       return;
     }
 
@@ -267,6 +279,17 @@ class _ImageCuratorDialogState extends State<ImageCuratorDialog> {
                     hintText: 'Wikimedia Commons, official tourism board, or own work',
                   ),
                 ),
+                CheckboxListTile(
+                  value: _identityConfirmed,
+                  title: const Text(
+                    'This is a real photograph of this exact place',
+                  ),
+                  onChanged: (value) =>
+                      setState(() => _identityConfirmed = value ?? false),
+                ),
+                const Text(
+                  'UNVERIFIED_TEST_ONLY photos are for local demos and never count as strict licensed media.',
+                ),
                 const SizedBox(height: LabSpacing.sm),
                 TextField(
                   controller: _sourcePageController,
@@ -279,8 +302,13 @@ class _ImageCuratorDialogState extends State<ImageCuratorDialog> {
                 ),
                 const SizedBox(height: LabSpacing.sm),
                 _buildLicenseField(),
-                TextField(controller: _authorController, enabled: !_isSaving,
-                  decoration: const InputDecoration(labelText: 'Photographer or author')),
+                TextField(
+                  controller: _authorController,
+                  enabled: !_isSaving,
+                  decoration: const InputDecoration(
+                    labelText: 'Photographer or author',
+                  ),
+                ),
                 const SizedBox(height: LabSpacing.sm),
                 Text(
                   'The app creates a 1600 px primary WebP, a 480 px thumbnail, and a Git tracked attribution record. The source database remains unchanged.',

@@ -149,3 +149,8 @@ images/
 ```
 Missing images are represented as null/empty `primary_image_path` in SQLite and absence of directory on disk.
 In the Lab, any missing image will render a dedicated, clear **"No local image"** placeholder.
+
+
+## Bundled city-data loop — 2026-10-04
+
+`[IMPLEMENTED]` See [the city-data loop](CITY_DATA_DEV_LOOP.md) for the new immutable app export, base-bound human repair patch and safe sync commands. Existing strict certification/provider architecture remains intact. `[PARTIAL]` Physical-phone acceptance remains unverified. No production migration or paid provider call is part of this loop.

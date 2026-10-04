@@ -24,6 +24,88 @@ class ReleaseGateScreen extends StatefulWidget {
 class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
   bool _isExporting = false;
 
+  Future<void> _exportRepairPatch() async {
+    final ids = TextEditingController();
+    final selection = await showDialog<String>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Export repair patch'),
+        content: TextField(
+          controller: ids,
+          decoration: const InputDecoration(
+            labelText: 'Place IDs (optional, separated by commas)',
+            helperText: 'Leave blank for all current repairs. Older overlays require re-review.',
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, ids.text),
+            child: const Text('Export repairs'),
+          ),
+        ],
+      ),
+    );
+    ids.dispose();
+    if (selection == null || !mounted) return;
+    setState(() => _isExporting = true);
+    try {
+      final operations = CityLabOperations();
+      await operations.load();
+      if (operations.sourcePath.isEmpty) {
+        throw StateError(
+          'Set your DataFactory checkout in operational settings first.',
+        );
+      }
+      final city = widget.state.activePack!.id;
+      final output = p.join(
+        operations.projectPath,
+        'artifacts',
+        'patches',
+        '${city}_${DateTime.now().millisecondsSinceEpoch}.zip',
+      );
+      final result = await operations.run('patch', [
+        '--city',
+        city,
+        '--source',
+        operations.sourcePath,
+        '--output',
+        output,
+        for (final id
+            in selection
+                .split(',')
+                .map((s) => s.trim())
+                .where((s) => s.isNotEmpty)) ...['--place-id', id],
+      ]);
+      if (!mounted) return;
+      showDialog<void>(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text('Repair patch exported'),
+          content: SelectableText(
+            '${result['change_count']} repairs, ${result['media_count']} media files\n$output\nReview with DataFactory citylab-import --dry-run before apply.',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text('Done'),
+            ),
+          ],
+        ),
+      );
+    } catch (error) {
+      if (mounted) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('$error')));
+      }
+    } finally {
+      if (mounted) setState(() => _isExporting = false);
+    }
+  }
+
   Future<void> _buildCertifiedPack() async {
     setState(() => _isExporting = true);
     try {
@@ -597,6 +679,12 @@ class _ReleaseGateScreenState extends State<ReleaseGateScreen> {
             const SizedBox(height: 20),
           ],
 
+          OutlinedButton.icon(
+            onPressed: _isExporting ? null : _exportRepairPatch,
+            icon: const Icon(Icons.upload_file),
+            label: const Text('Export DataFactory repair patch'),
+          ),
+          const SizedBox(height: 12),
           // Export Action Button
           if (!gate.isReady) ...[
             const ElevatedButton(

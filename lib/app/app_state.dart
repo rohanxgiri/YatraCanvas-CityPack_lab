@@ -148,6 +148,7 @@ class AppState extends ChangeNotifier {
         imageResolver: imageResolver,
       );
       activePack = pack;
+      curationService.sourcePackVersion = pack.version;
 
       // Load or create QA Session
       currentSession = await qaRepository.loadSession(pack.id, pack.version);
@@ -160,6 +161,11 @@ class AppState extends ChangeNotifier {
       // Load Curation System state (overrides, additions, exclusions, reviews, issues)
       curationService.currentContributor = contributorName;
       await curationService.loadCityCuration(pack.id);
+      for (final row in curationService.overrides.values) {
+        if (row.aliases != null) {
+          repository!.database.aliases[row.placeId] = row.aliases!;
+        }
+      }
 
       // Load Review Inbox (DataFactory review_candidates.json + human decisions)
       await loadReviewManifest(pack.id);
@@ -395,6 +401,72 @@ class AppState extends ChangeNotifier {
     if (repository == null) return [];
 
     List<LabPlace> basePlaces = [];
+    const repairFilters = {
+      'missing_image',
+      'fallback_image',
+      'test_only_image',
+      'missing_hours',
+      'unknown_hours',
+      'unverified_hours',
+      'missing_description',
+    };
+    if (repairFilters.contains(filter)) {
+      final raw = await repository!.search(
+        query: query.trim(),
+        category: category == 'all' ? null : category,
+        limit: 100000,
+      );
+      final candidates = [
+        for (final p in raw) curationService.resolve(p),
+        for (final id in curationService.additions.keys)
+          if (curationService.resolveAddition(id) != null)
+            curationService.resolveAddition(id)!,
+      ];
+      bool matches(CuratedPlace p) {
+        if (p.isExcluded ||
+            (category != null && category != 'all' && p.category != category)) {
+          return false;
+        }
+        if (query.isNotEmpty &&
+            p.isManuallyAdded &&
+            !p.name.toLowerCase().contains(query.toLowerCase()) &&
+            !p.id.contains(query)) {
+          return false;
+        }
+        final metadata = repository!.database.reviewMetadata[p.id] ?? {};
+        final hours =
+            p.override?.openingHoursStatus ??
+            metadata['hours_state'] ??
+            (p.hasOpeningHours ? 'UNVERIFIED' : 'UNKNOWN');
+        final source = p.override?.fieldSources['primary_image_path'] ?? '';
+        final media = p.override?.primaryImagePath != null
+            ? (source.contains('UNVERIFIED_TEST_ONLY')
+                  ? 'TEST_ONLY_REAL'
+                  : 'MANUAL')
+            : metadata['media_class'];
+        switch (filter) {
+          case 'missing_image':
+            return !p.hasImage;
+          case 'fallback_image':
+            return p.primaryImagePath?.toLowerCase().contains('fallback') ==
+                    true ||
+                media == 'AI_FALLBACK' ||
+                media == 'GENERIC_FALLBACK';
+          case 'test_only_image':
+            return media == 'TEST_ONLY_REAL';
+          case 'missing_hours':
+          case 'unknown_hours':
+            return !p.hasOpeningHours || hours == 'UNKNOWN';
+          case 'unverified_hours':
+            return p.hasOpeningHours && hours == 'UNVERIFIED';
+          case 'missing_description':
+            return p.description?.trim().isNotEmpty != true;
+        }
+        return false;
+      }
+
+      return candidates.where(matches).skip(offset).take(limit).toList();
+    }
 
     switch (filter) {
       case 'needs_attention':
@@ -578,6 +650,8 @@ class AppState extends ChangeNotifier {
   Future<void> saveFieldOverride({
     required LabPlace place,
     String? name,
+    String? nameHi,
+    List<String>? aliases,
     String? category,
     String? subcategory,
     double? latitude,
@@ -596,6 +670,8 @@ class AppState extends ChangeNotifier {
     await curationService.saveFieldOverride(
       place: place,
       name: name,
+      nameHi: nameHi,
+      aliases: aliases,
       category: category,
       subcategory: subcategory,
       latitude: latitude,
@@ -611,6 +687,7 @@ class AppState extends ChangeNotifier {
       evidenceSource: evidenceSource,
       previousValue: previousValue,
     );
+    if (aliases != null) repository?.database.aliases[place.id] = aliases;
     await evaluateCityQuality();
   }
 
