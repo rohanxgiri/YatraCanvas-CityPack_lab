@@ -6,6 +6,13 @@ description: "Run /debug to find and fix a bug's root cause: a test failing for
   minimal fix, and hands a regression test to /test. No features, no extra
   refactors."
 ---
+## CityPack Lab project context
+
+Read [Agent workflow](../../../docs/AGENT_WORKFLOW.md) and root
+[AGENTS.md](../../../AGENTS.md) before applying this skill. Follow the Lab's baseline
+immutability, evidence, curation and release gate rules. Use the documented Flutter
+and Python workflows and the user's existing authorization for scoped Git actions.
+
 ## Output style (plain words, no dashes, no hyphens)
 
 <!-- OUTPUT-STYLE:START -->

@@ -4,6 +4,13 @@ allowed-tools: Bash, Read, Grep, Glob, Write, Edit, Agent, AskUserQuestion
 description: "Run /test to write a test suite for code you just built or changed, after implementing a feature, route, or fix. Targets uncommitted changes automatically, reads test preferences.json for your framework (asks and saves it if absent), and picks the right strategy per file: happy path, edge cases, error states, accessibility."
 ---
 
+## CityPack Lab project context
+
+Read [Agent workflow](../../../docs/AGENT_WORKFLOW.md) and root
+[AGENTS.md](../../../AGENTS.md) before applying this skill. Follow the Lab's baseline
+immutability, evidence, curation and release gate rules. Use the documented Flutter
+and Python workflows and the user's existing authorization for scoped Git actions.
+
 ## Output style (plain words, no dashes, no hyphens)
 
 <!-- OUTPUT-STYLE:START -->
