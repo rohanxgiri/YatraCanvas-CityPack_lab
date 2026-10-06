@@ -1,6 +1,6 @@
 # Offline city packs
 
-Verified in repository: 2026-10-04. Physical-device acceptance remains `[PARTIAL]`.
+Verified in repository: 2026-10-06. Physical-device acceptance remains `[PARTIAL]`.
 
 `[IMPLEMENTED]` The three checkouts remain separate. DataFactory owns immutable canonical releases;
 City Pack Lab owns durable human overlays and repair bundles; YatraCanvas consumes a compact SQLite

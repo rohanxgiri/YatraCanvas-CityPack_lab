@@ -14,6 +14,19 @@ Certified City Pack
 YatraCanvas traveller app
 ```
 
+The three repositories have deliberately separate responsibilities:
+
+| Repository | Responsibility | Output from this boundary |
+| --- | --- | --- |
+| [DataFactory](https://github.com/rohanxgiri/YatraCanvas-DataFactory) | Generate, validate, and version canonical city data | Immutable baseline or app-pack release |
+| CityPack Lab | Review evidence, curate overlays, run QA, and enforce release gates | Base-bound repair ZIP or certified artifact |
+| [YatraCanvas](https://github.com/rohanxgiri/yatra_canvas) | Consume prepared packs and run the traveller app | Offline search, place details, and local trip planning |
+
+The shared workflow is documented in [the city-data developer loop](docs/CITY_DATA_DEV_LOOP.md)
+and [the release manager guide](docs/RELEASE_MANAGER_GUIDE.md). `[PARTIAL]` Physical Android
+airplane-mode acceptance remains a separate step because no connected device is assumed by the
+repository checks.
+
 ## Who is this for?
 
 ### Contributor / curator
@@ -143,6 +156,7 @@ Human curation normally appears under `assets/city_packs/<city>/curation/`; new 
 - [Quality architecture](docs/CITY_LAB_QUALITY_ARCHITECTURE.md)
 - [Dataset QA guide](docs/DATASET_QA_GUIDE.md)
 - [Environment and platform details](docs/LAB_ENVIRONMENT.md)
+- [Cross-repository city-data loop](docs/CITY_DATA_DEV_LOOP.md)
 
 ## Daily contributor checklist
 
