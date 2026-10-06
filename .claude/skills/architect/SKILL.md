@@ -4,6 +4,13 @@ allowed-tools: Bash, Read, Grep, Glob, Write, Edit, Agent, AskUserQuestion
 description: "Run /architect when choosing between approaches, designing a feature or page, picking a tech stack, or when /develop says a decision is owed, anytime a load bearing technical decision is unmade. Asks deep questions, recommends an answer, and writes a build spec to docs/specs/. Owns all spec files."
 ---
 
+## CityPack Lab project context
+
+Read [Agent workflow](../../../docs/AGENT_WORKFLOW.md) and root
+[AGENTS.md](../../../AGENTS.md) before applying this skill. Follow the Lab's baseline
+immutability, evidence, curation and release gate rules. Use the documented Flutter
+and Python workflows and the user's existing authorization for scoped Git actions.
+
 ## Output style (plain words, no dashes, no hyphens)
 
 <!-- OUTPUT-STYLE:START -->

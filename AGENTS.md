@@ -154,3 +154,11 @@ python tools/sync_city_packs.py --cities "Jaipur"
 - **Null Safety & Types**: Use strong types everywhere. Ensure all collection types and JSON deserializations are fully typed.
 - **Immutability of Data Models**: Prefer immutable data classes (`@immutable`) with `final` fields.
 - **State Management**: Reactive evaluations flow through `AppState` (`lib/app/app_state.dart`). When manual reviews are logged, call `appState.evaluateQuality()` to refresh all 5 pillars synchronously.
+
+## Agent workflow skills
+
+Read [Agent workflow](docs/AGENT_WORKFLOW.md) before using the project skills.
+It records the installed skill paths, compatibility copies, verification commands,
+and separate repair and certification handoffs. These repository invariants govern
+generic skill defaults. Keep architectural status labels evidence based and make
+surgical additions when maintaining curated instructions.

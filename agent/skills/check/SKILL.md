@@ -6,6 +6,13 @@ description: Confirm a change before merge. `/check verify` drives the real app
   one that did not write the code. Verify after /develop, review before a PR.
   Writes to docs/reviews/, never edits code.
 ---
+## CityPack Lab project context
+
+Read [Agent workflow](../../../docs/AGENT_WORKFLOW.md) and root
+[AGENTS.md](../../../AGENTS.md) before applying this skill. Follow the Lab's baseline
+immutability, evidence, curation and release gate rules. Use the documented Flutter
+and Python workflows and the user's existing authorization for scoped Git actions.
+
 ## Output style (plain words, no dashes, no hyphens)
 
 <!-- OUTPUT-STYLE:START -->

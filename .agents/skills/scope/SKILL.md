@@ -4,6 +4,13 @@ allowed-tools: Bash, Read, Grep, Glob, Write, Edit, Agent, AskUserQuestion
 description: "Run /scope to turn a product idea into a living, coarse scope in docs/scope/ and keep it current: plan a new product, plan the next slice, enroll one named feature, or run with no argument to reconcile after shipping and queue what is next. Seeds WHAT to build; /architect designs, /develop builds."
 ---
 
+## CityPack Lab project context
+
+Read [Agent workflow](../../../docs/AGENT_WORKFLOW.md) and root
+[AGENTS.md](../../../AGENTS.md) before applying this skill. Follow the Lab's baseline
+immutability, evidence, curation and release gate rules. Use the documented Flutter
+and Python workflows and the user's existing authorization for scoped Git actions.
+
 ## Output style (plain words, no dashes, no hyphens)
 
 <!-- OUTPUT-STYLE:START -->

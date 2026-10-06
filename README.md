@@ -157,6 +157,7 @@ Human curation normally appears under `assets/city_packs/<city>/curation/`; new 
 - [Dataset QA guide](docs/DATASET_QA_GUIDE.md)
 - [Environment and platform details](docs/LAB_ENVIRONMENT.md)
 - [Cross-repository city-data loop](docs/CITY_DATA_DEV_LOOP.md)
+- [Project skills and agent workflow](docs/AGENT_WORKFLOW.md)
 
 ## Daily contributor checklist
 
